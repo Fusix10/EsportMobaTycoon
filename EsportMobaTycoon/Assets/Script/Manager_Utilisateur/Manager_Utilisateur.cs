@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Manager_Utilisateur : MonoBehaviour
 {
-    // Argent actuel du joueur
+    //argent actuel
     public int argentActuel = 1000;
 
-    // Système de popularité
-    public int popularite = 0;               // Points de popularité accumulés
-    public int niveauPopularite = 1;         // Niveau actuel de popularité (minimum 1)
-    public int seuilPourNiveauSuivant = 100;   // Seuil pour atteindre le niveau suivant
+    //système de popularité
+    public int popularite = 0;  //points de popularité accumulés
+    public int niveauPopularite = 1;    //niveau actuel de popularité (minimum 1)
+    public int seuilPourNiveauSuivant = 100;    //seuil pour atteindre le niveau suivant
 
-    // Equipe de joueurs (maximum 5 joueurs)
+    //equipe de joueurs (maximum 5 joueurs)
     public List<string> equipeJoueurs = new List<string>();
 
     void Start()
@@ -24,7 +24,7 @@ public class Manager_Utilisateur : MonoBehaviour
     void Update()
     {
         Debug.Log("Update exécuté");
-        // Touche A : Argent +50
+        //touche A : Argent +50
         if (Input.GetKeyDown(KeyCode.Q))//A
         {
             Debug.Log("Touche A pressée");
@@ -32,7 +32,7 @@ public class Manager_Utilisateur : MonoBehaviour
             Debug.Log("Argent augmenté de 50. Argent actuel : " + argentActuel);
         }
 
-        // Touche Z : Argent -100
+        //touche Z : Argent -100
         if (Input.GetKeyDown(KeyCode.W))//Z
         {
             Debug.Log("Touche Z pressée");
@@ -40,28 +40,28 @@ public class Manager_Utilisateur : MonoBehaviour
             Debug.Log("Argent diminué de 100. Argent actuel : " + argentActuel);
         }
 
-        // Touche E : Popularité +30
+        //touche E : Popularité +30
         if (Input.GetKeyDown(KeyCode.E))
         {
             AjouterPopularite(30);
             Debug.Log("Popularité augmentée de 30. Popularité : " + popularite + " (Niveau : " + niveauPopularite + ")");
         }
 
-        // Touche R : Popularité -50
+        //touche R : Popularité -50
         if (Input.GetKeyDown(KeyCode.R))
         {
             RetirerPopularite(50);
             Debug.Log("Popularité diminuée de 50. Popularité : " + popularite + " (Niveau : " + niveauPopularite + ")");
         }
 
-        // Touche T : Ajouter un joueur
+        //touche T : Ajouter un joueur
         if (Input.GetKeyDown(KeyCode.T))
         {
             string nouveauJoueur = "Joueur" + (equipeJoueurs.Count + 1);
             AjouterJoueur(nouveauJoueur);
         }
 
-        // Touche Y : Retirer le dernier joueur ajouté
+        //touche Y : Retirer le dernier joueur ajouté
         if (Input.GetKeyDown(KeyCode.Y))
         {
             if (equipeJoueurs.Count > 0)
@@ -76,9 +76,8 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Affiche dans la console l'état actuel des statistiques.
-    /// </summary>
+    //affiche dans la console l'état actuel des statistiques
+    
     void AfficherStatistiques()
     {
         Debug.Log("Argent Actuel : " + argentActuel);
@@ -89,29 +88,19 @@ public class Manager_Utilisateur : MonoBehaviour
             Debug.Log("Joueurs : " + string.Join(", ", equipeJoueurs));
         }
     }
-
-    /// <summary>
-    /// Ajoute des points de popularité et gère la montée de niveau.
-    /// </summary>
-    /// <param name="points">Nombre de points à ajouter</param>
     public void AjouterPopularite(int points)
     {
         popularite += points;
-        // Vérifie si le seuil pour monter de niveau est dépassé
+        // vérifie si le seuil pour monter de niveau est dépassé
         while (popularite >= seuilPourNiveauSuivant)
         {
             popularite -= seuilPourNiveauSuivant;
             niveauPopularite++;
-            seuilPourNiveauSuivant *= 2; // Double le seuil pour le niveau suivant
+            seuilPourNiveauSuivant *= 2; //double le seuil pour le niveau suivant
             Debug.Log("Niveau de popularité augmenté à " + niveauPopularite);
         }
     }
 
-    /// <summary>
-    /// Retire des points de popularité et ajuste le niveau si nécessaire.
-    /// Le niveau ne descend pas en dessous de 1 et la popularité reste à 0 si l'on est déjà au niveau minimal.
-    /// </summary>
-    /// <param name="points">Nombre de points à retirer</param>
     public void RetirerPopularite(int points)
     {
         popularite -= points;
@@ -122,10 +111,6 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Ajoute un joueur à l'équipe s'il y a moins de 5 joueurs.
-    /// </summary>
-    /// <param name="nomJoueur">Nom du joueur à ajouter</param>
     public void AjouterJoueur(string nomJoueur)
     {
         if (equipeJoueurs.Count < 5)
@@ -139,10 +124,6 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Retire un joueur de l'équipe.
-    /// </summary>
-    /// <param name="nomJoueur">Nom du joueur à retirer</param>
     public void RetirerJoueur(string nomJoueur)
     {
         if (equipeJoueurs.Contains(nomJoueur))
