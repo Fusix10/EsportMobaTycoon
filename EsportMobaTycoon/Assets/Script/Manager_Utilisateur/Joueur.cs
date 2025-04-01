@@ -2,20 +2,19 @@ using UnityEngine;
 
 public class Joueur : MonoBehaviour
 {
-    // Statistiques de base du joueur
+    //statistiques de base du joueur
     public int attaque = 10;
     public int defense = 10;
     public int forceMentale = 10;
     public int chance = 10;
 
-    // Initialisation
     void Start()
     {
         Debug.Log("Statistiques du joueur initialisées.");
         AfficherStatistiques();
     }
 
-    // Méthode pour afficher les statistiques dans la console (à remplacer par de l'UI si besoin)
+    // Méthode pour afficher les statistiques dans la console (à remplacer par de l'UI)
     void AfficherStatistiques()
     {
         Debug.Log("Attaque : " + attaque);
@@ -24,11 +23,6 @@ public class Joueur : MonoBehaviour
         Debug.Log("Chance : " + chance);
     }
 
-    /// <summary>
-    /// Méthode pour augmenter une statistique donnée.
-    /// </summary>
-    /// <param name="stat">Nom de la statistique ("attaque", "defense", "forcementale", "chance")</param>
-    /// <param name="value">Valeur à ajouter</param>
     public void AugmenterStatistique(string stat, int value)
     {
         switch (stat.ToLower())

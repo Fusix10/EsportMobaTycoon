@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5810c14ec92d084d9d9065d7e2900d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  argentActuel: 1000
+  argentActuel: 0
   popularite: 0
   niveauPopularite: 1
   seuilPourNiveauSuivant: 100
