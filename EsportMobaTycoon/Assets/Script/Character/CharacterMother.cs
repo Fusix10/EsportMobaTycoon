@@ -6,7 +6,8 @@ public class CharacterMother : MonoBehaviour
 {
     //Stat
     bool i_Meta;
-
+    List<Matchup> allMatchUp;
+    int IdCoesion;
     //
     void Start()
     {
@@ -33,5 +34,5 @@ enum StatMatchUp
 struct Matchup
 {
     AllCharacterName EnemyCharacter;
-    StatMatchUp MatchUpCorrect; //si MatchUpCorrect = false alors le matchup est mauvais, sinon il est bon
+    StatMatchUp MatchUpCorrect;
 }
