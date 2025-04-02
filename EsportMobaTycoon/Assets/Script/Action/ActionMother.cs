@@ -2,21 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionMother : MonoBehaviour
+public class ActionMother
 {
-    // Start is called before the first frame update
+
+    public int i_id = 0;
+
+    protected int i_timer = 0;
     void Start()
     {
-        
+        GameManager.Instance.GetItimeSystem().AddAction(this);
+        i_timer = 2;
     }
 
-    // Update is called once per frame
+    public void Init()
+    {
+        GameManager.Instance.GetItimeSystem().AddAction(this);
+        i_timer = 2;
+    }
+
     void Update()
     {
         
     }
 
-    protected int i_timer = 0;
 
     public void setTimer(int timer)
     {
@@ -27,12 +35,13 @@ public class ActionMother : MonoBehaviour
         i_timer--;
         if (i_timer <= 0)
         {
+            GameManager.Instance.GetItimeSystem().DeleteAction(this);
             action();
         }
     }
 
     protected virtual void action()
     {
-
+        Debug.Log("l'Action" + i_id + "a pris effet");
     }
 }

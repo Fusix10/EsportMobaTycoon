@@ -5,29 +5,33 @@ using UnityEngine.UIElements;
 
 public class TimeSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
     int i_actualTime;
     void Start()
     {
         i_actualTime = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
-    
-    List<ActionMother> actionMothers = new();
 
+    public delegate void TurnPass();
+    public event TurnPass OnTurnPass;
 
+    public void AddAction(ActionMother NewAction)
+    {
+        OnTurnPass += NewAction.actualise;
+    }
+
+    public void DeleteAction(ActionMother NewAction)
+    {
+        OnTurnPass -= NewAction.actualise;
+    }
 
     public void passingTime()
     {
         i_actualTime++;
-        foreach (ActionMother action in actionMothers)
-        {
-            action.actualise();
-        }
+        this.OnTurnPass();
     }
 }
