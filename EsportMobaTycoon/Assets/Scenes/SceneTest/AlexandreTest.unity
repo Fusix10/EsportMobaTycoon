@@ -294,7 +294,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 868767524}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: AddAction
         m_Mode: 1
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 868767524}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PassTimeButton
         m_Mode: 1

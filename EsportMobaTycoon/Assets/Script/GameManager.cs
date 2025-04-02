@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
     TimeSystem i_timeSystem;
     int i_testID = 0;
     List<ActionMother> i_ForTesting;
+
+    GameState i_GameState;
+
     void Start()
     {
+        i_GameState = GameState.Hub;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_ForTesting = new List<ActionMother>();
         Instance = this;
@@ -36,4 +40,12 @@ public class GameManager : MonoBehaviour
     {
         return i_timeSystem;
     }
+}
+
+enum GameState
+{
+    Hub,
+    Match,
+    Tournaments,
+    Result
 }
