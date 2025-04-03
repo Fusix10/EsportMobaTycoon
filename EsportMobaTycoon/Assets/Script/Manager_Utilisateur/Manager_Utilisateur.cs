@@ -9,7 +9,7 @@ public class Manager_Utilisateur : MonoBehaviour
     public int popularite = 0;
     public int niveauPopularite = 1;
     public int seuilPourNiveauSuivant = 100;
-    public List<string> equipeJoueurs = new List<string>();
+    public List<string> teamPlayers = new List<string>();
 
     public TextMeshProUGUI infoText;
 
@@ -20,7 +20,7 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             infoText.text = "Argent Actuel : " + argentActuel + "$\n" +
                             "Popularité : " + popularite + "/" + seuilPourNiveauSuivant + " (Niveau : " + niveauPopularite + ")\n" +
-                            "Joueurs (" + equipeJoueurs.Count + ") : " + string.Join(", ", equipeJoueurs);
+                            "Joueurs (" + teamPlayers.Count + ") :\n" + string.Join("\n", teamPlayers);
         }
         else
         {
@@ -66,18 +66,18 @@ public class Manager_Utilisateur : MonoBehaviour
         //ajouter un joueur avec T
         if (Input.GetKeyDown(KeyCode.T))
         {
-            string nouveauJoueur = "Joueur" + (equipeJoueurs.Count + 1);
-            AjouterJoueur(nouveauJoueur);
+            string nouveauJoueur = "Joueur" + (teamPlayers.Count + 1);
+            AddPlayer(nouveauJoueur);
             MettreAJourUI();
         }
 
         //retirer un joueur avec Y
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            if (equipeJoueurs.Count > 0)
+            if (teamPlayers.Count > 0)
             {
-                string joueurARetirer = equipeJoueurs[equipeJoueurs.Count - 1];
-                RetirerJoueur(joueurARetirer);
+                string joueurARetirer = teamPlayers[teamPlayers.Count - 1];
+                RemovePlayer(joueurARetirer);
                 MettreAJourUI();
             }
         }
@@ -103,19 +103,19 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    public void AjouterJoueur(string nomJoueur)
+    public void AddPlayer(string nomJoueur)
     {
-        if (equipeJoueurs.Count < 5)
+        if (teamPlayers.Count < 5)
         {
-            equipeJoueurs.Add(nomJoueur);
+            teamPlayers.Add(nomJoueur);
         }
     }
 
-    public void RetirerJoueur(string nomJoueur)
+    public void RemovePlayer(string nomJoueur)
     {
-        if (equipeJoueurs.Contains(nomJoueur))
+        if (teamPlayers.Contains(nomJoueur))
         {
-            equipeJoueurs.Remove(nomJoueur);
+            teamPlayers.Remove(nomJoueur);
         }
     }
 }
