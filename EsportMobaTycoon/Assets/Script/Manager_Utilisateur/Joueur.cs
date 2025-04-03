@@ -14,7 +14,6 @@ public class Joueur : MonoBehaviour
         AfficherStatistiques();
     }
 
-    // Méthode pour afficher les statistiques dans la console (à remplacer par de l'UI)
     void AfficherStatistiques()
     {
         Debug.Log("Attaque : " + attaque);
