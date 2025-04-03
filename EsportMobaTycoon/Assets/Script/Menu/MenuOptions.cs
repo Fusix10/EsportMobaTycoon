@@ -39,18 +39,15 @@ public class MenuOptions : MonoBehaviour
 
     void ChangeVibration(float value)
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        // Utiliser la classe Android pour une vibration custom
         AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
         AndroidJavaObject vibrator = currentActivity.Call<AndroidJavaObject>("getSystemService", "vibrator");
 
         if (vibrator.Call<bool>("hasVibrator"))
         {
-            long duration = (long)(value * 1000); // Convertir en millisecondes
+            long duration = (long)(value * 1000);
             vibrator.Call("vibrate", duration);
         }
-#endif
     }
 
     void ChangeFrameRate(int index)
