@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public enum Mood {DEPRESSED, SAD ,NORMAL, HAPPY, OVERWHELMED}
-    public enum Role {ADC, SUPPORT, MIDLANER, JUNGLER, TOPLANER}
+    public enum Mood { DEPRESSED, SAD, NORMAL, HAPPY, OVERWHELMED }
+    public enum Role { ADC, SUPPORT, MIDLANER, JUNGLER, TOPLANER }
     private float i_totalLuck { get; set; }
     private float i_morale { get; set; }
     private float i_teamSpirit { get; set; }
@@ -17,9 +17,14 @@ public class Player : MonoBehaviour
     private float i_maxExperience { get; set; }
     private int i_maxLevel { get; set; }
     private int i_reputation { get; set; }
+
     private Mood i_currentMood;
     private Role i_currentRole { get; set; }
-    
+
+    private int masteries { get; set; }
+
+    private int characterMasteries { get; set; }
+
     public Mood getMood()
     {
         return i_currentMood;
@@ -45,29 +50,29 @@ public class Player : MonoBehaviour
     {
         if (i_character == i_favoriteCharacter)
         {
-            if((int)i_character.getRole() == (int)i_currentRole)
+            if ((int)i_character.getRole() == (int)i_currentRole)
             {
-                i_totalLuck = (i_totalLuck / 100f) * 1.75f;
+                i_totalLuck = ((i_totalLuck / 100f) * 1.75f)*100f;
             }
             else
             {
-                i_totalLuck = (i_totalLuck / 100f) * 1.25f;
+                i_totalLuck = ((i_totalLuck / 100f) * 1.25f)*100f;
             }
         }
         else
         {
-            i_totalLuck = (i_totalLuck / 100f) * 0.5f;
+            i_totalLuck = ((i_totalLuck / 100f) * 0.5f)*100f;
         }
     }
 
     public float moralePercentage()
     {
-        return (i_morale/100f)*100f;
+        return (i_morale / 100f) * 100f;
     }
 
     public void moraleChange()
     {
-        switch(i_currentMood)
+        switch (i_currentMood)
         {
             case Mood.DEPRESSED:
                 i_morale *= 0.8f;
@@ -90,6 +95,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void changeLuck (float newLuck)
+    {
+        i_totalLuck += newLuck/100f;
+    }
+
+    public float xpBar()
+    {
+        if(i_maxExperience > 0 &&  i_maxExperience > i_currentExperience)
+        {
+            return i_currentExperience / i_maxExperience;
+        }
+        return i_currentExperience;
+    }
+
     void Start()
     {
       
@@ -100,10 +119,3 @@ public class Player : MonoBehaviour
         
     }
 }
-
-
-//TO DO
-/* Barre Xp
- * Fonction privée pour changer totalLuck
- * Faire une Factory de Player
- * 
