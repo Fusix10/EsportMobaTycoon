@@ -1,123 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public enum Mood {DEPRESSED, SAD ,NORMAL, HAPPY, OVERWHELMED}
     public enum Role {ADC, SUPPORT, MIDLANER, JUNGLER, TOPLANER}
-    private float i_totalLuck;
-    private float i_morale;
-    private float i_teamSpirit;
-    private Character i_player;
-    private Character i_favoritePlayer;
-    private int i_level;
-    private float i_currentExperience;
-    private float i_maxExperience;
-    private int i_maxLevel;
-    private int i_reputation;
+    private float i_totalLuck { get; set; }
+    private float i_morale { get; set; }
+    private float i_teamSpirit { get; set; }
+    private Character i_character { get; set; }
+    private Character i_favoriteCharacter { get; set; }
+    private int i_level { get; set; }
+    private float i_currentExperience { get; set; }
+    private float i_maxExperience { get; set; }
+    private int i_maxLevel { get; set; }
+    private int i_reputation { get; set; }
     private Mood i_currentMood;
-    private Role i_currentRole;
-
-    public float getLuck()
-    {
-        return i_totalLuck;
-    }
-
-    public void setLuck(float luck)
-    {
-        i_totalLuck = luck;
-    }
-
-    public float getMorale()
-    {
-        return i_morale;
-    }
-
-    public void setMorale(float morale)
-    {
-        i_morale = morale;
-    }
-    public float getTeamSpirit()
-    {
-        return i_teamSpirit;
-    }
-
-    public void setTeamSpirit(float teamSpirit)
-    {
-        i_teamSpirit = teamSpirit;
-    }
-
-    public Character getCharacterPlayed()
-    {
-        return i_player;
-    }
-
-    public void setCharacter(Character newCharacter)
-    {
-        i_player = newCharacter;
-    }
-
-    public Character getFavoriteCharacter()
-    {
-        return i_favoritePlayer;
-    }
-
-    public void setFavoriteCharacter(Character newCharacter)
-    {
-        i_favoritePlayer = newCharacter;
-    }
-
-    public int getLevel()
-    {
-        return i_level;
-    }
-
-    public void setLevel(int newLevel)
-    {
-        i_level = newLevel;
-    }
-
-    public float getCurrentExperience()
-    {
-        return i_currentExperience;
-    }
-
-    public void setCurrentExperience(float newExperience)
-    {
-        i_currentExperience = newExperience;
-    }
+    private Role i_currentRole { get; set; }
     
-    public float getMaxExperience()
-    {
-        return i_maxExperience;
-    }
-
-    public void setMaxExperience(float newMaxExperience)
-    {
-        i_maxExperience = newMaxExperience;
-    }
-
-    public int getMaxLevel()
-    {
-        return i_maxLevel;
-    }
-
-    public void setMaxLevel(int newMaxLevel)
-    {
-        i_maxLevel = newMaxLevel;
-    }
-
-    public int getReputation()
-    {
-        return i_reputation;
-    }
-
-    public void setReputation(int newReputation)
-    {
-        i_reputation = newReputation;
-    }
-
     public Mood getMood()
     {
         return i_currentMood;
@@ -141,17 +43,16 @@ public class Player : MonoBehaviour
 
     public void abilityToWin()
     {
-        if (i_player == i_favoritePlayer)
+        if (i_character == i_favoriteCharacter)
         {
-            if((int)i_player.getRole() == (int)i_currentRole)
+            if((int)i_character.getRole() == (int)i_currentRole)
             {
-                i_totalLuck = (i_totalLuck / 100f) * 2f;
+                i_totalLuck = (i_totalLuck / 100f) * 1.75f;
             }
             else
             {
                 i_totalLuck = (i_totalLuck / 100f) * 1.25f;
             }
-            
         }
         else
         {
@@ -199,3 +100,10 @@ public class Player : MonoBehaviour
         
     }
 }
+
+
+//TO DO
+/* Barre Xp
+ * Fonction privée pour changer totalLuck
+ * Faire une Factory de Player
+ * 
