@@ -7,30 +7,41 @@ public class Player : MonoBehaviour
 {
     public enum Mood { DEPRESSED, SAD, NORMAL, HAPPY, OVERWHELMED }
     public enum Role { ADC, SUPPORT, MIDLANER, JUNGLER, TOPLANER }
-    private float i_totalLuck { get; set; }
-    private float i_morale { get; set; }
-    private float i_teamSpirit { get; set; }
-    private Character i_character { get; set; }
-    private Character i_favoriteCharacter { get; set; }
-    private int i_level { get; set; }
-    private float i_currentExperience { get; set; }
-    private float i_maxExperience { get; set; }
-    private int i_maxLevel { get; set; }
-    private int i_reputation { get; set; }
 
-    private Mood i_currentMood;
-    private Role i_currentRole { get; set; }
+    public enum Temperament {AGGRESSIVE, FAIRPLAY}
 
-    private int masteries { get; set; }
+    public string i_name { get;private set; }
 
-    private int characterMasteries { get; set; }
+    public string i_surname { get;private set; }
+
+    public Sprite i_image { get;private set; }
+
+    public float i_totalLuck { get; private set; }
+    public float i_morale { get; private set; }
+    public float i_teamSpirit { get; private set; }
+    public Character i_character { get; private set; }
+    public Character i_favoriteCharacter { get; private set; }
+    public int i_level { get; private set; }
+    public float i_currentExperience { get; private set; }
+    public float i_maxExperience { get; private set; }
+    public int i_maxLevel { get; private set; }
+    public int i_reputation { get; private set; }
+
+    public Mood i_currentMood;
+    public Role i_currentRole { get; private set; }
+
+    public int i_masteries { get; private set; }
+
+    public int i_characterMasteries { get; private set; }
+
+    public Temperament i_temparement { get; private set; }
 
     public Mood getMood()
     {
         return i_currentMood;
     }
 
-    public void setMood(Mood newMood)
+    private void setMood(Mood newMood)
     {
         i_currentMood = newMood;
         moraleChange();
@@ -41,7 +52,7 @@ public class Player : MonoBehaviour
         return i_currentRole;
     }
 
-    public void setRole(Role newRole)
+    private void setRole(Role newRole)
     {
         i_currentRole = newRole;
     }
@@ -95,7 +106,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void changeLuck (float newLuck)
+    public void changeLuck (float newLuck)
     {
         i_totalLuck += newLuck/100f;
     }
@@ -117,5 +128,30 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public static Player MakePlayer(string name,string surname, Temperament temperament,float luck,float morale,float teamSpirit, int level,int xp, int maxXp,int maxLevel, int reputation, Sprite image, Character character,Character favoriteCharacter,Role role,Mood mood,int masteries, int charactermasteries)
+    {
+        Player player = new();
+        player.i_name = name;
+        player.i_surname = surname;
+        player.i_temparement = temperament;
+        player.i_totalLuck = luck;
+        player.i_morale = morale;
+        player.i_teamSpirit = teamSpirit;
+        player.i_level = level;
+        player.i_currentExperience = xp;
+        player.i_maxExperience = maxXp;
+        player.i_level = level;
+        player.i_maxLevel = maxLevel;
+        player.i_reputation = reputation;
+        player.i_image = image;
+        player.i_character = character;
+        player.i_favoriteCharacter = favoriteCharacter;
+        player.i_currentRole = role;
+        player.i_currentMood = mood;
+        player.i_masteries = masteries;
+        player.i_characterMasteries = charactermasteries;
+        return player;
     }
 }
