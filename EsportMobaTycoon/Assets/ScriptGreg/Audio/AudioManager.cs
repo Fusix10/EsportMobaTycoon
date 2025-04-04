@@ -38,13 +38,9 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "New Scene")
+        if (scene.name == "GrégoireTest")
         {
             PlayMusic("Theme");
-        }
-        else if (scene.name == "StartMenu")
-        {
-            PlayMusic("ThemeStart");
         }
     }
 
