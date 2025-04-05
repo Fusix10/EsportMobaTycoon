@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Linq;
+using TMPro;
 using static Player;
 
 public class PlayerFactory : MonoBehaviour
 {
-    // UI Elements
-    public InputField nameInput;
-    public InputField surnameInput;
-    public Dropdown temperamentDropdown;
+    public TMP_InputField nameInput;
+    public TMP_InputField surnameInput;
+    public TMP_Dropdown temperamentDropdown;
     public Slider luckSlider;
     public Slider moraleSlider;
     public Slider teamSpiritSlider;
@@ -18,10 +20,10 @@ public class PlayerFactory : MonoBehaviour
     public Slider maxLevelSlider;
     public Slider reputationSlider;
     public Image characterImage;
-    public Dropdown characterDropdown;
-    public Dropdown favoriteCharacterDropdown;
-    public Dropdown roleDropdown;
-    public Dropdown moodDropdown;
+    public TMP_Dropdown characterDropdown;
+    public TMP_Dropdown favoriteCharacterDropdown;
+    public TMP_Dropdown roleDropdown;
+    public TMP_Dropdown moodDropdown;
     public Slider masteriesSlider;
     public Slider characterMasteriesSlider;
 
@@ -49,8 +51,18 @@ public class PlayerFactory : MonoBehaviour
         }*/
     }
 
+    private void FillDropdownWithEnum<T>(TMP_Dropdown dropdown) where T : System.Enum
+    {
+        dropdown.ClearOptions();
+        dropdown.AddOptions(new List<string>(System.Enum.GetNames(typeof(T))));
+    }
+
     private void PopulateDropdowns()
     {
+
+        FillDropdownWithEnum<Mood>(moodDropdown);
+        FillDropdownWithEnum<Role>(roleDropdown);
+        FillDropdownWithEnum<Temperament>(temperamentDropdown);
         // Fill dropdown options
         //characterDropdown.ClearOptions();
         //favoriteCharacterDropdown.ClearOptions();
