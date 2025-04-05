@@ -9,7 +9,8 @@ public class Carouselle : MonoBehaviour
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private List<Button> colorButtons;
 
-    private int currentIndex = 0;
+    private int SpriteIndex = 0;
+    private int colorButtonIndex = 0; 
 
     void Start()
     {
@@ -30,24 +31,24 @@ public class Carouselle : MonoBehaviour
         else
         {
             UpdateImage();
-            UpdateColor(0);
+            UpdateColor(colorButtonIndex);
         }
     }
 
     private void UpdateImage()
     {
-        targetImage.sprite = sprites[currentIndex];
+        targetImage.sprite = sprites[SpriteIndex];
     }
 
     public void NextImage()
     {
-        currentIndex = (currentIndex + 1) % sprites.Count;
+        SpriteIndex = (SpriteIndex + 1) % sprites.Count;
         UpdateImage();
     }
 
     public void PreviousImage()
     {
-        currentIndex = (currentIndex - 1 + sprites.Count) % sprites.Count;
+        SpriteIndex = (SpriteIndex - 1 + sprites.Count) % sprites.Count;
         UpdateImage();
     }
 
@@ -59,6 +60,7 @@ public class Carouselle : MonoBehaviour
             if (button != null && targetImage != null)
             {
                 targetImage.color = button.image.color;
+                colorButtonIndex = index; 
             }
         }
         else
@@ -69,17 +71,29 @@ public class Carouselle : MonoBehaviour
 
     public void Randomize()
     {
-        currentIndex = Random.Range(0, sprites.Count);
+        SpriteIndex = Random.Range(0, sprites.Count);
         UpdateImage();
 
-        int randomColorIndex = Random.Range(0, colorButtons.Count);
-        UpdateColor(randomColorIndex);
+        colorButtonIndex = Random.Range(0, colorButtons.Count);
+        UpdateColor(colorButtonIndex);
     }
 
     public void Resette()
     {
-        currentIndex = 0;
+        SpriteIndex = 0;
         UpdateImage();
-        UpdateColor(0);
+        colorButtonIndex = 0;
+        UpdateColor(colorButtonIndex);
     }
+
+    public Sprite getSprite()
+    {
+        return sprites[SpriteIndex];
+    }
+
+    public Color getColor()
+    {
+        return colorButtons[colorButtonIndex].image.color;
+    }
+
 }
