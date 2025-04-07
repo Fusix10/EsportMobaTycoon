@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     {
         if (i_character == i_favoriteCharacter)
         {
-            if ((int)i_character.getRole() == (int)i_currentRole)
+            if ((int)i_character.i_role == (int)i_currentRole)
             {
                 i_totalLuck = ((i_totalLuck / 100f) * 1.75f)*100f;
             }
