@@ -26,8 +26,3 @@ public class Training : MonoBehaviour
 
     }
 }
-
-public class Player
-{
-    public int LevelCharacter1 = 0;
-}

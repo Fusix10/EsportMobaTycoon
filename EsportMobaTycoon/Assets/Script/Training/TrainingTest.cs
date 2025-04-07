@@ -18,14 +18,14 @@ public class TrainingTest : Training
 
     public override void TrainingSolo(Player player) 
     {
-        player.LevelCharacter1 += 1;
+        //add Training
     }
 
     public override void TrainingTeam(List<Player> players)
     {
         foreach (Player p in players) 
         {
-            p.LevelCharacter1 += 1;
+            //add training
         }
     }
 }
