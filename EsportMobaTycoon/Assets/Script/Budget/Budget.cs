@@ -13,7 +13,7 @@ public class Budget : MonoBehaviour
         }
         return manager.argentActuel >= cout;
     }
-    // Tente d'acheter un objet en déduisant son coût du budget si possible
+    //tente d'acheter un objet en déduisant son coût du budget si possible
     public bool AcheterObjet(int cout)
     {
         if (PeutAcheterObjet(cout))
