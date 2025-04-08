@@ -27,12 +27,10 @@ public class PlayerFactory : MonoBehaviour
     public Slider masteriesSlider;
     public Slider characterMasteriesSlider;
 
-    private Dictionary<int, Character> characterMap = new Dictionary<int, Character>();
-
     void Start()
     {
         PopulateCharacterList();
-        PopulateDropdowns();
+       
     }
 
     private void PopulateCharacterList()
@@ -51,37 +49,10 @@ public class PlayerFactory : MonoBehaviour
         }*/
     }
 
-    private void FillDropdownWithEnum<T>(TMP_Dropdown dropdown) where T : System.Enum
-    {
-        dropdown.ClearOptions();
-        dropdown.AddOptions(new List<string>(System.Enum.GetNames(typeof(T))));
-    }
-
-    private void PopulateDropdowns()
-    {
-
-        FillDropdownWithEnum<Mood>(moodDropdown);
-        FillDropdownWithEnum<Role>(roleDropdown);
-        FillDropdownWithEnum<Temperament>(temperamentDropdown);
-        // Fill dropdown options
-        //characterDropdown.ClearOptions();
-        //favoriteCharacterDropdown.ClearOptions();
-
-        //List<string> characterNames = new List<string>();
-        //foreach (var character in characterMap.Values)
-        //{
-        //    characterNames.Add(character.Name);
-        //}
-
-        //characterDropdown.AddOptions(characterNames);
-        //favoriteCharacterDropdown.AddOptions(characterNames);
-    }
-
     public void CreatePlayer()
     {
         string name = nameInput.text;
         string surname = surnameInput.text;
-        Temperament temperament = (Temperament)temperamentDropdown.value;
         float luck = luckSlider.value;
         float morale = moraleSlider.value;
         float teamSpirit = teamSpiritSlider.value;
@@ -91,13 +62,16 @@ public class PlayerFactory : MonoBehaviour
         int maxLevel = (int)maxLevelSlider.value;
         int reputation = (int)reputationSlider.value;
         Sprite image = characterImage.sprite;
-       /* Character character = (Character)characterDropdown.value;  
-        Character favoriteCharacter = (Character)favoriteCharacterDropdown.value;*/
-        Role role = (Role)roleDropdown.value;
         Mood mood = (Mood)moodDropdown.value;
         int masteries = (int)masteriesSlider.value;
         int characterMasteries = (int)characterMasteriesSlider.value;
+        int roleId;
+        Mechanic mechanic;
+        Knowledge knowledge;
+        int characterId;
+        Lvl teamSpirits;
 
-        //Player player0 = MakePlayer(name, surname, temperament, luck, morale, teamSpirit, level, xp, maxXp, maxLevel, reputation, image, character, favoriteCharacter, role, mood, masteries, characterMasteries);
+        Player player = new Player();
+        player.Init(name,roleId, mechanic, knowledge, characterId, morale, teamSpirits, reputation, maxLevel, image);
     }
 }
