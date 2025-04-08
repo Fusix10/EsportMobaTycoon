@@ -5,153 +5,98 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public enum Mood { DEPRESSED, SAD, NORMAL, HAPPY, OVERWHELMED }
-    public enum Role { ADC, SUPPORT, MIDLANER, JUNGLER, TOPLANER }
-
-    public enum Temperament {AGGRESSIVE, FAIRPLAY}
-
-    public string i_name { get;private set; }
-
-    public string i_surname { get;private set; }
-
-    public Sprite i_image { get;private set; }
-
-    public float i_totalLuck { get; private set; }
-    public float i_morale { get; private set; }
-    public float i_teamSpirit { get; private set; }
-    public Character i_character { get; private set; }
-    public Character i_favoriteCharacter { get; private set; }
-    public int i_level { get; private set; }
-    public float i_currentExperience { get; private set; }
-    public float i_maxExperience { get; private set; }
-    public int i_maxLevel { get; private set; }
-    public int i_reputation { get; private set; }
-
-    public Mood i_currentMood;
-    public Role i_currentRole { get; private set; }
-
-    public int i_masteries { get; private set; }
-
-    public int i_characterMasteries { get; private set; }
-
-    public Temperament i_temparement { get; private set; }
-
-    public Mood getMood()
+    public enum Mood { DEPRESSED, SAD, NORMAL, HAPPY, OVERHELMED }
+    public struct Lvl
     {
-        return i_currentMood;
+        public int s_lvl;
+        public float s_Xp;
+    }
+    public struct Mechanic
+    {
+        public Lvl s_lvlCombo;
+        public Lvl s_stamina;
+        public Lvl s_reflexe;
+    }
+    public struct Knowledge
+    {
+        public Lvl s_placement;
+        public Lvl s_teamFight;
+        public Lvl s_objective;
     }
 
-    private void setMood(Mood newMood)
-    {
-        i_currentMood = newMood;
-        moraleChange();
-    }
+    public string i_name;
+    public int i_role;
+    public Sprite i_icon;
+    public Mechanic i_mechanic;
+    public Knowledge i_knowledge;
+    public int i_favoriteCharacterId;
+    public float i_totalLuck;
+    public float i_morale;
+    public Lvl i_teamSpirit;
+    public int i_reputation;
+    public int i_lvl;
+    public int i_potentiel;
 
-    public Role getRole()
+    public void Init
+    (    
+    string name,
+    int role,
+    Mechanic mechanic,
+    Knowledge knowledge,
+    int favoriteCharacterId,
+    float morale,
+    Lvl teamSpirit,
+    int reputation,
+    int potentiel,
+    Sprite icon
+    )
     {
-        return i_currentRole;
-    }
+        i_name = name;
+        i_role = role;
+        i_icon = icon;
+        i_mechanic = mechanic;
+        i_knowledge = knowledge;
+        i_favoriteCharacterId = favoriteCharacterId;
+        i_teamSpirit = teamSpirit;
+        i_reputation = reputation;
+        i_potentiel = potentiel;
 
-    private void setRole(Role newRole)
-    {
-        i_currentRole = newRole;
+        i_lvl = i_mechanic.s_lvlCombo.s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        i_lvl = i_lvl / 6;
     }
-
-    public void abilityToWin()
+    
+    public void gainXP(Lvl obj, float Gain)
     {
-        if (i_character == i_favoriteCharacter)
+        for (int i = 0; i < i_potentiel; i++)
         {
-            if ((int)i_character.i_role == (int)i_currentRole)
-            {
-                i_totalLuck = ((i_totalLuck / 100f) * 1.75f)*100f;
-            }
-            else
-            {
-                i_totalLuck = ((i_totalLuck / 100f) * 1.25f)*100f;
-            }
-        }
-        else
-        {
-            i_totalLuck = ((i_totalLuck / 100f) * 0.5f)*100f;
+            obj.s_Xp += (Gain * (100 - (i * 5)));
         }
     }
 
-    public float moralePercentage()
-    {
-        return (i_morale / 100f) * 100f;
-    }
 
-    public void moraleChange()
+    public void Luck()
     {
-        switch (i_currentMood)
+        for (int i = 0;i < 7; i++)
         {
-            case Mood.DEPRESSED:
-                i_morale *= 0.8f;
-                break;
-            case Mood.SAD:
-                i_morale *= 0.9f;
-                break;
-            case Mood.NORMAL:
-                i_morale *= 1f;
-                break;
-            case Mood.HAPPY:
-                i_morale *= 1.1f;
-                break;
-            case Mood.OVERWHELMED:
-                i_morale *= 1.2f;
-                break;
-            default:
-                Debug.Log(i_morale);
-                break;
+            float sumLuck = i_mechanic.s_lvlCombo.s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+            sumLuck *= i_morale / 100;
         }
     }
 
-    public void changeLuck (float newLuck)
+    public void UpdateTick()
     {
-        i_totalLuck += newLuck/100f;
+        Luck();
     }
 
-    public float xpBar()
-    {
-        if(i_maxExperience > 0 &&  i_maxExperience > i_currentExperience)
-        {
-            return i_currentExperience / i_maxExperience;
-        }
-        return i_currentExperience;
-    }
-
-    void Start()
-    {
-      
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public static Player MakePlayer(string name,string surname, Temperament temperament,float luck,float morale,float teamSpirit, int level,int xp, int maxXp,int maxLevel, int reputation, Sprite image, Character character,Character favoriteCharacter,Role role,Mood mood,int masteries, int charactermasteries)
-    {
-        Player player = new();
-        player.i_name = name;
-        player.i_surname = surname;
-        player.i_temparement = temperament;
-        player.i_totalLuck = luck;
-        player.i_morale = morale;
-        player.i_teamSpirit = teamSpirit;
-        player.i_level = level;
-        player.i_currentExperience = xp;
-        player.i_maxExperience = maxXp;
-        player.i_level = level;
-        player.i_maxLevel = maxLevel;
-        player.i_reputation = reputation;
-        player.i_image = image;
-        player.i_character = character;
-        player.i_favoriteCharacter = favoriteCharacter;
-        player.i_currentRole = role;
-        player.i_currentMood = mood;
-        player.i_masteries = masteries;
-        player.i_characterMasteries = charactermasteries;
-        return player;
-    }
 }
+
+//TO DO
+/*
+*Morale affecté par s'il joue son perso favori, par son mood(mood va donner bonus ou malus voir les deux au gain de moral ou à la perte), si le player joueur joue sur un autre role que son role de 
+*base il n'a que 80% de sa totalLuck après l'opération de Luck(). S'il joue son perso préféré il va gagner 5% de morale après Luck(). On laisse réputation de côté. Faire plusieurs petites fonctions 
+*qui seront appelées dans UpdateTick().
+*
+*
+*/
+
+
