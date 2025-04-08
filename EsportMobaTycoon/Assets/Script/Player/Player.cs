@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
     Mechanic mechanic,
     Knowledge knowledge,
     int favoriteCharacterId,
-    float morale,
     Lvl teamSpirit,
     int reputation,
     int potentiel,
@@ -92,8 +91,10 @@ public class Player : MonoBehaviour
 
 //TO DO
 /*
-*Morale affecté par s'il joue son perso favori, par son mood(mood va donner bonus ou malus voir les deux au gain de moral ou à la perte), si le player joueur joue sur un autre role que son role de 
-*base il n'a que 80% de sa totalLuck après l'opération de Luck(). S'il joue son perso préféré il va gagner 5% de morale après Luck(). On laisse réputation de côté. Faire plusieurs petites fonctions 
+*Morale affecté par s'il joue son perso favori, par son mood(mood va donner bonus ou malus voir les deux au gain de moral 
+*ou à la perte), si le player joueur joue sur un autre role que son role de 
+*base il n'a que 80% de sa totalLuck après l'opération de Luck(). S'il joue son perso préféré il va gagner 5% de morale après 
+*Luck(). On laisse réputation de côté. Faire plusieurs petites fonctions 
 *qui seront appelées dans UpdateTick().
 *
 *
