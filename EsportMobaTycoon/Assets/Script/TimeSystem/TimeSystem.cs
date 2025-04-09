@@ -6,9 +6,21 @@ using UnityEngine.UIElements;
 public class TimeSystem : MonoBehaviour
 {
     int i_actualTime;
+
+    //RandomEvent
+    public List<RandomEvent> randomEvents;
+    public float eventProbability = 0.1f;
+
     void Start()
     {
         i_actualTime = 0;
+
+        //RandomEvent
+        randomEvents = new List<RandomEvent>();
+        if (randomEvents.Count == 0)
+        {
+            Debug.LogError("No RandomEvents in list");
+        }
     }
 
     void Update()
@@ -32,6 +44,22 @@ public class TimeSystem : MonoBehaviour
     public void passingTime()
     {
         i_actualTime++;
+
+        //RandomEvent
+        if (Random.value < eventProbability)
+        {
+            TriggerRandomEvent();
+        }
+
         this.OnTurnPass();
     }
+
+    //RandomEvent
+    private void TriggerRandomEvent()
+    {
+        int randomIndex = Random.Range(0, randomEvents.Count);
+        RandomEvent selectedEvent = randomEvents[randomIndex];
+        selectedEvent.Display();
+    }
+
 }
