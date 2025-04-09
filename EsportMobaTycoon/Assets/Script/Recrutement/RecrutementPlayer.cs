@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class RecrutementPlayer : MonoBehaviour
 {
     [Header("UI Elements")]
-    public Image portraitImage;
+    //public Image portraitImage;
     public TMP_Text nameText;
     public TMP_Text roleText;
-    public Image levelText;
-    public Image potentielText;
+    //public Image levelText;
+    //public Image potentielText;
 
     [Header("Player List")]
+    public PlayerFactory playerFactory;
     public List<Player> allPlayers;
     public List<Player> selectedTeam = new List<Player>();
 
@@ -21,19 +22,24 @@ public class RecrutementPlayer : MonoBehaviour
 
     void Start()
     {
-        
+        for (int i = 0; i < 6; i++) 
+        {
+            Player player = playerFactory.CreateRandomPlayer();
+            allPlayers.Add(player);
+        }
+        UpdateUI();
     }
 
     public void ScrollLeft()
     {
         currentIndex = (currentIndex - 1 + allPlayers.Count) % allPlayers.Count;
-        
+        UpdateUI();
     }
 
     public void ScrollRight()
     {
         currentIndex = (currentIndex + 1) % allPlayers.Count;
-        
+        UpdateUI();
     }
 
     public void AddToTeam()
@@ -46,9 +52,14 @@ public class RecrutementPlayer : MonoBehaviour
         }
     }
 
-    private void UpdateUI(Player p)
+    private void UpdateUI()
     {
-        nameText.text = p.i_name;
+        if (allPlayers.Count == 0) return;
+
+        Player currentPlayer = allPlayers[currentIndex];
+
+        nameText.text = currentPlayer.i_name;
+        roleText.text = GetRoleName(currentPlayer.i_role);
     }
 
     private string GetRoleName(int roleId)
