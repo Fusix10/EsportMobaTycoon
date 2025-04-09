@@ -44,7 +44,7 @@ public class PlayerFactory : MonoBehaviour
     public void CreatePlayer()
     {
         string name = nameInput.text;
-        Lvl teamSpirit;
+        Lvl teamSpirit = new();
         teamSpirit.s_Xp = teamSpiritXpSlider.value;
         teamSpirit.s_lvl = (int)teamSpiritLvlSlider.value;
         int xp = (int)xpSlider.value;
@@ -54,14 +54,14 @@ public class PlayerFactory : MonoBehaviour
         int reputation = (int)reputationSlider.value;
         Sprite image = characterImage.sprite;
         Mood mood = (Mood)moodDropdown.value;
-        Mechanic mechanic;
+        Mechanic mechanic = new();
         mechanic.s_reflexe.s_lvl = (int)reflexelvlSlider.value;
         mechanic.s_reflexe.s_Xp = (int)reflexexpSlider.value;
         mechanic.s_stamina.s_Xp = (int)staminaxpSlider.value;
         mechanic.s_stamina.s_lvl = (int)staminalvlSlider.value; 
         mechanic.s_lvlCombo.s_Xp = (int)comboxpSlider.value;
         mechanic.s_lvlCombo.s_lvl = (int)combolvlSlider.value;
-        Knowledge knowledge;
+        Knowledge knowledge = new();
         knowledge.s_objective.s_lvl = (int)objectivelvlSlider.value;
         knowledge.s_objective.s_Xp = (int)objectivexpSlider.value;
         knowledge.s_placement.s_lvl = (int)placementlvlSlider.value;
