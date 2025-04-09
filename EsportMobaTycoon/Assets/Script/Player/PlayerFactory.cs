@@ -12,9 +12,9 @@ public class PlayerFactory : MonoBehaviour
     public Image characterImage;
     public Slider teamSpiritXpSlider;
     public Slider teamSpiritLvlSlider;
-    public Slider levelSlider;
     public Slider xpSlider;
     public Slider roleSlider;
+    public Slider rolePlayedSlider;
     public Slider potentialSlider;
     public Slider reputationSlider;
     public Slider reflexelvlSlider;
@@ -29,7 +29,8 @@ public class PlayerFactory : MonoBehaviour
     public Slider placementlvlSlider;
     public Slider teamFightxpSlider;
     public Slider teamFightlvlSlider;
-    public Slider characterSlider;
+    public Slider favoriteCharacterSlider;
+    public Slider characterPlayedSlider;
     public TMP_Dropdown moodDropdown;
     public GameObject playerPrefab;
     public Material baseMaterial;
@@ -48,6 +49,7 @@ public class PlayerFactory : MonoBehaviour
         teamSpirit.s_lvl = (int)teamSpiritLvlSlider.value;
         int xp = (int)xpSlider.value;
         int roleId = (int)roleSlider.value;
+        int rolePlayedId = (int)rolePlayedSlider.value;
         int potential = (int)potentialSlider.value;
         int reputation = (int)reputationSlider.value;
         Sprite image = characterImage.sprite;
@@ -66,7 +68,8 @@ public class PlayerFactory : MonoBehaviour
         knowledge.s_placement.s_Xp = (int)placementxpSlider.value;
         knowledge.s_teamFight.s_lvl = (int)teamFightlvlSlider.value;
         knowledge.s_teamFight.s_Xp = (int)teamFightxpSlider.value;
-        int characterId = (int)characterSlider.value;
+        int favoriteCharacterId = (int)favoriteCharacterSlider.value;
+        int characterPlayedId = (int)characterPlayedSlider.value;
 
         GameObject playerObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         playerObj.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 1f, UnityEngine.Random.Range(-5f, 5f));
@@ -80,6 +83,19 @@ public class PlayerFactory : MonoBehaviour
 
      
         Player playerComponent = playerObj.AddComponent<Player>();
-        playerComponent.Init(name, roleId, mechanic, knowledge, characterId, teamSpirit, reputation, potential, image);
+        playerComponent.Init(name, 
+                            roleId, 
+                            mechanic, 
+                            knowledge, 
+                            favoriteCharacterId, 
+                            teamSpirit, 
+                            reputation, 
+                            potential, 
+                            image,
+                            mood,
+                            rolePlayedId,
+                            characterPlayedId
+                            );
+
     }
 }

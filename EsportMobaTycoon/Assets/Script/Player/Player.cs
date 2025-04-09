@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class Player : MonoBehaviour
 {
@@ -26,16 +27,19 @@ public class Player : MonoBehaviour
 
     public string i_name;
     public int i_role;
+    public int i_currentRole;
     public Sprite i_icon;
     public Mechanic i_mechanic;
     public Knowledge i_knowledge;
     public int i_favoriteCharacterId;
+    public int i_characterId;
     public float i_totalLuck;
     public float i_morale;
     public Lvl i_teamSpirit;
     public int i_reputation;
     public int i_lvl;
     public int i_potentiel;
+    public Mood i_mood;
 
     public void Init
     (    
@@ -47,7 +51,10 @@ public class Player : MonoBehaviour
     Lvl teamSpirit,
     int reputation,
     int potentiel,
-    Sprite icon
+    Sprite icon,
+    Mood mood,
+    int currentRole,
+    int characterId
     )
     {
         i_name = name;
@@ -59,6 +66,9 @@ public class Player : MonoBehaviour
         i_teamSpirit = teamSpirit;
         i_reputation = reputation;
         i_potentiel = potentiel;
+        i_mood = mood;
+        i_characterId = characterId;
+        i_currentRole = currentRole;
 
         i_lvl = i_mechanic.s_lvlCombo.s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
@@ -85,6 +95,74 @@ public class Player : MonoBehaviour
     public void UpdateTick()
     {
         Luck();
+        MoodMoraleModify();
+        ApplyRolePenalty();
+        ApplyFavoriteCharacterBonus();
+        MoodEffectOnMorale();
+    }
+
+    private float MoodMoraleModify()
+    {
+        switch (i_mood)
+        {
+            case Mood.DEPRESSED:
+                return -0.2f; 
+            case Mood.SAD:
+                return -0.1f;
+            case Mood.NORMAL:
+                return 0f;
+            case Mood.HAPPY:
+                return 0.1f;
+            case Mood.OVERHELMED:
+                return 0.2f;
+            default:
+                return 0f;
+        }
+    }
+
+    private void MoodEffectOnMorale()
+    {
+        float modify = MoodMoraleModify();
+        if (Random.Range(1,2) == 1)
+        {
+            if (modify > 0)
+            {
+                i_morale -= 5 * modify;
+            }
+            else if (modify < 0)
+            {
+                i_morale += 5 * modify;
+            }
+        }
+        else if(Random.Range(1, 2) == 2)
+        {
+            if (modify > 0)
+            {
+                i_morale += 5 * modify;
+            }
+            else if (modify < 0)
+            {
+                i_morale -= 5 * modify;
+            }
+        }
+        
+        
+    }
+
+    private void ApplyFavoriteCharacterBonus()
+    {
+        if (i_characterId == i_favoriteCharacterId)
+        {
+            i_morale *= 1.05f;
+        }
+    }
+
+    private void ApplyRolePenalty()
+    {
+        if (i_currentRole != i_role)
+        {
+            i_totalLuck *= 0.8f;
+        }
     }
 
 }
