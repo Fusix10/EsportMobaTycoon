@@ -16,5 +16,6 @@ public class LookCam : MonoBehaviour
     void Update()
     {
         this.transform.LookAt(m_MainCamera.transform);
+        //this.transform.rotation = new Quaternion(this.transform.rotation.x, -this.transform.rotation.y,0,0);
     }
 }
