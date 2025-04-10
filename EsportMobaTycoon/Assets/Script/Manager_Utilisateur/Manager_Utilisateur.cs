@@ -13,13 +13,15 @@ public class Manager_Utilisateur : MonoBehaviour
 
     public TextMeshProUGUI infoText;
 
+    public Budget budget;
+
     //met a jour le texte de la fenêtre avec les stats actuelles
     public void MettreAJourUI()
     {
         if (infoText != null)
         {
             infoText.text = "Argent Actuel : " + argentActuel + "$\n" +
-                            "Popularité : " + popularite + "/" + seuilPourNiveauSuivant + " (Niveau : " + niveauPopularite + ")\n" +
+                            "Popularité : " + popularite + "\n" +
                             "Joueurs (" + teamPlayers.Count + ") :\n" + string.Join("\n", teamPlayers);
         }
         else
@@ -52,14 +54,14 @@ public class Manager_Utilisateur : MonoBehaviour
         //augmenter la popularité avec E
         if (Input.GetKeyDown(KeyCode.E))
         {
-            AjouterPopularite(30);
+            popularite += 50;
             MettreAJourUI();
         }
 
         //diminuer la popularité avec R
         if (Input.GetKeyDown(KeyCode.R))
         {
-            RetirerPopularite(50);
+            popularite -= 50;
             MettreAJourUI();
         }
 
@@ -83,7 +85,7 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    public void AjouterPopularite(int points)
+    /*public void AjouterPopularite(int points)
     {
         popularite += points;
         while (popularite >= seuilPourNiveauSuivant)
@@ -92,16 +94,16 @@ public class Manager_Utilisateur : MonoBehaviour
             niveauPopularite++;
             seuilPourNiveauSuivant *= 2; //le seuil double à chaque niveau ? ou on change
         }
-    }
+    }*/
 
-    public void RetirerPopularite(int points)
+   /* public void RetirerPopularite(int points)
     {
         popularite -= points;
         if (popularite < 0)
         {
             popularite = 0;
         }
-    }
+    }*/
 
     public void AddPlayer(string nomJoueur)
     {
@@ -116,6 +118,18 @@ public class Manager_Utilisateur : MonoBehaviour
         if (teamPlayers.Contains(nomJoueur))
         {
             teamPlayers.Remove(nomJoueur);
+        }
+    }
+
+    void AcheterItem(int cout)
+    {
+        if (budget.AcheterObjet(cout))
+        {
+            //l'achat a été réalisé, ajouter alors l'item à l'inventaire
+        }
+        else
+        {
+            //gérer le cas d'échec (fonds insuffisants).
         }
     }
 }
