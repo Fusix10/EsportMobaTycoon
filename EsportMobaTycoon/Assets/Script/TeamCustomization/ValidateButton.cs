@@ -15,7 +15,7 @@ public class ValidateButton : MonoBehaviour
 
     void Start()
     {
-        // Vérifiez si les références sont assignées
+        // Vï¿½rifiez si les rï¿½fï¿½rences sont assignï¿½es
         if (inputFieldGrabber1 == null || inputFieldGrabber2 == null)
         {
             Debug.LogError("InputFieldGrabber slots are not assigned.");
@@ -45,8 +45,8 @@ public class ValidateButton : MonoBehaviour
         Sprite spritCarouselle1 = carouselle1.getSprite();
         Color spriteColor1 = carouselle1.getColor();
 
-        Sprite spritCarouselleé = carouselle2.getSprite();
-        Color spriteColoré = carouselle2.getColor();
+        Sprite spritCarouselle = carouselle2.getSprite();
+        Color spriteColor  = carouselle2.getColor();
 
         // need code to send to GameManager
 

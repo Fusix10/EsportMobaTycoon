@@ -8,9 +8,11 @@ public class MoneyManager : MonoBehaviour
 
     private int m_money_amount;
 
+    [Header("Money Settings")]
     [SerializeField]
     private int money_start_amount;
 
+    [Header("Ui Settings")]
     [SerializeField]
     private TMP_Text money_text;
 
