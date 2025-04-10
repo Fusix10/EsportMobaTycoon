@@ -44,29 +44,23 @@ public class PlayerFactory : MonoBehaviour
     public void CreatePlayer()
     {
         string name = nameInput.text;
-        Lvl teamSpirit = new(0,0);
+        Lvl teamSpirit = new((int)teamSpiritLvlSlider.value,teamSpiritXpSlider.value);
         int xp = (int)xpSlider.value;
         int roleId = (int)roleSlider.value;
         int rolePlayedId = (int)rolePlayedSlider.value;
         int potential = (int)potentialSlider.value;
         int reputation = (int)reputationSlider.value;
         Sprite image = characterImage.sprite;
-        Mood mood = (Mood)moodDropdown.value;
+        Mood mood = GameManager.Instance.i_allMood[(int)moodDropdown.value];
         int favoriteCharacterId = (int)favoriteCharacterSlider.value;
         Mechanic mechanic = new();
-        mechanic.s_reflexe.s_lvl = (int)reflexelvlSlider.value;
-        mechanic.s_reflexe.s_Xp = (float)reflexexpSlider.value;
-        mechanic.s_stamina.s_Xp = (float)staminaxpSlider.value;
-        mechanic.s_stamina.s_lvl = (int)staminalvlSlider.value;
+        mechanic.s_reflexe = new Lvl((int)reflexelvlSlider.value, (float)reflexexpSlider.value);
+        mechanic.s_stamina = new Lvl((int)staminalvlSlider.value, (float)staminaxpSlider.value);
         mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl((int)combolvlSlider.value, (float)comboxpSlider.value));
         Knowledge knowledge = new();
-        knowledge.s_objective.s_lvl = (int)objectivelvlSlider.value;
-        knowledge.s_objective.s_Xp = (float)objectivexpSlider.value;
-        knowledge.s_placement.s_lvl = (int)placementlvlSlider.value;
-        knowledge.s_placement.s_Xp = (float)placementxpSlider.value;
-        knowledge.s_teamFight.s_lvl = (int)teamFightlvlSlider.value;
-        knowledge.s_teamFight.s_Xp = (float)teamFightxpSlider.value;
-
+        knowledge.s_objective =  new Lvl((int)objectivelvlSlider.value, (float)objectivexpSlider.value);
+        knowledge.s_placement = new Lvl((int)placementlvlSlider.value, (float)placementxpSlider.value);
+        knowledge.s_teamFight = new Lvl((int)teamFightlvlSlider.value, (float)teamFightxpSlider.value);
         int characterPlayedId = (int)characterPlayedSlider.value;
 
         GameObject playerObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -94,5 +88,6 @@ public class PlayerFactory : MonoBehaviour
                             rolePlayedId,
                             image
                             );
+        GameManager.Instance.i_allPlayers.Add(playerComponent);
     }
 }

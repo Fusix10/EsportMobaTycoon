@@ -6,8 +6,6 @@ using UnityEngine.SocialPlatforms;
 
 public class Player : MonoBehaviour
 {
-    public enum Mood { DEPRESSED, SAD, NORMAL, HAPPY, OVERHELMED }
-
     public string i_name { get; private set; }
     private int i_role;
     public int i_currentRole { get; private set; }
@@ -53,7 +51,7 @@ public class Player : MonoBehaviour
         i_characterId = characterId;
         i_currentRole = currentRole;
 
-        i_mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl(3, 15));// a retirer i guess
+        
 
         i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
@@ -95,58 +93,19 @@ public class Player : MonoBehaviour
     public void UpdateTick()
     {
         Luck();
-        MoodMoraleModify();
-        ApplyRolePenalty();
-        ApplyFavoriteCharacterBonus();
-        MoodEffectOnMorale();
     }
 
-    private float MoodMoraleModify()
+    private void MoraleEffectOnMorale(bool result,float moraleChange)
     {
-        switch (i_mood)
+        if(result)
         {
-            case Mood.DEPRESSED:
-                return -0.2f; 
-            case Mood.SAD:
-                return -0.1f;
-            case Mood.NORMAL:
-                return 0f;
-            case Mood.HAPPY:
-                return 0.1f;
-            case Mood.OVERHELMED:
-                return 0.2f;
-            default:
-                return 0f;
+            i_morale += moraleChange * i_mood.i_win;
         }
-    }
+        else
+        {
+            i_morale += moraleChange * i_mood.i_loose;
+        }
 
-    private void MoodEffectOnMorale()
-    {
-        float modify = MoodMoraleModify();
-        if (Random.Range(1,2) == 1)
-        {
-            if (modify > 0)
-            {
-                i_morale -= 5 * modify;
-            }
-            else if (modify < 0)
-            {
-                i_morale += 5 * modify;
-            }
-        }
-        else if(Random.Range(1, 2) == 2)
-        {
-            if (modify > 0)
-            {
-                i_morale += 5 * modify;
-            }
-            else if (modify < 0)
-            {
-                i_morale -= 5 * modify;
-            }
-        }
-        
-        
     }
 
     private void ApplyFavoriteCharacterBonus()

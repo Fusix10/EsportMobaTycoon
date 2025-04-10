@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     TimeSystem i_timeSystem;
     int i_testID = 0;
     List<ActionMother> i_allActions;
-    List<Player> i_allPlayers;
+    public List<Player> i_allPlayers;
+    public List<Mood> i_allMood;
 
     GameState i_GameState;
 
@@ -18,6 +19,18 @@ public class GameManager : MonoBehaviour
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
         i_allPlayers = new List<Player>();
+        i_allMood = new List<Mood>();
+        i_allMood.Add(new Mood("Competitif", 0.75f, 1.35f));
+        i_allMood.Add(new Mood("Methodique", 0.95f, 1.05f));
+        i_allMood.Add(new Mood("Instinctif", 0.8f, 1.10f));
+        i_allMood.Add(new Mood("Leader", 0.8f, 1.10f));
+        i_allMood.Add(new Mood("Introverti", 0.75f, 1.20f));
+        i_allMood.Add(new Mood("Toxique", 0.5f, 1.30f));
+        i_allMood.Add(new Mood("Stable Emotionnellement", 0.98f, 1.02f));
+        i_allMood.Add(new Mood("Tilt Facilement", 0.7f, 1.35f));
+        i_allMood.Add(new Mood("Travailleur", 0.6f, 1.4f));
+        i_allMood.Add(new Mood("Talent Brut", 0.2f, 1.8f));
+        //To Destroy
 
         Instance = this;
 
