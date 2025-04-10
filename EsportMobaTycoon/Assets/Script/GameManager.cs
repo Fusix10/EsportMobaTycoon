@@ -14,6 +14,17 @@ public class GameManager : MonoBehaviour
 
     GameState i_GameState;
 
+    public struct MatchUp
+    {
+        public enum stateMatchUp {COUNTER, ISCOUNTERED, NOTHING}
+        public Character firstCharacter;
+        public Character secondCharacter;
+        public stateMatchUp state;
+    }
+    //Tout ça que en simulation
+    //Character => Si il est meta 5% de luck avec LuckChange()
+    //Si bon Matchup +30% si mauvais -30% après Luck()
+
     void Start()
     {
         i_GameState = GameState.Hub;
@@ -44,11 +55,11 @@ public class GameManager : MonoBehaviour
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
         knowledge.s_placement = new Lvl(0, 0);
-        i_allPlayers[0].Init("Dinosaure", 2, mechanic, knowledge, 3, new Lvl(0, 0), 50,5,Player.Mood.DEPRESSED, 2);
+        i_allPlayers[0].Init("Dinosaure", 2, mechanic, knowledge, 3, new Lvl(0, 0), 50, 5, i_allMood[5], 2);
     }
     void Update()
     {
-        
+        Dictionary<int, int> t;
     }
     public void PassTimeButton()
     {
