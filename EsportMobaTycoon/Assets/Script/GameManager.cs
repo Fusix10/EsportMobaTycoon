@@ -6,7 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     TimeSystem i_timeSystem;
+
+    //µEvent MAnager
     EventManager i_eventManager;
+
+
     int i_testID = 0;
     List<ActionMother> i_ForTesting;
 
@@ -16,6 +20,8 @@ public class GameManager : MonoBehaviour
     {
         i_GameState = GameState.Hub;
         i_timeSystem = this.GetComponent<TimeSystem>();
+
+        //µEvent MAnager
         i_eventManager = this.GetComponent<EventManager>();
         i_ForTesting = new List<ActionMother>();
         Instance = this;
