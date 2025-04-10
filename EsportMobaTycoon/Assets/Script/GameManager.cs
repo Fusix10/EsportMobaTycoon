@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     TimeSystem i_timeSystem;
+
+    //�Event MAnager
+    EventManager i_eventManager;
+
+
     int i_testID = 0;
     List<ActionMother> i_allActions;
     public List<Mood> i_allMood;
@@ -33,6 +38,10 @@ public class GameManager : MonoBehaviour
         i_allMood.Add(new Mood("Talent Brut", 0.2f, 1.8f));
         //To Destroy
 
+
+        //�Event MAnager
+        i_eventManager = this.GetComponent<EventManager>();
+        i_ForTesting = new List<ActionMother>();
         Instance = this;
 
         Mechanic mechanic = new Mechanic();

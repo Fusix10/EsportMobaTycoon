@@ -6,9 +6,11 @@ using UnityEngine.UIElements;
 public class TimeSystem : MonoBehaviour
 {
     int i_actualTime;
+
     void Start()
     {
         i_actualTime = 0;
+
     }
 
     void Update()
@@ -32,6 +34,14 @@ public class TimeSystem : MonoBehaviour
     public void passingTime()
     {
         i_actualTime++;
-        this.OnTurnPass();
+
+        Debug.Log("Turn : " + i_actualTime);
+
+        //EventManager 
+        EventManager EM = this.GetComponentInParent<EventManager>();
+        EM.Churn();
+
+        //this.OnTurnPass();
     }
+
 }
