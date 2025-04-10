@@ -88,7 +88,7 @@ public class PlayerFactory : MonoBehaviour
     {
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
         int role = UnityEngine.Random.Range(0, 5); 
-        int potential = UnityEngine.Random.Range(60, 100);
+        int potential = UnityEngine.Random.Range(0, 5);
         int reputation = UnityEngine.Random.Range(0, 100);
         int characterId = UnityEngine.Random.Range(0, 5);
 
@@ -110,7 +110,7 @@ public class PlayerFactory : MonoBehaviour
             s_teamFight = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) }
         };
 
-        GameObject playerObj = new GameObject(name); // Tu peux ajouter un cube ou rien selon le besoin visuel
+        GameObject playerObj = new GameObject(name);
         Player playerComponent = playerObj.AddComponent<Player>();
         playerComponent.Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, icon);
 
