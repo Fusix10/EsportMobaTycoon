@@ -12,7 +12,6 @@ public class ActionMother
     public void Init()
     {
         GameManager.Instance.GetItimeSystem().AddAction(this);
-        i_timer = 2;
     }
     public void setTimer(int timer)
     {

@@ -4,50 +4,25 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class Lvl
-{
-    public int s_lvl;
-    public float s_Xp;
-}
-public struct Mechanic
-{
-    public Lvl s_lvlCombo;
-    public Lvl s_stamina;
-    public Lvl s_reflexe;
-}
-public struct Knowledge
-{
-    public Lvl s_placement;
-    public Lvl s_teamFight;
-    public Lvl s_objective;
-}
-
 public class Player : MonoBehaviour
 {
     public enum Mood { DEPRESSED, SAD, NORMAL, HAPPY, OVERHELMED }
 
-
-    public string i_name;
-    public int i_role;
-    public int i_currentRole;
-    public Sprite i_icon;
-    public Mechanic i_mechanic;
-    public Knowledge i_knowledge;
-    public int i_favoriteCharacterId;
-    public int i_characterId;
-    public float i_totalLuck;
-    public float i_morale;
-    public Lvl i_teamSpirit;
-    public int i_reputation;
-    public int i_lvl;
-    public int i_potentiel;
-    public Mood i_mood;
-
-    public int testlvlEndurance;
-    public float testxpEndurance;
-
-
-
+    public string i_name { get; private set; }
+    private int i_role;
+    public int i_currentRole { get; private set; }
+    private Sprite i_icon;
+    public Mechanic i_mechanic { get; private set; }
+    public Knowledge i_knowledge { get; private set; }
+    public int i_favoriteCharacterId { get; private set; }
+    public int i_characterId { get; private set; }
+    private float i_totalLuck;
+    private float i_morale;
+    private Lvl i_teamSpirit;
+    private int i_reputation;
+    private int i_lvl;
+    private int i_potentiel;
+    private Mood i_mood;
 
     public void Init
     (
@@ -61,7 +36,7 @@ public class Player : MonoBehaviour
     int potentiel,
     Mood mood,
     int currentRole,
-    int characterId,
+    int characterId = -1,
     Sprite icon = null
     )
     {
@@ -78,7 +53,9 @@ public class Player : MonoBehaviour
         i_characterId = characterId;
         i_currentRole = currentRole;
 
-        i_lvl = i_mechanic.s_lvlCombo.s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        i_mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl(3, 15));// a retirer i guess
+
+        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
 
         UpdateTick();
@@ -110,7 +87,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0;i < 7; i++)
         {
-            float sumLuck = i_mechanic.s_lvlCombo.s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+            float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
             sumLuck *= i_morale / 100;
         }
     }
@@ -186,8 +163,6 @@ public class Player : MonoBehaviour
         {
             i_totalLuck *= 0.8f;
         }
-        testlvlEndurance = this.i_mechanic.s_stamina.s_lvl;
-        testxpEndurance = this.i_mechanic.s_stamina.s_Xp;
     }
 
 }

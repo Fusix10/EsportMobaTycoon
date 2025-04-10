@@ -1109,13 +1109,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_name: 
   i_role: 0
+  i_currentRole: 0
   i_icon: {fileID: 0}
   i_favoriteCharacterId: 0
+  i_characterId: 0
   i_totalLuck: 0
   i_morale: 0
   i_reputation: 0
   i_lvl: 0
   i_potentiel: 0
+  i_mood: 0
+  testlvlEndurance: 0
+  testxpEndurance: 0
 --- !u!1 &1795325377
 GameObject:
   m_ObjectHideFlags: 0

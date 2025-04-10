@@ -44,9 +44,7 @@ public class PlayerFactory : MonoBehaviour
     public void CreatePlayer()
     {
         string name = nameInput.text;
-        Lvl teamSpirit = new();
-        teamSpirit.s_Xp = teamSpiritXpSlider.value;
-        teamSpirit.s_lvl = (int)teamSpiritLvlSlider.value;
+        Lvl teamSpirit = new(0,0);
         int xp = (int)xpSlider.value;
         int roleId = (int)roleSlider.value;
         int rolePlayedId = (int)rolePlayedSlider.value;
@@ -54,21 +52,21 @@ public class PlayerFactory : MonoBehaviour
         int reputation = (int)reputationSlider.value;
         Sprite image = characterImage.sprite;
         Mood mood = (Mood)moodDropdown.value;
+        int favoriteCharacterId = (int)favoriteCharacterSlider.value;
         Mechanic mechanic = new();
         mechanic.s_reflexe.s_lvl = (int)reflexelvlSlider.value;
-        mechanic.s_reflexe.s_Xp = (int)reflexexpSlider.value;
-        mechanic.s_stamina.s_Xp = (int)staminaxpSlider.value;
-        mechanic.s_stamina.s_lvl = (int)staminalvlSlider.value; 
-        mechanic.s_lvlCombo.s_Xp = (int)comboxpSlider.value;
-        mechanic.s_lvlCombo.s_lvl = (int)combolvlSlider.value;
+        mechanic.s_reflexe.s_Xp = (float)reflexexpSlider.value;
+        mechanic.s_stamina.s_Xp = (float)staminaxpSlider.value;
+        mechanic.s_stamina.s_lvl = (int)staminalvlSlider.value;
+        mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl((int)combolvlSlider.value, (float)comboxpSlider.value));
         Knowledge knowledge = new();
         knowledge.s_objective.s_lvl = (int)objectivelvlSlider.value;
-        knowledge.s_objective.s_Xp = (int)objectivexpSlider.value;
+        knowledge.s_objective.s_Xp = (float)objectivexpSlider.value;
         knowledge.s_placement.s_lvl = (int)placementlvlSlider.value;
-        knowledge.s_placement.s_Xp = (int)placementxpSlider.value;
+        knowledge.s_placement.s_Xp = (float)placementxpSlider.value;
         knowledge.s_teamFight.s_lvl = (int)teamFightlvlSlider.value;
-        knowledge.s_teamFight.s_Xp = (int)teamFightxpSlider.value;
-        int favoriteCharacterId = (int)favoriteCharacterSlider.value;
+        knowledge.s_teamFight.s_Xp = (float)teamFightxpSlider.value;
+
         int characterPlayedId = (int)characterPlayedSlider.value;
 
         GameObject playerObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -90,12 +88,11 @@ public class PlayerFactory : MonoBehaviour
                             favoriteCharacterId, 
                             teamSpirit, 
                             reputation, 
-                            potential, 
-                            image,
+                            potential,
                             mood,
+                            characterPlayedId,
                             rolePlayedId,
-                            characterPlayedId
+                            image
                             );
-
     }
 }
