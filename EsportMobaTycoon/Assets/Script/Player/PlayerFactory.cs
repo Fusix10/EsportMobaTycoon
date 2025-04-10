@@ -90,4 +90,39 @@ public class PlayerFactory : MonoBehaviour
                             );
         GameManager.Instance.i_allPlayers.Add(playerComponent);
     }
+
+
+    public Player CreateRandomPlayer()
+    {
+        string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
+        int role = UnityEngine.Random.Range(0, 5); 
+        int potential = UnityEngine.Random.Range(0, 5);
+        int reputation = UnityEngine.Random.Range(0, 100);
+        int characterId = UnityEngine.Random.Range(0, 5);
+
+        Sprite icon = characterImage.sprite;
+
+        Player.Lvl teamSpirit = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 5), s_Xp = UnityEngine.Random.Range(0f, 100f) };
+
+        Player.Mechanic mechanic = new Player.Mechanic
+        {
+            s_lvlCombo = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
+            s_stamina = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
+            s_reflexe = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) }
+        };
+
+        Player.Knowledge knowledge = new Player.Knowledge
+        {
+            s_objective = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
+            s_placement = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
+            s_teamFight = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) }
+        };
+
+        GameObject playerObj = new GameObject(name);
+        Player playerComponent = playerObj.AddComponent<Player>();
+        playerComponent.Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, icon);
+
+        return playerComponent;
+
+    }
 }
