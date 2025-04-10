@@ -8,7 +8,7 @@ public class TimeSystem : MonoBehaviour
     int i_actualTime;
 
     //RandomEvent
-    public List<RandomEventTest> randomEvents;
+    public List<IPopUp> randomEvents;
     public float eventProbability = 0.1f;
 
     void Start()
@@ -16,7 +16,7 @@ public class TimeSystem : MonoBehaviour
         i_actualTime = 0;
 
         //RandomEvent
-        randomEvents = new List<RandomEventTest>();
+        randomEvents = new List<IPopUp>();
         if (randomEvents.Count == 0)
         {
             Debug.LogError("No RandomEvents in list");
@@ -58,7 +58,7 @@ public class TimeSystem : MonoBehaviour
     private void TriggerRandomEvent()
     {
         int randomIndex = Random.Range(0, randomEvents.Count);
-        RandomEventTest selectedEvent = randomEvents[randomIndex];
+        IPopUp selectedEvent = randomEvents[randomIndex];
         selectedEvent.Display();
     }
 
