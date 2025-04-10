@@ -13,6 +13,15 @@ public class RecrutementPlayer : MonoBehaviour
     //public Image levelText;
     //public Image potentielText;
 
+    [Header("Role Panels")]
+    public Transform topPanel;
+    public Transform junglePanel;
+    public Transform midPanel;
+    public Transform adcPanel;
+    public Transform supportPanel;
+
+    public GameObject playerSlotPrefab;
+
     [Header("Player List")]
     public PlayerFactory playerFactory;
     public List<Player> allPlayers;
@@ -45,12 +54,33 @@ public class RecrutementPlayer : MonoBehaviour
     public void AddToTeam()
     {
         Player selected = allPlayers[currentIndex];
-        if (!selectedTeam.Contains(selected))
+
+        if (selectedTeam.Contains(selected))
         {
-            selectedTeam.Add(selected);
-            Debug.Log($"{selected.i_name} ajouté à l'équipe !");
+            Debug.Log("Ce joueur est déjà dans l'équipe.");
+            return;
         }
+
+        if (selectedTeam.Count >= 4)
+        {
+            Debug.Log("L'équipe est complète.");
+            return;
+        }
+
+        selectedTeam.Add(selected);
+        Debug.Log($"{selected.i_name} ajouté à l'équipe en tant que {GetRoleName(selected.i_role)}.");
+
+        // Crée une UI dans le bon panel
+        Transform rolePanel = GetPanelForRole(selected.i_role);
+        if (rolePanel != null)
+        {
+            GameObject slot = Instantiate(playerSlotPrefab, rolePanel);
+            slot.GetComponentInChildren<TMP_Text>().text = selected.i_name;
+        }
+
+        UpdateUI();
     }
+
 
     private void UpdateUI()
     {
@@ -74,4 +104,18 @@ public class RecrutementPlayer : MonoBehaviour
             default: return "Inconnu";
         }
     }
+
+    private Transform GetPanelForRole(int roleId)
+    {
+        switch (roleId)
+        {
+            case 0: return topPanel;
+            case 1: return supportPanel;
+            case 2: return adcPanel;
+            case 3: return midPanel;
+            case 4: return junglePanel;
+            default: return null;
+        }
+    }
+
 }
