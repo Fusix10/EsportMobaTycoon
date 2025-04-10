@@ -7,20 +7,10 @@ public class TimeSystem : MonoBehaviour
 {
     int i_actualTime;
 
-    //RandomEvent
-    public List<IPopUp> randomEvents;
-    public float eventProbability = 0.1f;
-
     void Start()
     {
         i_actualTime = 0;
 
-        //RandomEvent
-        randomEvents = new List<IPopUp>();
-        if (randomEvents.Count == 0)
-        {
-            Debug.LogError("No RandomEvents in list");
-        }
     }
 
     void Update()
@@ -45,21 +35,13 @@ public class TimeSystem : MonoBehaviour
     {
         i_actualTime++;
 
-        //RandomEvent
-        if (Random.value < eventProbability)
-        {
-            TriggerRandomEvent();
-        }
+        Debug.Log("Turn : " + i_actualTime);
 
-        this.OnTurnPass();
-    }
+        //EventManager 
+        EventManager EM = this.GetComponentInParent<EventManager>();
+        EM.Churn();
 
-    //RandomEvent
-    private void TriggerRandomEvent()
-    {
-        int randomIndex = Random.Range(0, randomEvents.Count);
-        IPopUp selectedEvent = randomEvents[randomIndex];
-        selectedEvent.Display();
+        //this.OnTurnPass();
     }
 
 }
