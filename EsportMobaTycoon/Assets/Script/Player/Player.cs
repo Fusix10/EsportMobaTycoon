@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         i_characterId = characterId;
         i_currentRole = currentRole;
 
-        i_mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl(3, 15));// a retirer i guess
+        //i_mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl(3, 15));// a retirer i guess
 
         i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
@@ -63,12 +63,10 @@ public class Player : MonoBehaviour
     
     public void gainXP(Lvl obj, float Gain)
     {
-        Debug.Log("here is GainXP1 " + obj.s_lvl + " hooo " + obj.s_Xp + "gain " + Gain);
         if (obj.s_lvl < i_potentiel)
         {
             obj.s_Xp += ((100 - (obj.s_lvl * 5))* Gain)/100;
         }
-        Debug.Log("here is GainXP2 " + obj.s_lvl + " hooo " + obj.s_Xp);
 
         if (obj.s_Xp >= 100)
         {
@@ -76,7 +74,6 @@ public class Player : MonoBehaviour
             while(obj.s_Xp > 100)
             {
                 obj.s_Xp -= 100;
-                Debug.Log("here is GainXP3 " + obj.s_lvl + " hooo " + obj.s_Xp);
             }
             
         }

@@ -12,7 +12,7 @@ public class TestTimeDuration : ActionOnDurationTime
     }
     protected override void action()
     {
-        i_player.gainXP(i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId], 83);
+        i_player.gainXP(i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId], 5);
         Debug.Log("Lvl = " + i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId].s_lvl + "Xp = " + i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId].s_Xp);
         i_player.UpdateTick();
     }

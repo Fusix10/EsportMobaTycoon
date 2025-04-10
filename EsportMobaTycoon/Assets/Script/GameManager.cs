@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     TimeSystem i_timeSystem;
     int i_testID = 0;
     List<ActionMother> i_allActions;
+
+    [SerializeField]
     List<Player> i_allPlayers;
 
     GameState i_GameState;
@@ -17,10 +19,19 @@ public class GameManager : MonoBehaviour
         i_GameState = GameState.Hub;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
-        i_allPlayers = new List<Player>();
 
         Instance = this;
 
+        Mechanic mechanic = new Mechanic();
+        mechanic.s_stamina = new Lvl(0,0);
+        mechanic.s_reflexe = new Lvl(0,0);
+        mechanic.s_lvlCombo.Add(3, new Lvl(0, 0));
+
+        Knowledge knowledge = new Knowledge();
+        knowledge.s_teamFight = new Lvl(0, 0);
+        knowledge.s_objective = new Lvl(0, 0);
+        knowledge.s_placement = new Lvl(0, 0);
+        i_allPlayers[0].Init("Dinosaure", 2, mechanic, knowledge, 3, new Lvl(0, 0), 50,5,Player.Mood.DEPRESSED, 2);
     }
     void Update()
     {
