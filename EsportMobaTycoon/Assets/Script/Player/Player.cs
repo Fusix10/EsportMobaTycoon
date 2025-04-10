@@ -61,12 +61,10 @@ public class Player : MonoBehaviour
     
     public void gainXP(Lvl obj, float Gain)
     {
-        Debug.Log("here is GainXP1 " + obj.s_lvl + " hooo " + obj.s_Xp + "gain " + Gain);
         if (obj.s_lvl < i_potentiel)
         {
             obj.s_Xp += ((100 - (obj.s_lvl * 5))* Gain)/100;
         }
-        Debug.Log("here is GainXP2 " + obj.s_lvl + " hooo " + obj.s_Xp);
 
         if (obj.s_Xp >= 100)
         {
@@ -74,7 +72,6 @@ public class Player : MonoBehaviour
             while(obj.s_Xp > 100)
             {
                 obj.s_Xp -= 100;
-                Debug.Log("here is GainXP3 " + obj.s_lvl + " hooo " + obj.s_Xp);
             }
             
         }
@@ -128,11 +125,11 @@ public class Player : MonoBehaviour
 
 //TO DO
 /*
-*Morale affecté par s'il joue son perso favori, par son mood(mood va donner bonus ou malus voir les deux au gain de moral 
-*ou à la perte), si le player joueur joue sur un autre role que son role de 
-*base il n'a que 80% de sa totalLuck après l'opération de Luck(). S'il joue son perso préféré il va gagner 5% de morale après 
-*Luck(). On laisse réputation de côté. Faire plusieurs petites fonctions 
-*qui seront appelées dans UpdateTick().
+*Morale affectï¿½ par s'il joue son perso favori, par son mood(mood va donner bonus ou malus voir les deux au gain de moral 
+*ou ï¿½ la perte), si le player joueur joue sur un autre role que son role de 
+*base il n'a que 80% de sa totalLuck aprï¿½s l'opï¿½ration de Luck(). S'il joue son perso prï¿½fï¿½rï¿½ il va gagner 5% de morale aprï¿½s 
+*Luck(). On laisse rï¿½putation de cï¿½tï¿½. Faire plusieurs petites fonctions 
+*qui seront appelï¿½es dans UpdateTick().
 *
 *
 */

@@ -16,13 +16,19 @@ public class ButtonTestAction : MonoBehaviour
         
     }
 
-    public static void OnTimeDurationButton()
+    public static void OnTimeDurationButton(Player player)
     {
-
+        TestTimeDuration testTimeDuration = new TestTimeDuration();
+        testTimeDuration.InitPlayer(player);
+        testTimeDuration.setTimer(5);
+        GameManager.Instance.AddAction(testTimeDuration);
     }
 
-    public static void OnEndTimeButton()
+    public static void OnEndTimeButton(Player player)
     {
-
+        TestTimeEnd testTimeEnd = new TestTimeEnd();
+        testTimeEnd.InitPlayer(player);
+        testTimeEnd.setTimer(5);
+        GameManager.Instance.AddAction(testTimeEnd);
     }
 }
