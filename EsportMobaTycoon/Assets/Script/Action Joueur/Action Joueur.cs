@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ActionJoueur : MonoBehaviour
 {
-    public GameObject PanelStat;
-    public GameObject PanelAction;
+    public GameObject i_panelStat;
+    public GameObject i_panelAction;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +18,9 @@ public class ActionJoueur : MonoBehaviour
         
     }
 
-    public void OpenPanelStat(bool Toogle)
+    public void OpenPanelStat(bool toogle)
     {
-        PanelStat.SetActive(Toogle);
-        PanelAction.SetActive(false);
+        i_panelStat.SetActive(toogle);
+        i_panelAction.SetActive(false);
     }
 }
