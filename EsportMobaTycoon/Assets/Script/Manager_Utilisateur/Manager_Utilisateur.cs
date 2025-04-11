@@ -5,8 +5,8 @@ using TMPro;
 public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
-    public float currentMoney = 1000;//
-    public int popularity = 0;//
+    public float i_currentMoney = 1000;//
+    public int i_reputation = 0;//
     private List<Player> teamPlayers = new ();//
 
     public TextMeshProUGUI infoText;

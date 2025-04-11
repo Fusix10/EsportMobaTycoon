@@ -15,12 +15,8 @@ public class GameManager : MonoBehaviour
 
     int i_testID = 0;
     List<ActionMother> i_allActions;
-<<<<<<< Updated upstream
-    public List<Mood> i_allMood;//
-=======
     public List<Mood> i_allMood;
     public Manager_Utilisateur i_manager;
->>>>>>> Stashed changes
     [SerializeField]
     public List<Player> i_allPlayers;
    
@@ -82,16 +78,12 @@ public class GameManager : MonoBehaviour
         i_allActions.Add(NewAction);
     }
 
-<<<<<<< Updated upstream
-    public TimeSystem GetItimeSystem()//
-=======
     public void setGameState(GameState newState)
     {
         i_GameState = newState;
     }
 
     public TimeSystem GetItimeSystem()
->>>>>>> Stashed changes
     {
         return i_timeSystem;
     }

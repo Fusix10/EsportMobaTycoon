@@ -43,7 +43,7 @@ public class PlayerFactory : MonoBehaviour
        
     }
 
-    public void CreatePlayer()
+    public void CreatePlayer()//
     {
         string name = nameInput.text;
         Lvl teamSpirit = new((int)teamSpiritLvlSlider.value,teamSpiritXpSlider.value);
@@ -94,7 +94,7 @@ public class PlayerFactory : MonoBehaviour
     }
 
 
-    public Player CreateRandomPlayer()
+    public Player CreateRandomPlayer()//
     {
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
         int role = UnityEngine.Random.Range(0, 5); 

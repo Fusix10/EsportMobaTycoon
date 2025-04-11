@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestTimeEnd : ActionOnTimeEnd
 {
-    public Player i_player;
+    private Player i_player;
 
     public void InitPlayer(Player player)
     {
