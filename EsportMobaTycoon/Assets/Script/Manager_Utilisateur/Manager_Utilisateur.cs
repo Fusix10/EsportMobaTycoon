@@ -21,12 +21,12 @@ public class Manager_Utilisateur : MonoBehaviour
         if (infoText != null)
         {
             infoText.text = "Argent Actuel : " + argentActuel + "$\n" +
-                            "Popularité : " + popularite + "\n" +
+                            "PopularitE: " + popularite + "\n" +
                             "Joueurs (" + teamPlayers.Count + ") :\n" + string.Join("\n", teamPlayers);
         }
         else
         {
-            Debug.LogWarning("infoText n'est pas assigné !");
+            Debug.LogWarning("infoText n'est pas assignE!");
         }
     }
 
@@ -51,14 +51,14 @@ public class Manager_Utilisateur : MonoBehaviour
             MettreAJourUI();
         }
 
-        //augmenter la popularité avec E
+        //augmenter la popularitEavec E
         if (Input.GetKeyDown(KeyCode.E))
         {
             popularite += 50;
             MettreAJourUI();
         }
 
-        //diminuer la popularité avec R
+        //diminuer la popularitEavec R
         if (Input.GetKeyDown(KeyCode.R))
         {
             popularite -= 50;
@@ -92,7 +92,7 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             popularite -= seuilPourNiveauSuivant;
             niveauPopularite++;
-            seuilPourNiveauSuivant *= 2; //le seuil double à chaque niveau ? ou on change
+            seuilPourNiveauSuivant *= 2; //le seuil double Echaque niveau ? ou on change
         }
     }*/
 
@@ -125,7 +125,7 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         if (budget.AcheterObjet(cout))
         {
-            //l'achat a été réalisé, ajouter alors l'item à l'inventaire
+            //l'achat a étEréalisE ajouter alors l'item El'inventaire
         }
         else
         {

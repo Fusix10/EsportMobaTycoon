@@ -41,7 +41,7 @@ public class TimeSystem : MonoBehaviour
         EventManager EM = this.GetComponentInParent<EventManager>();
         EM.Churn();
 
-        //this.OnTurnPass();
+        this.OnTurnPass();
     }
 
 }

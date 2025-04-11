@@ -67,14 +67,14 @@ public class EventManager : MonoBehaviour
             }
         }
 
-        // Ajustement des éléments à activer
+        // Ajustement des éléments Eactiver
         foreach (var eventToActivate in toActivate)
         {
             ActiveEvents.Add(eventToActivate);
             InactiveEvents.Remove(eventToActivate);
         }
 
-        // Ajustement des éléments à désactiver
+        // Ajustement des éléments Edésactiver
         foreach (var eventToDeactivate in toDeactivate)
         {
             InactiveEvents.Add(eventToDeactivate);

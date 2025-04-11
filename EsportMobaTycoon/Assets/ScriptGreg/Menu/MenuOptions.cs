@@ -56,7 +56,7 @@ public class MenuOptions : MonoBehaviour
         if (index < fpsValues.Length)
         {
             Application.targetFrameRate = fpsValues[index];
-            Debug.Log("FPS changé à : " + Application.targetFrameRate);
+            Debug.Log("FPS changEE: " + Application.targetFrameRate);
         }
     }
 }

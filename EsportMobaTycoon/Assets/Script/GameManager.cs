@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     GameState i_GameState;
 
-    void Start()
+    void Awake()
     {
         i_GameState = GameState.Hub;
         i_timeSystem = this.GetComponent<TimeSystem>();
@@ -38,22 +38,15 @@ public class GameManager : MonoBehaviour
         i_allMood.Add(new Mood("Talent Brut", 0.2f, 1.8f));
         //To Destroy
 
-
         //�Event MAnager
         i_eventManager = this.GetComponent<EventManager>();
-        i_ForTesting = new List<ActionMother>();
         Instance = this;
 
-        Mechanic mechanic = new Mechanic();
-        mechanic.s_stamina = new Lvl(0,0);
-        mechanic.s_reflexe = new Lvl(0,0);
-        mechanic.s_lvlCombo.Add(3, new Lvl(0, 0));
-
-        Knowledge knowledge = new Knowledge();
-        knowledge.s_teamFight = new Lvl(0, 0);
-        knowledge.s_objective = new Lvl(0, 0);
-        knowledge.s_placement = new Lvl(0, 0);
-        i_allPlayers[0].Init("Dinosaure", 2, mechanic, knowledge, 3, new Lvl(0, 0), 50,5,Player.Mood.DEPRESSED, 2);
+        for (int i = 0; i < 5; i++)
+        {
+            i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
+            i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
+        }
     }
     void Update()
     {

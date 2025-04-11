@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestTimeDuration : ActionOnDurationTime
 {
-    public Player i_player;
+    private Player i_player;
 
     public void InitPlayer(Player player)
     {

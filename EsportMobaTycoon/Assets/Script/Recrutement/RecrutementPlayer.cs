@@ -57,7 +57,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         if (selectedTeam.Contains(selected))
         {
-            Debug.Log("Ce joueur est dÈj‡ dans l'Èquipe.");
+            Debug.Log("Ce joueur est dÈjÅEdans l'Èquipe.");
             return;
         }
 
@@ -68,7 +68,7 @@ public class RecrutementPlayer : MonoBehaviour
         }
 
         selectedTeam.Add(selected);
-        Debug.Log($"{selected.i_name} ajoutÈ ‡ l'Èquipe en tant que {GetRoleName(selected.i_role)}.");
+        Debug.Log($"{selected.i_name} ajoutÅEÅEl'Èquipe en tant que {GetRoleName(selected.i_role)}.");
 
         // CrÈe une UI dans le bon panel
         Transform rolePanel = GetPanelForRole(selected.i_role);

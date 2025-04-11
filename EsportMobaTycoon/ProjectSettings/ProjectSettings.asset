@@ -163,6 +163,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.DefaultCompany.EsportMobaTycoon
+    Standalone: com.DefaultCompany.EsportMobaTycoon
   buildNumber:
     Bratwurst: 0
     Standalone: 0

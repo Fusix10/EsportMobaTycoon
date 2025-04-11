@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms;
 public class Player : MonoBehaviour
 {
     public string i_name { get; private set; }
-    private int i_role;
+    public int i_role { get; private set; }
     public int i_currentRole { get; private set; }
     private Sprite i_icon;
     public Mechanic i_mechanic { get; private set; }
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     int reputation,
     int potentiel,
     Mood mood,
-    int currentRole,
+    int currentRole = -1,
     int characterId = -1,
     Sprite icon = null
     )
@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
         i_characterId = characterId;
         i_currentRole = currentRole;
 
-        
 
         i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
@@ -80,11 +79,9 @@ public class Player : MonoBehaviour
 
     public void Luck()
     {
-        for (int i = 0;i < 7; i++)
-        {
-            float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
-            sumLuck *= i_morale / 100;
-        }
+        float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        sumLuck *= i_morale / 100;
+        i_totalLuck = sumLuck;
     }
 
     public void UpdateTick()

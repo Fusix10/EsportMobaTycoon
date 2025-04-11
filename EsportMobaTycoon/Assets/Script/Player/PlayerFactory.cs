@@ -35,6 +35,7 @@ public class PlayerFactory : MonoBehaviour
     public GameObject playerPrefab;
     public Material baseMaterial;
 
+    public GameObject PlayerPrefabs;
 
     void Start()
     {
@@ -100,29 +101,23 @@ public class PlayerFactory : MonoBehaviour
         int reputation = UnityEngine.Random.Range(0, 100);
         int characterId = UnityEngine.Random.Range(0, 5);
 
-        Sprite icon = characterImage.sprite;
+        //Sprite icon = characterImage.sprite;
 
-        Player.Lvl teamSpirit = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 5), s_Xp = UnityEngine.Random.Range(0f, 100f) };
+        Lvl teamSpirit = new Lvl(UnityEngine.Random.Range(1, 5), UnityEngine.Random.Range(0f, 100f));
 
-        Player.Mechanic mechanic = new Player.Mechanic
-        {
-            s_lvlCombo = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
-            s_stamina = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
-            s_reflexe = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) }
-        };
+        Mechanic mechanic = new Mechanic();
+        mechanic.s_lvlCombo.Add(characterId, new Lvl(UnityEngine.Random.Range(0, potential),UnityEngine.Random.Range(0f, 100f)));
+        mechanic.s_stamina = new Lvl(UnityEngine.Random.Range(0, potential), UnityEngine.Random.Range(0f, 100f));
+        mechanic.s_reflexe = new Lvl(UnityEngine.Random.Range(0, potential),UnityEngine.Random.Range(0f, 100f));
 
-        Player.Knowledge knowledge = new Player.Knowledge
-        {
-            s_objective = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
-            s_placement = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) },
-            s_teamFight = new Player.Lvl { s_lvl = UnityEngine.Random.Range(1, 10), s_Xp = UnityEngine.Random.Range(0f, 100f) }
-        };
+        Knowledge knowledge = new Knowledge();
+        knowledge.s_objective = new Lvl(UnityEngine.Random.Range(0, potential), UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_placement = new Lvl(UnityEngine.Random.Range(0, potential),UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_teamFight = new Lvl(UnityEngine.Random.Range(0, potential), UnityEngine.Random.Range(0f, 100f));
 
-        GameObject playerObj = new GameObject(name);
-        Player playerComponent = playerObj.AddComponent<Player>();
-        playerComponent.Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, icon);
 
-        return playerComponent;
-
+        GameObject playerObj = Instantiate(PlayerPrefabs);
+        playerObj.GetComponent<Player>().Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)],-1,-1);
+        return playerObj.GetComponent<Player>();
     }
 }

@@ -21,11 +21,15 @@ public class InteractObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Update Touch = " + Input.touchSupported, gameObject);
         if (Input.touchCount > 0)
         {
+            
             Touch touch = Input.GetTouch(0);
+            Debug.Log("Update Touch = " + touch.phase, gameObject);
             if (touch.phase == TouchPhase.Stationary)
             {
+                Debug.Log("Update Touchphase = " + touch.phase, gameObject);
                 pointerDownTimer += Time.deltaTime;
                 if (pointerDownTimer >= requiredHoldTime)
                 {
