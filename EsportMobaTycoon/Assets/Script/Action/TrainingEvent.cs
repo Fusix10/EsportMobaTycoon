@@ -9,7 +9,7 @@ public class TrainingEvent : ActionOnTimeEnd
     Lvl i_lvl = new(0,0);
     int i_gain = new();
 
-    public void init(List<Player> players, Lvl lvl, int gain)
+    public void init(List<Player> players, int gain, Lvl lvl = null)
     {
         i_players = players;
         i_gain = gain;
@@ -20,7 +20,15 @@ public class TrainingEvent : ActionOnTimeEnd
     {
         for(int i = 0; i< i_players.Count; i++)
         {
-            i_players[i].gainXP(i_lvl, i_gain);
+            if(i_lvl == null)
+            {
+                //i_players[i].i_morale
+            }
+            else
+            {
+                i_players[i].gainXP(i_lvl, i_gain);
+            }
+                
         }
         
     }
