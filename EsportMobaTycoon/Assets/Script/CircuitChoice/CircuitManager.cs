@@ -17,7 +17,7 @@ public class CircuitManager : MonoBehaviour
         Ended
     }
 
-    public enum CircuitDifficulty
+    public enum CircuitTracks
     {
         Casual,
         Ranked,
@@ -30,24 +30,24 @@ public class CircuitManager : MonoBehaviour
 
     [Header("Circuit Settings")]
     [SerializeField, Range(1, 3)]
-    private int circuit_min_tournament;
+    private int i_circuitMinTournament;
 
     [Header("Tournament Settings")]
     [SerializeField, Range(1, 3)]
-    private int tournament_min_matches;
+    private int i_tournamentMinMatches;
 
     [SerializeField, Range(3, 10)]
-    private int tournament_max_matches;
+    private int i_tournamentMaxMatches;
 
     [Header("Major Settings")]
     [SerializeField]
-    private CircuitDifficulty major_threshold_difficulty;
+    private CircuitTracks i_circuitDifficulty;
 
     [SerializeField, Range(3, 5)]
-    private int major_min_matches;
+    private int i_majorMinMatches;
 
     [SerializeField, Range(5, 10)]
-    private int major_max_matches;
+    private int i_majorMaxMatches;
 
     [Header("Ui Settings")]
     [Header("Ui - Circuits")]
@@ -59,162 +59,129 @@ public class CircuitManager : MonoBehaviour
 
     [Header("Ui - Buttons")]
     [SerializeField]
-    private GameObject generate_circuits_button;
+    private GameObject i_generateCircuitsButton;
 
     [SerializeField]
-    private GameObject end_circuit_button;
+    private GameObject i_endCircuitButton;
 
     [Header("Ui - Text")]
     [SerializeField]
-    private TMP_Text difficulties_list_text;
+    private TMP_Text i_TracksListText;
 
     [SerializeField]
-    private TMP_Text reputation_amount_text;
+    private TMP_Text i_reputationAmountText;
 
     [Header("Reputation")]
     [Header("Reputation - threshold Amount")]
 
     [SerializeField, Range(0, 10000)]
-    private int ranked_threshold;
+    private int i_rankedThreshold;
 
     [SerializeField, Range(0, 10000)]
-    private int amateur_threshold;
+    private int i_amateurThreshold;
 
     [SerializeField, Range(0, 10000)]
-    private int semiprofessional_threshold;
+    private int i_semiprofessionalThreshold;
 
     [SerializeField, Range(0, 10000)]
-    private int professional_threshold;
-
-    [Header("Reputation - Max Amount")]
-
-    [SerializeField]
-    private int max_reputation;
+    private int i_professionalThreshold;
 
     void OnValidate()
     {
-        ranked_threshold = Mathf.Max(ranked_threshold, 0);
-        amateur_threshold = Mathf.Max(amateur_threshold, ranked_threshold);
-        semiprofessional_threshold = Mathf.Max(semiprofessional_threshold, amateur_threshold);
-        professional_threshold = Mathf.Max(professional_threshold, semiprofessional_threshold);
-
-        max_reputation = Mathf.Max(max_reputation, professional_threshold);
+        i_rankedThreshold = Mathf.Max(i_rankedThreshold, 0);
+        i_amateurThreshold = Mathf.Max(i_amateurThreshold, i_rankedThreshold);
+        i_semiprofessionalThreshold = Mathf.Max(i_semiprofessionalThreshold, i_amateurThreshold);
+        i_professionalThreshold = Mathf.Max(i_professionalThreshold, i_semiprofessionalThreshold);
     }
 
 
-    //
-
-    private int m_reputation;
-    public int Reputation
-    {
-        get { return m_reputation; }
-        private set { m_reputation = value; }
-    }
-
-    private Dictionary<int, (Circuit, CircuitDifficulty)> m_circuits_choices;
-    private Circuit m_selected_circuit;
-    private CircuitState m_selected_circuit_state;
+    private Dictionary<int, (Circuit, CircuitTracks)> i_circuitsChoices;
+    private Circuit i_selectedCircuit;
+    private CircuitState i_selectedCircuitState;
 
     void Start()
     {
-        m_circuits_choices = new Dictionary<int, (Circuit, CircuitDifficulty)>();
-        m_selected_circuit_state = CircuitState.Ended;
+        i_circuitsChoices = new Dictionary<int, (Circuit, CircuitTracks)>();
+        i_selectedCircuitState = CircuitState.Ended;
 
-        Reputation = 0;
+        List<int> difficultiesThreshold = new List<int> { 0, i_rankedThreshold, i_amateurThreshold, i_semiprofessionalThreshold, i_professionalThreshold };
+        string tracksList = new string("");
 
-        List<int> difficultiesThreshold = new List<int> { 0, ranked_threshold, amateur_threshold, semiprofessional_threshold, professional_threshold };
-        StringBuilder difficultiesList = new StringBuilder();
-
-        CircuitDifficulty[] difficulties = (CircuitDifficulty[])Enum.GetValues(typeof(CircuitDifficulty));
+        CircuitTracks[] difficulties = (CircuitTracks[])Enum.GetValues(typeof(CircuitTracks));
 
         for (int i = 0; i < difficulties.Length; i++)
         {
-            difficultiesList.AppendLine($"- {difficulties[i]} : {difficultiesThreshold[i]} Rp");
+            tracksList += difficulties[i] + " : " + difficultiesThreshold[i] + " Rp";
         }
 
-        difficulties_list_text.text = difficultiesList.ToString();
+        i_TracksListText.text = tracksList.ToString();
 
     }
 
     void Update()
     {
-        generate_circuits_button.SetActive(m_selected_circuit_state == CircuitState.Ended);
-        end_circuit_button.SetActive(m_selected_circuit_state == CircuitState.InProgress);
-
-        reputation_amount_text.text = Reputation.ToString();
-
+        i_generateCircuitsButton.SetActive(i_selectedCircuitState == CircuitState.Ended);
+        i_endCircuitButton.SetActive(i_selectedCircuitState == CircuitState.InProgress);
+        i_reputationAmountText.text = GameManager.Instance.i_manager.i_reputation.ToString();
     }
 
     public void GenerateCircuit(int amount)
     {
-        if (m_selected_circuit_state == CircuitState.InProgress)
+        if (i_selectedCircuitState == CircuitState.InProgress)
         {
             Debug.Log("Denied: Another circuit already in progress!");
             return;
         }
 
-        m_circuits_choices.Clear();
+        i_circuitsChoices.Clear();
 
-        List<CircuitDifficulty> available_difficulties = GetAvailableDifficulties();
+        List<CircuitTracks> availableDifficulties = GetAvailableDifficulties();
 
-        available_difficulties = available_difficulties.OrderByDescending(diff => (int)diff).ToList();
-
-
-        bool is_max_reputation = Reputation == max_reputation;
+        availableDifficulties = availableDifficulties.OrderByDescending(diff => (int)diff).ToList();
 
         for (int i = 0; i < amount; i++)
         {
-            Circuit new_circuit = new Circuit(i);
+            Circuit newCircuit = new Circuit(i);
 
-            DateTime tournament_date = DateTime.Today;
+            TimeSystem tournamentDate = new TimeSystem();
 
-            CircuitDifficulty new_circuit_difficulty;
+            CircuitTracks newCircuitDifficulty;
+            
+            newCircuitDifficulty = availableDifficulties[i % availableDifficulties.Count];
+           
 
-            if (is_max_reputation)
+            int tournamentCount = i_circuitMinTournament + (int)newCircuitDifficulty;
+
+            for (int j = 0; j < tournamentCount; j++)
             {
-                new_circuit_difficulty = GetHighestDifficulty();
-            }
-            else
-            {
-                new_circuit_difficulty = available_difficulties[i % available_difficulties.Count];
-            }
+                Tournament tournament = new Tournament(tournamentDate, false,"Tournament " + j);
 
-            int tournament_count = circuit_min_tournament + (int)new_circuit_difficulty;
-
-            for (int j = 0; j < tournament_count; j++)
-            {
-                tournament_date = tournament_date.AddDays(UnityRandom.Range(30, 90));
-
-                Circuit.Tournament tournament = new Circuit.Tournament(tournament_date, false);
-
-                int match_count = UnityRandom.Range(tournament_min_matches, tournament_max_matches);
-                for (int k = 0; k < match_count; k++)
+                int matchCount = UnityRandom.Range(i_tournamentMinMatches, i_tournamentMaxMatches);
+                for (int k = 0; k < matchCount; k++)
                 {
-                    Circuit.Match new_match = new Circuit.Match();
-                    tournament.AddMatch(new_match);
+                    Match newMatch = new Match();
+                    tournament.AddMatch(newMatch);
                 }
 
-                new_circuit.AddTournament(tournament);
+                newCircuit.AddTournament(tournament);
             }
 
-            if (new_circuit_difficulty >= major_threshold_difficulty)
+            if (newCircuitDifficulty >= i_circuitDifficulty)
             {
-                tournament_date = tournament_date.AddDays(UnityRandom.Range(30, 90));
+                Tournament majorTournament = new Tournament(tournamentDate, true,"Major Tournament");
+                int majorMatchCount = UnityRandom.Range(i_majorMinMatches, i_majorMaxMatches);
 
-                Circuit.Tournament major_tournament = new Circuit.Tournament(tournament_date, true);
-                int major_match_count = UnityRandom.Range(major_min_matches, major_max_matches);
-
-                for (int m = 0; m < major_match_count; m++)
+                for (int m = 0; m < majorMatchCount; m++)
                 {
-                    Circuit.Match new_match = new Circuit.Match();
-                    major_tournament.AddMatch(new_match);
+                    Match newMatch = new Match();
+                    majorTournament.AddMatch(newMatch);
                 }
 
-                new_circuit.AddTournament(major_tournament);
+                newCircuit.AddTournament(majorTournament);
             }
 
-            int new_id = m_circuits_choices.Count;
-            m_circuits_choices[new_id] = (new_circuit, new_circuit_difficulty);
+            int newId = i_circuitsChoices.Count;
+            i_circuitsChoices[newId] = (newCircuit, newCircuitDifficulty);
         }
 
         Debug.Log("Successfully generated " + amount + " circuits!");
@@ -230,99 +197,98 @@ public class CircuitManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var circuit in m_circuits_choices)
+        foreach (var circuit in i_circuitsChoices)
         {
-            int circuit_id = circuit.Key;
-            CircuitDifficulty difficulty = circuit.Value.Item2;
+            int circuitId = circuit.Key;
+            CircuitTracks difficulty = circuit.Value.Item2;
 
-            int total_match_count = 0;
+            int totalMatchCount = 0;
 
-            StringBuilder tournament_details = new StringBuilder();
+            StringBuilder tournamentDetails = new StringBuilder();
             for (int i = 0; i < circuit.Value.Item1.GetTournaments().Count; i++)
             {
-                DateTime date = circuit.Value.Item1.GetTournaments()[i].GetDate();
+                TimeSystem date = circuit.Value.Item1.GetTournaments()[i].getTime();
 
                 int match_count = circuit.Value.Item1.GetTournaments()[i].GetMatches().Count;
-                total_match_count += match_count;
+                totalMatchCount += match_count;
 
-                if (difficulty >= major_threshold_difficulty && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
+                if (difficulty >= i_circuitDifficulty && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
                 {
-                    tournament_details.AppendLine($"- Major : {date} / {match_count} matches");
-
+                    tournamentDetails.AppendLine($"- Major : {date} / {match_count} matches");
                 }
                 else
                 {
-                    tournament_details.AppendLine($"- Tournament {i + 1}: {date} / {match_count} matches");
+                    tournamentDetails.AppendLine($"- Tournament {i + 1}: {date} / {match_count} matches");
                 }
             }
 
-            GameObject circuit_ui = Instantiate(circuitUIPrefab, circuitPanel);
+            GameObject circuitUi = Instantiate(circuitUIPrefab, circuitPanel);
 
-            TMP_Text circuit_number_text = circuit_ui.transform.Find("CircuitNumberText").GetComponent<TMP_Text>();
-            TMP_Text circuit_difficulty_text = circuit_ui.transform.Find("CircuitDifficultyText").GetComponent<TMP_Text>();
-            TMP_Text tournament_details_text = circuit_ui.transform.Find("CircuitTournamentText").GetComponent<TMP_Text>();
-            TMP_Text circuit_matches_text = circuit_ui.transform.Find("CircuitMatchesText").GetComponent<TMP_Text>();
+            TMP_Text circuitNumberText = circuitUi.transform.Find("CircuitNumberText").GetComponent<TMP_Text>();
+            TMP_Text circuitDifficultyText = circuitUi.transform.Find("CircuitDifficultyText").GetComponent<TMP_Text>();
+            TMP_Text tournamentDetailsText = circuitUi.transform.Find("CircuitTournamentText").GetComponent<TMP_Text>();
+            TMP_Text circuitMatchesText = circuitUi.transform.Find("CircuitMatchesText").GetComponent<TMP_Text>();
 
-            Button select_button = circuit_ui.transform.Find("SelectButton").GetComponent<Button>();
-            TMP_Text select_text = circuit_ui.transform.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
+            Button selectButton = circuitUi.transform.Find("SelectButton").GetComponent<Button>();
+            TMP_Text selectText = circuitUi.transform.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-            circuit_number_text.text = "Circuit " + circuit_id;
-            circuit_difficulty_text.text = "Difficulty : " + difficulty.ToString();
-            tournament_details_text.text = tournament_details.ToString();
-            circuit_matches_text.text = "Total Matches : " + total_match_count;
+            circuitNumberText.text = "Circuit " + circuitId;
+            circuitDifficultyText.text = "Difficulty : " + difficulty.ToString();
+            tournamentDetailsText.text = tournamentDetails.ToString();
+            circuitMatchesText.text = "Total Matches : " + totalMatchCount;
 
-            select_button.onClick.AddListener(() => ChooseCircuit(circuit_id));
-            select_text.text = "Choose C" + circuit_id;
+            selectButton.onClick.AddListener(() => ChooseCircuit(circuitId));
+            selectText.text = "Choose C" + circuitId;
         }
     }
 
-    private int GetCircuitIdFromUI(GameObject ui_element)
+    private int GetCircuitIdFromUI(GameObject uiElement)
     {
-        string ui_circuit_name = ui_element.transform.Find("CircuitNumberText").GetComponent<TMP_Text>().text;
-        string[] name_parts = ui_circuit_name.Split(' ');
-        if (name_parts.Length > 1 && int.TryParse(name_parts[1], out int circuit_id))
+        string uiCircuitName = uiElement.transform.Find("CircuitNumberText").GetComponent<TMP_Text>().text;
+        string[] nameParts = uiCircuitName.Split(' ');
+        if (nameParts.Length > 1 && int.TryParse(nameParts[1], out int circuitId))
         {
-            return circuit_id;
+            return circuitId;
         }
         return -1;
     }
 
-    public void ChooseCircuit(int circuit_id)
+    public void ChooseCircuit(int circuitId)
     {
-        if (m_selected_circuit_state == CircuitState.InProgress)
+        if (i_selectedCircuitState == CircuitState.InProgress)
         {
             Debug.Log("Denied: Another circuit already in progress!");
             return;
         }
 
-        if (m_circuits_choices.ContainsKey(circuit_id))
+        if (i_circuitsChoices.ContainsKey(circuitId))
         {
-            m_selected_circuit = m_circuits_choices[circuit_id].Item1;
-            m_selected_circuit_state = CircuitState.InProgress;
+            i_selectedCircuit = i_circuitsChoices[circuitId].Item1;
+            i_selectedCircuitState = CircuitState.InProgress;
 
-            Debug.Log("Selected Circuit: " + circuit_id + ", State: " + m_selected_circuit_state);
+            Debug.Log("Selected Circuit: " + circuitId + ", State: " + i_selectedCircuitState);
 
             foreach (Transform child in circuitPanel)
             {
-                int child_circuitId = GetCircuitIdFromUI(child.gameObject);
+                int childCircuitId = GetCircuitIdFromUI(child.gameObject);
 
-                if (child_circuitId == circuit_id)
+                if (childCircuitId == circuitId)
                 {
-                    Button select_button = child.Find("SelectButton").GetComponent<Button>();
-                    TMP_Text select_text = child.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
+                    Button selectButton = child.Find("SelectButton").GetComponent<Button>();
+                    TMP_Text selectText = child.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-                    if (select_button != null)
+                    if (selectButton != null)
                     {
-                        select_button.interactable = false;
+                        selectButton.interactable = false;
 
-                        ColorBlock colors = select_button.colors;
+                        ColorBlock colors = selectButton.colors;
                         colors.disabledColor = Color.green;
-                        select_button.colors = colors;
+                        selectButton.colors = colors;
                     }
 
-                    if (select_text != null)
+                    if (selectText != null)
                     {
-                        select_text.text = "Active";
+                        selectText.text = "Active";
                     }
                 }
                 else
@@ -333,39 +299,39 @@ public class CircuitManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Circuit ID not found: " + circuit_id);
+            Debug.Log("Circuit ID not found: " + circuitId);
         }
     }
 
     public void EndSelectedCircuit()
     {
-        m_selected_circuit_state = CircuitState.Ended;
+        i_selectedCircuitState = CircuitState.Ended;
 
         Transform child = circuitPanel.GetChild(0);
 
-        Button select_button = child.Find("SelectButton").GetComponent<Button>();
-        TMP_Text select_text = child.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
+        Button selectButton = child.Find("SelectButton").GetComponent<Button>();
+        TMP_Text selectText = child.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-        if (select_button != null)
+        if (selectButton != null)
         {
-            ColorBlock colors = select_button.colors;
+            ColorBlock colors = selectButton.colors;
             colors.disabledColor = Color.red;
-            select_button.colors = colors;
+            selectButton.colors = colors;
         }
 
-        if (select_text != null)
+        if (selectText != null)
         {
-            select_text.text = "Ended";
+            selectText.text = "Ended";
         }
 
-        Debug.Log("Selected Circuit state updated to: " + m_selected_circuit_state);
+        Debug.Log("Selected Circuit state updated to: " + i_selectedCircuitState);
     }
 
-    public CircuitDifficulty GetCircuitDifficulty(int id)
+    public CircuitTracks GetCircuitDifficulty(int id)
     {
-        if (m_circuits_choices.ContainsKey(id))
+        if (i_circuitsChoices.ContainsKey(id))
         {
-            return m_circuits_choices[id].Item2;
+            return i_circuitsChoices[id].Item2;
         }
         else
         {
@@ -374,44 +340,22 @@ public class CircuitManager : MonoBehaviour
         }
     }
 
-    private List<CircuitDifficulty> GetAvailableDifficulties()
+    private List<CircuitTracks> GetAvailableDifficulties()
     {
-        List<CircuitDifficulty> available_difficulties = new List<CircuitDifficulty>();
+        List<CircuitTracks> available_difficulties = new List<CircuitTracks>();
 
-        available_difficulties.Add(CircuitDifficulty.Casual);
-        if (Reputation >= ranked_threshold) available_difficulties.Add(CircuitDifficulty.Ranked);
-        if (Reputation >= amateur_threshold) available_difficulties.Add(CircuitDifficulty.Amateur);
-        if (Reputation >= semiprofessional_threshold) available_difficulties.Add(CircuitDifficulty.SemiProfessional);
-        if (Reputation >= professional_threshold) available_difficulties.Add(CircuitDifficulty.Professional);
+        available_difficulties.Add(CircuitTracks.Casual);
+        if (GameManager.Instance.i_manager.i_reputation >= i_rankedThreshold) available_difficulties.Add(CircuitTracks.Ranked);
+        if (GameManager.Instance.i_manager.i_reputation >= i_amateurThreshold) available_difficulties.Add(CircuitTracks.Amateur);
+        if (GameManager.Instance.i_manager.i_reputation >= i_semiprofessionalThreshold) available_difficulties.Add(CircuitTracks.SemiProfessional);
+        if (GameManager.Instance.i_manager.i_reputation >= i_professionalThreshold) available_difficulties.Add(CircuitTracks.Professional);
 
         return available_difficulties;
     }
 
-    public void AddReputation(int amount)
+    private CircuitTracks GetHighestDifficulty()
     {
-        if ((Reputation + amount) > max_reputation)
-        {
-            Reputation = max_reputation;
-            return;
-        }
-
-        Reputation += amount;
-    }
-
-    public void SubtractReputation(int amount)
-    {
-        if((Reputation - amount) < 0)
-        {
-            Reputation = 0;
-            return;
-        }
-
-        Reputation -= amount;
-    }
-
-    private CircuitDifficulty GetHighestDifficulty()
-    {
-        CircuitDifficulty[] difficulties = (CircuitDifficulty[])Enum.GetValues(typeof(CircuitDifficulty));
+        CircuitTracks[] difficulties = (CircuitTracks[])Enum.GetValues(typeof(CircuitTracks));
         return difficulties[difficulties.Length - 1];
     }
 }

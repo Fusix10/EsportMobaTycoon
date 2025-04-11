@@ -119,6 +119,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26247476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26247478}
+  - component: {fileID: 26247477}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &26247477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26247476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5810c14ec92d084d9d9065d7e2900d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i_currentMoney: 1000
+  i_reputation: 0
+  nextLevel: 100
+  teamPlayers: []
+  infoText: {fileID: 0}
+  budget: {fileID: 0}
+--- !u!4 &26247478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26247476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &359843805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,24 +1102,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2646ff02d1277498d99b72f95bb40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circuit_min_tournament: 1
-  tournament_min_matches: 3
-  tournament_max_matches: 6
-  major_threshold_difficulty: 3
-  major_min_matches: 5
-  major_max_matches: 10
+  i_circuitMinTournament: 0
+  i_tournamentMinMatches: 0
+  i_tournamentMaxMatches: 0
+  i_circuitDifficulty: 0
+  i_majorMinMatches: 0
+  i_majorMaxMatches: 0
   circuitUIPrefab: {fileID: 7657064879085296132, guid: 28b6808857480b5478582a5a61312cb7,
     type: 3}
   circuitPanel: {fileID: 1665496663}
-  generate_circuits_button: {fileID: 813330974}
-  end_circuit_button: {fileID: 2047615739}
-  difficulties_list_text: {fileID: 1604896680}
-  reputation_amount_text: {fileID: 1060990458}
-  ranked_threshold: 2000
-  amateur_threshold: 4000
-  semiprofessional_threshold: 6000
-  professional_threshold: 8000
-  max_reputation: 10000
+  i_generateCircuitsButton: {fileID: 813330974}
+  i_endCircuitButton: {fileID: 2047615739}
+  i_difficultiesListText: {fileID: 1604896680}
+  i_reputationAmountText: {fileID: 1060990458}
+  i_rankedThreshold: 0
+  i_amateurThreshold: 0
+  i_semiprofessionalThreshold: 0
+  i_professionalThreshold: 0
 --- !u!4 &862082551
 Transform:
   m_ObjectHideFlags: 0
@@ -2359,6 +2408,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665496662}
   m_CullTransparentMesh: 1
+--- !u!1 &1696735682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696735684}
+  - component: {fileID: 1696735685}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696735684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696735682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696735685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696735682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b5ca78b4c1ce24eb05238d70963747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i_manager: {fileID: 26247477}
+  i_allPlayers: []
 --- !u!1 &2047615739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,3 +2596,5 @@ SceneRoots:
   - {fileID: 476940021}
   - {fileID: 862082551}
   - {fileID: 590896677}
+  - {fileID: 1696735684}
+  - {fileID: 26247478}

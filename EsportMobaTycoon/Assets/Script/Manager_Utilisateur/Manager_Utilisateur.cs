@@ -5,9 +5,8 @@ using TMPro;
 public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
-    public int currentMoney = 1000;
-    public int popularity = 0;
-    public int popularityLevel = 1;
+    public int i_currentMoney = 1000;
+    public int i_reputation = 0;
     public int nextLevel = 100;
     public List<Player> teamPlayers = new ();
 
@@ -20,8 +19,8 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         if (infoText != null)
         {
-            infoText.text = "Argent Actuel : " + currentMoney + "$\n" +
-                            "Popularit・: " + popularity + "\n" +
+            infoText.text = "Argent Actuel : " + i_currentMoney + "$\n" +
+                            "Popularit・: " + i_reputation + "\n" +
                             "Joueurs (" + teamPlayers.Count + ") :\n";
         }
         else
@@ -41,7 +40,7 @@ public class Manager_Utilisateur : MonoBehaviour
         //augenter l'argent avec A
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            currentMoney += 50;
+            i_currentMoney += 50;
             UpdateUi();
             Debug.Log("in A");
         }
@@ -49,7 +48,7 @@ public class Manager_Utilisateur : MonoBehaviour
         //diminuer l'argent avec Z
         if (Input.GetKeyDown(KeyCode.W))
         {
-            currentMoney -= 100;
+            i_currentMoney -= 100;
             UpdateUi();
             Debug.Log("in Z");
         }
@@ -57,7 +56,7 @@ public class Manager_Utilisateur : MonoBehaviour
         //augmenter la popularit・avec E
         if (Input.GetKeyDown(KeyCode.E))
         {
-            popularity += 50;
+            i_reputation += 50;
             UpdateUi();
             Debug.Log("in E");
         }
@@ -65,7 +64,7 @@ public class Manager_Utilisateur : MonoBehaviour
         //diminuer la popularit・avec R
         if (Input.GetKeyDown(KeyCode.R))
         {
-            popularity -= 50;
+            i_reputation -= 50;
             UpdateUi();
             Debug.Log("in R");
         }

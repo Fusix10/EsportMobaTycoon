@@ -15,12 +15,17 @@ public class GameManager : MonoBehaviour
 
     int i_testID = 0;
     List<ActionMother> i_allActions;
+<<<<<<< Updated upstream
     public List<Mood> i_allMood;//
+=======
+    public List<Mood> i_allMood;
+    public Manager_Utilisateur i_manager;
+>>>>>>> Stashed changes
     [SerializeField]
     public List<Player> i_allPlayers;
-    public Manager_Utilisateur i_manager;
+   
 
-    GameState i_GameState;
+    private GameState i_GameState;
 
     void Awake()
     {
@@ -28,7 +33,6 @@ public class GameManager : MonoBehaviour
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
         i_allPlayers = new List<Player>();
-        i_manager = new Manager_Utilisateur();
         i_allMood = new List<Mood>();
         i_allMood.Add(new Mood("Competitif", 0.75f, 1.35f));
         i_allMood.Add(new Mood("Methodique", 0.95f, 1.05f));
@@ -46,11 +50,12 @@ public class GameManager : MonoBehaviour
         i_eventManager = this.GetComponent<EventManager>();
         Instance = this;
 
-        for (int i = 0; i < 5; i++)
+
+        /*for (int i = 0; i < 5; i++)
         {
             i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
-        }
+        }*/
     }
     void Update()
     {
@@ -69,13 +74,22 @@ public class GameManager : MonoBehaviour
         i_allActions.Add(NewAction);
     }
 
+<<<<<<< Updated upstream
     public TimeSystem GetItimeSystem()//
+=======
+    public void setGameState(GameState newState)
+    {
+        i_GameState = newState;
+    }
+
+    public TimeSystem GetItimeSystem()
+>>>>>>> Stashed changes
     {
         return i_timeSystem;
     }
 }
 
-enum GameState
+public enum GameState
 {
     Hub,
     Match,
