@@ -14,7 +14,7 @@ public class Tournament
 
     private string i_name;
 
-    private TimeSystem i_timeSystem;
+    private int i_nbTurn;
 
     private bool i_is_major;
 
@@ -22,10 +22,10 @@ public class Tournament
 
     private TournamentStatus i_status;
 
-    public Tournament(TimeSystem timeSystem, bool is_major, string name)
+    public Tournament(int nbTurn, bool is_major, string name)
     {
 
-        i_timeSystem = timeSystem;
+        i_nbTurn = nbTurn;
         i_is_major = is_major;
         i_status = TournamentStatus.NotPlayed;
 
@@ -47,9 +47,9 @@ public class Tournament
         return i_matches;
     }
 
-    public TimeSystem getTime()
+    public int getNbTurn()
     {
-        return i_timeSystem; 
+        return i_nbTurn; 
     }
 
     public bool IsMajor()

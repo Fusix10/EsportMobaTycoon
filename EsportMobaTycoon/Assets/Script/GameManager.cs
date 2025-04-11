@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         NewAction.i_id = i_testID;
         i_testID++;
         NewAction.Init();
-        Debug.Log("l'Action " + NewAction.i_id + " �tait cr�er");
+        Debug.Log("l'Action " + NewAction.i_id + " est creer");
         i_allActions.Add(NewAction);
     }
 
