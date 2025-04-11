@@ -33,20 +33,26 @@ public class CircuitManager : MonoBehaviour
     private int circuit_min_tournament;
 
     [Header("Tournament Settings")]
-    [SerializeField, Range(1, 3)]
+    [SerializeField, Range(1, 12)]
+    private int min_months_delay_tournament;
+
+    [SerializeField, Range(1, 12)]
+    private int max_months_delay_tournament;
+
+    [SerializeField, Range(1, 10)]
     private int tournament_min_matches;
 
-    [SerializeField, Range(3, 10)]
+    [SerializeField, Range(1, 10)]
     private int tournament_max_matches;
 
     [Header("Major Settings")]
     [SerializeField]
     private CircuitDifficulty major_threshold_difficulty;
 
-    [SerializeField, Range(3, 5)]
+    [SerializeField, Range(3, 10)]
     private int major_min_matches;
 
-    [SerializeField, Range(5, 10)]
+    [SerializeField, Range(3, 10)]
     private int major_max_matches;
 
     [Header("Ui Settings")]
@@ -99,6 +105,11 @@ public class CircuitManager : MonoBehaviour
         professional_threshold = Mathf.Max(professional_threshold, semiprofessional_threshold);
 
         max_reputation = Mathf.Max(max_reputation, professional_threshold);
+
+        major_max_matches = Mathf.Max(major_max_matches, major_min_matches);
+        tournament_max_matches = Mathf.Max(tournament_max_matches, tournament_min_matches);
+
+        max_months_delay_tournament = Mathf.Max(max_months_delay_tournament, min_months_delay_tournament);
     }
 
 
@@ -183,7 +194,7 @@ public class CircuitManager : MonoBehaviour
 
             for (int j = 0; j < tournament_count; j++)
             {
-                tournament_date = tournament_date.AddDays(UnityRandom.Range(30, 90));
+                tournament_date = tournament_date.AddDays(UnityRandom.Range(min_months_delay_tournament * 30, max_months_delay_tournament * 30));
 
                 Circuit.Tournament tournament = new Circuit.Tournament(tournament_date, false);
 
@@ -199,7 +210,7 @@ public class CircuitManager : MonoBehaviour
 
             if (new_circuit_difficulty >= major_threshold_difficulty)
             {
-                tournament_date = tournament_date.AddDays(UnityRandom.Range(30, 90));
+                tournament_date = tournament_date.AddDays(UnityRandom.Range(min_months_delay_tournament * 30, max_months_delay_tournament * 30));
 
                 Circuit.Tournament major_tournament = new Circuit.Tournament(tournament_date, true);
                 int major_match_count = UnityRandom.Range(major_min_matches, major_max_matches);
@@ -241,18 +252,19 @@ public class CircuitManager : MonoBehaviour
             for (int i = 0; i < circuit.Value.Item1.GetTournaments().Count; i++)
             {
                 DateTime date = circuit.Value.Item1.GetTournaments()[i].GetDate();
+                string formatted_date = date.ToString("dd/MM/yyyy");
 
                 int match_count = circuit.Value.Item1.GetTournaments()[i].GetMatches().Count;
                 total_match_count += match_count;
 
                 if (difficulty >= major_threshold_difficulty && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
                 {
-                    tournament_details.AppendLine($"- Major : {date} / {match_count} matches");
+                    tournament_details.AppendLine($"- Major : {formatted_date} \n {match_count} matches");
 
                 }
                 else
                 {
-                    tournament_details.AppendLine($"- Tournament {i + 1}: {date} / {match_count} matches");
+                    tournament_details.AppendLine($"- Tournament {i + 1} : {formatted_date} \n {match_count} matches");
                 }
             }
 
