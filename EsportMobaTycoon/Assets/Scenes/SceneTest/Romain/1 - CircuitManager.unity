@@ -1113,7 +1113,7 @@ MonoBehaviour:
   circuitPanel: {fileID: 1665496663}
   i_generateCircuitsButton: {fileID: 813330974}
   i_endCircuitButton: {fileID: 2047615739}
-  i_difficultiesListText: {fileID: 1604896680}
+  i_TracksListText: {fileID: 1604896680}
   i_reputationAmountText: {fileID: 1060990458}
   i_rankedThreshold: 0
   i_amateurThreshold: 0

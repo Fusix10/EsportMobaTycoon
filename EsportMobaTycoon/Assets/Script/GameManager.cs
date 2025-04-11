@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;//
+    public static GameManager Instance;
     TimeSystem i_timeSystem;
 
     //�Event MAnager
@@ -15,12 +15,9 @@ public class GameManager : MonoBehaviour
 
     int i_testID = 0;
     List<ActionMother> i_allActions;
-<<<<<<< Updated upstream
-    public List<Mood> i_allMood;//
-=======
+
     public List<Mood> i_allMood;
     public Manager_Utilisateur i_manager;
->>>>>>> Stashed changes
     [SerializeField]
     public List<Player> i_allPlayers;
    
@@ -65,7 +62,7 @@ public class GameManager : MonoBehaviour
     {
         i_timeSystem.passingTime();
     }
-    public void AddAction(ActionMother NewAction)//
+    public void AddAction(ActionMother NewAction)
     {
         NewAction.i_id = i_testID;
         i_testID++;
@@ -74,16 +71,12 @@ public class GameManager : MonoBehaviour
         i_allActions.Add(NewAction);
     }
 
-<<<<<<< Updated upstream
-    public TimeSystem GetItimeSystem()//
-=======
     public void setGameState(GameState newState)
     {
         i_GameState = newState;
     }
 
     public TimeSystem GetItimeSystem()
->>>>>>> Stashed changes
     {
         return i_timeSystem;
     }
