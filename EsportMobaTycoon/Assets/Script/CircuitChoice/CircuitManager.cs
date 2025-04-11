@@ -165,7 +165,6 @@ public class CircuitManager : MonoBehaviour
                 AllTournament += UnityEngine.Random.Range(30, 50);
                 Tournament tournament = new Tournament(AllTournament, false, "Tournament " + j);
                 CircuitAction c = new CircuitAction();
-                Debug.LogError(AllTournament);
                 c.setTimer(AllTournament);
                 c.InitTournament(tournament);
                 GameManager.Instance.AddAction(c);
@@ -244,7 +243,7 @@ public class CircuitManager : MonoBehaviour
             Button selectButton = circuitUi.transform.Find("SelectButton").GetComponent<Button>();
             TMP_Text selectText = circuitUi.transform.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-            //circuitNumberText.text = "Circuit : " + circuitId + i_selectedCircuit.GetName();
+            circuitNumberText.text = "Circuit : " + circuitId + (circuit.Value.Item1.GetName() != null ? circuit.Value.Item1.GetName() : "No Selection"); ;
             circuitDifficultyText.text = "Difficulty : " + difficulty.ToString();
             tournamentDetailsText.text = tournamentDetails.ToString();
             circuitMatchesText.text = "Total Matches : " + totalMatchCount;
