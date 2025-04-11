@@ -4,7 +4,7 @@ public class ClickableManager : MonoBehaviour
 {
     public InfoWindowManager infoWindowManager;
 
-    //appelée quand l'objet est cliqué/touché
+    //appelée quand l'objet est cliquEtouchE
     private void OnMouseDown()
     {
         if (infoWindowManager != null)
@@ -13,7 +13,7 @@ public class ClickableManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("InfoWindowManager non assigné sur la sphère !");
+            Debug.LogWarning("InfoWindowManager non assignEsur la sphère !");
         }
     }
 }

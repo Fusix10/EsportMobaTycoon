@@ -29,6 +29,14 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if(Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         i_GameState = GameState.Hub;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
@@ -48,7 +56,7 @@ public class GameManager : MonoBehaviour
 
         //�Event MAnager
         i_eventManager = this.GetComponent<EventManager>();
-        Instance = this;
+
 
 
         /*for (int i = 0; i < 5; i++)

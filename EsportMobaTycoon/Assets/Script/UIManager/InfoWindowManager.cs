@@ -13,7 +13,7 @@ public class InfoWindowManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("infoWindow n'est pas assignÈ !");
+            Debug.LogWarning("infoWindow n'est pas assignÅE!");
         }
     }
 

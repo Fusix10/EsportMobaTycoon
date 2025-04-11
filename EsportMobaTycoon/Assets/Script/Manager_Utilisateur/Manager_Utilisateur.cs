@@ -5,27 +5,26 @@ using TMPro;
 public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
-    public int i_currentMoney = 1000;
-    public int i_reputation = 0;
-    public int nextLevel = 100;
-    public List<Player> teamPlayers = new ();
+    public float currentMoney = 1000;//
+    public int popularity = 0;//
+    private List<Player> teamPlayers = new ();//
 
     public TextMeshProUGUI infoText;
 
     public Budget budget;
 
-    //met a jour le texte de la fenêtre avec les stats actuelles
+    //met a jour le texte de la fenï¿½tre avec les stats actuelles
     public void UpdateUi()
     {
         if (infoText != null)
         {
             infoText.text = "Argent Actuel : " + i_currentMoney + "$\n" +
-                            "PopularitE: " + i_reputation + "\n" +
+                            "Popularitï¿½E: " + i_reputation + "\n" +
                             "Joueurs (" + teamPlayers.Count + ") :\n";
         }
         else
         {
-            Debug.LogWarning("infoText n'est pas assignE!");
+            Debug.LogWarning("infoText n'est pas assignï¿½E!");
         }
     }
 
@@ -53,7 +52,7 @@ public class Manager_Utilisateur : MonoBehaviour
             Debug.Log("in Z");
         }
 
-        //augmenter la popularitEavec E
+        //augmenter la popularitï¿½Eavec E
         if (Input.GetKeyDown(KeyCode.E))
         {
             i_reputation += 50;
@@ -61,7 +60,7 @@ public class Manager_Utilisateur : MonoBehaviour
             Debug.Log("in E");
         }
 
-        //diminuer la popularitEavec R
+        //diminuer la popularitï¿½Eavec R
         if (Input.GetKeyDown(KeyCode.R))
         {
             i_reputation -= 50;
@@ -97,7 +96,7 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             popularite -= seuilPourNiveauSuivant;
             niveauPopularite++;
-            seuilPourNiveauSuivant *= 2; //le seuil double Echaque niveau ? ou on change
+            seuilPourNiveauSuivant *= 2; //le seuil double ï¿½Echaque niveau ? ou on change
         }
     }*/
 
@@ -110,7 +109,7 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }*/
 
-    public void AddPlayer(Player player)
+    public void AddPlayer(Player player)//
     {
         if (teamPlayers.Count < 5)
         {
@@ -118,7 +117,7 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    public void RemovePlayer(Player player)
+    public void RemovePlayer(Player player)//
     {
         if (teamPlayers.Contains(player) && teamPlayers.Count > 0)
         {
@@ -130,11 +129,11 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         if (budget.AcheterObjet(cost))
         {
-            //l'achat a étEréalisE ajouter alors l'item El'inventaire
+            //l'achat a ï¿½tï¿½Erï¿½alisï¿½E ajouter alors l'item ï¿½El'inventaire
         }
         else
         {
-            //gérer le cas d'échec (fonds insuffisants).
+            //gï¿½rer le cas d'ï¿½chec (fonds insuffisants).
         }
     }
 }

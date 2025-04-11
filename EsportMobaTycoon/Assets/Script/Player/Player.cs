@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         Luck();
     }
 
-    private void MoraleEffectOnMorale(bool result,float moraleChange)//
+    public void MoraleEffectOnMorale(bool result,float moraleChange)//
     {
         if(result)
         {
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private void ApplyFavoriteCharacterBonus()//
+    public void ApplyFavoriteCharacterBonus()//
     {
         if (i_characterId == i_favoriteCharacterId)
         {
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ApplyRolePenalty()//
+    public void ApplyRolePenalty()//
     {
         if (i_currentRole != i_role)
         {
@@ -119,16 +119,5 @@ public class Player : MonoBehaviour
     }
 
 }
-
-//TO DO
-/*
-*Morale affect� par s'il joue son perso favori, par son mood(mood va donner bonus ou malus voir les deux au gain de moral 
-*ou � la perte), si le player joueur joue sur un autre role que son role de 
-*base il n'a que 80% de sa totalLuck apr�s l'op�ration de Luck(). S'il joue son perso pr�f�r� il va gagner 5% de morale apr�s 
-*Luck(). On laisse r�putation de c�t�. Faire plusieurs petites fonctions 
-*qui seront appel�es dans UpdateTick().
-*
-*
-*/
 
 
