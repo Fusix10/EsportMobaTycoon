@@ -9,20 +9,22 @@ public class Player : MonoBehaviour
     public string i_name { get; private set; }
     public int i_role { get; private set; }
     public int i_currentRole { get; private set; }
-    private Sprite i_icon;
-    public Mechanic i_mechanic { get; private set; }
-    public Knowledge i_knowledge { get; private set; }
+    public Sprite i_icon { get; private set; }
+    public Mechanic i_mechanic { get; private set; }//
+    public Knowledge i_knowledge { get; private set; }//
     public int i_favoriteCharacterId { get; private set; }
     public int i_characterId { get; private set; }
-    private float i_totalLuck;
-    private float i_morale;
-    private Lvl i_teamSpirit;
-    private int i_reputation;
-    private int i_lvl;
-    private int i_potentiel;
-    private Mood i_mood;
+    public float i_totalLuck { get; private set; }
 
-    public void Init
+    [SerializeField]
+    public  float i_morale { get; private set; }
+    public  Lvl i_teamSpirit { get; private set; }
+    public int i_reputation { get; private set; }
+    public int i_lvl { get; private set; }
+    public int i_potentiel { get; private set; }
+    public Mood i_mood { get; private set; }
+
+    public void Init//
     (
     string name,
     int role,
@@ -50,29 +52,25 @@ public class Player : MonoBehaviour
         i_mood = mood;
         i_characterId = characterId;
         i_currentRole = currentRole;
-
-
-        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
-        i_lvl = i_lvl / 6;
+        i_morale = 100;
 
         UpdateTick();
+
+        Debug.Log(i_name + " potentiel = " + i_potentiel); 
+        Debug.Log(i_name + " Lvl = " + i_lvl);
     }
     
-    public void gainXP(Lvl obj, float Gain)
+    public void gainXP(Lvl obj, float Gain)//
     {
         if (obj.s_lvl < i_potentiel)
         {
             obj.s_Xp += ((100 - (obj.s_lvl * 5))* Gain)/100;
         }
-
-        if (obj.s_Xp >= 100)
-        {
-            obj.s_lvl++;
-            while(obj.s_Xp > 100)
-            {
-                obj.s_Xp -= 100;
-            }
             
+        while(obj.s_Xp > 100)
+        {
+            obj.s_Xp -= 100;
+            obj.s_lvl++;
         }
     }
 
@@ -80,8 +78,10 @@ public class Player : MonoBehaviour
     public void Luck()
     {
         float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
-        sumLuck *= i_morale / 100;
+        sumLuck = sumLuck / 6;
+        sumLuck *= (i_morale / 100);
         i_totalLuck = sumLuck;
+        i_lvl = (int)Mathf.Round(sumLuck);
     }
 
     public void UpdateTick()
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         Luck();
     }
 
-    private void MoraleEffectOnMorale(bool result,float moraleChange)
+    private void MoraleEffectOnMorale(bool result,float moraleChange)//
     {
         if(result)
         {
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private void ApplyFavoriteCharacterBonus()
+    private void ApplyFavoriteCharacterBonus()//
     {
         if (i_characterId == i_favoriteCharacterId)
         {
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ApplyRolePenalty()
+    private void ApplyRolePenalty()//
     {
         if (i_currentRole != i_role)
         {

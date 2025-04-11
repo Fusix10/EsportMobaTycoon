@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using TMPro;
 using static Player;
+using System.Xml.Linq;
 
 public class PlayerFactory : MonoBehaviour
 {
@@ -97,7 +98,7 @@ public class PlayerFactory : MonoBehaviour
     {
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
         int role = UnityEngine.Random.Range(0, 5); 
-        int potential = UnityEngine.Random.Range(0, 5);
+        int potential = UnityEngine.Random.Range(5, 5);
         int reputation = UnityEngine.Random.Range(0, 100);
         int characterId = UnityEngine.Random.Range(0, 5);
 
@@ -106,18 +107,25 @@ public class PlayerFactory : MonoBehaviour
         Lvl teamSpirit = new Lvl(UnityEngine.Random.Range(1, 5), UnityEngine.Random.Range(0f, 100f));
 
         Mechanic mechanic = new Mechanic();
-        mechanic.s_lvlCombo.Add(characterId, new Lvl(UnityEngine.Random.Range(0, potential),UnityEngine.Random.Range(0f, 100f)));
-        mechanic.s_stamina = new Lvl(UnityEngine.Random.Range(0, potential), UnityEngine.Random.Range(0f, 100f));
-        mechanic.s_reflexe = new Lvl(UnityEngine.Random.Range(0, potential),UnityEngine.Random.Range(0f, 100f));
+        mechanic.s_lvlCombo.Add(characterId, new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f)));
+        mechanic.s_stamina = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+        mechanic.s_reflexe = new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f));
 
         Knowledge knowledge = new Knowledge();
-        knowledge.s_objective = new Lvl(UnityEngine.Random.Range(0, potential), UnityEngine.Random.Range(0f, 100f));
-        knowledge.s_placement = new Lvl(UnityEngine.Random.Range(0, potential),UnityEngine.Random.Range(0f, 100f));
-        knowledge.s_teamFight = new Lvl(UnityEngine.Random.Range(0, potential), UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_objective = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_placement = new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_teamFight = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
 
+        Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[characterId].s_lvl);
+        Debug.Log(name + " s_stamina = " + mechanic.s_stamina.s_lvl);
+        Debug.Log(name + " s_reflexe = " + mechanic.s_reflexe.s_lvl);
+        Debug.Log(name + " s_objective = " + knowledge.s_objective.s_lvl);
+        Debug.Log(name + " s_placement = " + knowledge.s_placement.s_lvl);
+        Debug.Log(name + " s_teamFight = " + knowledge.s_teamFight.s_lvl);
 
         GameObject playerObj = Instantiate(PlayerPrefabs);
-        playerObj.GetComponent<Player>().Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)],-1,-1);
+
+        playerObj.GetComponent<Player>().Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)]);
         return playerObj.GetComponent<Player>();
     }
 }

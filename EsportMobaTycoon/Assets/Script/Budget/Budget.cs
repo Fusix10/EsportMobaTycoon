@@ -8,7 +8,7 @@ public class Budget : MonoBehaviour
     {
         if (manager == null)
         {
-            Debug.LogWarning("Manager_Utilisateur n'est pas assigné dans Budget !");
+            Debug.LogWarning("Manager_Utilisateur n'est pas assignEdans Budget !");
             return false;
         }
         return manager.currentMoney >= cout;

@@ -9,20 +9,20 @@ public class ActionMother
 
     protected int i_timer = 0;
 
-    public void Init()
+    public void Init()//
     {
         GameManager.Instance.GetItimeSystem().AddAction(this);
     }
-    public void setTimer(int timer)
+    public void setTimer(int timer)//
     {
         i_timer = timer;
     }
-    public virtual void actualise()
+    public virtual void actualise()//
     {
 
     }
 
-    protected virtual void action()
+    protected virtual void action()//
     {
         Debug.Log("l'Action" + i_id + "a pris effet");
     }

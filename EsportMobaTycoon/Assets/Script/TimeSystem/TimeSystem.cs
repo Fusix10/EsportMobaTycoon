@@ -10,7 +10,6 @@ public class TimeSystem : MonoBehaviour
     void Start()
     {
         i_actualTime = 0;
-
     }
 
     void Update()
@@ -18,20 +17,25 @@ public class TimeSystem : MonoBehaviour
         
     }
 
+    public int GetTime()//
+    {
+        return i_actualTime;
+    }
+
     public delegate void TurnPass();
     public event TurnPass OnTurnPass;
 
-    public void AddAction(ActionMother NewAction)
+    public void AddAction(ActionMother NewAction)//
     {
         OnTurnPass += NewAction.actualise;
     }
 
-    public void DeleteAction(ActionMother NewAction)
+    public void DeleteAction(ActionMother NewAction)//
     {
         OnTurnPass -= NewAction.actualise;
     }
 
-    public void passingTime()
+    public void passingTime()//
     {
         i_actualTime++;
 

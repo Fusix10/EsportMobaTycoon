@@ -21,15 +21,12 @@ public class InteractObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update Touch = " + Input.touchSupported, gameObject);
         if (Input.touchCount > 0)
         {
             
             Touch touch = Input.GetTouch(0);
-            Debug.Log("Update Touch = " + touch.phase, gameObject);
             if (touch.phase == TouchPhase.Stationary)
             {
-                Debug.Log("Update Touchphase = " + touch.phase, gameObject);
                 pointerDownTimer += Time.deltaTime;
                 if (pointerDownTimer >= requiredHoldTime)
                 {
@@ -76,6 +73,8 @@ public class InteractObject : MonoBehaviour
         canvas.transform.position = go.transform.position;
         panelClick.SetActive(true);
         isActive = true;
+        Player player = go.GetComponent<Player>();
+        panelClick.GetComponent<SimplePressPanel>().InitStat(player.i_name, player.i_morale, player.i_lvl, player.i_potentiel);
     }
 
     private void PressLongGameObject(GameObject go)

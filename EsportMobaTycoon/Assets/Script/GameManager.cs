@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager Instance;//
     TimeSystem i_timeSystem;
 
     //�Event MAnager
@@ -13,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     int i_testID = 0;
     List<ActionMother> i_allActions;
-    public List<Mood> i_allMood;
+    public List<Mood> i_allMood;//
     [SerializeField]
     public List<Player> i_allPlayers;
     public Manager_Utilisateur i_manager;
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         i_timeSystem.passingTime();
     }
-    public void AddAction(ActionMother NewAction)
+    public void AddAction(ActionMother NewAction)//
     {
         NewAction.i_id = i_testID;
         i_testID++;
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
         i_allActions.Add(NewAction);
     }
 
-    public TimeSystem GetItimeSystem()
+    public TimeSystem GetItimeSystem()//
     {
         return i_timeSystem;
     }
