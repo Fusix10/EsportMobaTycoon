@@ -7,11 +7,8 @@ using UnityEngine.UI;
 public class RecrutementPlayer : MonoBehaviour
 {
     [Header("UI Elements")]
-    //public Image portraitImage;
     public TMP_Text nameText;
     public TMP_Text roleText;
-    //public Image levelText;
-    //public Image potentielText;
 
     [Header("Role Panels")]
     public Transform topPanel;
@@ -31,11 +28,8 @@ public class RecrutementPlayer : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 6; i++) 
-        {
-            Player player = playerFactory.CreateRandomPlayer();
-            allPlayers.Add(player);
-        }
+        selectedTeam = GameManager.Instance.i_manager.TeamPlayers;
+        allPlayers = GameManager.Instance.i_allPlayers;
         UpdateUI();
     }
 
@@ -54,43 +48,168 @@ public class RecrutementPlayer : MonoBehaviour
     public void AddToTeam()
     {
         Player selected = allPlayers[currentIndex];
+        var manager = GameManager.Instance.i_manager;
 
-        if (selectedTeam.Contains(selected))
+        if (manager.TeamPlayers.Contains(selected))
         {
-            Debug.Log("Ce joueur est dÈjÅEdans l'Èquipe.");
+            Debug.Log("Ce joueur est dÈj‡ dans l'Èquipe.");
             return;
         }
 
-        if (selectedTeam.Count >= 4)
+        if (manager.TeamPlayers.Count >= 5)
         {
             Debug.Log("L'Èquipe est complËte.");
             return;
         }
 
-        selectedTeam.Add(selected);
-        Debug.Log($"{selected.i_name} ajoutÅEÅEl'Èquipe en tant que {GetRoleName(selected.i_role)}.");
+        manager.AddPlayer(selected);
 
-        // CrÈe une UI dans le bon panel
         Transform rolePanel = GetPanelForRole(selected.i_role);
         if (rolePanel != null)
         {
             GameObject slot = Instantiate(playerSlotPrefab, rolePanel);
             slot.GetComponentInChildren<TMP_Text>().text = selected.i_name;
+
+            Button removeButton = slot.GetComponentInChildren<Button>();
+            if (removeButton != null)
+            {
+                removeButton.onClick.AddListener(() => RemovePlayer(selected));
+            }
         }
 
         UpdateUI();
     }
 
 
+    public void MovePlayerToNewRole(int newRole)
+    {
+        Player selected = allPlayers[currentIndex];
+        var manager = GameManager.Instance.i_manager;
+
+        if (manager.TeamPlayers.Contains(selected))
+        {
+            manager.MovePlayerToRole(selected, newRole); 
+            Debug.Log($"{selected.i_name} dÈplacÈ vers le rÙle {GetRoleName(newRole)}");
+
+            UpdateUI(); 
+        }
+        else
+        {
+            Debug.Log("Le joueur n'est pas dans l'Èquipe.");
+        }
+    }
+
+    public void OnRoleChangeButtonClicked(int newRole)
+    {
+        MovePlayerToNewRole(newRole);
+    }
+
+    public void RemovePlayerFromTeam()
+    {
+        Player selected = allPlayers[currentIndex];
+        var manager = GameManager.Instance.i_manager;
+
+        if (manager.TeamPlayers.Contains(selected))
+        {
+            manager.RemovePlayer(selected); 
+            Debug.Log($"{selected.i_name} a ÈtÈ retirÈ de l'Èquipe.");
+
+            UpdateUI();
+        }
+        else
+        {
+            Debug.Log("Le joueur n'est pas dans l'Èquipe.");
+        }
+    }
+
+    public void OnRemoveButtonClicked(Player player)
+    {
+        RemovePlayer(player);
+    }
+
+    public void RemovePlayer(Player player)
+    {
+        GameManager.Instance.i_manager.TeamPlayers.Remove(player);
+
+        Debug.Log($"{player.i_name} a ÈtÈ retirÈ de l'Èquipe.");
+
+        UpdateUI(); 
+    }
+
     private void UpdateUI()
     {
-        if (allPlayers.Count == 0) return;
+        ClearRolePanels();
 
+        foreach (var player in GameManager.Instance.i_manager.TeamPlayers)
+        {
+            Transform rolePanel = GetPanelForRole(player.i_role);
+            if (rolePanel != null)
+            {
+                GameObject existingSlot = rolePanel.Find(player.i_name)?.gameObject;
+
+                if (existingSlot == null)
+                {
+                    GameObject slot = Instantiate(playerSlotPrefab, rolePanel);
+                    slot.GetComponentInChildren<TMP_Text>().text = player.i_name;
+
+                    Button removeButton = slot.GetComponentInChildren<Button>();
+                    if (removeButton != null)
+                    {
+                        removeButton.onClick.RemoveAllListeners();
+                        removeButton.onClick.AddListener(() => RemovePlayer(player));
+                    }
+                }
+            }
+        }
         Player currentPlayer = allPlayers[currentIndex];
-
         nameText.text = currentPlayer.i_name;
         roleText.text = GetRoleName(currentPlayer.i_role);
     }
+
+
+    private void ClearRolePanels()
+    {
+        foreach (Transform child in topPanel)
+        {
+            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (Transform child in junglePanel)
+        {
+            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (Transform child in midPanel)
+        {
+            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (Transform child in adcPanel)
+        {
+            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        foreach (Transform child in supportPanel)
+        {
+            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
 
     private string GetRoleName(int roleId)
     {

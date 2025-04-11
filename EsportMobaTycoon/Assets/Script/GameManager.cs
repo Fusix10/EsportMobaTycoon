@@ -15,12 +15,8 @@ public class GameManager : MonoBehaviour
 
     int i_testID = 0;
     List<ActionMother> i_allActions;
-<<<<<<< Updated upstream
-    public List<Mood> i_allMood;//
-=======
     public List<Mood> i_allMood;
     public Manager_Utilisateur i_manager;
->>>>>>> Stashed changes
     [SerializeField]
     public List<Player> i_allPlayers;
    
@@ -57,13 +53,11 @@ public class GameManager : MonoBehaviour
         //�Event MAnager
         i_eventManager = this.GetComponent<EventManager>();
 
-
-
-        /*for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
-        }*/
+        }
     }
     void Update()
     {
@@ -82,16 +76,13 @@ public class GameManager : MonoBehaviour
         i_allActions.Add(NewAction);
     }
 
-<<<<<<< Updated upstream
-    public TimeSystem GetItimeSystem()//
-=======
+
     public void setGameState(GameState newState)
     {
         i_GameState = newState;
     }
 
     public TimeSystem GetItimeSystem()
->>>>>>> Stashed changes
     {
         return i_timeSystem;
     }

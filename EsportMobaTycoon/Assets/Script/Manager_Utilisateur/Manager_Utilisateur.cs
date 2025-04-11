@@ -5,13 +5,15 @@ using TMPro;
 public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
-    public float currentMoney = 1000;//
-    public int popularity = 0;//
+    public float i_currentMoney = 1000;//
+    public int i_reputation = 0;//
     private List<Player> teamPlayers = new ();//
 
     public TextMeshProUGUI infoText;
 
     public Budget budget;
+
+    private Dictionary<int, Player> teamPlayersByRole = new();
 
     //met a jour le texte de la fen�tre avec les stats actuelles
     public void UpdateUi()
@@ -109,20 +111,40 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }*/
 
-    public void AddPlayer(Player player)//
+    public void AddPlayer(Player player)
     {
-        if (teamPlayers.Count < 5)
+        if (teamPlayers.Count < 5 && !teamPlayers.Contains(player))
         {
             teamPlayers.Add(player);
+            if (!teamPlayersByRole.ContainsKey(player.i_role))
+            {
+                teamPlayersByRole[player.i_role] = player;
+            }
         }
     }
 
-    public void RemovePlayer(Player player)//
+    public void RemovePlayer(Player player)
     {
-        if (teamPlayers.Contains(player) && teamPlayers.Count > 0)
+        if (teamPlayers.Contains(player))
         {
             teamPlayers.Remove(player);
+
+            if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
+            {
+                teamPlayersByRole.Remove(player.i_role);
+            }
         }
+    }
+
+    public void MovePlayerToRole(Player player, int newRole)
+    {
+        if (!teamPlayers.Contains(player)) return;
+
+        if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
+            teamPlayersByRole.Remove(player.i_role);
+
+        player.SetRole(newRole);
+        teamPlayersByRole[newRole] = player;
     }
 
     void AcheterItem(int cost)
@@ -135,5 +157,10 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             //g�rer le cas d'�chec (fonds insuffisants).
         }
+    }
+
+    public List<Player> TeamPlayers
+    {
+        get { return teamPlayers; }
     }
 }
