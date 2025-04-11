@@ -159,6 +159,7 @@ public class CircuitManager : MonoBehaviour
 
             int tournamentCount = i_circuitMinTournament + (int)newCircuitDifficulty;
 
+
             for (int j = 0; j < tournamentCount; j++)
             {
                 AllTournament += UnityEngine.Random.Range(30, 50);
@@ -220,15 +221,16 @@ public class CircuitManager : MonoBehaviour
             for (int i = 0; i < circuit.Value.Item1.GetTournaments().Count; i++)
             {
                 int match_count = circuit.Value.Item1.GetTournaments()[i].GetMatches().Count;
+                int roundTournament = circuit.Value.Item1.GetTournaments()[i].GetTurn();
                 totalMatchCount += match_count;
 
                 if (difficulty >= i_circuitDifficulty && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
                 {
-                    tournamentDetails.AppendLine($"- Major : {AllTournament} / {match_count} matches");
+                    tournamentDetails.AppendLine($"- Major : Round : {roundTournament} / {match_count} matches");
                 }
                 else
                 {
-                    tournamentDetails.AppendLine($"- Tournament {i + 1}: {AllTournament} / {match_count} matches");
+                    tournamentDetails.AppendLine($"- Tournament {i + 1}: {roundTournament} rounds \n {match_count} matches");
                 }
             }
 

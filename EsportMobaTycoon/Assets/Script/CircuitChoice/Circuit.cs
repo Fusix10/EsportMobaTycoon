@@ -4,146 +4,76 @@ using UnityEngine;
 
 public abstract class StatusManager
 {
-    public class Tournament
+    public enum Status
     {
-        private enum TournamentStatus
-        {
-            NotPlayed,
-            Won,
-            Lost
-        }
-
-        private DateTime m_date;
-
-        private bool m_is_major;
-
-        private List<Match> m_matches;
-
-        private TournamentStatus m_status;
-
-        public Tournament(DateTime date, bool is_major)
-        {
-            m_date = date;
-            m_is_major = is_major;
-            m_status = TournamentStatus.NotPlayed;
-
-            m_matches = new List<Match>();
-        }
-
-        public void HasWon(bool win)
-        {
-            m_status = win ? TournamentStatus.Won : TournamentStatus.Lost;
-        }
-
-        public void AddMatch(Match match)
-        {
-            m_matches.Add(match);   
-        }
-        public List<Match> GetMatches()
-        {
-            return m_matches;
-        }
-        }
-
-        public void HasWon(bool win)
-        {
-            m_status = win ? TournamentStatus.Won : TournamentStatus.Lost;
-        }
-
-        public void AddMatch(Match match)
-        {
-            m_matches.Add(match);   
-        }
-        public List<Match> GetMatches()
-        {
-            return m_matches;
-        }
-        }
-
-        public void HasWon(bool win)
-        {
-            m_status = win ? TournamentStatus.Won : TournamentStatus.Lost;
-        }
-
-        public void AddMatch(Match match)
-        {
-            m_matches.Add(match);   
-        }
-        public List<Match> GetMatches()
-        {
-            return m_matches;
-        }
-        }
-
-        public void HasWon(bool win)
-        {
-            m_status = win ? TournamentStatus.Won : TournamentStatus.Lost;
-        }
-
-        public void AddMatch(Match match)
-        {
-            m_matches.Add(match);   
-        }
-        public List<Match> GetMatches()
-        {
-            return m_matches;
-        }
-
-        public DateTime GetDate()
-        {
-            return m_date;
-        }
-
-        public bool IsMajor()
-        {
-            return m_is_major;
-        }
+        NotPlayed,
+        Won,
+        Lost
     }
 
-    public class Match
+    protected Status i_status;
+
+    protected StatusManager()
     {
-        private enum MatchStatus
-        {
-            NotPlayed,
-            Won,
-            Lost
-        }
-
-        private MatchStatus m_status;
-
-        public Match()
-        {
-            m_status = MatchStatus.NotPlayed;
-        }
-
-        public void HasWon(bool win)
-        {
-            m_status = win ? MatchStatus.Won : MatchStatus.Lost;
-        }
+        i_status = Status.NotPlayed;
     }
 
-    private int id;
-    private List<Tournament> m_tournaments;
-
-
-    public Circuit(int circuitId)
+    public void SetHasWon(bool win)
     {
-        id = circuitId;
-
-        m_tournaments = new List<Tournament>();
+        i_status = win ? Status.Won : Status.Lost;
     }
+
+    public Status GetStatus()
+    {
+        return i_status;
+    }
+}
+
+public class Circuit : StatusManager
+{
+    private int i_id;
+    private List<Tournament> i_tournaments;
+
+    public Circuit(int circuit_id)
+    {
+        i_id = circuit_id;
+        i_tournaments = new List<Tournament>();
+    }
+
+    public void AddTournament(Tournament tournament)
+    {
+        i_tournaments.Add(tournament);
+    }
+
+    public List<Tournament> GetTournaments()
+    {
+        return i_tournaments;
+    }
+
+    public int GetCircuitId()
+    {
+        return i_id;
+    }
+}
+
+public class Match : StatusManager
+{
+    public Match() { }
+}
 
 public class Tournament : StatusManager
 {
-    private DateTime m_date;
+    private int i_nbTurn;
     private bool m_is_major;
     private List<Match> m_matches;
+    private string i_name;
 
-    public Tournament(DateTime date, bool is_major)
+    public Tournament(int nbTurn, bool is_major,string name)
     {
-        m_date = date;
+        i_nbTurn = nbTurn;
         m_is_major = is_major;
         m_matches = new List<Match>();
+        i_name = name;
     }
 
     public void AddMatch(Match match)
@@ -155,13 +85,14 @@ public class Tournament : StatusManager
     {
         return m_matches;
     }
-    public void AddTournament(Tournament tournament)
+
+    public int GetTurn()
     {
-        m_tournaments.Add(tournament);
+        return i_nbTurn;
     }
 
     public bool IsMajor()
     {
-        return m_tournaments;
+        return m_is_major;
     }
 }
