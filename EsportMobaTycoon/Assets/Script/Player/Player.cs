@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Player : MonoBehaviour
 {
     public string i_name { get; private set; }
-    private int i_role;
-    public int i_currentRole { get; private set; }
+    private GameManager.Role i_role;
+    public GameManager.Role i_currentRole { get; private set; }
     private Sprite i_icon;
     public Mechanic i_mechanic { get; private set; }
     public Knowledge i_knowledge { get; private set; }
-    public int i_favoriteCharacterId { get; private set; }
-    public int i_characterId { get; private set; }
+    public Character i_favoriteCharacterId { get; private set; }
+    public Character i_characterId { get; private set; }
     private float i_totalLuck;
     private float i_morale;
     private Lvl i_teamSpirit;
@@ -25,16 +26,16 @@ public class Player : MonoBehaviour
     public void Init
     (
     string name,
-    int role,
+    GameManager.Role role,
     Mechanic mechanic,
     Knowledge knowledge,
-    int favoriteCharacterId,
+    Character favoriteCharacterId,
     Lvl teamSpirit,
     int reputation,
     int potentiel,
     Mood mood,
-    int currentRole,
-    int characterId = -1,
+    GameManager.Role currentRole,
+    Character characterId = null,
     Sprite icon = null
     )
     {
@@ -51,50 +52,47 @@ public class Player : MonoBehaviour
         i_characterId = characterId;
         i_currentRole = currentRole;
 
-        
 
-        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+
+        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
 
         UpdateTick();
     }
-    
+
     public void gainXP(Lvl obj, float Gain)
     {
         if (obj.s_lvl < i_potentiel)
         {
-            obj.s_Xp += ((100 - (obj.s_lvl * 5))* Gain)/100;
+            obj.s_Xp += ((100 - (obj.s_lvl * 5)) * Gain) / 100;
         }
 
         if (obj.s_Xp >= 100)
         {
             obj.s_lvl++;
-            while(obj.s_Xp > 100)
+            while (obj.s_Xp > 100)
             {
                 obj.s_Xp -= 100;
             }
-            
         }
     }
 
 
     public void Luck()
     {
-        for (int i = 0;i < 7; i++)
-        {
-            float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
-            sumLuck *= i_morale / 100;
-        }
+        float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        sumLuck *= i_morale / 100;
+        i_totalLuck = sumLuck;
     }
 
     public void UpdateTick()
     {
-        Luck();
+        
     }
 
-    private void MoraleEffectOnMorale(bool result,float moraleChange)
+    private void MoraleEffectOnMorale(bool result, float moraleChange)
     {
-        if(result)
+        if (result)
         {
             i_morale += moraleChange * i_mood.i_win;
         }
@@ -102,7 +100,6 @@ public class Player : MonoBehaviour
         {
             i_morale += moraleChange * i_mood.i_loose;
         }
-
     }
 
     private void ApplyFavoriteCharacterBonus()
@@ -121,6 +118,37 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void metaLuck()
+    {
+        if (i_characterId.i_meta)
+        {
+            i_totalLuck *= 1.05f;
+        }
+    }
+
+    public void matchUpLuck(Player opppent)
+    {
+        if (GameManager.Instance.GetMatchUp(i_characterId,opppent.i_characterId).state == 
+            GameManager.MatchUp.stateMatchUp.COUNTER)
+        {
+            i_totalLuck *= 1.3f;
+        }
+        else if(GameManager.Instance.GetMatchUp(i_characterId, opppent.i_characterId).state ==
+            GameManager.MatchUp.stateMatchUp.ISCOUNTERED)
+        {
+            i_totalLuck *= 0.7f;
+        }
+    }
+
+    public void changeLuck(Player opponent)
+    {
+        i_totalLuck = 0f;
+        ApplyFavoriteCharacterBonus();
+        ApplyRolePenalty();
+        Luck();
+        metaLuck();
+        matchUpLuck(opponent);
+    }
 }
 
 //TO DO
