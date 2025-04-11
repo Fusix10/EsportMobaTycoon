@@ -31,11 +31,15 @@ public abstract class StatusManager
 
 public class Circuit : StatusManager
 {
+    public enum CircuitName {LFL,LEC,World,MSI,EUROPEANMASTERS}
     private int i_id;
+    private string i_name;
     private List<Tournament> i_tournaments;
 
     public Circuit(int circuit_id)
     {
+        CircuitName cn = (CircuitName)UnityEngine.Random.Range(0, 4);
+        i_name = cn.ToString();
         i_id = circuit_id;
         i_tournaments = new List<Tournament>();
     }
@@ -53,6 +57,11 @@ public class Circuit : StatusManager
     public int GetCircuitId()
     {
         return i_id;
+    }
+
+    public string GetName()
+    {
+        return i_name;
     }
 }
 

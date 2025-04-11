@@ -244,13 +244,14 @@ public class CircuitManager : MonoBehaviour
             Button selectButton = circuitUi.transform.Find("SelectButton").GetComponent<Button>();
             TMP_Text selectText = circuitUi.transform.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-            circuitNumberText.text = "Circuit " + circuitId;
+            //circuitNumberText.text = "Circuit : " + circuitId + i_selectedCircuit.GetName();
             circuitDifficultyText.text = "Difficulty : " + difficulty.ToString();
             tournamentDetailsText.text = tournamentDetails.ToString();
             circuitMatchesText.text = "Total Matches : " + totalMatchCount;
 
             selectButton.onClick.AddListener(() => ChooseCircuit(circuitId));
             selectText.text = "Choose C" + circuitId;
+            
         }
     }
 
