@@ -31,45 +31,6 @@ public abstract class StatusManager
 
 public class Circuit : StatusManager
 {
-    public class Tournament : StatusManager
-    {
-        private DateTime m_date;
-        private bool m_is_major;
-        private List<Match> m_matches;
-
-        public Tournament(DateTime date, bool is_major)
-        {
-            m_date = date;
-            m_is_major = is_major;
-            m_matches = new List<Match>();
-        }
-
-        public void AddMatch(Match match)
-        {
-            m_matches.Add(match);
-        }
-
-        public List<Match> GetMatches()
-        {
-            return m_matches;
-        }
-
-        public DateTime GetDate()
-        {
-            return m_date;
-        }
-
-        public bool IsMajor()
-        {
-            return m_is_major;
-        }
-    }
-
-    public class Match : StatusManager
-    {
-        public Match() { }
-    }
-
     private int m_id;
     private List<Tournament> m_tournaments;
 
@@ -92,5 +53,44 @@ public class Circuit : StatusManager
     public int GetCircuitId()
     {
         return m_id;
+    }
+}
+
+public class Match : StatusManager
+{
+    public Match() { }
+}
+
+public class Tournament : StatusManager
+{
+    private DateTime m_date;
+    private bool m_is_major;
+    private List<Match> m_matches;
+
+    public Tournament(DateTime date, bool is_major)
+    {
+        m_date = date;
+        m_is_major = is_major;
+        m_matches = new List<Match>();
+    }
+
+    public void AddMatch(Match match)
+    {
+        m_matches.Add(match);
+    }
+
+    public List<Match> GetMatches()
+    {
+        return m_matches;
+    }
+
+    public DateTime GetDate()
+    {
+        return m_date;
+    }
+
+    public bool IsMajor()
+    {
+        return m_is_major;
     }
 }

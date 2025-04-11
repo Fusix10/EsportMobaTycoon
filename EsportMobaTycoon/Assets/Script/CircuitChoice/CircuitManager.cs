@@ -170,13 +170,13 @@ public class CircuitManager : MonoBehaviour
 
         available_difficulties = available_difficulties.OrderByDescending(diff => (int)diff).ToList();
 
-
         bool is_max_reputation = Reputation == max_reputation;
 
         for (int i = 0; i < amount; i++)
         {
             Circuit new_circuit = new Circuit(i);
 
+            // need to change to in game time
             DateTime tournament_date = DateTime.Today;
 
             CircuitDifficulty new_circuit_difficulty;
@@ -196,12 +196,12 @@ public class CircuitManager : MonoBehaviour
             {
                 tournament_date = tournament_date.AddDays(UnityRandom.Range(min_months_delay_tournament * 30, max_months_delay_tournament * 30));
 
-                Circuit.Tournament tournament = new Circuit.Tournament(tournament_date, false);
+                Tournament tournament = new Tournament(tournament_date, false);
 
                 int match_count = UnityRandom.Range(tournament_min_matches, tournament_max_matches);
                 for (int k = 0; k < match_count; k++)
                 {
-                    Circuit.Match new_match = new Circuit.Match();
+                    Match new_match = new Match();
                     tournament.AddMatch(new_match);
                 }
 
@@ -212,12 +212,12 @@ public class CircuitManager : MonoBehaviour
             {
                 tournament_date = tournament_date.AddDays(UnityRandom.Range(min_months_delay_tournament * 30, max_months_delay_tournament * 30));
 
-                Circuit.Tournament major_tournament = new Circuit.Tournament(tournament_date, true);
+                Tournament major_tournament = new Tournament(tournament_date, true);
                 int major_match_count = UnityRandom.Range(major_min_matches, major_max_matches);
 
                 for (int m = 0; m < major_match_count; m++)
                 {
-                    Circuit.Match new_match = new Circuit.Match();
+                    Match new_match = new Match();
                     major_tournament.AddMatch(new_match);
                 }
 
