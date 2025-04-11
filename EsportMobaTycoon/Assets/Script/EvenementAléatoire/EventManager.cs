@@ -1,36 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField] private List<PopUpBase> LPopUp;
-    [SerializeField] public List<EventBase> LInactiveEvents; //List Event a remplir de tout les events avant le start
-    private List<EventBase> LActiveEvents; 
+    //[SerializeField] private PopUpManager i_PopUpManager;
+    [SerializeField] public List<EventBase> i_InactiveEvents; //List Event a remplir de tout les events avant le start
+    private List<EventBase> i_ActiveEvents; 
 
-    [SerializeField]
-    private GameObject AlwaysActive; 
+    // List des Event qui ont ÈtÈ proc
+    public UnityEvent<EventBase> i_onEventPlay;
 
     void Start()
     {
-        LActiveEvents = new List<EventBase>();
-
-        if (AlwaysActive == null)
-        {
-            Debug.LogError("Ref a AlwaysActive pas remplie");
-        }
-
-        else 
-        {
-            EventBase[] alwaysActiveEvents = AlwaysActive.GetComponentsInChildren<EventBase>(true);
-            foreach (var eventBase in alwaysActiveEvents)
-            {
-                LActiveEvents.Add(eventBase);
-            }
-        }
-
-        LinkPopUpToEvent();
-
+        i_ActiveEvents = new List<EventBase>();
     }
 
     void Update()
@@ -50,7 +35,7 @@ public class EventManager : MonoBehaviour
         List<EventBase> toDeactivate = new List<EventBase>();
 
         // VÈrification des ÈlÈments inactifs
-        foreach (var inactiveEvent in LInactiveEvents)
+        foreach (var inactiveEvent in i_InactiveEvents)
         {
             EventBase myEvent = inactiveEvent as EventBase;
             if (myEvent != null && myEvent.Condition())
@@ -60,7 +45,7 @@ public class EventManager : MonoBehaviour
         }
 
         // VÈrification des ÈlÈments actifs
-        foreach (var activeEvent in LActiveEvents)
+        foreach (var activeEvent in i_ActiveEvents)
         {
             EventBase myEvent = activeEvent as EventBase;
             if (myEvent != null && !myEvent.Condition())
@@ -72,41 +57,31 @@ public class EventManager : MonoBehaviour
         // Ajustement des ÈlÈments ÅEactiver
         foreach (var eventToActivate in toActivate)
         {
-            LActiveEvents.Add(eventToActivate);
-            LInactiveEvents.Remove(eventToActivate);
+            i_ActiveEvents.Add(eventToActivate);
+            i_InactiveEvents.Remove(eventToActivate);
         }
 
         // Ajustement des ÈlÈments ÅEdÈsactiver
         foreach (var eventToDeactivate in toDeactivate)
         {
-            LInactiveEvents.Add(eventToDeactivate);
-            LActiveEvents.Remove(eventToDeactivate);
+            i_InactiveEvents.Add(eventToDeactivate);
+            i_ActiveEvents.Remove(eventToDeactivate);
         }
     }
 
     private void ThrowDices()
     {
-        foreach (var activeEvent in LActiveEvents)
+        foreach (var activeEvent in i_ActiveEvents)
         {
             EventBase eventBase = activeEvent as EventBase;
             if (eventBase != null)
             {
-                eventBase.ThrowDice();
-            }
-        }
-    }
-
-    private void LinkPopUpToEvent()
-    {
-        foreach (var inactiveEvent in LInactiveEvents)
-        {
-            foreach (var popUp in LPopUp)
-            {
-                if (popUp.gameObject.tag == inactiveEvent.GetType().Name)
+                if (eventBase.ThrowDice())
                 {
-                    inactiveEvent.popUp = popUp;
-                    break; // Sortir de la boucle une fois le PopUp associÈ
+                    i_onEventPlay.Invoke(eventBase);
+                    //event add to 
                 }
+
             }
         }
     }

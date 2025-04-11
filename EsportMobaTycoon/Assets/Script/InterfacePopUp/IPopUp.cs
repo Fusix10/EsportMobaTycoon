@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IPopUp
 {
-    GameObject ParentWithScript { get; set; }
     void Display();
     void Hide();
 }

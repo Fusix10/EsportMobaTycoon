@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EventBase 
 {
     public float probability = 0.1f;
-    public PopUpBase popUp; 
 
-    public EventBase(PopUpBase popUp)
+
+    public EventBase()
     {
-        this.popUp = popUp;
+        //Nombre de bouton 
+        //Si besoin de click ou pas
     }
     public virtual bool Condition()
     {
@@ -16,19 +18,13 @@ public class EventBase
         return true;
     }
 
-    public void ThrowDice()
+    public bool ThrowDice()
     {
         bool result = Random.value < probability;
         if (result)
         {
-            Play();
+            return true;
         }
+        else { return false; }
     }
-
-    public void Play()
-    {
-        popUp.Display();
-    }
-
-    
 }
