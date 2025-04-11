@@ -9,6 +9,7 @@ public class RecrutementPlayer : MonoBehaviour
     [Header("UI Elements")]
     public TMP_Text nameText;
     public TMP_Text roleText;
+    public TMP_Text CountText;
 
     [Header("Role Panels")]
     public Transform topPanel;
@@ -20,7 +21,6 @@ public class RecrutementPlayer : MonoBehaviour
     public GameObject playerSlotPrefab;
 
     [Header("Player List")]
-    public PlayerFactory playerFactory;
     public List<Player> allPlayers;
     public List<Player> selectedTeam = new List<Player>();
 
@@ -70,14 +70,21 @@ public class RecrutementPlayer : MonoBehaviour
             GameObject slot = Instantiate(playerSlotPrefab, rolePanel);
             slot.GetComponentInChildren<TMP_Text>().text = selected.i_name;
 
-            Button removeButton = slot.GetComponentInChildren<Button>();
+            Button removeButton = slot.transform.Find("Remove").GetComponent<Button>();
+            Button moveBoutton = slot.transform.Find("Move").GetComponent<Button>();
             if (removeButton != null)
             {
                 removeButton.onClick.AddListener(() => RemovePlayer(selected));
             }
+            if (moveBoutton != null)
+            {
+                moveBoutton.onClick.AddListener(() => MovePlayerToNewRole(currentIndex));
+            }
+
         }
 
         UpdateUI();
+
     }
 
 
@@ -104,36 +111,20 @@ public class RecrutementPlayer : MonoBehaviour
         MovePlayerToNewRole(newRole);
     }
 
-    public void RemovePlayerFromTeam()
+    
+
+    public void RemovePlayer(Player player)
     {
-        Player selected = allPlayers[currentIndex];
-        var manager = GameManager.Instance.i_manager;
+        GameManager.Instance.i_manager.RemovePlayer(player);
 
-        if (manager.TeamPlayers.Contains(selected))
-        {
-            manager.RemovePlayer(selected); 
-            Debug.Log($"{selected.i_name} a été retiré de l'équipe.");
+        Debug.Log($"{player.i_name} a été retiré de l'équipe.");
 
-            UpdateUI();
-        }
-        else
-        {
-            Debug.Log("Le joueur n'est pas dans l'équipe.");
-        }
+        UpdateUI(); 
     }
 
     public void OnRemoveButtonClicked(Player player)
     {
         RemovePlayer(player);
-    }
-
-    public void RemovePlayer(Player player)
-    {
-        GameManager.Instance.i_manager.TeamPlayers.Remove(player);
-
-        Debug.Log($"{player.i_name} a été retiré de l'équipe.");
-
-        UpdateUI(); 
     }
 
     private void UpdateUI()
@@ -152,18 +143,27 @@ public class RecrutementPlayer : MonoBehaviour
                     GameObject slot = Instantiate(playerSlotPrefab, rolePanel);
                     slot.GetComponentInChildren<TMP_Text>().text = player.i_name;
 
-                    Button removeButton = slot.GetComponentInChildren<Button>();
+                    Button removeButton = slot.transform.Find("Remove").GetComponent<Button>();
+                    Button moveBoutton = slot.transform.Find("Move").GetComponent<Button>();
                     if (removeButton != null)
                     {
                         removeButton.onClick.RemoveAllListeners();
                         removeButton.onClick.AddListener(() => RemovePlayer(player));
+                        
                     }
+                    if (moveBoutton != null)
+                    {
+                        moveBoutton.onClick.AddListener(() => MovePlayerToNewRole(currentIndex));
+                    }
+
+                    
                 }
             }
         }
         Player currentPlayer = allPlayers[currentIndex];
         nameText.text = currentPlayer.i_name;
         roleText.text = GetRoleName(currentPlayer.i_role);
+        CountText.text = selectedTeam.Count.ToString() + $" / 5";
     }
 
 
@@ -171,7 +171,7 @@ public class RecrutementPlayer : MonoBehaviour
     {
         foreach (Transform child in topPanel)
         {
-            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            if (child.gameObject.name != "Move" && child.gameObject.name != "Remove")
             {
                 Destroy(child.gameObject);
             }
@@ -179,7 +179,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform child in junglePanel)
         {
-            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            if (child.gameObject.name != "Move" && child.gameObject.name != "Remove")
             {
                 Destroy(child.gameObject);
             }
@@ -187,7 +187,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform child in midPanel)
         {
-            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            if (child.gameObject.name != "Move" && child.gameObject.name != "Remove")
             {
                 Destroy(child.gameObject);
             }
@@ -195,7 +195,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform child in adcPanel)
         {
-            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            if (child.gameObject.name != "Move" && child.gameObject.name != "Remove")
             {
                 Destroy(child.gameObject);
             }
@@ -203,7 +203,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform child in supportPanel)
         {
-            if (child.gameObject.name != "RemoveButton" && child.gameObject.name != "Remove")
+            if (child.gameObject.name != "Move" && child.gameObject.name != "Remove")
             {
                 Destroy(child.gameObject);
             }

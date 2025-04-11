@@ -120,6 +120,8 @@ public class Manager_Utilisateur : MonoBehaviour
             {
                 teamPlayersByRole[player.i_role] = player;
             }
+
+            Debug.Log(teamPlayers.Count);
         }
     }
 
