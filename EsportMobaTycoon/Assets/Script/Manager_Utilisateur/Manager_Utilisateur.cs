@@ -5,24 +5,24 @@ using TMPro;
 public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
-    public int argentActuel = 1000;
-    public int popularite = 0;
-    public int niveauPopularite = 1;
-    public int seuilPourNiveauSuivant = 100;
-    public List<string> teamPlayers = new List<string>();
+    public int currentMoney = 1000;
+    public int popularity = 0;
+    public int popularityLevel = 1;
+    public int nextLevel = 100;
+    public List<Player> teamPlayers = new ();
 
     public TextMeshProUGUI infoText;
 
     public Budget budget;
 
     //met a jour le texte de la fen黎re avec les stats actuelles
-    public void MettreAJourUI()
+    public void UpdateUi()
     {
         if (infoText != null)
         {
-            infoText.text = "Argent Actuel : " + argentActuel + "$\n" +
-                            "Popularit・: " + popularite + "\n" +
-                            "Joueurs (" + teamPlayers.Count + ") :\n" + string.Join("\n", teamPlayers);
+            infoText.text = "Argent Actuel : " + currentMoney + "$\n" +
+                            "Popularit・: " + popularity + "\n" +
+                            "Joueurs (" + teamPlayers.Count + ") :\n";
         }
         else
         {
@@ -32,55 +32,61 @@ public class Manager_Utilisateur : MonoBehaviour
 
     void Start()
     {
-        MettreAJourUI();
+        UpdateUi();
     }
 
     void Update()
     {
+        
         //augenter l'argent avec A
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            argentActuel += 50;
-            MettreAJourUI();
+            currentMoney += 50;
+            UpdateUi();
+            Debug.Log("in A");
         }
 
         //diminuer l'argent avec Z
         if (Input.GetKeyDown(KeyCode.W))
         {
-            argentActuel -= 100;
-            MettreAJourUI();
+            currentMoney -= 100;
+            UpdateUi();
+            Debug.Log("in Z");
         }
 
         //augmenter la popularit・avec E
         if (Input.GetKeyDown(KeyCode.E))
         {
-            popularite += 50;
-            MettreAJourUI();
+            popularity += 50;
+            UpdateUi();
+            Debug.Log("in E");
         }
 
         //diminuer la popularit・avec R
         if (Input.GetKeyDown(KeyCode.R))
         {
-            popularite -= 50;
-            MettreAJourUI();
+            popularity -= 50;
+            UpdateUi();
+            Debug.Log("in R");
         }
 
         //ajouter un joueur avec T
-        if (Input.GetKeyDown(KeyCode.T))
+        /*if (Input.GetKeyDown(KeyCode.T))
         {
-            string nouveauJoueur = "Joueur" + (teamPlayers.Count + 1);
+            Player nouveauJoueur = "Joueur" + (teamPlayers.Count + 1);
             AddPlayer(nouveauJoueur);
             MettreAJourUI();
-        }
+        }*/
 
         //retirer un joueur avec Y
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            if (teamPlayers.Count > 0)
+            if (teamPlayers.Count > 0 && teamPlayers.Count < 5)
             {
-                string joueurARetirer = teamPlayers[teamPlayers.Count - 1];
-                RemovePlayer(joueurARetirer);
-                MettreAJourUI();
+                Player playerToRemove = teamPlayers[teamPlayers.Count - 1];
+                RemovePlayer(playerToRemove);
+                UpdateUi();
+                Debug.Log("in Y");
             }
         }
     }
@@ -105,25 +111,25 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }*/
 
-    public void AddPlayer(string nomJoueur)
+    public void AddPlayer(Player player)
     {
         if (teamPlayers.Count < 5)
         {
-            teamPlayers.Add(nomJoueur);
+            teamPlayers.Add(player);
         }
     }
 
-    public void RemovePlayer(string nomJoueur)
+    public void RemovePlayer(Player player)
     {
-        if (teamPlayers.Contains(nomJoueur))
+        if (teamPlayers.Contains(player) && teamPlayers.Count > 0)
         {
-            teamPlayers.Remove(nomJoueur);
+            teamPlayers.Remove(player);
         }
     }
 
-    void AcheterItem(int cout)
+    void AcheterItem(int cost)
     {
-        if (budget.AcheterObjet(cout))
+        if (budget.AcheterObjet(cost))
         {
             //l'achat a 騁・r饌lis・ ajouter alors l'item ・l'inventaire
         }

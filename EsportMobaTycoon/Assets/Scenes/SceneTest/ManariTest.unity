@@ -620,13 +620,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5810c14ec92d084d9d9065d7e2900d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  argentActuel: 0
-  popularite: 0
-  niveauPopularite: 1
-  seuilPourNiveauSuivant: 100
+  currentMoney: 1000
+  popularity: 0
+  popularityLevel: 1
+  nextLevel: 100
   teamPlayers: []
   infoText: {fileID: 98622809}
-  budget: {fileID: 0}
+  budget: {fileID: 1191481425}
 --- !u!4 &1016194522
 Transform:
   m_ObjectHideFlags: 0
@@ -917,14 +917,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.972549}
+  m_Color: {r: 0.8679245, g: 0.16648851, b: 0.16648851, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

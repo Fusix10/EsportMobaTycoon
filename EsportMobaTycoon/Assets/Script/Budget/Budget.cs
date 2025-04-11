@@ -11,20 +11,20 @@ public class Budget : MonoBehaviour
             Debug.LogWarning("Manager_Utilisateur n'est pas assigné dans Budget !");
             return false;
         }
-        return manager.argentActuel >= cout;
+        return manager.currentMoney >= cout;
     }
     //tente d'acheter un objet en déduisant son coût du budget si possible
     public bool AcheterObjet(int cout)
     {
         if (PeutAcheterObjet(cout))
         {
-            manager.argentActuel -= cout;
-            Debug.Log("Achat réussi. Nouvel argent : " + manager.argentActuel);
+            manager.currentMoney -= cout;
+            Debug.Log("Achat réussi. Nouvel argent : " + manager.currentMoney);
             return true;
         }
         else
         {
-            Debug.Log("Fonds insuffisants pour acheter cet objet. Argent actuel : " + manager.argentActuel);
+            Debug.Log("Fonds insuffisants pour acheter cet objet. Argent actuel : " + manager.currentMoney);
             return false;
         }
     }

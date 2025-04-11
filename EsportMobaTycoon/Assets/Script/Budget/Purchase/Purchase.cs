@@ -33,7 +33,7 @@ public class Purchase : MonoBehaviour
             //gameObject.SetActive(false);
             if (budget.manager != null)
             {
-                budget.manager.MettreAJourUI();
+                budget.manager.UpdateUi();
             }
         }
         else

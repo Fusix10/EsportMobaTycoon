@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public List<Mood> i_allMood;
     [SerializeField]
     public List<Player> i_allPlayers;
+    public Manager_Utilisateur i_manager;
 
     GameState i_GameState;
 
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
         i_allPlayers = new List<Player>();
+        i_manager = new Manager_Utilisateur();
         i_allMood = new List<Mood>();
         i_allMood.Add(new Mood("Competitif", 0.75f, 1.35f));
         i_allMood.Add(new Mood("Methodique", 0.95f, 1.05f));
