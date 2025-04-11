@@ -13,6 +13,8 @@ public class InteractObject : MonoBehaviour
     public GameObject panelLongClick;
     public GameObject panelPC;
 
+    public Player i_playerPanel;
+
     float pointerDownTimer;
 
     public float requiredHoldTime;
@@ -74,6 +76,7 @@ public class InteractObject : MonoBehaviour
         panelClick.SetActive(true);
         isActive = true;
         Player player = go.GetComponent<Player>();
+        i_playerPanel = player;
         panelClick.GetComponent<SimplePressPanel>().InitStat(player.i_name, player.i_morale, player.i_lvl, player.i_potentiel);
     }
 
@@ -82,6 +85,8 @@ public class InteractObject : MonoBehaviour
         //go.SetActive(false);
         Reset();
         canvas.transform.position = go.transform.position;
+        Player player = go.GetComponent<Player>();
+        i_playerPanel = player;
         panelLongClick.SetActive(true);
         isActive = true;
     }

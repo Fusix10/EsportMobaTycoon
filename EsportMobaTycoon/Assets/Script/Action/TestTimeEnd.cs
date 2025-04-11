@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class TestTimeEnd : ActionOnTimeEnd
 {
-    private Player i_player;
+    protected Player i_player;
+    protected float i_xp;
 
     public void InitPlayer(Player player)
     {
         i_player = player;
     }
-    protected override void action()
+
+    public void InitXp(float xp)
     {
-        i_player.gainXP(i_player.i_mechanic.s_stamina, 45);
-        Debug.Log("Lvl = " + i_player.i_mechanic.s_stamina.s_lvl + "Xp = " + i_player.i_mechanic.s_stamina.s_Xp);
-        i_player.UpdateTick();
+        i_xp = xp;
     }
 }
