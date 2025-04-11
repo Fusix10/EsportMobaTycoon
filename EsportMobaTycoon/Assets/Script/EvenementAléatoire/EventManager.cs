@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
-    [SerializeField]
-    public List<EventBase> InactiveEvents;
-    private List<EventBase> ActiveEvents;
+    [SerializeField] private List<PopUpBase> LPopUp;
+    [SerializeField] public List<EventBase> LInactiveEvents; //List Event a remplir de tout les events avant le start
+    private List<EventBase> LActiveEvents; 
 
     [SerializeField]
     private GameObject AlwaysActive; 
 
     void Start()
     {
-        ActiveEvents = new List<EventBase>();
+        LActiveEvents = new List<EventBase>();
 
         if (AlwaysActive == null)
         {
@@ -25,11 +25,13 @@ public class EventManager : MonoBehaviour
             EventBase[] alwaysActiveEvents = AlwaysActive.GetComponentsInChildren<EventBase>(true);
             foreach (var eventBase in alwaysActiveEvents)
             {
-                ActiveEvents.Add(eventBase);
+                LActiveEvents.Add(eventBase);
             }
         }
 
-        }
+        LinkPopUpToEvent();
+
+    }
 
     void Update()
     {
@@ -48,7 +50,7 @@ public class EventManager : MonoBehaviour
         List<EventBase> toDeactivate = new List<EventBase>();
 
         // VÈrification des ÈlÈments inactifs
-        foreach (var inactiveEvent in InactiveEvents)
+        foreach (var inactiveEvent in LInactiveEvents)
         {
             EventBase myEvent = inactiveEvent as EventBase;
             if (myEvent != null && myEvent.Condition())
@@ -58,7 +60,7 @@ public class EventManager : MonoBehaviour
         }
 
         // VÈrification des ÈlÈments actifs
-        foreach (var activeEvent in ActiveEvents)
+        foreach (var activeEvent in LActiveEvents)
         {
             EventBase myEvent = activeEvent as EventBase;
             if (myEvent != null && !myEvent.Condition())
@@ -70,26 +72,41 @@ public class EventManager : MonoBehaviour
         // Ajustement des ÈlÈments ÅEactiver
         foreach (var eventToActivate in toActivate)
         {
-            ActiveEvents.Add(eventToActivate);
-            InactiveEvents.Remove(eventToActivate);
+            LActiveEvents.Add(eventToActivate);
+            LInactiveEvents.Remove(eventToActivate);
         }
 
         // Ajustement des ÈlÈments ÅEdÈsactiver
         foreach (var eventToDeactivate in toDeactivate)
         {
-            InactiveEvents.Add(eventToDeactivate);
-            ActiveEvents.Remove(eventToDeactivate);
+            LInactiveEvents.Add(eventToDeactivate);
+            LActiveEvents.Remove(eventToDeactivate);
         }
     }
 
     private void ThrowDices()
     {
-        foreach (var activeEvent in ActiveEvents)
+        foreach (var activeEvent in LActiveEvents)
         {
             EventBase eventBase = activeEvent as EventBase;
             if (eventBase != null)
             {
                 eventBase.ThrowDice();
+            }
+        }
+    }
+
+    private void LinkPopUpToEvent()
+    {
+        foreach (var inactiveEvent in LInactiveEvents)
+        {
+            foreach (var popUp in LPopUp)
+            {
+                if (popUp.gameObject.tag == inactiveEvent.GetType().Name)
+                {
+                    inactiveEvent.popUp = popUp;
+                    break; // Sortir de la boucle une fois le PopUp associÈ
+                }
             }
         }
     }

@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class EventBase : PopUpBase
+public class EventBase 
 {
     public float probability = 0.1f;
+    public PopUpBase popUp; 
 
+    public EventBase(PopUpBase popUp)
+    {
+        this.popUp = popUp;
+    }
     public virtual bool Condition()
     {
         // Logique pour déterminer si l'événement doit être ajouté à ActiveEvents
@@ -22,7 +27,7 @@ public class EventBase : PopUpBase
 
     public void Play()
     {
-        Display();
+        popUp.Display();
     }
 
     

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IPopUp
 {
-    Canvas PopUpCanva { get; set; }
+    GameObject ParentWithScript { get; set; }
     void Display();
     void Hide();
 }

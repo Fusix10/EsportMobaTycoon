@@ -1,40 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PopUpBase : MonoBehaviour, IPopUp
 {
-    [SerializeField] private Canvas pPopUpCanva;
-    public Canvas PopUpCanva
+    // Le script doit être attacher a un objet qui ne sera pas désactiver sinon le script ne marchera plus donc on désactive la target
+    [SerializeField] private GameObject parentWithScript; // Réf au GameObject contenant le script
+    private GameObject Target; // Ref à l'objet qui sera SetActive
+    
+
+    public GameObject ParentWithScript
     {
-        get { return pPopUpCanva; }
-        set { pPopUpCanva = value; }
+        get { return parentWithScript; }
+        set { parentWithScript = value; }
     }
 
     void Start()
     {
-        if (PopUpCanva == null)
+        if (ParentWithScript == null)
         {
-            Debug.LogError("Canvas prefab is not assigned.");
+            Debug.LogError("PopUp canva is not assigned.");
         }
         else
         {
-            PopUpCanva.gameObject.SetActive(false);
+            Target = FindChildWithTag(ParentWithScript, this.GetType().Name);
+
+            if (Target != null)
+            {
+                Target.SetActive(false);
+            }
+            else
+            {
+                Debug.LogWarning($"No child with tag '{this.GetType().Name}' found in {ParentWithScript.name}");
+            }
         }
     }
 
     void Update()
     {
-
+        
     }
 
     public void Display()
     {
-        PopUpCanva.gameObject.SetActive(true);
+        Target.SetActive(true);
     }
 
     public void Hide()
     {
-        PopUpCanva.gameObject.SetActive(false);
+        Target.SetActive(false);
+    }
+
+    private GameObject FindChildWithTag(GameObject parent, string tag)
+    {
+        foreach (Transform child in parent.transform)
+        {
+            if (child.tag == tag)
+            {
+                return child.gameObject;
+            }
+        }
+        return null;
     }
 }
