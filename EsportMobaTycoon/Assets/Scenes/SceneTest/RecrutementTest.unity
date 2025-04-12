@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 94683288}
   - component: {fileID: 94683287}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: LvlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 147967148}
   - component: {fileID: 147967147}
   m_Layer: 5
-  m_Name: Image
+  m_Name: PotentielImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 158828269}
   - component: {fileID: 158828268}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: PotentielImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1120,7 +1120,7 @@ GameObject:
   - component: {fileID: 314870618}
   - component: {fileID: 314870617}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: LvlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1669,18 +1669,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f01dfc96f49b84aab0bbce80017138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 957460008}
-  roleText: {fileID: 307231904}
-  CountText: {fileID: 1685909073}
-  topPanel: {fileID: 633625049}
-  junglePanel: {fileID: 1975412736}
-  midPanel: {fileID: 978101541}
-  adcPanel: {fileID: 170979774}
-  supportPanel: {fileID: 718791338}
-  playerSlotPrefab: {fileID: 4254904471582111767, guid: e6c66178ee761e447b705b483290fb5c,
+  i_nameText: {fileID: 957460008}
+  i_roleText: {fileID: 307231904}
+  i_countText: {fileID: 1685909073}
+  i_topPanel: {fileID: 633625049}
+  i_junglePanel: {fileID: 1975412736}
+  i_midPanel: {fileID: 978101541}
+  i_adcPanel: {fileID: 170979774}
+  i_supportPanel: {fileID: 718791338}
+  i_PanelLevel: {fileID: 1642210339}
+  i_PanelPotential: {fileID: 1034177424}
+  i_playerSlotPrefab: {fileID: 4254904471582111767, guid: e6c66178ee761e447b705b483290fb5c,
     type: 3}
-  allPlayers: []
-  selectedTeam: []
+  i_allPlayers: []
+  i_selectedTeam: []
+  i_teamAnimator: {fileID: 1309016441}
+  i_lvlImage1: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_lvlImage2: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_lvlImage3: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_lvlImage4: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_lvlImage5: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_potentielImage1: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_potentielImage2: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_potentielImage3: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_potentielImage4: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  i_potentielImage5: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &596016166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,7 +3694,7 @@ GameObject:
   - component: {fileID: 1113711766}
   - component: {fileID: 1113711765}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LvlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4707,7 +4720,7 @@ GameObject:
   - component: {fileID: 1563535511}
   - component: {fileID: 1563535510}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: LvlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4782,7 +4795,7 @@ GameObject:
   - component: {fileID: 1579526639}
   - component: {fileID: 1579526638}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: PotentielImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5057,7 +5070,7 @@ GameObject:
   - component: {fileID: 1664643388}
   - component: {fileID: 1664643387}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: LvlImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5132,7 +5145,7 @@ GameObject:
   - component: {fileID: 1675440606}
   - component: {fileID: 1675440605}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: PotentielImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6184,7 +6197,7 @@ GameObject:
   - component: {fileID: 1996760272}
   - component: {fileID: 1996760271}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: PotentielImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

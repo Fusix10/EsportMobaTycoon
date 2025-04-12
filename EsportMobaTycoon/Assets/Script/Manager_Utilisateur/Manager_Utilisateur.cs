@@ -165,4 +165,14 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         get { return teamPlayers; }
     }
+
+    public Player GetPlayerByRole(int role)
+    {
+        foreach (var player in teamPlayers)
+        {
+            if (player.i_role == role)
+                return player;
+        }
+        return null;
+    }
 }
