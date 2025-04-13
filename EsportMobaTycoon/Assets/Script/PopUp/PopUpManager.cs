@@ -8,6 +8,9 @@ using UnityEngine.UI; // Ajoutez pour Text et Button
 public class PopUpManager : MonoBehaviour
 {
 
+    [SerializeField] public GameManager i_gameManager;
+
+
     [SerializeField] private List<PopUpBase> i_popUpList;
 
     private Queue<PopUpData> i_PopUpsToDisplay; 
@@ -19,20 +22,11 @@ public class PopUpManager : MonoBehaviour
 
         if (GameManager.Instance == null)
         {
-            Debug.LogError("GameManager.Instance is null");
+            Debug.Log("Didn't find GameManager");
         }
-        else if (GameManager.Instance.i_eventManager == null)
-        {
-            Debug.LogError("GameManager.Instance.i_eventManager is null");
-        }
-        else if (GameManager.Instance.i_eventManager.i_onEventPlay == null)
-        {
-            Debug.LogError("GameManager.Instance.i_eventManager.i_onEventPlay is null");
-        }
-        else
-        {
-            GameManager.Instance.i_eventManager.i_onEventPlay.AddListener(OnEventPlay);
-        }
+
+        i_gameManager.i_eventManager.i_onEventPlay.AddListener(OnEventPlay);
+        
     }
 
     private void OnEventPlay(EventBase eventBase)
@@ -130,14 +124,5 @@ public class PopUpManager : MonoBehaviour
     {
         popUp.Hide();
         popUp.i_isOccupied = false;
-    }
-
-    private void OnDestroy()
-    {
-        // Désabonnement 
-        if (EventManager.Instance != null)
-        {
-            EventManager.Instance.i_onEventPlay.RemoveListener(OnEventPlay);
-        }
     }
 }

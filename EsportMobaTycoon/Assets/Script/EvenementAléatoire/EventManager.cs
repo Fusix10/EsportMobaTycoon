@@ -6,9 +6,7 @@ using UnityEngine.UIElements;
 
 public class EventManager : MonoBehaviour
 {
-    public static EventManager Instance { get; private set; }
 
-    private PopUpManager i_PopUpManager;
     public List<EventBase> i_InactiveEvents; //List Event a remplir de tout les events avant le start
     [SerializeField]private List<EventBase> i_ActiveEvents; // List d'event qui peuvent se produire 
 

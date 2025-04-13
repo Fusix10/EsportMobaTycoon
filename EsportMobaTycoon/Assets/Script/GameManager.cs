@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     TimeSystem i_timeSystem;
 
     //�Event MAnager
-    public EventManager i_eventManager;
+    [SerializeField]public EventManager i_eventManager;
 
     //PopUpManager 
-    public PopUpManager i_popupManager;
+    [SerializeField] public PopUpManager i_popupManager;
 
 
     int i_testID = 0;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         //�Event MAnager
         i_eventManager = this.GetComponent<EventManager>();
         //�PopUp MAnager
-        i_popupManager = this.GetComponent<PopUpManager>();
+        i_popupManager = this.GetComponent<PopUpManager>(); ;
 
 
         /*for (int i = 0; i < 5; i++)

@@ -146,7 +146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3336899}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbde3582fad3adb42b21ae4fc16a7f49, type: 3}
   m_Name: 
@@ -164,11 +164,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3336899}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfcd2349c64779a47a1ccdf48818323e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  i_gameManager: {fileID: 0}
   i_popUpList:
   - {fileID: 1521287571}
   - {fileID: 1510848145}
@@ -202,6 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b5ca78b4c1ce24eb05238d70963747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  i_eventManager: {fileID: 0}
+  i_popupManager: {fileID: 0}
   i_manager: {fileID: 0}
   i_allPlayers:
   - {fileID: 236892990}
