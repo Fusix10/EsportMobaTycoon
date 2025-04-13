@@ -7,45 +7,37 @@ using UnityEngine.UI; // Ajoutez pour Text et Button
 
 public class PopUpManager : MonoBehaviour
 {
-    public static PopUpManager Instance { get; private set; }
 
     [SerializeField] private List<PopUpBase> i_popUpList;
 
     private Queue<PopUpData> i_PopUpsToDisplay; 
 
-    void Start()
-    {
-       
-
-        //// Récupérer tous les enfants de type PopUpBase pour Remplir popUpList
-        //PopUpBase[] popUps = GetComponentsInChildren<PopUpBase>(true);
-        //foreach (var popUp in popUps)
-        //{
-        //    i_popUpList.Add(popUp);
-        //}
-
-        // Abonnement
-        
-    }
-
     void Awake()
     {
-        if (Instance == null)
+        i_popUpList = new List<PopUpBase>();
+        i_PopUpsToDisplay = new Queue<PopUpData>();
+
+        if (GameManager.Instance == null)
         {
-            Instance = this;
-            i_popUpList = new List<PopUpBase>();
-            i_PopUpsToDisplay = new Queue<PopUpData>();
-            EventManager.Instance.i_onEventPlay.AddListener(OnEventPlay);
+            Debug.LogError("GameManager.Instance is null");
+        }
+        else if (GameManager.Instance.i_eventManager == null)
+        {
+            Debug.LogError("GameManager.Instance.i_eventManager is null");
+        }
+        else if (GameManager.Instance.i_eventManager.i_onEventPlay == null)
+        {
+            Debug.LogError("GameManager.Instance.i_eventManager.i_onEventPlay is null");
         }
         else
         {
-            Destroy(gameObject);
+            GameManager.Instance.i_eventManager.i_onEventPlay.AddListener(OnEventPlay);
         }
-
     }
 
     private void OnEventPlay(EventBase eventBase)
     {
+        Debug.Log("Event Display Request Received : " + eventBase.popUpData.name); 
         i_PopUpsToDisplay.Enqueue(eventBase.popUpData);
     }
 
@@ -54,6 +46,7 @@ public class PopUpManager : MonoBehaviour
 
         while (i_PopUpsToDisplay.Count > 0)
         {
+            Debug.Log("FindingPopUps");
             // Trouver une pop-up libre
             PopUpBase freePopUp = FindFreePopUp();
             if (freePopUp != null)
@@ -64,18 +57,20 @@ public class PopUpManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("No PopUps Available Now");
                 // Si aucune pop-up n'est libre, sortir de la boucle
                 break;
             }
         }
     }
-
+    
     private PopUpBase FindFreePopUp()
     {
         foreach (var popUp in i_popUpList)
         {
             if (!popUp.i_isOccupied)
             {
+                Debug.Log("popUp attribued is : " +  popUp.name);
                 return popUp;
             }
         }
@@ -85,6 +80,7 @@ public class PopUpManager : MonoBehaviour
     private void FillPopUp(PopUpBase popUp, PopUpData popUpData)
     {
         popUp.Display();
+        popUp.i_isOccupied = true;
 
         // Créer des boutons pour chaque action dans popUpData
         foreach (var action in popUpData.actions)
@@ -127,11 +123,13 @@ public class PopUpManager : MonoBehaviour
     {
         GameManager.Instance.AddAction(SelectedAction);
         popUp.Hide();
+        popUp.i_isOccupied = false;
     }
 
     public void OnCloseButtonClick(PopUpBase popUp)
     {
         popUp.Hide();
+        popUp.i_isOccupied = false;
     }
 
     private void OnDestroy()

@@ -15,38 +15,19 @@ public class EventManager : MonoBehaviour
     // List des Event qui ont été proc
     public UnityEvent<EventBase> i_onEventPlay;
 
-    void Start()
+    void Awake()
     {
         i_ActiveEvents = new List<EventBase>();
     }
 
-    void Update()
-    {
-
-    }
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public void Churn()
     {
-        Debug.Log("Appele de Churn");
         UpdateEvent();
         ThrowDices();
     }
 
     private void UpdateEvent()
     {
-        Debug.Log("Appele de UpdateEvent");
         List<EventBase> toActivate = new List<EventBase>();
         List<EventBase> toDeactivate = new List<EventBase>();
 

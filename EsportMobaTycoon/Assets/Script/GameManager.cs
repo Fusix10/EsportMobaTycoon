@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;//
+    public static GameManager Instance;
     TimeSystem i_timeSystem;
 
     //�Event MAnager
-    EventManager i_eventManager;
+    public EventManager i_eventManager;
 
     //PopUpManager 
-    PopUpManager i_popupManager;
+    public PopUpManager i_popupManager;
 
 
     int i_testID = 0;
