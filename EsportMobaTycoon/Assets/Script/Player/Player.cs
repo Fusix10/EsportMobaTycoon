@@ -15,13 +15,13 @@ public class Player : MonoBehaviour
     public Knowledge i_knowledge { get; private set; }
     public Character i_favoriteCharacterId { get; private set; }
     public Character i_characterId { get; private set; }
-    private float i_totalLuck;
-    private float i_morale;
-    private Lvl i_teamSpirit;
-    private int i_reputation;
-    private int i_lvl;
-    private int i_potentiel;
-    private Mood i_mood;
+    public float i_totalLuck;
+    public float i_morale;
+    public Lvl i_teamSpirit;
+    public int i_reputation;
+    public int i_lvl;
+    public int i_potentiel;
+    public Mood i_mood;
 
     public void Init//
     (

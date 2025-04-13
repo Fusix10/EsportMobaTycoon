@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
         knowledge.s_placement = new Lvl(0, 0);
-        i_allPlayers[0].Init("Dinosaure", (Role)2, mechanic, knowledge, i_allCharacters[8], new Lvl(0, 0), 50, 5, i_allMood[5], (Role)2);
+        //i_allPlayers[0].Init("Dinosaure", (Role)2, mechanic, knowledge, i_allCharacters[8], new Lvl(0, 0), 50, 5, i_allMood[5], (Role)2);
     }
     void Update()
     {
