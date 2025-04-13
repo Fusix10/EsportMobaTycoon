@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PopUpBase : MonoBehaviour, IPopUp
 {
-    [SerializeField] private GameObject i_popupUi; // Réf au GameObject contenant le script
+    [SerializeField] private GameObject i_popupUi; // Réf au GameObject contenant l'UI
     public bool i_isOccupied = false;
 
     void Start()

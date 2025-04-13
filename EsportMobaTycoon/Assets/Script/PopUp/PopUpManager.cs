@@ -8,8 +8,8 @@ using UnityEngine.UI; // Ajoutez pour Text et Button
 public class PopUpManager : MonoBehaviour
 {
 
-    [SerializeField] public GameManager i_gameManager;
-
+    [SerializeField] public EventManager i_EventManager;
+    [SerializeField] public GameObject PopUpsContainer;
 
     [SerializeField] private List<PopUpBase> i_popUpList;
 
@@ -20,13 +20,22 @@ public class PopUpManager : MonoBehaviour
         i_popUpList = new List<PopUpBase>();
         i_PopUpsToDisplay = new Queue<PopUpData>();
 
-        if (GameManager.Instance == null)
-        {
-            Debug.Log("Didn't find GameManager");
-        }
+        i_EventManager = this.GetComponent<EventManager>();
+        i_EventManager.i_onEventPlay.AddListener(OnEventPlay);
 
-        i_gameManager.i_eventManager.i_onEventPlay.AddListener(OnEventPlay);
-        
+        GetPopUpFromContainer(PopUpsContainer);
+    }
+
+    private void GetPopUpFromContainer(GameObject container)
+    {
+        // Récupérer tous les composants de type PopUpBase dans les enfants du conteneur
+        PopUpBase[] popUps = container.GetComponentsInChildren<PopUpBase>(true);
+
+        // Ajouter chaque PopUpBase trouvé à la file d'attente i_PopUpsToDisplay
+        foreach (var popUp in popUps)
+        {
+            i_popUpList.Add(popUp.GetComponent<PopUpBase>());
+        }
     }
 
     private void OnEventPlay(EventBase eventBase)
@@ -76,16 +85,20 @@ public class PopUpManager : MonoBehaviour
         popUp.Display();
         popUp.i_isOccupied = true;
 
-        // Créer des boutons pour chaque action dans popUpData
-        foreach (var action in popUpData.actions)
-        {
-            CreateButton(popUp, action);
-        }
-
         // Si aucune action, créer un bouton qui ferme la popUp
-        if (popUpData.actions.Count == 0)
+        if (popUpData.actions == null)
         {
+            Debug.Log("No Buttons found");
             CreateCloseButton(popUp);
+        }
+        else
+        {
+            // Créer des boutons pour chaque action dans popUpData
+            Debug.Log("Buttons found");
+            foreach (var action in popUpData.actions)
+            {
+                CreateButton(popUp, action);
+            }
         }
     }
 
@@ -108,9 +121,9 @@ public class PopUpManager : MonoBehaviour
         Button button = buttonObj.AddComponent<Button>();
         button.onClick.AddListener(() => OnCloseButtonClick(popUp));
 
+        Image buttonImage = buttonObj.AddComponent<Image>();
+        buttonImage.color = Color.red; 
 
-        Text buttonText = buttonObj.AddComponent<Text>();
-        buttonText.text = "Close";
     }
 
     public void OnButtonClick(PopUpBase popUp, ActionMother SelectedAction)
