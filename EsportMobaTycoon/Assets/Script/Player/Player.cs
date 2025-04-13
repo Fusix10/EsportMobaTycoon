@@ -70,23 +70,22 @@ public class Player : MonoBehaviour
         {
             obj.s_Xp += ((100 - (obj.s_lvl * 5)) * Gain) / 100;
         }
-            
-        while(obj.s_Xp > 100)
+
+        while (obj.s_Xp > 100)
         {
             obj.s_Xp -= 100;
             obj.s_lvl++;
 
-        if (obj.s_Xp >= 100)
-        {
-            obj.s_lvl++;
-            while (obj.s_Xp > 100)
+            if (obj.s_Xp >= 100)
             {
-                obj.s_Xp -= 100;
+                obj.s_lvl++;
+                while (obj.s_Xp > 100)
+                {
+                    obj.s_Xp -= 100;
+                }
             }
         }
     }
-
-
     public void Luck()
     {
         float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
@@ -94,6 +93,7 @@ public class Player : MonoBehaviour
         sumLuck *= (i_morale / 100);
         i_totalLuck = sumLuck;
         i_lvl = (int)Mathf.Round(sumLuck);
+ 
     }
 
     public void UpdateTick()
