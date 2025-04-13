@@ -1,30 +1,23 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class EventBase 
+[CreateAssetMenu(fileName = "NewEventBase", menuName = "Event Base")]
+public class EventBase : ScriptableObject
 {
     public float probability = 0.1f;
+    public PopUpData popUpData;
 
-
-    public EventBase()
+    public void Init(PopUpData data)
     {
-        //Nombre de bouton 
-        //Si besoin de click ou pas
+        popUpData = data;
     }
+
     public virtual bool Condition()
     {
-        // Logique pour déterminer si l'événement doit être ajouté à ActiveEvents
-        // Par défaut, retourne true, mais peut être redéfinie dans les classes dérivées
         return true;
     }
 
     public bool ThrowDice()
     {
-        bool result = Random.value < probability;
-        if (result)
-        {
-            return true;
-        }
-        else { return false; }
+        return Random.value < probability;
     }
 }

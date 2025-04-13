@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     //�Event MAnager
     EventManager i_eventManager;
 
+    //PopUpManager 
+    PopUpManager i_popupManager;
+
 
     int i_testID = 0;
     List<ActionMother> i_allActions;
@@ -52,7 +55,8 @@ public class GameManager : MonoBehaviour
 
         //�Event MAnager
         i_eventManager = this.GetComponent<EventManager>();
-
+        //�PopUp MAnager
+        i_popupManager = this.GetComponent<PopUpManager>();
 
 
         /*for (int i = 0; i < 5; i++)
@@ -68,6 +72,7 @@ public class GameManager : MonoBehaviour
     public void PassTimeButton()
     {
         i_timeSystem.passingTime();
+        i_eventManager.Churn();
     }
     public void AddAction(ActionMother NewAction)//
     {

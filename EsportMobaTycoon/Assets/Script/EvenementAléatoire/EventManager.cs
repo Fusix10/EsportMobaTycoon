@@ -6,9 +6,11 @@ using UnityEngine.UIElements;
 
 public class EventManager : MonoBehaviour
 {
-    //[SerializeField] private PopUpManager i_PopUpManager;
-    [SerializeField] public List<EventBase> i_InactiveEvents; //List Event a remplir de tout les events avant le start
-    private List<EventBase> i_ActiveEvents; 
+    public static EventManager Instance { get; private set; }
+
+    private PopUpManager i_PopUpManager;
+    public List<EventBase> i_InactiveEvents; //List Event a remplir de tout les events avant le start
+    [SerializeField]private List<EventBase> i_ActiveEvents; // List d'event qui peuvent se produire 
 
     // List des Event qui ont été proc
     public UnityEvent<EventBase> i_onEventPlay;
@@ -23,22 +25,36 @@ public class EventManager : MonoBehaviour
 
     }
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void Churn()
     {
+        Debug.Log("Appele de Churn");
         UpdateEvent();
         ThrowDices();
     }
 
     private void UpdateEvent()
     {
+        Debug.Log("Appele de UpdateEvent");
         List<EventBase> toActivate = new List<EventBase>();
         List<EventBase> toDeactivate = new List<EventBase>();
 
         // Vérification des éléments inactifs
         foreach (var inactiveEvent in i_InactiveEvents)
         {
-            EventBase myEvent = inactiveEvent as EventBase;
-            if (myEvent != null && myEvent.Condition())
+            EventBase myEvent = inactiveEvent;
+            if (myEvent.Condition())
             {
                 toActivate.Add(inactiveEvent);
             }
@@ -47,8 +63,8 @@ public class EventManager : MonoBehaviour
         // Vérification des éléments actifs
         foreach (var activeEvent in i_ActiveEvents)
         {
-            EventBase myEvent = activeEvent as EventBase;
-            if (myEvent != null && !myEvent.Condition())
+            EventBase myEvent = activeEvent;
+            if (!myEvent.Condition())
             {
                 toDeactivate.Add(activeEvent);
             }
@@ -73,15 +89,11 @@ public class EventManager : MonoBehaviour
     {
         foreach (var activeEvent in i_ActiveEvents)
         {
-            EventBase eventBase = activeEvent as EventBase;
-            if (eventBase != null)
+            EventBase eventBase = activeEvent;
+            if (eventBase.ThrowDice()) //si l'event se produit ou non
             {
-                if (eventBase.ThrowDice())
-                {
-                    i_onEventPlay.Invoke(eventBase);
-                    //event add to 
-                }
-
+                i_onEventPlay.Invoke(eventBase);
+                Debug.Log(eventBase.GetType().Name + "proc");
             }
         }
     }

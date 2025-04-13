@@ -1,0 +1,145 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.Events;
+
+using UnityEngine.UI; // Ajoutez pour Text et Button
+
+public class PopUpManager : MonoBehaviour
+{
+    public static PopUpManager Instance { get; private set; }
+
+    [SerializeField] private List<PopUpBase> i_popUpList;
+
+    private Queue<PopUpData> i_PopUpsToDisplay; 
+
+    void Start()
+    {
+       
+
+        //// Récupérer tous les enfants de type PopUpBase pour Remplir popUpList
+        //PopUpBase[] popUps = GetComponentsInChildren<PopUpBase>(true);
+        //foreach (var popUp in popUps)
+        //{
+        //    i_popUpList.Add(popUp);
+        //}
+
+        // Abonnement
+        
+    }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            i_popUpList = new List<PopUpBase>();
+            i_PopUpsToDisplay = new Queue<PopUpData>();
+            EventManager.Instance.i_onEventPlay.AddListener(OnEventPlay);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    private void OnEventPlay(EventBase eventBase)
+    {
+        i_PopUpsToDisplay.Enqueue(eventBase.popUpData);
+    }
+
+    private void Update()
+    {
+
+        while (i_PopUpsToDisplay.Count > 0)
+        {
+            // Trouver une pop-up libre
+            PopUpBase freePopUp = FindFreePopUp();
+            if (freePopUp != null)
+            {
+                // Remplir la pop-up libre avec les données de la file d'attente
+                PopUpData popUpData = i_PopUpsToDisplay.Dequeue();
+                FillPopUp(freePopUp, popUpData);
+            }
+            else
+            {
+                // Si aucune pop-up n'est libre, sortir de la boucle
+                break;
+            }
+        }
+    }
+
+    private PopUpBase FindFreePopUp()
+    {
+        foreach (var popUp in i_popUpList)
+        {
+            if (!popUp.i_isOccupied)
+            {
+                return popUp;
+            }
+        }
+        return null;
+    }
+
+    private void FillPopUp(PopUpBase popUp, PopUpData popUpData)
+    {
+        popUp.Display();
+
+        // Créer des boutons pour chaque action dans popUpData
+        foreach (var action in popUpData.actions)
+        {
+            CreateButton(popUp, action);
+        }
+
+        // Si aucune action, créer un bouton qui ferme la popUp
+        if (popUpData.actions.Count == 0)
+        {
+            CreateCloseButton(popUp);
+        }
+    }
+
+    private void CreateButton(PopUpBase popUp, ActionMother action)
+    {
+
+        GameObject buttonObj = new GameObject("ActionButton");
+        buttonObj.transform.SetParent(popUp.GetPopupUi().transform, false);
+
+        Button button = buttonObj.AddComponent<Button>();
+        button.onClick.AddListener(() => OnButtonClick(popUp, action));
+
+    }
+
+    private void CreateCloseButton(PopUpBase popUp)
+    {
+        GameObject buttonObj = new GameObject("CloseButton");
+        buttonObj.transform.SetParent(popUp.GetPopupUi().transform, false);
+
+        Button button = buttonObj.AddComponent<Button>();
+        button.onClick.AddListener(() => OnCloseButtonClick(popUp));
+
+
+        Text buttonText = buttonObj.AddComponent<Text>();
+        buttonText.text = "Close";
+    }
+
+    public void OnButtonClick(PopUpBase popUp, ActionMother SelectedAction)
+    {
+        GameManager.Instance.AddAction(SelectedAction);
+        popUp.Hide();
+    }
+
+    public void OnCloseButtonClick(PopUpBase popUp)
+    {
+        popUp.Hide();
+    }
+
+    private void OnDestroy()
+    {
+        // Désabonnement 
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.i_onEventPlay.RemoveListener(OnEventPlay);
+        }
+    }
+}

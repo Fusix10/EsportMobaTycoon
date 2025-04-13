@@ -41,10 +41,6 @@ public class TimeSystem : MonoBehaviour
 
         Debug.Log("Turn : " + i_actualTime);
 
-        //EventManager 
-        EventManager EM = this.GetComponentInParent<EventManager>();
-        EM.Churn();
-
         this.OnTurnPass();
     }
 
