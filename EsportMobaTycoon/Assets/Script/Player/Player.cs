@@ -118,6 +118,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetRole(int newRole)
+    {
+        i_role = newRole;
+    }
+
 }
 
 
