@@ -37,7 +37,10 @@ public class ScrollView : MonoBehaviour
 
     public void ClampScroll(Vector2 vec)
     {
-        waitTime = 0;
-        niveauScroll = vec.x;
+        if (niveauScroll + 0.05 <= vec.x || niveauScroll - 0.05 >= vec.x)
+        {
+            waitTime = 0;
+            niveauScroll = vec.x;
+        }
     }
 }
