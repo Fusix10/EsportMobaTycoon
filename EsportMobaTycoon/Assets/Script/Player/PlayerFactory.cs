@@ -98,7 +98,7 @@ public class PlayerFactory : MonoBehaviour
     {
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
         int role = UnityEngine.Random.Range(0, 5); 
-        int potential = UnityEngine.Random.Range(5, 5);
+        int potential = UnityEngine.Random.Range(1, 5);
         int reputation = UnityEngine.Random.Range(0, 100);
         int characterId = UnityEngine.Random.Range(0, 5);
 

@@ -13,6 +13,8 @@ public class Manager_Utilisateur : MonoBehaviour
 
     public Budget budget;
 
+    private Dictionary<int, Player> teamPlayersByRole = new();
+
     //met a jour le texte de la fen�tre avec les stats actuelles
     public void UpdateUi()
     {
@@ -109,20 +111,42 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }*/
 
-    public void AddPlayer(Player player)//
+    public void AddPlayer(Player player)
     {
-        if (teamPlayers.Count < 5)
+        if (teamPlayers.Count < 5 && !teamPlayers.Contains(player))
         {
             teamPlayers.Add(player);
+            if (!teamPlayersByRole.ContainsKey(player.i_role))
+            {
+                teamPlayersByRole[player.i_role] = player;
+            }
+
+            Debug.Log(teamPlayers.Count);
         }
     }
 
-    public void RemovePlayer(Player player)//
+    public void RemovePlayer(Player player)
     {
-        if (teamPlayers.Contains(player) && teamPlayers.Count > 0)
+        if (teamPlayers.Contains(player))
         {
             teamPlayers.Remove(player);
+
+            if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
+            {
+                teamPlayersByRole.Remove(player.i_role);
+            }
         }
+    }
+
+    public void MovePlayerToRole(Player player, int newRole)
+    {
+        if (!teamPlayers.Contains(player)) return;
+
+        if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
+            teamPlayersByRole.Remove(player.i_role);
+
+        player.SetRole(newRole);
+        teamPlayersByRole[newRole] = player;
     }
 
     void AcheterItem(int cost)
@@ -135,5 +159,20 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             //g�rer le cas d'�chec (fonds insuffisants).
         }
+    }
+
+    public List<Player> TeamPlayers
+    {
+        get { return teamPlayers; }
+    }
+
+    public Player GetPlayerByRole(int role)
+    {
+        foreach (var player in teamPlayers)
+        {
+            if (player.i_role == role)
+                return player;
+        }
+        return null;
     }
 }
