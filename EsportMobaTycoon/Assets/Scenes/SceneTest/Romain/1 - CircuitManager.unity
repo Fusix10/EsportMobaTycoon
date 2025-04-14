@@ -150,8 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_currentMoney: 1000
   i_reputation: 0
-  nextLevel: 100
-  teamPlayers: []
   infoText: {fileID: 0}
   budget: {fileID: 0}
 --- !u!4 &26247478
@@ -1102,18 +1100,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2646ff02d1277498d99b72f95bb40b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_circuitMinTournament: 0
-  i_tournamentMinMatches: 0
-  i_tournamentMaxMatches: 0
+  i_circuitMinTournament: 1
+  i_tournamentMaxMatches: 3
+  i_minMonthsDelayTournament: 1
+  i_maxMonthsDelayTournament: 1
+  i_tournamentMinMatches: 1
   i_circuitDifficulty: 0
-  i_majorMinMatches: 0
-  i_majorMaxMatches: 0
+  i_majorMinMatches: 3
+  i_majorMaxMatches: 5
   circuitUIPrefab: {fileID: 7657064879085296132, guid: 28b6808857480b5478582a5a61312cb7,
     type: 3}
   circuitPanel: {fileID: 1665496663}
   i_generateCircuitsButton: {fileID: 813330974}
   i_endCircuitButton: {fileID: 2047615739}
-  i_difficultiesListText: {fileID: 1604896680}
+  i_TracksListText: {fileID: 1604896680}
   i_reputationAmountText: {fileID: 1060990458}
   i_rankedThreshold: 0
   i_amateurThreshold: 0
@@ -2418,6 +2418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696735684}
   - component: {fileID: 1696735685}
+  - component: {fileID: 1696735686}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2454,6 +2455,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_manager: {fileID: 26247477}
   i_allPlayers: []
+--- !u!114 &1696735686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696735682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c87723936ba5664ca1747c3ec1408fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047615739
 GameObject:
   m_ObjectHideFlags: 0

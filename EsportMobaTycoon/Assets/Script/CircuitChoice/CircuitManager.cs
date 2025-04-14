@@ -26,6 +26,8 @@ public class CircuitManager : MonoBehaviour
         Professional
     }
 
+    int AllTournament = 0;
+
     [Header("Generation Settings")]
 
     [Header("Circuit Settings")]
@@ -33,11 +35,18 @@ public class CircuitManager : MonoBehaviour
     private int i_circuitMinTournament;
 
     [Header("Tournament Settings")]
-    [SerializeField, Range(1, 3)]
-    private int i_tournamentMinMatches;
 
     [SerializeField, Range(3, 10)]
     private int i_tournamentMaxMatches;
+
+    [SerializeField, Range(1, 12)]
+    private int i_minMonthsDelayTournament;
+
+    [SerializeField, Range(1, 12)]
+    private int i_maxMonthsDelayTournament;
+
+    [SerializeField, Range(1, 10)]
+    private int i_tournamentMinMatches;
 
     [Header("Major Settings")]
     [SerializeField]
@@ -143,8 +152,6 @@ public class CircuitManager : MonoBehaviour
         {
             Circuit newCircuit = new Circuit(i);
 
-            TimeSystem tournamentDate = new TimeSystem();
-
             CircuitTracks newCircuitDifficulty;
             
             newCircuitDifficulty = availableDifficulties[i % availableDifficulties.Count];
@@ -152,9 +159,15 @@ public class CircuitManager : MonoBehaviour
 
             int tournamentCount = i_circuitMinTournament + (int)newCircuitDifficulty;
 
+
             for (int j = 0; j < tournamentCount; j++)
             {
-                Tournament tournament = new Tournament(tournamentDate, false,"Tournament " + j);
+                AllTournament += UnityEngine.Random.Range(30, 50);
+                Tournament tournament = new Tournament(AllTournament, false, "Tournament " + j);
+                CircuitAction c = new CircuitAction();
+                c.setTimer(AllTournament);
+                c.InitTournament(tournament);
+                GameManager.Instance.AddAction(c);
 
                 int matchCount = UnityRandom.Range(i_tournamentMinMatches, i_tournamentMaxMatches);
                 for (int k = 0; k < matchCount; k++)
@@ -165,10 +178,9 @@ public class CircuitManager : MonoBehaviour
 
                 newCircuit.AddTournament(tournament);
             }
-
             if (newCircuitDifficulty >= i_circuitDifficulty)
             {
-                Tournament majorTournament = new Tournament(tournamentDate, true,"Major Tournament");
+                Tournament majorTournament = new Tournament(AllTournament, true,"Major Tournament");
                 int majorMatchCount = UnityRandom.Range(i_majorMinMatches, i_majorMaxMatches);
 
                 for (int m = 0; m < majorMatchCount; m++)
@@ -207,18 +219,17 @@ public class CircuitManager : MonoBehaviour
             StringBuilder tournamentDetails = new StringBuilder();
             for (int i = 0; i < circuit.Value.Item1.GetTournaments().Count; i++)
             {
-                TimeSystem date = circuit.Value.Item1.GetTournaments()[i].getTime();
-
                 int match_count = circuit.Value.Item1.GetTournaments()[i].GetMatches().Count;
+                int roundTournament = circuit.Value.Item1.GetTournaments()[i].GetTurn();
                 totalMatchCount += match_count;
 
                 if (difficulty >= i_circuitDifficulty && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
                 {
-                    tournamentDetails.AppendLine($"- Major : {date} / {match_count} matches");
+                    tournamentDetails.AppendLine($"- Major : Round : {roundTournament} / {match_count} matches");
                 }
                 else
                 {
-                    tournamentDetails.AppendLine($"- Tournament {i + 1}: {date} / {match_count} matches");
+                    tournamentDetails.AppendLine($"- Tournament {i + 1}: {roundTournament} rounds \n {match_count} matches");
                 }
             }
 
@@ -232,13 +243,14 @@ public class CircuitManager : MonoBehaviour
             Button selectButton = circuitUi.transform.Find("SelectButton").GetComponent<Button>();
             TMP_Text selectText = circuitUi.transform.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-            circuitNumberText.text = "Circuit " + circuitId;
+            circuitNumberText.text = "Circuit : " + circuitId + (circuit.Value.Item1.GetName() != null ? circuit.Value.Item1.GetName() : "No Selection"); ;
             circuitDifficultyText.text = "Difficulty : " + difficulty.ToString();
             tournamentDetailsText.text = tournamentDetails.ToString();
             circuitMatchesText.text = "Total Matches : " + totalMatchCount;
 
             selectButton.onClick.AddListener(() => ChooseCircuit(circuitId));
             selectText.text = "Choose C" + circuitId;
+            
         }
     }
 
