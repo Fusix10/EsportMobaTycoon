@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,22 +32,17 @@ public class RecrutementPlayer : MonoBehaviour
 
     public Animator i_teamAnimator;
 
-    public Sprite i_lvlImage1;
-    public Sprite i_lvlImage2;
-    public Sprite i_lvlImage3;
-    public Sprite i_lvlImage4;
-    public Sprite i_lvlImage5;
+    public List<Image> i_lvl;
+    public List<Image> i_Potentiel;
+    public List<Image> i_Mechanic;
+    public List<Image> i_knowledge;
 
-    public Sprite i_potentielImage1;
-    public Sprite i_potentielImage2;
-    public Sprite i_potentielImage3;
-    public Sprite i_potentielImage4;
-    public Sprite i_potentielImage5;
 
     void Start()
     {
         i_selectedTeam = GameManager.Instance.i_manager.TeamPlayers;
         i_allPlayers = GameManager.Instance.i_allPlayers;
+
         UpdateUI();
     }
 
@@ -211,7 +207,6 @@ public class RecrutementPlayer : MonoBehaviour
                         i_moveLeftButton.onClick.RemoveAllListeners();
                         i_moveLeftButton.onClick.AddListener(() => OnRoleChangeButtonClicked(i_player, false));
                     }
-
                     if (i_moveRightButton != null)
                     {
                         i_moveRightButton.onClick.RemoveAllListeners();
@@ -225,46 +220,65 @@ public class RecrutementPlayer : MonoBehaviour
         i_nameText.text = i_currentPlayer.i_name;
         i_roleText.text = GetRoleName(i_currentPlayer.i_role);
         i_countText.text = i_selectedTeam.Count.ToString() + $" / 5";
-
-        for (int i = 0; i < i_allPlayers.Count; i++)
-        {
-            UpdateLevelAndPotentialImages(i_allPlayers[i], i);
-        }
+        InitStat(i_currentPlayer.i_lvl, i_currentPlayer.i_potentiel, i_currentPlayer.i_mechanic, i_currentPlayer.i_knowledge);
     }
 
-    private void UpdateLevelAndPotentialImages(Player i_player, int playerIndex)
+    public void InitStat(int lvl, int potentiel, Mechanic mechanic, Knowledge knowledge)
     {
-        Transform i_lvlPanelInList = i_PanelLevel.GetChild(playerIndex); 
-        Transform i_potentielPanelInList = i_PanelPotential.GetChild(playerIndex);
+        CleanUp();
 
-        // Mise à jour de l'image de niveau
-        if (i_PanelLevel != null)
+        int mecha = (mechanic.s_stamina.s_lvl + mechanic.s_reflexe.s_lvl) / 2;
+        int know = (knowledge.s_teamFight.s_lvl + knowledge.s_objective.s_lvl + knowledge.s_placement.s_lvl) / 2;
+
+        for (int i = 0; i < lvl; i++)
         {
-            Image i_lvlImageInPanel = i_PanelLevel.Find("LvlImage")?.GetComponent<Image>();
-            if (i_lvlImageInPanel != null)
-            {
-                i_lvlImageInPanel.sprite = GetLevelImage(i_player.i_lvl);
-            }
+            i_lvl[i].color = Color.yellow;
         }
 
-        // Mise à jour de l'image de potentiel
-        if (i_PanelPotential != null)
+        for (int i = 0; i < potentiel; i++)
         {
-            Image i_potentielImageInPanel = i_PanelPotential.Find("PotentielImage")?.GetComponent<Image>();
-            if (i_potentielImageInPanel != null)
-            {
-                i_potentielImageInPanel.sprite = GetPotentielImage(i_player.i_potentiel);
-            }
+            i_Potentiel[i].color = Color.yellow;
+        }
+
+        for (int i = 0; i < mecha ; i++)
+        {
+            i_Mechanic[i].color = Color.yellow;
+        }
+
+        for(int i = 0;i < know; i++)
+        {
+            i_knowledge[i].color = Color.yellow;
         }
     }
 
+    public void CleanUp()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            i_lvl[i].color = Color.white;
+        }
 
+        for (int i = 0; i < 5; i++)
+        {
+            i_Potentiel[i].color = Color.white;
+        }
+
+        for(int i = 0; i < 5 ; i++)
+        {
+            i_Mechanic[i].color= Color.white;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            i_knowledge[i].color = Color.white;
+        }
+    }
 
     private void ClearRolePanels()
     {
         foreach (Transform i_child in i_topPanel)
         {
-            if (i_child.gameObject.name != "Move" && i_child.gameObject.name != "Remove")
+            if (i_child.gameObject.name != "MoveLeft" && i_child.gameObject.name != "Remove" && i_child.gameObject.name != "MoveRight")
             {
                 Destroy(i_child.gameObject);
             }
@@ -272,7 +286,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform i_child in i_junglePanel)
         {
-            if (i_child.gameObject.name != "Move" && i_child.gameObject.name != "Remove")
+            if (i_child.gameObject.name != "MoveLeft" && i_child.gameObject.name != "Remove" && i_child.gameObject.name != "MoveRight")
             {
                 Destroy(i_child.gameObject);
             }
@@ -280,7 +294,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform i_child in i_midPanel)
         {
-            if (i_child.gameObject.name != "Move" && i_child.gameObject.name != "Remove")
+            if (i_child.gameObject.name != "MoveLeft" && i_child.gameObject.name != "Remove" && i_child.gameObject.name != "MoveRight")
             {
                 Destroy(i_child.gameObject);
             }
@@ -288,7 +302,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform i_child in i_adcPanel)
         {
-            if (i_child.gameObject.name != "Move" && i_child.gameObject.name != "Remove")
+            if (i_child.gameObject.name != "MoveLeft" && i_child.gameObject.name != "Remove" && i_child.gameObject.name != "MoveRight")
             {
                 Destroy(i_child.gameObject);
             }
@@ -296,7 +310,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (Transform i_child in i_supportPanel)
         {
-            if (i_child.gameObject.name != "Move" && i_child.gameObject.name != "Remove")
+            if (i_child.gameObject.name != "MoveLeft" && i_child.gameObject.name != "Remove" && i_child.gameObject.name != "MoveRight")
             {
                 Destroy(i_child.gameObject);
             }
@@ -330,31 +344,6 @@ public class RecrutementPlayer : MonoBehaviour
     }
 
 
-    private Sprite GetLevelImage(int lvl)
-    {
-        switch (lvl)
-        {
-            case 1: return i_lvlImage1; 
-            case 2: return i_lvlImage2; 
-            case 3: return i_lvlImage3; 
-            case 4: return i_lvlImage4; 
-            case 5: return i_lvlImage5;
-            default: return null;
-        }
-    }
-
-    private Sprite GetPotentielImage(int potentiel)
-    {
-        switch (potentiel)
-        {
-            case 1: return i_potentielImage1; 
-            case 2: return i_potentielImage2; 
-            case 3: return i_potentielImage3; 
-            case 4: return i_potentielImage4; 
-            case 5: return i_potentielImage5;
-            default: return null;
-        }
-    }
 
     public void PlayAddAnimation()
     {
