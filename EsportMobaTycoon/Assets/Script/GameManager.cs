@@ -96,3 +96,13 @@ public enum GameState
     Tournaments,
     Result
 }
+[System.Serializable]
+public class GameData
+{
+    public PlayerData playerData;
+}
+
+public class PlayerData
+{
+    public int i_id;
+}
