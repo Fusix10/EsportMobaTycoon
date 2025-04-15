@@ -68,10 +68,10 @@ public class RecrutementPlayer : MonoBehaviour
         }
 
         selectedTeam.Add(selected);
-        Debug.Log($"{selected.i_name} ajoutÅEÅEl'Èquipe en tant que {GetRoleName(selected.i_role)}.");
+        Debug.Log($"{selected.i_name} ajoutÅEÅEl'Èquipe en tant que {GetRoleName((int)(selected.i_currentRole))}.");
 
         // CrÈe une UI dans le bon panel
-        Transform rolePanel = GetPanelForRole(selected.i_role);
+        Transform rolePanel = GetPanelForRole((int)selected.i_currentRole);
         if (rolePanel != null)
         {
             GameObject slot = Instantiate(playerSlotPrefab, rolePanel);
@@ -89,7 +89,7 @@ public class RecrutementPlayer : MonoBehaviour
         Player currentPlayer = allPlayers[currentIndex];
 
         nameText.text = currentPlayer.i_name;
-        roleText.text = GetRoleName(currentPlayer.i_role);
+        roleText.text = GetRoleName((int)currentPlayer.i_role);
     }
 
     private string GetRoleName(int roleId)

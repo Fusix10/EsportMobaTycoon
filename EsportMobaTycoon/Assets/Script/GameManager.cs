@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public List<Player> i_allPlayers;
     public List<Character> i_allCharacters;
     [SerializeField] public List<MatchUp> i_allMatchUps;
+    public List<PlayerData> i_allPlayerData;
     private GameState i_GameState;
 
     public class MatchUp
@@ -198,7 +199,7 @@ public class GameManager : MonoBehaviour
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
         knowledge.s_placement = new Lvl(0, 0);
-        //i_allPlayers[0].Init("Dinosaure", (Role)2, mechanic, knowledge, i_allCharacters[8], new Lvl(0, 0), 50, 5, i_allMood[5], (Role)2);
+        //ai_allPlayers[0].Init("Dinosaure", (Role)2, mechanic, knowledge, i_allCharacters[8], new Lvl(0, 0), 50, 5, i_allMood[5], (Role)2);
     }
     void Update()
     {

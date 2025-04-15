@@ -1,2 +1,39 @@
 fileFormatVersion: 2
 guid: 39b45d364bd4e6b4eb09ba9d4295f5bb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - nameInput: {instanceID: 0}
+  - characterImage: {instanceID: 0}
+  - teamSpiritXpSlider: {instanceID: 0}
+  - teamSpiritLvlSlider: {instanceID: 0}
+  - xpSlider: {instanceID: 0}
+  - roleSlider: {instanceID: 0}
+  - rolePlayedSlider: {instanceID: 0}
+  - potentialSlider: {instanceID: 0}
+  - reputationSlider: {instanceID: 0}
+  - reflexelvlSlider: {instanceID: 0}
+  - reflexexpSlider: {instanceID: 0}
+  - staminalvlSlider: {instanceID: 0}
+  - staminaxpSlider: {instanceID: 0}
+  - combolvlSlider: {instanceID: 0}
+  - comboxpSlider: {instanceID: 0}
+  - objectivexpSlider: {instanceID: 0}
+  - objectivelvlSlider: {instanceID: 0}
+  - placementxpSlider: {instanceID: 0}
+  - placementlvlSlider: {instanceID: 0}
+  - teamFightxpSlider: {instanceID: 0}
+  - teamFightlvlSlider: {instanceID: 0}
+  - favoriteCharacterSlider: {instanceID: 0}
+  - characterPlayedSlider: {instanceID: 0}
+  - moodDropdown: {instanceID: 0}
+  - playerPrefab: {instanceID: 0}
+  - baseMaterial: {instanceID: 0}
+  - PlayerPrefabs: {fileID: 5809320719845124057, guid: d5146580f8dc1e94ab420560de2977ea,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,14 +7,14 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Player : MonoBehaviour
 {
-    public string i_name { get; private set; }
-    private GameManager.Role i_role;
-    public GameManager.Role i_currentRole { get; private set; }
+    public string i_name { get; set; }
+    public GameManager.Role i_role;
+    public GameManager.Role i_currentRole { get; set; }
     private Sprite i_icon;
-    public Mechanic i_mechanic { get; private set; }
-    public Knowledge i_knowledge { get; private set; }
-    public Character i_favoriteCharacterId { get; private set; }
-    public Character i_characterId { get; private set; }
+    public Mechanic i_mechanic { get; set; }
+    public Knowledge i_knowledge { get; set; }
+    public Character i_favoriteCharacterId { get; set; }
+    public Character i_characterId { get; set; }
     public float i_totalLuck;
     public float i_morale;
     public Lvl i_teamSpirit;
@@ -93,7 +93,6 @@ public class Player : MonoBehaviour
         sumLuck *= (i_morale / 100);
         i_totalLuck = sumLuck;
         i_lvl = (int)Mathf.Round(sumLuck);
- 
     }
 
     public void UpdateTick()
@@ -120,7 +119,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ApplyRolePenalty()//
+    public void ApplyRolePenalty()
     {
         if (i_currentRole != i_role)
         {
@@ -153,9 +152,9 @@ public class Player : MonoBehaviour
     public void changeLuck(Player opponent)
     {
         i_totalLuck = 0f;
+        Luck();
         ApplyFavoriteCharacterBonus();
         ApplyRolePenalty();
-        Luck();
         metaLuck();
         matchUpLuck(opponent);
     }
