@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;//
+    public static GameManager Instance;
     TimeSystem i_timeSystem;
 
     //�Event MAnager
@@ -67,12 +67,12 @@ public class GameManager : MonoBehaviour
     {
         i_timeSystem.passingTime();
     }
-    public void AddAction(ActionMother NewAction)//
+    public void AddAction(ActionMother NewAction)
     {
         NewAction.i_id = i_testID;
         i_testID++;
         NewAction.Init();
-        Debug.Log("l'Action " + NewAction.i_id + " �tait cr�er");
+        Debug.Log("l'Action " + NewAction.i_id + " est creer");
         i_allActions.Add(NewAction);
     }
 

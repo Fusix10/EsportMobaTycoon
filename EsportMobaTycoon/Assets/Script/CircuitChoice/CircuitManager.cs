@@ -35,22 +35,15 @@ public class CircuitManager : MonoBehaviour
     private int i_circuitMinTournament;
 
     [Header("Tournament Settings")]
+    [SerializeField, Range(1, 3)]
+    private int i_tournamentMinMatches;
 
     [SerializeField, Range(3, 10)]
     private int i_tournamentMaxMatches;
 
-    [SerializeField, Range(1, 12)]
-    private int i_minMonthsDelayTournament;
-
-    [SerializeField, Range(1, 12)]
-    private int i_maxMonthsDelayTournament;
-
-    [SerializeField, Range(1, 10)]
-    private int i_tournamentMinMatches;
-
     [Header("Major Settings")]
     [SerializeField]
-    private CircuitTracks i_circuitDifficulty;
+    private CircuitTracks i_circuitTracks;
 
     [SerializeField, Range(3, 5)]
     private int i_majorMinMatches;
@@ -95,13 +88,13 @@ public class CircuitManager : MonoBehaviour
     [SerializeField, Range(0, 10000)]
     private int i_professionalThreshold;
 
-    void OnValidate()
+    /*void OnValidate()
     {
         i_rankedThreshold = Mathf.Max(i_rankedThreshold, 0);
         i_amateurThreshold = Mathf.Max(i_amateurThreshold, i_rankedThreshold);
         i_semiprofessionalThreshold = Mathf.Max(i_semiprofessionalThreshold, i_amateurThreshold);
         i_professionalThreshold = Mathf.Max(i_professionalThreshold, i_semiprofessionalThreshold);
-    }
+    }*/
 
 
     private Dictionary<int, (Circuit, CircuitTracks)> i_circuitsChoices;
@@ -113,17 +106,19 @@ public class CircuitManager : MonoBehaviour
         i_circuitsChoices = new Dictionary<int, (Circuit, CircuitTracks)>();
         i_selectedCircuitState = CircuitState.Ended;
 
-        List<int> difficultiesThreshold = new List<int> { 0, i_rankedThreshold, i_amateurThreshold, i_semiprofessionalThreshold, i_professionalThreshold };
+        List<int> tracksThreshold = new List<int> { 0, i_rankedThreshold, i_amateurThreshold, i_semiprofessionalThreshold, i_professionalThreshold };
         string tracksList = new string("");
 
-        CircuitTracks[] difficulties = (CircuitTracks[])Enum.GetValues(typeof(CircuitTracks));
+        CircuitTracks[] tracks = (CircuitTracks[])Enum.GetValues(typeof(CircuitTracks));
 
-        for (int i = 0; i < difficulties.Length; i++)
+        for (int i = 0; i < tracks.Length; i++)
         {
-            tracksList += difficulties[i] + " : " + difficultiesThreshold[i] + " Rp";
+            tracksList += tracks[i] + " : " + tracksThreshold[i] + " Rp";
         }
 
         i_TracksListText.text = tracksList.ToString();
+
+        print("in");
 
     }
 
@@ -144,27 +139,32 @@ public class CircuitManager : MonoBehaviour
 
         i_circuitsChoices.Clear();
 
-        List<CircuitTracks> availableDifficulties = GetAvailableDifficulties();
+        List<CircuitTracks> availableTracks = GetAvailableTracks();
 
-        availableDifficulties = availableDifficulties.OrderByDescending(diff => (int)diff).ToList();
+        availableTracks = availableTracks.OrderByDescending(diff => (int)diff).ToList();
+
+       
 
         for (int i = 0; i < amount; i++)
         {
             Circuit newCircuit = new Circuit(i);
 
-            CircuitTracks newCircuitDifficulty;
+            TimeSystem tournamentDate = GameManager.Instance.GetItimeSystem();
+
+            CircuitTracks newCircuitTracks;
             
-            newCircuitDifficulty = availableDifficulties[i % availableDifficulties.Count];
-           
+            newCircuitTracks = availableTracks[i % availableTracks.Count];
 
-            int tournamentCount = i_circuitMinTournament + (int)newCircuitDifficulty;
+            Debug.Log("tracks : " + newCircuitTracks);
 
+            int tournamentCount = i_circuitMinTournament + (int)newCircuitTracks;
 
             for (int j = 0; j < tournamentCount; j++)
             {
                 AllTournament += UnityEngine.Random.Range(30, 50);
-                Tournament tournament = new Tournament(AllTournament, false, "Tournament " + j);
+                Tournament tournament = new Tournament(AllTournament, false,"Tournament " + j);
                 CircuitAction c = new CircuitAction();
+                Debug.LogError(AllTournament);
                 c.setTimer(AllTournament);
                 c.InitTournament(tournament);
                 GameManager.Instance.AddAction(c);
@@ -178,7 +178,8 @@ public class CircuitManager : MonoBehaviour
 
                 newCircuit.AddTournament(tournament);
             }
-            if (newCircuitDifficulty >= i_circuitDifficulty)
+
+            if (newCircuitTracks >= i_circuitTracks)
             {
                 Tournament majorTournament = new Tournament(AllTournament, true,"Major Tournament");
                 int majorMatchCount = UnityRandom.Range(i_majorMinMatches, i_majorMaxMatches);
@@ -193,7 +194,7 @@ public class CircuitManager : MonoBehaviour
             }
 
             int newId = i_circuitsChoices.Count;
-            i_circuitsChoices[newId] = (newCircuit, newCircuitDifficulty);
+            i_circuitsChoices[newId] = (newCircuit, newCircuitTracks);
         }
 
         Debug.Log("Successfully generated " + amount + " circuits!");
@@ -216,20 +217,19 @@ public class CircuitManager : MonoBehaviour
 
             int totalMatchCount = 0;
 
-            StringBuilder tournamentDetails = new StringBuilder();
+            string tournamentDetails = new string("");
             for (int i = 0; i < circuit.Value.Item1.GetTournaments().Count; i++)
             {
-                int match_count = circuit.Value.Item1.GetTournaments()[i].GetMatches().Count;
-                int roundTournament = circuit.Value.Item1.GetTournaments()[i].GetTurn();
-                totalMatchCount += match_count;
+                int matchCount = circuit.Value.Item1.GetTournaments()[i].GetMatches().Count;
+                totalMatchCount += matchCount;
 
-                if (difficulty >= i_circuitDifficulty && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
+                if (difficulty >= i_circuitTracks && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
                 {
-                    tournamentDetails.AppendLine($"- Major : Round : {roundTournament} / {match_count} matches");
+                    tournamentDetails+="- Major : " + AllTournament + " " + matchCount + " matches";
                 }
                 else
                 {
-                    tournamentDetails.AppendLine($"- Tournament {i + 1}: {roundTournament} rounds \n {match_count} matches");
+                    tournamentDetails+="- Tournament " + i + 1 + " tours : " + AllTournament + " and " + matchCount +" matches";
                 }
             }
 
@@ -243,14 +243,13 @@ public class CircuitManager : MonoBehaviour
             Button selectButton = circuitUi.transform.Find("SelectButton").GetComponent<Button>();
             TMP_Text selectText = circuitUi.transform.Find("SelectButton/SelectText").GetComponent<TMP_Text>();
 
-            circuitNumberText.text = "Circuit : " + circuitId + (circuit.Value.Item1.GetName() != null ? circuit.Value.Item1.GetName() : "No Selection"); ;
+            circuitNumberText.text = "Circuit " + circuitId;
             circuitDifficultyText.text = "Difficulty : " + difficulty.ToString();
             tournamentDetailsText.text = tournamentDetails.ToString();
             circuitMatchesText.text = "Total Matches : " + totalMatchCount;
 
             selectButton.onClick.AddListener(() => ChooseCircuit(circuitId));
             selectText.text = "Choose C" + circuitId;
-            
         }
     }
 
@@ -352,17 +351,17 @@ public class CircuitManager : MonoBehaviour
         }
     }
 
-    private List<CircuitTracks> GetAvailableDifficulties()
+    private List<CircuitTracks> GetAvailableTracks()
     {
-        List<CircuitTracks> available_difficulties = new List<CircuitTracks>();
+        List<CircuitTracks> availableTracks = new List<CircuitTracks>();
 
-        available_difficulties.Add(CircuitTracks.Casual);
-        if (GameManager.Instance.i_manager.i_reputation >= i_rankedThreshold) available_difficulties.Add(CircuitTracks.Ranked);
-        if (GameManager.Instance.i_manager.i_reputation >= i_amateurThreshold) available_difficulties.Add(CircuitTracks.Amateur);
-        if (GameManager.Instance.i_manager.i_reputation >= i_semiprofessionalThreshold) available_difficulties.Add(CircuitTracks.SemiProfessional);
-        if (GameManager.Instance.i_manager.i_reputation >= i_professionalThreshold) available_difficulties.Add(CircuitTracks.Professional);
+        availableTracks.Add(CircuitTracks.Casual);
+        if (GameManager.Instance.i_manager.i_reputation >= i_rankedThreshold) availableTracks.Add(CircuitTracks.Ranked);
+        if (GameManager.Instance.i_manager.i_reputation >= i_amateurThreshold) availableTracks.Add(CircuitTracks.Amateur);
+        if (GameManager.Instance.i_manager.i_reputation >= i_semiprofessionalThreshold) availableTracks.Add(CircuitTracks.SemiProfessional);
+        if (GameManager.Instance.i_manager.i_reputation >= i_professionalThreshold) availableTracks.Add(CircuitTracks.Professional);
 
-        return available_difficulties;
+        return availableTracks;
     }
 
     private CircuitTracks GetHighestDifficulty()
