@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     TimeSystem i_timeSystem;
 
     //�Event MAnager
-    EventManager i_eventManager;
+    [SerializeField]public EventManager i_eventManager;
+
+    //PopUpManager 
+    [SerializeField] public PopUpManager i_popupManager;
 
 
     int i_testID = 0;
@@ -53,7 +56,11 @@ public class GameManager : MonoBehaviour
         //�Event MAnager
         i_eventManager = this.GetComponent<EventManager>();
 
-        for (int i = 0; i < 5; i++)
+        //�PopUp MAnager
+        i_popupManager = this.GetComponent<PopUpManager>(); ;
+
+
+        /*for (int i = 0; i < 5; i++)
         {
             i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
@@ -66,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void PassTimeButton()
     {
         i_timeSystem.passingTime();
+        i_eventManager.Churn();
     }
     public void AddAction(ActionMother NewAction)
     {

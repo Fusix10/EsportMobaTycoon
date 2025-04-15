@@ -9,6 +9,7 @@ TagManager:
   - joueur
   - Remove
   - Move
+  - PopUpBase
   layers:
   - Default
   - TransparentFX

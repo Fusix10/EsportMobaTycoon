@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IPopUp
 {
-    Canvas PopUpCanva { get; set; }
     void Display();
     void Hide();
 }
