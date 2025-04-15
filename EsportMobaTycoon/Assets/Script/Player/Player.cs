@@ -7,6 +7,7 @@ using UnityEngine.SocialPlatforms;
 public class Player : MonoBehaviour
 {
     public string i_name { get; private set; }
+    public string i_knickname { get; private set; }
     public int i_role { get; private set; }
     public int i_currentRole { get; private set; }
     public Sprite i_icon { get; private set; }
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     public void Init//
     (
     string name,
+    string knickname,
     int role,
     Mechanic mechanic,
     Knowledge knowledge,
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
     )
     {
         i_name = name;
+        i_knickname = knickname;
         i_role = role;
         i_icon = icon;
         i_mechanic = mechanic;

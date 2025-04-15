@@ -10,6 +10,7 @@ using System.Xml.Linq;
 public class PlayerFactory : MonoBehaviour
 {
     public TMP_InputField nameInput;
+    public TMP_InputField knicknameInput;
     public Image characterImage;
     public Slider teamSpiritXpSlider;
     public Slider teamSpiritLvlSlider;
@@ -46,6 +47,7 @@ public class PlayerFactory : MonoBehaviour
     public void CreatePlayer()//
     {
         string name = nameInput.text;
+        string knickname = knicknameInput.text;
         Lvl teamSpirit = new((int)teamSpiritLvlSlider.value,teamSpiritXpSlider.value);
         int xp = (int)xpSlider.value;
         int roleId = (int)roleSlider.value;
@@ -78,6 +80,7 @@ public class PlayerFactory : MonoBehaviour
      
         Player playerComponent = playerObj.AddComponent<Player>();
         playerComponent.Init(name, 
+                            knickname,
                             roleId, 
                             mechanic, 
                             knowledge, 
@@ -97,6 +100,7 @@ public class PlayerFactory : MonoBehaviour
     public Player CreateRandomPlayer()//
     {
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
+        string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
         int role = UnityEngine.Random.Range(0, 5); 
         int potential = UnityEngine.Random.Range(1, 5);
         int reputation = UnityEngine.Random.Range(0, 100);
@@ -125,7 +129,7 @@ public class PlayerFactory : MonoBehaviour
 
         GameObject playerObj = Instantiate(PlayerPrefabs);
 
-        playerObj.GetComponent<Player>().Init(name, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)]);
+        playerObj.GetComponent<Player>().Init(name,knickname, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)]);
         return playerObj.GetComponent<Player>();
     }
 }
