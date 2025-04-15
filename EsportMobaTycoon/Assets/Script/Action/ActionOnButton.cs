@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionOnButton : MonoBehaviour
 {
-
+    public SavePlayerSelectedUi savePlayerSelectedUi;
     public float i_Xp;
     public int i_Days;
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class ActionOnButton : MonoBehaviour
         
     }
 
-    public virtual void OnEndTimeButton(Player player)
+    public virtual void OnEndTimeButton()
     {
         
     }

@@ -25,6 +25,18 @@ public class UI_Player : MonoBehaviour
     //public TMP_Text i_carac;
     public GameObject i_graphNiv;
     private RadarChart chart;
+
+
+    [Header("Entrainnement UI")]
+
+    public TMP_Text i_nomE;
+    public List<Image> i_lvlE;
+    public List<Image> i_PotentielE;
+    public Slider i_sliderMeca;
+    public Slider i_sliderConnai;
+    public Slider i_sliderCohé;
+    public TMP_Text i_champFav;
+
     void Start()
     {
         
@@ -35,28 +47,30 @@ public class UI_Player : MonoBehaviour
     {
         
     }
-
+    int moyenMeca;
+    int moyenKnow;
+    int LV;
+    int potentiel;
     public void ActualiseUiPlayerProfil()
     {
-        CleanUp();
+        CleanUp(i_lvl);
+        CleanUp(i_Potentiel);
+
         chart =  i_graphNiv.GetComponent<RadarChart>();
         Player player = GameManager.Instance.i_allPlayers[savePlayerSelectedUi.i_indexPlayer];
 
-        int moyenMeca = (player.i_mechanic.s_stamina.s_lvl + player.i_mechanic.s_reflexe.s_lvl) / 2;
-        int moyenKnow = (player.i_knowledge.s_placement.s_lvl + player.i_knowledge.s_objective.s_lvl + player.i_knowledge.s_teamFight.s_lvl) / 3;
-        int LV = (moyenKnow + moyenMeca) /2;
-        int potentiel = player.i_potentiel;
+        CalculPlayer(player);
 
         //Meca2
-       /* i_graphNiv.data[0].data[0] = player.i_mechanic.s_stamina.s_lvl;
-        //Meca3
-        i_graphNiv.data[0].data[1] = player.i_mechanic.s_reflexe.s_lvl;
-        //Know3
-        i_graphNiv.data[0].data[2] = player.i_knowledge.s_objective.s_lvl;
-        //Know2
-        i_graphNiv.data[0].data[3] = player.i_knowledge.s_teamFight.s_lvl;
-        //Know1
-        i_graphNiv.data[0].data[4] = player.i_knowledge.s_placement.s_lvl;*/
+        /* i_graphNiv.data[0].data[0] = player.i_mechanic.s_stamina.s_lvl;
+         //Meca3
+         i_graphNiv.data[0].data[1] = player.i_mechanic.s_reflexe.s_lvl;
+         //Know3
+         i_graphNiv.data[0].data[2] = player.i_knowledge.s_objective.s_lvl;
+         //Know2
+         i_graphNiv.data[0].data[3] = player.i_knowledge.s_teamFight.s_lvl;
+         //Know1
+         i_graphNiv.data[0].data[4] = player.i_knowledge.s_placement.s_lvl;*/
         //Meca1
         //i_graphNiv.data[0].data[5] = player.i_mechanic.s_lvlCombo;
 
@@ -85,16 +99,46 @@ public class UI_Player : MonoBehaviour
 
 
     }
-    public void CleanUp()
+
+    void CalculPlayer(Player player)
+    {
+        moyenMeca = (player.i_mechanic.s_stamina.s_lvl + player.i_mechanic.s_reflexe.s_lvl) / 2;
+        moyenKnow = (player.i_knowledge.s_placement.s_lvl + player.i_knowledge.s_objective.s_lvl + player.i_knowledge.s_teamFight.s_lvl) / 3;
+        LV = (moyenKnow + moyenMeca) / 2;
+        potentiel = player.i_potentiel;
+    }
+
+    public void ActualiseUiPlayerTrain()
+    {
+        CleanUp(i_lvlE);
+        CleanUp(i_PotentielE);
+
+        Player player = GameManager.Instance.i_allPlayers[savePlayerSelectedUi.i_indexPlayer];
+
+        CalculPlayer(player);
+
+        i_nomE.text = player.i_name;
+
+        for (int i = 0; i < LV; i++)
+        {
+            i_lvlE[i].color = Color.yellow;
+        }
+        
+        for (int i = 0; i < potentiel; i++)
+        {
+            i_PotentielE[i].color = Color.yellow;
+        }
+
+        i_sliderMeca.value = moyenMeca;
+        i_sliderConnai.value = moyenKnow;
+
+    }
+
+    public void CleanUp(List<Image> img)
     {
         for (int i = 0; i < 5; i++)
         {
-            i_lvl[i].color = Color.white;
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            i_Potentiel[i].color = Color.white;
+            img[i].color = Color.white;
         }
     }
 
