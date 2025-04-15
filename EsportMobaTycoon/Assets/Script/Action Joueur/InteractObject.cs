@@ -13,6 +13,8 @@ public class InteractObject : MonoBehaviour
     public GameObject panelLongClick;
     public GameObject panelPC;
 
+    public SavePlayerSelectedUi savePlayerSelectedUi;
+
     float pointerDownTimer;
 
     public float requiredHoldTime;
@@ -82,6 +84,8 @@ public class InteractObject : MonoBehaviour
         //go.SetActive(false);
         Reset();
         canvas.transform.position = go.transform.position;
+        Player player = go.GetComponent<Player>();
+        savePlayerSelectedUi.findPlayer(player.i_name);
         panelLongClick.SetActive(true);
         isActive = true;
     }

@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         i_popupManager = this.GetComponent<PopUpManager>(); ;
 
 
-        /*for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
@@ -101,4 +101,14 @@ public enum GameState
     Match,
     Tournaments,
     Result
+}
+[System.Serializable]
+public class GameData
+{
+    public PlayerData playerData;
+}
+
+public class PlayerData
+{
+    public int i_id;
 }
