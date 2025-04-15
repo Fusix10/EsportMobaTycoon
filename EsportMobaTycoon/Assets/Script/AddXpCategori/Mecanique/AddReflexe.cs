@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class AddReflexe : ActionOnButton
 {
-    public override void OnEndTimeButton(Player player)
+    public override void OnEndTimeButton()
     {
         TimeEndReflexe timeEnd = new TimeEndReflexe();
-        timeEnd.InitPlayer(player);
+        timeEnd.InitPlayer(GameManager.Instance.i_allPlayers[savePlayerSelectedUi.i_indexPlayer]);
         timeEnd.InitXp(i_Xp);
         timeEnd.setTimer(i_Days);
         GameManager.Instance.AddAction(timeEnd);

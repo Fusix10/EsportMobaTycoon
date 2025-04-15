@@ -12,6 +12,7 @@ public class InteractObject : MonoBehaviour
     public GameObject panelClick;
     public GameObject panelLongClick;
     public GameObject panelPC;
+    public GameObject panelPlayer;
 
     public SavePlayerSelectedUi savePlayerSelectedUi;
 
@@ -41,23 +42,26 @@ public class InteractObject : MonoBehaviour
             }
             if (touch.phase == TouchPhase.Ended)
             {
-                if (!isActive && LookForGameObject(out RaycastHit hit, touch))
+                if (!panelPC.activeSelf && !panelPlayer.activeSelf)
                 {
-                    if (hit.collider.gameObject.layer == 6)
+                    if (!isActive && LookForGameObject(out RaycastHit hit, touch))
                     {
-                        PressGameObject(hit.collider.gameObject);
+                        if (hit.collider.gameObject.layer == 6)
+                        {
+                            PressGameObject(hit.collider.gameObject);
+                        }
+                        else if (hit.collider.gameObject.layer == 7)
+                        {
+                            panelPC.SetActive(true);
+                        }
                     }
-                    else if (hit.collider.gameObject.layer == 7)
+                    else if (!isActive)
                     {
-                        panelPC.SetActive(true);
+                        Reset();
                     }
+                    isActive = false;
+                    pointerDownTimer = 0;
                 }
-                else if(!isActive)
-                {
-                    Reset();
-                }
-                isActive = false;
-                pointerDownTimer = 0;
             }
         }
     }
