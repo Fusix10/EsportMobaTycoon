@@ -241,9 +241,22 @@ public class GameManager : MonoBehaviour
 
     public MatchUp GetMatchUp(Character char1, Character char2)
     {
-        return i_allMatchUps.FirstOrDefault(mu =>
-            (mu.firstCharacter == char1 && mu.secondCharacter == char2) ||
-            (mu.firstCharacter == char2 && mu.secondCharacter == char1));
+        var matchUp = i_allMatchUps.FirstOrDefault(mu =>
+        (mu.firstCharacter == char1 && mu.secondCharacter == char2) ||
+        (mu.firstCharacter == char2 && mu.secondCharacter == char1));
+
+        if (matchUp == null)
+        {
+            //Debug.LogWarning($"Matchup between {char1?.i_Id} and {char2?.i_Id} is missing. Returning default.");
+            return new MatchUp
+            {
+                firstCharacter = char1,
+                secondCharacter = char2,
+                state = MatchUp.stateMatchUp.NOTHING
+            };
+        }
+
+        return matchUp;
     }
 
 }

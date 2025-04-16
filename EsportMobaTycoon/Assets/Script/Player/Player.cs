@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -88,11 +89,10 @@ public class Player : MonoBehaviour
     }
     public void Luck()
     {
-        float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
-        sumLuck = sumLuck / 6;
+        float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl+i_teamSpirit.s_lvl;
         sumLuck *= (i_morale / 100);
         i_totalLuck = sumLuck;
-        i_lvl = (int)Mathf.Round(sumLuck);
+        i_lvl = (int)Mathf.Round((i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl) / 6);
     }
 
     public void UpdateTick()
@@ -135,22 +135,58 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void matchUpLuck(Player opppent)
+    public void matchUpLuck(Player opponent)
     {
-        if (GameManager.Instance.GetMatchUp(i_characterId,opppent.i_characterId).state == 
-            GameManager.MatchUp.stateMatchUp.COUNTER)
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance is null.");
+            return;
+        }
+
+        if (i_characterId == null)
+        {
+            Debug.LogError($"{i_name} has a null i_characterId");
+            return;
+        }
+
+        if (opponent == null)
+        {
+            Debug.LogError($"{i_name} has a null opponent");
+            return;
+        }
+
+        if (opponent.i_characterId == null)
+        {
+            Debug.LogError($"{opponent.i_name} has a null i_characterId");
+            return;
+        }
+
+        var matchUp = GameManager.Instance.GetMatchUp(i_characterId, opponent.i_characterId);
+        if (matchUp == null)
+        {
+            Debug.LogError($"Matchup between {i_characterId.i_Id} and {opponent.i_characterId.i_Id} is null.");
+            return;
+        }
+
+        if (matchUp.state == GameManager.MatchUp.stateMatchUp.COUNTER)
         {
             i_totalLuck *= 1.3f;
+            opponent.i_totalLuck *= 0.7f;
         }
-        else if(GameManager.Instance.GetMatchUp(i_characterId, opppent.i_characterId).state ==
-            GameManager.MatchUp.stateMatchUp.ISCOUNTERED)
+        else if (matchUp.state == GameManager.MatchUp.stateMatchUp.ISCOUNTERED)
         {
             i_totalLuck *= 0.7f;
+            opponent.i_totalLuck *= 1.3f;
         }
     }
-
     public void changeLuck(Player opponent)
     {
+        if (opponent == null)
+        {
+            Debug.LogError("Opponent is null in changeLuck");
+            return;
+        }
+
         i_totalLuck = 0f;
         Luck();
         ApplyFavoriteCharacterBonus();

@@ -536,6 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_manager: {fileID: 1767662587}
   i_allPlayers: []
+  i_allPlayerData: []
 --- !u!4 &416756786
 Transform:
   m_ObjectHideFlags: 0
@@ -925,6 +926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerfactory: {fileID: 1583431995}
+  teamRed: []
+  teamBlue: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
