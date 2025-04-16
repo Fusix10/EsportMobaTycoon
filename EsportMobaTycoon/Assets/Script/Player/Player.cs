@@ -10,14 +10,12 @@ public class Player : MonoBehaviour
     public string i_knickname { get; private set; }
     public int i_role { get; private set; }
     public int i_currentRole { get; private set; }
-    public Sprite i_icon { get; private set; }
+    public Sprite i_icon { get; protected set; }
     public Mechanic i_mechanic { get; private set; }//
     public Knowledge i_knowledge { get; private set; }//
     public int i_favoriteCharacterId { get; private set; }
     public int i_characterId { get; private set; }
     public float i_totalLuck { get; private set; }
-
-    [SerializeField]
     public  float i_morale { get; private set; }
     public  Lvl i_teamSpirit { get; private set; }
     public int i_reputation { get; private set; }

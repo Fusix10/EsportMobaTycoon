@@ -10,6 +10,7 @@ public class TimeSystem : MonoBehaviour
     void Start()
     {
         i_actualTime = 0;
+        
     }
 
     void Update()
@@ -41,7 +42,8 @@ public class TimeSystem : MonoBehaviour
 
         Debug.Log("Turn : " + i_actualTime);
 
-        this.OnTurnPass();
+
+        this.OnTurnPass?.Invoke();
     }
 
 }

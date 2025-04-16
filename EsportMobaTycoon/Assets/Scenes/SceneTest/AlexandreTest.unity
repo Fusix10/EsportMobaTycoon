@@ -558,6 +558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b5ca78b4c1ce24eb05238d70963747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  i_eventManager: {fileID: 0}
+  i_popupManager: {fileID: 0}
+  i_manager: {fileID: 0}
   i_allPlayers:
   - {fileID: 1573836906}
 --- !u!224 &868767525
@@ -718,8 +721,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Test TImeSystem
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e1d2bc82f64f684fb14f67f18182501, type: 2}
+  m_sharedMaterial: {fileID: -4247803495129324672, guid: 2e1d2bc82f64f684fb14f67f18182501,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
