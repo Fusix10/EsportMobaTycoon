@@ -44,6 +44,11 @@ public class PopUpManager : MonoBehaviour
         i_PopUpsToDisplay.Enqueue(eventBase.popUpData);
     }
 
+    public void PopUpRequest(PopUpData popUpData)
+    {
+        i_PopUpsToDisplay.Enqueue(popUpData);
+    }
+
     private void Update()
     {
 
