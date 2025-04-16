@@ -8,9 +8,11 @@ public class Carouselle : MonoBehaviour
     [SerializeField] private Image targetImage;
     [SerializeField] private List<Sprite> sprites;
     [SerializeField] private List<Button> colorButtons;
+    [SerializeField] private List<Color> colors;
+    [SerializeField] private int colorsIndex;
 
     private int SpriteIndex = 0;
-    private int colorButtonIndex = 0; 
+    private int colorButtonIndex; 
 
     void Start()
     {
@@ -24,14 +26,26 @@ public class Carouselle : MonoBehaviour
             Debug.LogError("Sprites list is empty.");
         }
 
-        if (colorButtons.Count == 0)
-        {
-            Debug.LogError("colorButtons list is empty.");
-        }
         else
         {
             UpdateImage();
-            UpdateColor(colorButtonIndex);
+            if (colorButtons.Count > 1)
+            {
+                Debug.Log("More than 1 color Button detected");
+                UpdateColor(0);
+            }
+
+            else if (colorButtons.Count == 1) 
+            {
+                Debug.Log("1 color Button detected");
+                colorButtonIndex = 0;
+                UpdateColorCarouselle(colorButtons[colorButtonIndex]);
+            }
+
+            else
+            {
+                Debug.LogError("No Color Buttons Assigned to Carouselle");
+            }
         }
     }
 
@@ -67,6 +81,13 @@ public class Carouselle : MonoBehaviour
         {
             Debug.LogError("Index out of range for color buttons.");
         }
+    }
+
+    public void UpdateColorCarouselle(Button myButton)
+    {
+        colorButtonIndex = (colorButtonIndex + 1) % colors.Count;
+        targetImage.color = colors[colorButtonIndex];
+        myButton.image.color = colors[colorButtonIndex];
     }
 
     public void Randomize()
