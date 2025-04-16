@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Circuit
 {
@@ -15,16 +12,6 @@ public class Circuit
         i_tournaments = new List<Tournament>();
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-
     public void AddTournament(Tournament tournament)
     {
         i_tournaments.Add(tournament);
@@ -36,5 +23,3 @@ public class Circuit
     }
 
 }
-
-
