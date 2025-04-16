@@ -143,7 +143,7 @@ public class CircuitManager : MonoBehaviour
 
         availableTracks = availableTracks.OrderByDescending(diff => (int)diff).ToList();
 
-       
+
 
         for (int i = 0; i < amount; i++)
         {
@@ -152,7 +152,7 @@ public class CircuitManager : MonoBehaviour
             TimeSystem tournamentDate = GameManager.Instance.GetItimeSystem();
 
             CircuitTracks newCircuitTracks;
-            
+
             newCircuitTracks = availableTracks[i % availableTracks.Count];
 
             Debug.Log("tracks : " + newCircuitTracks);
@@ -162,7 +162,7 @@ public class CircuitManager : MonoBehaviour
             for (int j = 0; j < tournamentCount; j++)
             {
                 AllTournament += UnityEngine.Random.Range(30, 50);
-                Tournament tournament = new Tournament(AllTournament, false,"Tournament " + j);
+                Tournament tournament = new Tournament(AllTournament, false, "Tournament " + j);
                 CircuitAction c = new CircuitAction();
                 Debug.LogError(AllTournament);
                 c.setTimer(AllTournament);
@@ -181,7 +181,7 @@ public class CircuitManager : MonoBehaviour
 
             if (newCircuitTracks >= i_circuitTracks)
             {
-                Tournament majorTournament = new Tournament(AllTournament, true,"Major Tournament");
+                Tournament majorTournament = new Tournament(AllTournament, true, "Major Tournament");
                 int majorMatchCount = UnityRandom.Range(i_majorMinMatches, i_majorMaxMatches);
 
                 for (int m = 0; m < majorMatchCount; m++)
@@ -225,11 +225,11 @@ public class CircuitManager : MonoBehaviour
 
                 if (difficulty >= i_circuitTracks && (i + 1) == circuit.Value.Item1.GetTournaments().Count)
                 {
-                    tournamentDetails+="- Major : " + AllTournament + " " + matchCount + " matches";
+                    tournamentDetails += "- Major : " + AllTournament + " " + matchCount + " matches";
                 }
                 else
                 {
-                    tournamentDetails+="- Tournament " + i + 1 + " tours : " + AllTournament + " and " + matchCount +" matches";
+                    tournamentDetails += "- Tournament " + i + 1 + " tours : " + AllTournament + " and " + matchCount + " matches";
                 }
             }
 

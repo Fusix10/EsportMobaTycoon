@@ -49,11 +49,11 @@ public class Tournament
 
     public int getNbTurn()
     {
-        return i_nbTurn; 
+        return i_nbTurn;
     }
 
     public bool IsMajor()
     {
         return i_is_major;
     }
-}  
+}
