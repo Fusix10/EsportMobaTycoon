@@ -49,7 +49,6 @@ public class UI_Player : MonoBehaviour
     }
     int moyenMeca;
     int moyenKnow;
-    int LV;
     int potentiel;
     public void ActualiseUiPlayerProfil()
     {
@@ -79,7 +78,7 @@ public class UI_Player : MonoBehaviour
         i_mecaLV.text = "lvl" + moyenMeca.ToString();
         i_connaiLV.text = "lvl" + moyenKnow.ToString();
 
-        for (int i = 0; i < LV; i++)
+        for (int i = 0; i < player.i_lvl; i++)
         {
             i_lvl[i].color = Color.yellow;
         }
@@ -104,7 +103,6 @@ public class UI_Player : MonoBehaviour
     {
         moyenMeca = (player.i_mechanic.s_stamina.s_lvl + player.i_mechanic.s_reflexe.s_lvl) / 2;
         moyenKnow = (player.i_knowledge.s_placement.s_lvl + player.i_knowledge.s_objective.s_lvl + player.i_knowledge.s_teamFight.s_lvl) / 3;
-        LV = (moyenKnow + moyenMeca) / 2;
         potentiel = player.i_potentiel;
     }
 
@@ -119,7 +117,7 @@ public class UI_Player : MonoBehaviour
 
         i_nomE.text = player.i_name;
 
-        for (int i = 0; i < LV; i++)
+        for (int i = 0; i < player.i_lvl; i++)
         {
             i_lvlE[i].color = Color.yellow;
         }

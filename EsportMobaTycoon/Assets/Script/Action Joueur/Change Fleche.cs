@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeTexture : MonoBehaviour
+public class ChangeFleche : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TMP_Text i_text;
     void Start()
     {
         
@@ -24,13 +25,15 @@ public class ChangeTexture : MonoBehaviour
         }*/
     }
     
-    public void change()
+    public void change(bool isOn)
     {
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2 (652,189);
+        if (isOn)
+        {
+            i_text.text = "<";
+        }else if (!isOn)
+        {
+            i_text.text = ">";
+        }
     }
     
-    public void changeBack()
-    {
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2 (625,176);
-    }
 }

@@ -10,6 +10,18 @@ public class Animationagenda : MonoBehaviour
     private bool startAnim;
     public GameObject panel;
     private float time;
+    public enum Day
+    {
+        lundi,
+        mardi,
+        mercredi,
+        jeudi,
+        vendredi,
+        samedi,
+        dimanche,
+        //dimanche = -1
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +58,17 @@ public class Animationagenda : MonoBehaviour
         {
             text[i].rectTransform.anchoredPosition = transforms[i + 1];
         }
+        UpdateName();
         time = 1;
         panel.SetActive(true);
         startAnim = true;
+    }
+
+    public void UpdateName()
+    {
+        text[0].text = ((Day)((GameManager.Instance.GetItimeSystem().GetTime()-1) % 7)).ToString();
+        text[1].text = ((Day)(GameManager.Instance.GetItimeSystem().GetTime() % 7)).ToString();
+        text[2].text = ((Day)((GameManager.Instance.GetItimeSystem().GetTime() + 1) % 7)).ToString();
+        text[3].text = ((Day)((GameManager.Instance.GetItimeSystem().GetTime() + 2) % 7)).ToString();
     }
 }
