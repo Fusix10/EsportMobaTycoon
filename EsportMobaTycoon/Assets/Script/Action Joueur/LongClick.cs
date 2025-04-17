@@ -13,6 +13,7 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public float requiredHoldTime;
     public UnityEvent onLongClick;
     public Slider SliderTime;
+    public Button ButtonTime;
 
     private bool i_TimePassActivate;
     private void Start()

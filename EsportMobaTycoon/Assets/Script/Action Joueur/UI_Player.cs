@@ -17,7 +17,6 @@ public class UI_Player : MonoBehaviour
     public List<Image> i_Potentiel;
 
     public TMP_Text i_prenom;
-    public TMP_Text i_nom;
     public TMP_Text i_surnom;
     public TMP_Text i_role;
     //public Image i_imgRole;
@@ -89,7 +88,6 @@ public class UI_Player : MonoBehaviour
         }
 
         i_prenom.text = player.i_name;
-        i_nom.text = player.i_name;
         i_surnom.text = player.i_name;
 
         i_role.text = GetRoleName(player.i_role);
