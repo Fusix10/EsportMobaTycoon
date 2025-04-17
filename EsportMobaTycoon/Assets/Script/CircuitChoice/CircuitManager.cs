@@ -370,8 +370,3 @@ public class CircuitManager : MonoBehaviour
         return difficulties[difficulties.Length - 1];
     }
 }
-
-public class Match : MonoBehaviour
-{
-
-}

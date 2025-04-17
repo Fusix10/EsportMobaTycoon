@@ -43,7 +43,6 @@ public class ValidateButton : MonoBehaviour
     {
         GameManager.Instance.i_manager.TeamInit(inputFieldGrabberList[0].getInputText(), inputFieldGrabberList[1].getInputText(),
             CarouselleList[0].getSprite(), CarouselleList[1].getSprite());
-        // need code to send to GameManager
     }
 
     public void ToggleGender()

@@ -540,6 +540,14 @@ MonoBehaviour:
   i_reputation: 0
   infoText: {fileID: 0}
   budget: {fileID: 0}
+  i_lastName: 
+  i_name: 
+  i_hair: {fileID: 0}
+  i_face: {fileID: 0}
+  i_Torso: {fileID: 0}
+  i_legs: {fileID: 0}
+  i_isGenderXX: 0
+  teamData: {fileID: 0}
 --- !u!1 &89498727
 GameObject:
   m_ObjectHideFlags: 0

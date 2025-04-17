@@ -90,6 +90,9 @@ public class PopUpManager : MonoBehaviour
         popUp.Display();
         popUp.i_isOccupied = true;
 
+
+        Instantiate(popUpData.Panel);
+
         // Si aucune action, créer un bouton qui ferme la popUp
         if (popUpData.actions == null)
         {
