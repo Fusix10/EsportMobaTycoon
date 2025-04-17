@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Hub,
+    Hub2,
+    Hub3,
     Match,
     Tournaments,
     Result
