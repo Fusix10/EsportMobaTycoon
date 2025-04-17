@@ -27,13 +27,11 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         pointerDown = true;
-        Debug.Log("Down");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         Reset();
-        Debug.Log("Up");
     }
 
     void Update()
