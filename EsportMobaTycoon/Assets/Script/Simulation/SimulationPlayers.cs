@@ -48,7 +48,9 @@ public class SimulationPlayers : MonoBehaviour
             redSum += teamRed[i].i_totalLuck;
         }
         Debug.Log("b : " + blueSum +" , " + "r : " +redSum);
-        isWinning(blueSum, redSum);
+        float totalsum = blueSum + redSum;
+
+        isWinning(((blueSum/totalsum)*100), (redSum/totalsum)*100);
     }
 
     void isWinning(float blue, float red)
@@ -56,25 +58,29 @@ public class SimulationPlayers : MonoBehaviour
         float random = Random.Range(0, 100);
         if (red > blue)
         {
-            if (random >= 0 && random <= blue)
+            if (random >= 0 && random < red)
             {
-                Debug.Log("Blue Win !");
+                Debug.Log("Blue Win !" + " b : " + blue + " random : " + random  + " r : " + red );
             }
-            else if (random > blue && random <= red)
+            else
             {
-                Debug.Log("Red Win !");
+                Debug.Log("Red Win !" + " r : " + red + " random : " + random + " b : " + blue);
             }
         }
         else if (red < blue)
         {
-            if (random >= 0 && random <= red)
+            if (random >= 0 && random < blue)
             {
-                Debug.Log("Red Win !");
+                Debug.Log("Red Win !" + " r : " + red + " random : " + random + " b : " + blue);
             }
-            else if (random > red && random <= blue)
+            else
             {
-                Debug.Log("Blue Win !");
+                Debug.Log("Blue Win !" + " b : " + blue + " random : " + random + " r : " + red);
             }
+        }
+        else
+        {
+            Debug.LogError("blue equal red");
         }
     }
 
