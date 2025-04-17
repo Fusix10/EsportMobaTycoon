@@ -9,7 +9,8 @@ public class Animationagenda : MonoBehaviour
     public List<TMP_Text> text;
     public bool startAnim;
     public GameObject panel;
-    private float time;
+    public float time;
+    public GameObject i_continuButton;
     public enum Day
     {
         lundi,
@@ -25,8 +26,9 @@ public class Animationagenda : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        panel.SetActive(false);
         startAnim = false;
+        time = 0;
+        panel.SetActive(false);
         /*text.text = "mario";
         text.rectTransform.anchoredPosition = text1.rectTransform.anchoredPosition;*/
     }
@@ -34,12 +36,16 @@ public class Animationagenda : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
+        if(startAnim)
+        {
+            time -= Time.deltaTime;
+        }
         if (time < 0 && startAnim)
         {
             panel.SetActive(false);
             i_animator.SetBool("isActivate", false);
             startAnim = false;
+            i_continuButton.SetActive(true);
         }
     }
 
@@ -49,9 +55,10 @@ public class Animationagenda : MonoBehaviour
         {
             UpdateName();
             time = 3;
+            startAnim = true;
             panel.SetActive(true);
             i_animator.SetBool("isActivate", true);
-            startAnim = true;
+            i_continuButton.SetActive(false);
         }
     }
 
