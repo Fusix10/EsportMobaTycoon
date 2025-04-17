@@ -21,11 +21,14 @@ public class AudioSettings : MonoBehaviour
 
     private void SetMusicVolume(float value)
     {
+        Debug.Log($"Music volume set to {value}");
+
         //i_audioMixer.SetFloat("MusicVolume", SliderValueToDecibel(value));
     }
 
     private void SetSoundsVolume(float value)
     {
+        Debug.Log($"Sounds volume set to {value}");
         //i_audioMixer.SetFloat("SoundsVolume", SliderValueToDecibel(value));
     }
 
