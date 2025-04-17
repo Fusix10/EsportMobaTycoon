@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     //PopUpManager 
     [SerializeField] public PopUpManager i_popupManager;
 
-
     int i_testID = 0;
     List<ActionMother> i_allActions;
     public List<Mood> i_allMood;
@@ -24,7 +23,7 @@ public class GameManager : MonoBehaviour
     public List<Player> i_allPlayers;
    
 
-    private GameState i_GameState;
+    public GameState i_GameState;
 
     void Awake()
     {
