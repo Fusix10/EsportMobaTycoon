@@ -65,26 +65,28 @@ public class RecrutementPlayer : MonoBehaviour
 
         if (i_manager.TeamPlayers.Contains(i_selected))
         {
-            Debug.Log("Ce joueur est déjà dans l'équipe.");
+            Debug.Log("Ce joueur est dï¿½jï¿½ dans l'ï¿½quipe.");
             return;
         }
 
         if (i_manager.GetPlayerByRole(i_selected.i_role) != null)
         {
-            Debug.Log("Ce rôle est déjà pris.");
+            Debug.Log("Ce rï¿½le est dï¿½jï¿½ pris.");
             return;
         }
 
         if (i_manager.TeamPlayers.Count >= 5)
         {
-            Debug.Log("L'équipe est complète.");
+            Debug.Log("L'ï¿½quipe est complï¿½te.");
             return;
         }
 
-        i_manager.AddPlayer(i_selected);
+        selectedTeam.Add(selected);
+        Debug.Log($"{selected.i_name} ajoutï¿½Eï¿½El'ï¿½quipe en tant que {GetRoleName((int)(selected.i_currentRole))}.");
 
-        Transform i_rolePanel = GetPanelForRole(i_selected.i_role);
-        if (i_rolePanel != null)
+        // Crï¿½e une UI dans le bon panel
+        Transform rolePanel = GetPanelForRole((int)selected.i_currentRole);
+        if (rolePanel != null)
         {
             GameObject i_slot = Instantiate(i_playerSlotPrefab, i_rolePanel);
             i_slot.GetComponentInChildren<TMP_Text>().text = i_selected.i_name;
@@ -120,13 +122,13 @@ public class RecrutementPlayer : MonoBehaviour
         if (i_manager.TeamPlayers.Contains(i_selected))
         {
             i_manager.MovePlayerToRole(i_selected, i_newRole);
-            Debug.Log($"{i_selected.i_name} déplacé vers le rôle {GetRoleName(i_newRole)}");
+            Debug.Log($"{i_selected.i_name} dï¿½placï¿½ vers le rï¿½le {GetRoleName(i_newRole)}");
 
             UpdateUI();
         }
         else
         {
-            Debug.Log("Le joueur n'est pas dans l'équipe.");
+            Debug.Log("Le joueur n'est pas dans l'ï¿½quipe.");
         }
     }
 
@@ -136,7 +138,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         if (!i_manager.TeamPlayers.Contains(i_player))
         {
-            Debug.Log("Le joueur n'est pas dans l'équipe.");
+            Debug.Log("Le joueur n'est pas dans l'ï¿½quipe.");
             return;
         }
 
@@ -152,7 +154,7 @@ public class RecrutementPlayer : MonoBehaviour
         if (i_playerAtNewRole != null)
         {
             i_playerAtNewRole.SetRole(i_currentRole);
-            Debug.Log($"Échange entre {i_player.i_name} et {i_playerAtNewRole.i_name}");
+            Debug.Log($"ï¿½change entre {i_player.i_name} et {i_playerAtNewRole.i_name}");
         }
         i_player.SetRole(i_newRole);
 
@@ -168,7 +170,7 @@ public class RecrutementPlayer : MonoBehaviour
     {
         GameManager.Instance.i_manager.RemovePlayer(i_player);
 
-        Debug.Log($"{i_player.i_name} a été retiré de l'équipe.");
+        Debug.Log($"{i_player.i_name} a ï¿½tï¿½ retirï¿½ de l'ï¿½quipe.");
 
         UpdateUI();
     }

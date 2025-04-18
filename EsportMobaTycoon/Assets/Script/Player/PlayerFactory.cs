@@ -44,7 +44,7 @@ public class PlayerFactory : MonoBehaviour
        
     }
 
-    public void CreatePlayer()//
+    public Player CreatePlayerFromData(PlayerData data)
     {
         string name = nameInput.text;
         string knickname = knicknameInput.text;
@@ -72,9 +72,8 @@ public class PlayerFactory : MonoBehaviour
 
         if (image != null && baseMaterial != null)
         {
-            Material playerMaterial = new Material(baseMaterial);
-            playerMaterial.mainTexture = image.texture;
-            playerObj.GetComponent<Renderer>().material = playerMaterial;
+            Debug.LogError("Player prefab non assign� dans le GameManager.");
+            return null;
         }
 
      
@@ -97,21 +96,24 @@ public class PlayerFactory : MonoBehaviour
     }
 
 
+
     public Player CreateRandomPlayer()//
     {
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
         string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
         int role = UnityEngine.Random.Range(0, 5); 
         int potential = UnityEngine.Random.Range(1, 5);
+        int currentrole = UnityEngine.Random.Range(0, 5); 
         int reputation = UnityEngine.Random.Range(0, 100);
-        int characterId = UnityEngine.Random.Range(0, 5);
+        Character favoriteCharacterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 20)];
+        Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 20)];
 
         //Sprite icon = characterImage.sprite;
 
         Lvl teamSpirit = new Lvl(UnityEngine.Random.Range(1, 5), UnityEngine.Random.Range(0f, 100f));
 
         Mechanic mechanic = new Mechanic();
-        mechanic.s_lvlCombo.Add(characterId, new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f)));
+        mechanic.s_lvlCombo.Add(favoriteCharacterId.i_Id, new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f)));
         mechanic.s_stamina = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
         mechanic.s_reflexe = new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f));
 
@@ -120,7 +122,7 @@ public class PlayerFactory : MonoBehaviour
         knowledge.s_placement = new Lvl(UnityEngine.Random.Range(1, potential),UnityEngine.Random.Range(0f, 100f));
         knowledge.s_teamFight = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
 
-        Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[characterId].s_lvl);
+        Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[favoriteCharacterId.i_Id].s_lvl);
         Debug.Log(name + " s_stamina = " + mechanic.s_stamina.s_lvl);
         Debug.Log(name + " s_reflexe = " + mechanic.s_reflexe.s_lvl);
         Debug.Log(name + " s_objective = " + knowledge.s_objective.s_lvl);
