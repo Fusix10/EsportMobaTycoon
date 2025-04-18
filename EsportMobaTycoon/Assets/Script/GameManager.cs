@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     , Draven, Lulu, Thresh, Lux, Braum}
     public enum Role {ADC, SUPPORT,JUNGLER,MIDLANER,TOPLANER}
 
-    void Start()
+    void Awake()
     {
         if(Instance != null)
         {
@@ -210,6 +210,14 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public Role GetRandomRole()
+    {
+        Role[] allRoles = (Role[])System.Enum.GetValues(typeof(Role));
+        int randomIndex = UnityEngine.Random.Range(0, allRoles.Length);
+        return allRoles[randomIndex];
+    }
+
     public void PassTimeButton()
     {
         i_timeSystem.passingTime();
@@ -280,7 +288,7 @@ public class GameData
     public PlayerData playerData;
 }
 
-public class PlayerData
+/*public class PlayerData
 {
     public int i_id;
-}
+}*/

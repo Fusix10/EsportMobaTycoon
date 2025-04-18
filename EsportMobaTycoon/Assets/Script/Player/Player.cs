@@ -10,13 +10,13 @@ public class Player : MonoBehaviour
 {
     public string i_name { get; private set; }
     public string i_knickname { get; private set; }
-    public int i_role { get; private set; }
-    public int i_currentRole { get; private set; }
+    public GameManager.Role i_role { get; private set; }
+    public GameManager.Role i_currentRole { get; set; }
     public Sprite i_icon { get; protected set; }
     public Mechanic i_mechanic { get; private set; }//
     public Knowledge i_knowledge { get; private set; }//
-    public int i_favoriteCharacterId { get; private set; }
-    public int i_characterId { get; private set; }
+    public Character i_favoriteCharacterId { get; private set; }
+    public Character i_characterId { get; private set; }
     public float i_totalLuck { get; private set; }
     public  float i_morale { get; private set; }
     public  Lvl i_teamSpirit { get; private set; }
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     (
     string name,
     string knickname,
-    int role,
+    GameManager.Role role,
     Mechanic mechanic,
     Knowledge knowledge,
     Character favoriteCharacterId,
@@ -130,7 +130,32 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetRole(int newRole)
+    public void matchUpLuck(Player opponent)
+    {
+        GameManager.MatchUp matchUp = GameManager.Instance.GetMatchUp(i_characterId, opponent.i_characterId);
+        if (matchUp.state == GameManager.MatchUp.stateMatchUp.COUNTER)
+        {
+            i_totalLuck *= 1.3f;
+            opponent.i_totalLuck *= 0.7f;
+        }
+        else if (matchUp.state == GameManager.MatchUp.stateMatchUp.ISCOUNTERED)
+
+        {
+            i_totalLuck *= 0.7f;
+            opponent.i_totalLuck *= 1.3f;
+        }
+    }
+
+    public void ChangeLuck(Player opponent)
+    {
+        i_totalLuck = 0f;
+        Luck();
+        ApplyFavoriteCharacterBonus();
+        ApplyRolePenalty();
+        matchUpLuck(opponent);  
+    }
+
+    public void SetRole(GameManager.Role newRole)
     {
         i_role = newRole;
     }

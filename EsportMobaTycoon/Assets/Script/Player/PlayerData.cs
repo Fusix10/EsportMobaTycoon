@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerData
 {
     public string i_name;
+    public string i_knickname;
     public GameManager.Role i_role;
     public GameManager.Role i_currentRole;
     public Sprite i_icon;
@@ -17,7 +18,7 @@ public class PlayerData
     public Lvl i_teamSpirit;
     public int i_reputation;
     public int i_lvl;
-    public int i_potentiel;
+    public int i_potential;
     public Mood i_mood;
 
     public void SetFromPlayer(Player p)
@@ -34,7 +35,7 @@ public class PlayerData
         i_teamSpirit = p.i_teamSpirit;
         i_reputation = p.i_reputation;
         i_lvl = p.i_lvl;
-        i_potentiel = p.i_potentiel;
+        i_potential = p.i_potentiel;
         i_mood = p.i_mood;
     }
 }

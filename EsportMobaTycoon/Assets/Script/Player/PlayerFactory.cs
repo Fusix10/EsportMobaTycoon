@@ -46,26 +46,25 @@ public class PlayerFactory : MonoBehaviour
 
     public Player CreatePlayerFromData(PlayerData data)
     {
-        string name = nameInput.text;
-        string knickname = knicknameInput.text;
-        Lvl teamSpirit = new((int)teamSpiritLvlSlider.value,teamSpiritXpSlider.value);
-        int xp = (int)xpSlider.value;
-        int roleId = (int)roleSlider.value;
-        int rolePlayedId = (int)rolePlayedSlider.value;
-        int potential = (int)potentialSlider.value;
-        int reputation = (int)reputationSlider.value;
-        Sprite image = characterImage.sprite;
-        Mood mood = GameManager.Instance.i_allMood[(int)moodDropdown.value];
-        int favoriteCharacterId = (int)favoriteCharacterSlider.value;
+        string name = data.i_name;
+        string knickname = data.i_knickname;
+        Lvl teamSpirit = data.i_teamSpirit;
+        GameManager.Role roleId = data.i_role;
+        GameManager.Role rolePlayedId = data.i_currentRole;
+        int potential = data.i_potential;
+        int reputation = data.i_reputation;
+        Sprite image = data.i_icon;
+        Mood mood = data.i_mood;
+        Character favoriteCharacterId = data.i_favoriteCharacterId;
         Mechanic mechanic = new();
         mechanic.s_reflexe = new Lvl((int)reflexelvlSlider.value, (float)reflexexpSlider.value);
         mechanic.s_stamina = new Lvl((int)staminalvlSlider.value, (float)staminaxpSlider.value);
-        mechanic.s_lvlCombo.Add(favoriteCharacterId, new Lvl((int)combolvlSlider.value, (float)comboxpSlider.value));
+        mechanic.s_lvlCombo.Add(favoriteCharacterId.i_Id, new Lvl((int)combolvlSlider.value, (float)comboxpSlider.value));
         Knowledge knowledge = new();
         knowledge.s_objective =  new Lvl((int)objectivelvlSlider.value, (float)objectivexpSlider.value);
         knowledge.s_placement = new Lvl((int)placementlvlSlider.value, (float)placementxpSlider.value);
         knowledge.s_teamFight = new Lvl((int)teamFightlvlSlider.value, (float)teamFightxpSlider.value);
-        int characterPlayedId = (int)characterPlayedSlider.value;
+        Character characterPlayedId = data.i_characterId;
 
         GameObject playerObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         playerObj.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 1f, UnityEngine.Random.Range(-5f, 5f));
@@ -88,25 +87,28 @@ public class PlayerFactory : MonoBehaviour
                             reputation, 
                             potential,
                             mood,
-                            characterPlayedId,
                             rolePlayedId,
-                            image
+                            characterPlayedId,
+                            image = null
                             );
         GameManager.Instance.i_allPlayers.Add(playerComponent);
+        return playerComponent;
     }
 
 
 
     public Player CreateRandomPlayer()//
     {
+        GameObject playerObj = Instantiate(PlayerPrefabs);
+
         string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
         string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
-        int role = UnityEngine.Random.Range(0, 5); 
+        GameManager.Role role = GameManager.Instance.GetRandomRole();
         int potential = UnityEngine.Random.Range(1, 5);
-        int currentrole = UnityEngine.Random.Range(0, 5); 
+        GameManager.Role currentRole = GameManager.Instance.GetRandomRole(); 
         int reputation = UnityEngine.Random.Range(0, 100);
-        Character favoriteCharacterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 20)];
-        Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 20)];
+        Character favoriteCharacterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
+        Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
 
         //Sprite icon = characterImage.sprite;
 
@@ -129,9 +131,9 @@ public class PlayerFactory : MonoBehaviour
         Debug.Log(name + " s_placement = " + knowledge.s_placement.s_lvl);
         Debug.Log(name + " s_teamFight = " + knowledge.s_teamFight.s_lvl);
 
-        GameObject playerObj = Instantiate(PlayerPrefabs);
+        
 
-        playerObj.GetComponent<Player>().Init(name,knickname, role, mechanic, knowledge, characterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)]);
+        playerObj.GetComponent<Player>().Init(name,knickname, role, mechanic, knowledge, favoriteCharacterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0,9)],currentRole,characterId);
         return playerObj.GetComponent<Player>();
     }
 }

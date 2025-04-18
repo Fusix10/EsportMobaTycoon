@@ -35,11 +35,11 @@ public class SimulationPlayers : MonoBehaviour
             {
                 if (teamBlue[i].i_currentRole == teamRed[j].i_currentRole)
                 {
-                    teamBlue[i].changeLuck(teamRed[j]);
+                    teamBlue[i].ChangeLuck(teamRed[j]);
                 }
                 if (teamBlue[j].i_currentRole == teamRed[i].i_currentRole)
                 {
-                    teamRed[i].changeLuck(teamBlue[j]);
+                    teamRed[i].ChangeLuck(teamBlue[j]);
                     Debug.Log("b : " + teamRed[i].i_totalLuck);
                 }
             }
