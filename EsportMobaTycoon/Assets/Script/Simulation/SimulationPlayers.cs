@@ -32,50 +32,56 @@ public class SimulationPlayers : MonoBehaviour
         for (int i = 0; i < teamRed.Count; i++)
         {
             for (int j = 0; j < teamBlue.Count; j++)
+            {
                 if (teamBlue[i].i_currentRole == teamRed[j].i_currentRole)
                 {
                     teamBlue[i].changeLuck(teamRed[j]);
                 }
-                else if (teamBlue[j].i_currentRole == teamRed[i].i_currentRole)
+                if (teamBlue[j].i_currentRole == teamRed[i].i_currentRole)
                 {
                     teamRed[i].changeLuck(teamBlue[j]);
+                    Debug.Log("b : " + teamRed[i].i_totalLuck);
                 }
+            }
 
         }
         for (int i = 0; i < teamRed.Count; i++)
         {
             blueSum += teamBlue[i].i_totalLuck;
             redSum += teamRed[i].i_totalLuck;
+            Debug.Log("b : " + blueSum + " , " + "r : " + redSum);
         }
-        Debug.Log("b : " + blueSum +" , " + "r : " +redSum);
+        
         float totalsum = blueSum + redSum;
 
-        isWinning(((blueSum/totalsum)*100), (redSum/totalsum)*100);
+        IsWinning(((blueSum/totalsum)*100), (redSum/totalsum)*100);
     }
 
-    void isWinning(float blue, float red)
+    void IsWinning(float blue, float red)
     {
-        float random = Random.Range(0, 100);
-        if (red > blue)
+        float random = RoundValue(Random.Range(0.0f, 100.0f),10.0f);
+        float newBlue = RoundValue(blue, 10.0f);
+        float newRed = RoundValue(red, 10.0f);
+        if (newRed > newBlue)
         {
-            if (random >= 0 && random < red)
+            if (random >= 0 && random < newBlue)
             {
-                Debug.Log("Blue Win !" + " b : " + blue + " random : " + random  + " r : " + red );
+                Debug.Log("Case 0 : Blue Win !" + " b : " + newBlue + " random : " + random  + " r : " + newRed );
             }
             else
             {
-                Debug.Log("Red Win !" + " r : " + red + " random : " + random + " b : " + blue);
+                Debug.Log("Case 1 : Red Win !" + " r : " + newRed + " random : " + random + " b : " + newBlue);
             }
         }
-        else if (red < blue)
+        else if (newRed < newBlue)
         {
-            if (random >= 0 && random < blue)
+            if (random >= 0 && random < newRed)
             {
-                Debug.Log("Red Win !" + " r : " + red + " random : " + random + " b : " + blue);
+                Debug.Log("Case 2 : Red Win !" + " r : " + newRed + " random : " + random + " b : " + newBlue);
             }
             else
             {
-                Debug.Log("Blue Win !" + " b : " + blue + " random : " + random + " r : " + red);
+                Debug.Log("Case 3 : Blue Win !" + " b : " + newBlue + " random : " + random + " r : " + newRed);
             }
         }
         else
@@ -84,6 +90,10 @@ public class SimulationPlayers : MonoBehaviour
         }
     }
 
+    public float RoundValue(float num, float precision)
+    {
+        return Mathf.Floor(num*precision+0.5f)/precision;
+    }
     void Update()
     {
         

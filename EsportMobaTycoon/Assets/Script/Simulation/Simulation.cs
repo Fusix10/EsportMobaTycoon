@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Simulation : MonoBehaviour
 {
-    public PlayerFactory playerfactory;
+    public PlayerFactory i_playerfactory;
     void Start()
     {
         
@@ -33,11 +33,11 @@ public class Simulation : MonoBehaviour
         }
     }
 
-    public void changeScene()
+    public void ChangeScene()
     {
         for (int i = 0; i < 10; i++)
         {
-            GameManager.Instance.i_allPlayers.Add(playerfactory.CreateRandomPlayer());
+            GameManager.Instance.i_allPlayers.Add(i_playerfactory.CreateRandomPlayer());
         }
 
         Single(GameManager.Instance.i_allPlayers);
@@ -48,6 +48,7 @@ public class Simulation : MonoBehaviour
             data.SetFromPlayer(GameManager.Instance.i_allPlayers[i]);
             GameManager.Instance.i_allPlayerData.Add(data);
         }
+        GameManager.Instance.setGameState(GameState.Tournaments);
         SceneManager.LoadScene("Simulation");
     }
 }
