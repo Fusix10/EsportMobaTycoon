@@ -18,9 +18,9 @@ public class SavePlayerSelectedUi : MonoBehaviour
 
     public void findPlayer(string playerName)
     {
-        for (int i = 0; i < GameManager.Instance.i_allPlayers.Count; i++)
+        for (int i = 0; i < GameManager.Instance.i_manager.GetPlayer().Count; i++)
         {
-            if(GameManager.Instance.i_allPlayers[i].i_name == playerName)
+            if(GameManager.Instance.i_manager.GetPlayer()[i].i_name == playerName)
             {
                 i_indexPlayer = i;
             }

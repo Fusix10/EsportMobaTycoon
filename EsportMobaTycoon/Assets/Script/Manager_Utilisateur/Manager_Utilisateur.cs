@@ -6,6 +6,7 @@ public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
     public float i_currentMoney = 1000;//
+    public float i_currentMoneyPrenium = 1000;//
     public int i_reputation = 0;//
     private List<Player> teamPlayers = new ();//
 
@@ -123,6 +124,11 @@ public class Manager_Utilisateur : MonoBehaviour
 
             Debug.Log(teamPlayers.Count);
         }
+    }
+
+    public List<Player> GetPlayer()
+    {
+        return teamPlayers;
     }
 
     public void RemovePlayer(Player player)
