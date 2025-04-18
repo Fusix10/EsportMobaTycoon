@@ -216,6 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301f66534aa1d8242a89d0cb8604b5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  i_upgradeButton: {fileID: 1927611526}
+  i_backButton: {fileID: 1927819885}
 --- !u!4 &191304047
 Transform:
   m_ObjectHideFlags: 0
@@ -352,7 +354,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -371,7 +373,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 415936600}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191304046}
+        m_TargetAssemblyTypeName: UpgradeHub, Assembly-CSharp
+        m_MethodName: SelectLocal
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Local1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &624585485
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +486,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -491,7 +505,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 624585487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191304046}
+        m_TargetAssemblyTypeName: UpgradeHub, Assembly-CSharp
+        m_MethodName: SelectLocal
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Local3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &721597495
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +618,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -611,7 +637,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 721597497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191304046}
+        m_TargetAssemblyTypeName: UpgradeHub, Assembly-CSharp
+        m_MethodName: SelectLocal
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Local2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &725911051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1483,7 @@ MonoBehaviour:
   i_popupManager: {fileID: 0}
   i_manager: {fileID: 0}
   i_allPlayers: []
+  i_GameState: 0
 --- !u!4 &1748145604
 Transform:
   m_ObjectHideFlags: 0
@@ -1647,7 +1686,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1927611527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191304046}
+        m_TargetAssemblyTypeName: UpgradeHub, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1927611527
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SceneTest/UpgradeHub.unity
+    guid: c11b0698e22c06242a6a3604ce209557
+  - enabled: 1
+    path: Assets/Scenes/FinishScene/Hub1.unity
+    guid: 00d0127e82122ce43ab96f5e677d2fc0
+  - enabled: 1
+    path: Assets/Scenes/FinishScene/Hub2.unity
+    guid: 93f157bf67082bf4f899c4783e6d17fa
+  - enabled: 1
+    path: Assets/Scenes/FinishScene/Hub3.unity
+    guid: f0b78aeb3ee51af4f95fd6771a6c9e38
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: c2fc0fd8ed33f144ab489676e1e53465, type: 2}

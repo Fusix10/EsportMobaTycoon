@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
    
 
     public GameState i_GameState;
+
+    private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
 
     void Awake()
     {
@@ -64,6 +67,11 @@ public class GameManager : MonoBehaviour
             i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
         }
+
+        i_stateToScene.Add(GameState.Hub, "Hub");
+        i_stateToScene.Add(GameState.Hub1, "Hub1");
+        i_stateToScene.Add(GameState.Hub2, "Hub2");
+        i_stateToScene.Add(GameState.Hub3, "Hub3");
     }
     void Update()
     {
@@ -97,6 +105,7 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Hub,
+    Hub1,
     Hub2,
     Hub3,
     Match,
@@ -113,3 +122,4 @@ public class PlayerData
 {
     public int i_id;
 }
+
