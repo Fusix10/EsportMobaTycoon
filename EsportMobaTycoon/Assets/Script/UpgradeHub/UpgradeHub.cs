@@ -13,7 +13,6 @@ public class UpgradeHub : MonoBehaviour
 
     public void Start()
     {
-        i_upgradeButton.interactable = false;
     }
 
     public void Update()
@@ -43,50 +42,19 @@ public class UpgradeHub : MonoBehaviour
         Debug.Log("Déselection via clic/tap hors UI !");
     }
 
-    public void SelectLocal(string localName)
+    public void SelectLocal(GameState state)
     {
-        switch (localName)
-        {
-            case "Local1":
-                GameManager.Instance.setGameState(GameState.Hub1);
-                break;
-            case "Local2":
-                GameManager.Instance.setGameState(GameState.Hub2);
-                break;
-            case "Local3":
-                GameManager.Instance.setGameState(GameState.Hub3);
-                break;
-            default:
-                GameManager.Instance.setGameState(GameState.Hub);
-                break;
-
-        }
-
+        GameManager.Instance.setGameState(state);
         Debug.Log(GameManager.Instance.i_GameState);
-
-        i_upgradeButton.interactable = (GameManager.Instance.i_GameState != GameState.Hub);
+        i_upgradeButton.interactable = (state != GameState.Hub);  
     }
 
     public void Upgrade()
     {
-
-        if (GameManager.Instance.i_GameState == GameState.Hub)
-        {
-            Debug.Log("Pas local selctionné");
-            return;
-        }
-
-        switch (GameManager.Instance.i_GameState)
-        {
-            case GameState.Hub1:
-                SceneManager.LoadScene("Hub1");
-                break;
-            case GameState.Hub2:
-                SceneManager.LoadScene("Hub2");
-                break;
-            case GameState.Hub3:
-                SceneManager.LoadScene("Hub3");
-                break;
-        }
+        GameManager.Instance.LoadSceneForCurrentState();
     }
+
+    public void SelectLocal1() => SelectLocal(GameState.Hub1);
+    public void SelectLocal2() => SelectLocal(GameState.Hub2);
+    public void SelectLocal3() => SelectLocal(GameState.Hub3);
 }

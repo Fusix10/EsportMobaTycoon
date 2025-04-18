@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -99,6 +100,24 @@ public class GameManager : MonoBehaviour
     public TimeSystem GetItimeSystem()
     {
         return i_timeSystem;
+    }
+
+    public void LoadSceneForCurrentState()
+    {
+        if (i_GameState == GameState.Hub)
+        {
+            return;
+        }
+
+        if(i_stateToScene.TryGetValue(i_GameState, out string sceneName))
+        {
+            Debug.Log("Chargement de la scene" + sceneName);
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.Log("Aucune scene n'est associé");
+        }
     }
 }
 
