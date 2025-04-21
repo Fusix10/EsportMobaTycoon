@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
+using UnityEditor.Scripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static GameManager;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class RecrutementPlayer : MonoBehaviour
@@ -68,7 +70,7 @@ public class RecrutementPlayer : MonoBehaviour
     public void AddToTeam()
     {
         Player i_selected = i_allPlayers[i_currentIndex];
-        var i_manager = GameManager.Instance.i_manager;
+        Manager_Utilisateur i_manager = GameManager.Instance.i_manager;
 
         if (i_manager.TeamPlayers.Contains(i_selected))
         {
@@ -121,24 +123,6 @@ public class RecrutementPlayer : MonoBehaviour
         UpdateUI();
     }
 
-    public void MovePlayerToNewRole(GameManager.Role newRole)
-    {
-        Player selected = i_allPlayers[i_currentIndex];
-        var i_manager = GameManager.Instance.i_manager;
-
-        if (i_manager.TeamPlayers.Contains(selected))
-        {
-            i_manager.MovePlayerToRole(selected, newRole);
-            Debug.Log($"{selected.i_name} d�plac� vers le r�le {newRole.ToString()}");
-
-            UpdateUI();
-        }
-        else
-        {
-            Debug.Log("Le joueur n'est pas dans l'�quipe.");
-        }
-    }
-
     public void MovePlayerToAdjacentRole(Player i_player, bool i_moveRight)
     {
         Manager_Utilisateur i_manager = GameManager.Instance.i_manager;
@@ -151,16 +135,10 @@ public class RecrutementPlayer : MonoBehaviour
 
         GameManager.Role i_currentRole = i_player.i_currentRole;
         GameManager.Role i_newRole;
-        GameManager.Role[] tabRoles = (GameManager.Role[])System.Enum.GetValues(typeof(GameManager.Role));
-        int currentIndex = System.Array.IndexOf(tabRoles, i_currentRole);
-
-        int newIndex;
         if (i_moveRight)
-            newIndex = (currentIndex + 1) % tabRoles.Length;
+            i_newRole = (Role)(((int)i_currentRole + 1) % 5);
         else
-            newIndex = (currentIndex - 1 + tabRoles.Length) % tabRoles.Length;
-
-        i_newRole = tabRoles[newIndex];
+            i_newRole = (Role)(((int)i_currentRole - 1 + 5) % 5);
 
         Player i_playerAtNewRole = i_manager.GetPlayerByRole(i_newRole);
 
@@ -169,6 +147,7 @@ public class RecrutementPlayer : MonoBehaviour
             i_playerAtNewRole.SetRole(i_currentRole);
             Debug.Log($"�change entre {i_player.i_name} et {i_playerAtNewRole.i_name}");
         }
+
         i_player.SetRole(i_newRole);
 
         UpdateUI();
@@ -330,6 +309,11 @@ public class RecrutementPlayer : MonoBehaviour
                 Destroy(i_child.gameObject);
             }
         }
+    }
+
+    private string GetRoleName(GameManager.Role role)
+    {
+        return role.ToString();
     }
 
     private Transform GetPanelForRole(GameManager.Role role)

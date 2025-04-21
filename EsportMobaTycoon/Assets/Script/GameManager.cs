@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     public enum NameCharacter {Gragas, Jayce, Jax, Sion,Viego, LeeSin,Nidalee, JarvanIV, Yasuo, Azir, Ahri, Akali, Jinx, Ezreal, MissFortune
     , Draven, Lulu, Thresh, Lux, Braum}
-    public enum Role {ADC, SUPPORT,JUNGLER,MIDLANER,TOPLANER}
+    public enum Role {TOPLANER, JUNGLER, MIDLANER, SUPPORT, ADC }
 
     void Awake()
     {

@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
 
     public void SetRole(GameManager.Role newRole)
     {
-        i_role = newRole;
+        i_currentRole = newRole;
     }
 
 }
