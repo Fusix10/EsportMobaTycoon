@@ -97,7 +97,7 @@ public class UI_Player : MonoBehaviour
         i_prenom.text = player.i_name;
         i_surnom.text = player.i_name;
 
-        i_role.text = player.i_role.ToString();
+        i_role.text = GetRoleName((int)player.i_role);
 
         i_caractere.text = player.i_mood.i_moodName;
 
@@ -115,32 +115,41 @@ public class UI_Player : MonoBehaviour
             predab.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.i_allCharacters[pair.Key].i_name;
             if (pair.Value.s_lvl <= 1)
             {
-               predab.transform.parent = i_panelCorrect;
+               predab.transform.SetParent(i_panelCorrect);
             }
             else if(pair.Value.s_lvl == 2 || pair.Value.s_lvl == 3)
             {
-                predab.transform.parent = i_panelBonne;
+                predab.transform.SetParent(i_panelBonne);
             }
             else if(pair.Value.s_lvl >= 4 )
             {
-                predab.transform.parent = i_panelExce;
+                predab.transform.SetParent(i_panelExce);
             }
+            ActuliseContent(i_panelExce);
+            ActuliseContent(i_panelCorrect);
+            ActuliseContent(i_panelBonne);
         }
     }
-
+    float widthContent;
+    void ActuliseContent(Transform content)
+    {
+        widthContent = 0;
+        widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * (content.childCount - 1);
+        content.GetComponent<RectTransform>().sizeDelta = new Vector2(widthContent, content.GetComponent<RectTransform>().sizeDelta.y);
+    }
     //to do il faut que l
 
     void ClearChampion()
     {
-        for(int i = 1; i < i_panelExce.childCount; i++)
+        for(int i = 0; i < i_panelExce.childCount; i++)
         {
             Destroy(i_panelExce.GetChild(i).gameObject);
         }
-        for(int i = 1; i < i_panelBonne.childCount; i++)
+        for(int i = 0; i < i_panelBonne.childCount; i++)
         {
             Destroy(i_panelBonne.GetChild(i).gameObject);
         }
-        for(int i = 1; i < i_panelCorrect.childCount; i++)
+        for(int i = 0; i < i_panelCorrect.childCount; i++)
         {
             Destroy(i_panelCorrect.GetChild(i).gameObject);
         }
@@ -152,7 +161,7 @@ public class UI_Player : MonoBehaviour
         switch (synergie)
         {
             case 0:
-                return "Désastreux";
+                return "Dï¿½sastreux";
             case 1:
                 return "Faible";
             case 2:
