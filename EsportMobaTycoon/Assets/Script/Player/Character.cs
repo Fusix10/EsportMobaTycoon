@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character 
 {
     public string i_name;
     public int i_Id;
