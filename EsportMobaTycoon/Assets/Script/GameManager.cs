@@ -26,23 +26,20 @@ public class GameManager : MonoBehaviour
     public List<Player> i_allPlayers;
     public List<Character> i_allCharacters;
     [SerializeField] public List<MatchUp> i_allMatchUps;
-    //public List<PlayerData> i_allPlayerData;
+    public List<PlayerData> i_allPlayerData;
     private GameState i_GameState;
 
     public class MatchUp
     {
-        public enum stateMatchUp { COUNTER, ISCOUNTERED, NOTHING }
+        public enum stateMatchUp {COUNTER, ISCOUNTERED, NOTHING}
         public Character firstCharacter;
         public Character secondCharacter;
         public stateMatchUp state;
     }
 
-    public enum NameCharacter
-    {
-        Gragas, Jayce, Jax, Sion, Viego, LeeSin, Nidalee, JarvanIV, Yasuo, Azir, Ahri, Akali, Jinx, Ezreal, MissFortune
-    , Draven, Lulu, Thresh, Lux, Braum
-    }
-    public enum Role { ADC, SUPPORT, JUNGLER, MIDLANER, TOPLANER }
+    public enum NameCharacter {Gragas, Jayce, Jax, Sion,Viego, LeeSin,Nidalee, JarvanIV, Yasuo, Azir, Ahri, Akali, Jinx, Ezreal, MissFortune
+    , Draven, Lulu, Thresh, Lux, Braum}
+    public enum Role {TOPLANER, JUNGLER, MIDLANER, SUPPORT, ADC }
 
     private void Awake()
     {
@@ -71,26 +68,26 @@ public class GameManager : MonoBehaviour
         i_allMood.Add(new Mood("Travailleur", 0.6f, 1.4f));
         i_allMood.Add(new Mood("Talent Brut", 0.2f, 1.8f));
         i_allCharacters = new List<Character>();
-        i_allCharacters.Add(new Character("Gragas", 0, true, 9, 4));
-        i_allCharacters.Add(new Character("Jayce", 1, false, 5, 4));
-        i_allCharacters.Add(new Character("Jax", 2, false, 6, 4));
-        i_allCharacters.Add(new Character("Sion", 3, false, 3, 4));
-        i_allCharacters.Add(new Character("Viego", 4, true, 4, 2));
-        i_allCharacters.Add(new Character("LeeSin", 5, false, 10, 2));
-        i_allCharacters.Add(new Character("Nidalee", 6, false, 5, 2));
-        i_allCharacters.Add(new Character("JarvanIV", 7, true, 7, 2));
-        i_allCharacters.Add(new Character("Yasuo", 8, true, 2, 3));
-        i_allCharacters.Add(new Character("Azir", 9, false, 6, 3));
-        i_allCharacters.Add(new Character("Ahri", 10, true, 11, 3));
-        i_allCharacters.Add(new Character("Akali", 11, false, 5, 3));
-        i_allCharacters.Add(new Character("Jinx", 12, true, 12, 0));
-        i_allCharacters.Add(new Character("Ezreal", 13, false, 8, 0));
-        i_allCharacters.Add(new Character("MissFortune", 14, true, 10, 0));
-        i_allCharacters.Add(new Character("Draven", 15, true, 1, 0));
-        i_allCharacters.Add(new Character("Lulu", 16, false, 13, 1));
-        i_allCharacters.Add(new Character("Thresh", 17, true, 4, 1));
-        i_allCharacters.Add(new Character("Lux", 18, false, 12, 1));
-        i_allCharacters.Add(new Character("Braum", 19, true, 14, 1));
+        i_allCharacters.Add(new Character("Gragas",0,true,9,4));
+        i_allCharacters.Add(new Character("Jayce",1,false,5,4));
+        i_allCharacters.Add(new Character("Jax",2,false,6,4));
+        i_allCharacters.Add(new Character("Sion",3,false,3,4));
+        i_allCharacters.Add(new Character("Viego",4,true,4,2));
+        i_allCharacters.Add(new Character("LeeSin",5,false,10,2));
+        i_allCharacters.Add(new Character("Nidalee",6,false,5,2));
+        i_allCharacters.Add(new Character("JarvanIV",7,true,7,2));
+        i_allCharacters.Add(new Character("Yasuo",8,true,2,3));
+        i_allCharacters.Add(new Character("Azir",9,false,6,3));
+        i_allCharacters.Add(new Character("Ahri",10,true,11,3));
+        i_allCharacters.Add(new Character("Akali",11,false,5,3));
+        i_allCharacters.Add(new Character("Jinx",12,true,12,0));
+        i_allCharacters.Add(new Character("Ezreal",13,false,8,0));
+        i_allCharacters.Add(new Character("MissFortune",14,true,10,0));
+        i_allCharacters.Add(new Character("Draven",15,true,1,0));
+        i_allCharacters.Add(new Character("Lulu",16,false,13,1));
+        i_allCharacters.Add(new Character("Thresh",17,true,4,1));
+        i_allCharacters.Add(new Character("Lux",18,false,12,1));
+        i_allCharacters.Add(new Character("Braum",19,true,14,1));
         //To Destroy
 
         i_eventManager = this.GetComponent<EventManager>();
@@ -197,7 +194,6 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-
         for (int i = 0; i < 5; i++)
         {
             i_manager.AddPlayer(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
@@ -207,8 +203,6 @@ public class GameManager : MonoBehaviour
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
         knowledge.s_placement = new Lvl(0, 0);
-        //ai_allPlayers[0].Init("Dinosaure", (Role)2, mechanic, knowledge, i_allCharacters[8], new Lvl(0, 0), 50, 5, i_allMood[5], (Role)2);
-
     }
     void Update()
     {
@@ -218,7 +212,7 @@ public class GameManager : MonoBehaviour
     public Role GetRandomRole()
     {
         Role[] allRoles = (Role[])System.Enum.GetValues(typeof(Role));
-        int randomIndex = UnityEngine.Random.Range(0, allRoles.Length); // inclusif, exclusif
+        int randomIndex = UnityEngine.Random.Range(0, allRoles.Length);
         return allRoles[randomIndex];
     }
 
@@ -259,13 +253,12 @@ public class GameManager : MonoBehaviour
 
     public MatchUp GetMatchUp(Character char1, Character char2)
     {
-        var matchUp = i_allMatchUps.FirstOrDefault(mu =>
+        MatchUp matchUp = i_allMatchUps.FirstOrDefault(mu =>
         (mu.firstCharacter == char1 && mu.secondCharacter == char2) ||
         (mu.firstCharacter == char2 && mu.secondCharacter == char1));
 
         if (matchUp == null)
         {
-            //Debug.LogWarning($"Matchup between {char1?.i_Id} and {char2?.i_Id} is missing. Returning default.");
             return new MatchUp
             {
                 firstCharacter = char1,

@@ -14,7 +14,7 @@ public class Manager_Utilisateur : MonoBehaviour
 
     public Budget budget;
 
-    private Dictionary<int, Player> teamPlayersByRole = new();
+    private Dictionary<GameManager.Role, Player> teamPlayersByRole = new();
 
     //met a jour le texte de la fen�tre avec les stats actuelles
     public void UpdateUi()
@@ -144,7 +144,7 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    public void MovePlayerToRole(Player player, int newRole)
+    public void MovePlayerToRole(Player player, GameManager.Role newRole)
     {
         if (!teamPlayers.Contains(player)) return;
 
@@ -172,7 +172,7 @@ public class Manager_Utilisateur : MonoBehaviour
         get { return teamPlayers; }
     }
 
-    public Player GetPlayerByRole(int role)
+    public Player GetPlayerByRole(GameManager.Role role)
     {
         foreach (var player in teamPlayers)
         {

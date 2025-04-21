@@ -67,7 +67,6 @@ public class Player : MonoBehaviour
         Debug.Log(i_name + " potentiel = " + i_potentiel);
         Debug.Log(i_name + " Lvl = " + i_lvl);
     }
-
     public void gainXP(Lvl obj, float Gain)
     {
         if (obj.s_lvl < i_potentiel)
@@ -92,7 +91,7 @@ public class Player : MonoBehaviour
     }
     public void Luck()
     {
-        float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl + i_teamSpirit.s_lvl;
+        float sumLuck = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl+i_teamSpirit.s_lvl;
         sumLuck *= (i_morale / 100);
         i_totalLuck = sumLuck;
         i_lvl = (int)Mathf.Round((i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl) / 6);
@@ -157,7 +156,7 @@ public class Player : MonoBehaviour
 
     public void SetRole(GameManager.Role newRole)
     {
-        i_role = newRole;
+        i_currentRole = newRole;
     }
 
 }

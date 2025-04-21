@@ -33,8 +33,7 @@ public class Buddy : Player
                 mechanic.s_lvlCombo.Add(character.i_Id, new Lvl(UnityEngine.Random.Range(1, 3), UnityEngine.Random.Range(0f, 100f)));
             }
         }
-
-        Init("Buddy", NickName, (GameManager.Role)2, mechanic, knowledge, favoriteCharacterId, new Lvl(2,0),500,3,GameManager.Instance.i_allMood[2], (GameManager.Role)2);
+        Init("Buddy", NickName, (GameManager.Role)2, mechanic, knowledge,GameManager.Instance.i_allCharacters[0],new Lvl(2,0),500,3,GameManager.Instance.i_allMood[2],(GameManager.Role)(Random.Range(0,4)));
         i_icon = sprite;
     }
 

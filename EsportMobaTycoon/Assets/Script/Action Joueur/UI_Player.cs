@@ -96,8 +96,7 @@ public class UI_Player : MonoBehaviour
 
         i_prenom.text = player.i_name;
         i_surnom.text = player.i_name;
-
-        i_role.text = GetRoleName((int)player.i_role);
+        i_role.text = player.i_currentRole.ToString();
 
         i_caractere.text = player.i_mood.i_moodName;
 
