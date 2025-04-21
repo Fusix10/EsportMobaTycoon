@@ -65,13 +65,13 @@ public class RecrutementPlayer : MonoBehaviour
 
         if (i_manager.TeamPlayers.Contains(i_selected))
         {
-            Debug.Log("Ce joueur est dÈj‡ dans l'Èquipe.");
+            Debug.Log("Ce joueur est dÈjÅEdans l'Èquipe.");
             return;
         }
 
-        if (i_manager.GetPlayerByRole(i_selected.i_role) != null)
+        if (i_manager.GetPlayerByRole((int)i_selected.i_role) != null)
         {
-            Debug.Log("Ce rÙle est dÈj‡ pris.");
+            Debug.Log("Ce rÙle est dÈjÅEpris.");
             return;
         }
 
@@ -83,7 +83,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         i_manager.AddPlayer(i_selected);
 
-        Transform i_rolePanel = GetPanelForRole(i_selected.i_role);
+        Transform i_rolePanel = GetPanelForRole((int)i_selected.i_role);
         if (i_rolePanel != null)
         {
             GameObject i_slot = Instantiate(i_playerSlotPrefab, i_rolePanel);
@@ -120,7 +120,7 @@ public class RecrutementPlayer : MonoBehaviour
         if (i_manager.TeamPlayers.Contains(i_selected))
         {
             i_manager.MovePlayerToRole(i_selected, i_newRole);
-            Debug.Log($"{i_selected.i_name} dÈplacÈ vers le rÙle {GetRoleName(i_newRole)}");
+            Debug.Log($"{i_selected.i_name} dÈplacÅEvers le rÙle {GetRoleName(i_newRole)}");
 
             UpdateUI();
         }
@@ -140,7 +140,7 @@ public class RecrutementPlayer : MonoBehaviour
             return;
         }
 
-        int i_currentRole = i_player.i_role;
+        int i_currentRole = (int)i_player.i_role;
         int i_newRole;
         if (i_moveRight)
             i_newRole = (i_currentRole + 1) % 5;
@@ -151,10 +151,10 @@ public class RecrutementPlayer : MonoBehaviour
 
         if (i_playerAtNewRole != null)
         {
-            i_playerAtNewRole.SetRole(i_currentRole);
+            i_playerAtNewRole.SetRole((GameManager.Role)i_currentRole);
             Debug.Log($"…change entre {i_player.i_name} et {i_playerAtNewRole.i_name}");
         }
-        i_player.SetRole(i_newRole);
+        i_player.SetRole((GameManager.Role)i_newRole);
 
         UpdateUI();
     }
@@ -168,7 +168,7 @@ public class RecrutementPlayer : MonoBehaviour
     {
         GameManager.Instance.i_manager.RemovePlayer(i_player);
 
-        Debug.Log($"{i_player.i_name} a ÈtÈ retirÈ de l'Èquipe.");
+        Debug.Log($"{i_player.i_name} a ÈtÅEretirÅEde l'Èquipe.");
 
         UpdateUI();
     }
@@ -184,7 +184,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         foreach (var i_player in GameManager.Instance.i_manager.TeamPlayers)
         {
-            Transform i_rolePanel = GetPanelForRole(i_player.i_role);
+            Transform i_rolePanel = GetPanelForRole((int)i_player.i_role);
             if (i_rolePanel != null)
             {
                 GameObject i_existingSlot = i_rolePanel.Find(i_player.i_name)?.gameObject;
@@ -218,7 +218,7 @@ public class RecrutementPlayer : MonoBehaviour
 
         Player i_currentPlayer = i_allPlayers[i_currentIndex];
         i_nameText.text = i_currentPlayer.i_name;
-        i_roleText.text = GetRoleName(i_currentPlayer.i_role);
+        i_roleText.text = GetRoleName((int)i_currentPlayer.i_role);
         i_countText.text = i_selectedTeam.Count.ToString() + $" / 5";
         InitStat(i_currentPlayer.i_lvl, i_currentPlayer.i_potentiel, i_currentPlayer.i_mechanic, i_currentPlayer.i_knowledge);
     }

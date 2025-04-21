@@ -40,7 +40,7 @@ public class UI_Player : MonoBehaviour
     public List<Image> i_PotentielE;
     public Slider i_sliderMeca;
     public Slider i_sliderConnai;
-    public Slider i_sliderCohé;
+    public Slider i_sliderCoh;
     public TMP_Text i_champFav;
 
     void Start()
@@ -79,7 +79,7 @@ public class UI_Player : MonoBehaviour
         //Meca1
         //i_graphNiv.data[0].data[5] = player.i_mechanic.s_lvlCombo;
 
-        chart.UpdateData(0, 0, new List<double> { player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp, player.i_mechanic.s_reflexe.s_lvl*100 + player.i_mechanic.s_reflexe.s_Xp, player.i_knowledge.s_objective.s_lvl *100 + player.i_knowledge.s_objective.s_Xp, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId].s_Xp });
+        chart.UpdateData(0, 0, new List<double> { player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp, player.i_mechanic.s_reflexe.s_lvl*100 + player.i_mechanic.s_reflexe.s_Xp, player.i_knowledge.s_objective.s_lvl *100 + player.i_knowledge.s_objective.s_Xp, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp });
 
         i_mecaLV.text = "lvl" + moyenMeca.ToString();
         i_connaiLV.text = "lvl" + moyenKnow.ToString();
@@ -97,7 +97,7 @@ public class UI_Player : MonoBehaviour
         i_prenom.text = player.i_name;
         i_surnom.text = player.i_name;
 
-        i_role.text = GetRoleName(player.i_role);
+        i_role.text = player.i_role.ToString();
 
         i_caractere.text = player.i_mood.i_moodName;
 
