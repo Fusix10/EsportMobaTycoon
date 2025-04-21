@@ -117,9 +117,9 @@ public class Manager_Utilisateur : MonoBehaviour
         if (teamPlayers.Count < 5 && !teamPlayers.Contains(player))
         {
             teamPlayers.Add(player);
-            if (!teamPlayersByRole.ContainsKey(player.i_role))
+            if (!teamPlayersByRole.ContainsKey((int)player.i_role))
             {
-                teamPlayersByRole[player.i_role] = player;
+                teamPlayersByRole[(int)player.i_role] = player;
             }
 
             Debug.Log(teamPlayers.Count);
@@ -137,9 +137,9 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             teamPlayers.Remove(player);
 
-            if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
+            if (teamPlayersByRole.ContainsKey((int)player.i_role) && teamPlayersByRole[(int)player.i_role] == player)
             {
-                teamPlayersByRole.Remove(player.i_role);
+                teamPlayersByRole.Remove((int)player.i_role);
             }
         }
     }
@@ -148,10 +148,10 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         if (!teamPlayers.Contains(player)) return;
 
-        if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
-            teamPlayersByRole.Remove(player.i_role);
+        if (teamPlayersByRole.ContainsKey((int)player.i_role) && teamPlayersByRole[(int)player.i_role] == player)
+            teamPlayersByRole.Remove((int)player.i_role);
 
-        player.SetRole(newRole);
+        player.SetRole((GameManager.Role)newRole);
         teamPlayersByRole[newRole] = player;
     }
 
@@ -176,7 +176,7 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         foreach (var player in teamPlayers)
         {
-            if (player.i_role == role)
+            if ((int)player.i_role == role)
                 return player;
         }
         return null;
