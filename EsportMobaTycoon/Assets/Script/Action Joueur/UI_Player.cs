@@ -18,13 +18,20 @@ public class UI_Player : MonoBehaviour
 
     public TMP_Text i_prenom;
     public TMP_Text i_surnom;
+    public TMP_Text i_caractere;
+    public TMP_Text i_synergie;
     public TMP_Text i_role;
     //public Image i_imgRole;
-    public TMP_Text i_sysn;
     //public TMP_Text i_carac;
     public GameObject i_graphNiv;
     private RadarChart chart;
 
+
+    [Header("Champion UI")]
+    public GameObject i_prefabChamp;
+    public Transform i_panelExce;
+    public Transform i_panelBonne;
+    public Transform i_panelCorrect;
 
     [Header("Entrainnement UI")]
 
@@ -55,7 +62,7 @@ public class UI_Player : MonoBehaviour
         CleanUp(i_Potentiel);
 
         chart =  i_graphNiv.GetComponent<RadarChart>();
-        Player player = GameManager.Instance.i_allPlayers[savePlayerSelectedUi.i_indexPlayer];
+        Player player = GameManager.Instance.i_manager.GetPlayer()[savePlayerSelectedUi.i_indexPlayer];
 
         CalculPlayer(player);
 
@@ -92,9 +99,73 @@ public class UI_Player : MonoBehaviour
 
         i_role.text = GetRoleName(player.i_role);
 
-        //sysnergie team
+        i_caractere.text = player.i_mood.i_moodName;
 
+        i_synergie.text = FindSynergie(player.i_teamSpirit.s_lvl);
+    }
 
+    public void ActualiseUiPlayerChampion()
+    {
+        ClearChampion();
+
+        Player player = GameManager.Instance.i_manager.GetPlayer()[savePlayerSelectedUi.i_indexPlayer];
+        foreach (KeyValuePair<int, Lvl> pair in player.i_mechanic.s_lvlCombo)
+        {
+            GameObject predab = Instantiate(i_prefabChamp);
+            predab.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.i_allCharacters[pair.Key].i_name;
+            if (pair.Value.s_lvl <= 1)
+            {
+               predab.transform.parent = i_panelCorrect;
+            }
+            else if(pair.Value.s_lvl == 2 || pair.Value.s_lvl == 3)
+            {
+                predab.transform.parent = i_panelBonne;
+            }
+            else if(pair.Value.s_lvl >= 4 )
+            {
+                predab.transform.parent = i_panelExce;
+            }
+        }
+    }
+
+    //to do il faut que l
+
+    void ClearChampion()
+    {
+        for(int i = 1; i < i_panelExce.childCount; i++)
+        {
+            Destroy(i_panelExce.GetChild(i).gameObject);
+        }
+        for(int i = 1; i < i_panelBonne.childCount; i++)
+        {
+            Destroy(i_panelBonne.GetChild(i).gameObject);
+        }
+        for(int i = 1; i < i_panelCorrect.childCount; i++)
+        {
+            Destroy(i_panelCorrect.GetChild(i).gameObject);
+        }
+        
+    }
+
+    string FindSynergie(int synergie)
+    {
+        switch (synergie)
+        {
+            case 0:
+                return "Désastreux";
+            case 1:
+                return "Faible";
+            case 2:
+                return "Correct";
+            case 3:
+                return "Bon";
+            case 4:
+                return "Incroyable";
+            case 5:
+                return "Parfait";
+            default:
+                return "";
+        }
     }
 
     void CalculPlayer(Player player)
@@ -109,7 +180,7 @@ public class UI_Player : MonoBehaviour
         CleanUp(i_lvlE);
         CleanUp(i_PotentielE);
 
-        Player player = GameManager.Instance.i_allPlayers[savePlayerSelectedUi.i_indexPlayer];
+        Player player = GameManager.Instance.i_manager.GetPlayer()[savePlayerSelectedUi.i_indexPlayer];
 
         CalculPlayer(player);
 
