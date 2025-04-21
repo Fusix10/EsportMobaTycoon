@@ -55,9 +55,10 @@ public class PanelManager : MonoBehaviour
         {
             teamSynergie += i_manager.GetPlayer()[i].i_teamSpirit.s_lvl;
         }
-
-        teamSynergie = teamSynergie / i_manager.GetPlayer().Count;
-
+        if (i_manager.GetPlayer().Count > 0)
+        {
+            teamSynergie = teamSynergie / i_manager.GetPlayer().Count;
+        }
         switch (teamSynergie) 
         { 
             case 0:

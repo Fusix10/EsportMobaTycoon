@@ -127,7 +127,7 @@ public class PlayerFactory : MonoBehaviour
         {
             if ((GameManager.Role)character.i_roleId == role)
             {
-                mechanic.s_lvlCombo.Add(character.i_Id, new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f)));
+                mechanic.s_lvlCombo[favoriteCharacterId.i_Id] = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
             }
         }
 

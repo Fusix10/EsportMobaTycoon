@@ -22,12 +22,12 @@ public class Manager_Utilisateur : MonoBehaviour
         if (infoText != null)
         {
             infoText.text = "Argent Actuel : " + i_currentMoney + "$\n" +
-                            "Popularit�E: " + i_reputation + "\n" +
+                            "PopularitE: " + i_reputation + "\n" +
                             "Joueurs (" + teamPlayers.Count + ") :\n";
         }
         else
         {
-            Debug.LogWarning("infoText n'est pas assign�E!");
+            Debug.LogWarning("infoText n'est pas assignE!");
         }
     }
 
