@@ -5,7 +5,9 @@ using System.Linq;
 using UnityEditor.MPE;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 
 public class GameManager : MonoBehaviour
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        i_GameState = GameState.Hub;
+        i_GameState = GameState.Menu;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
         i_allPlayers = new List<Player>();
@@ -194,8 +196,7 @@ public class GameManager : MonoBehaviour
         AddMatchUp(i_allCharacters[17], i_allCharacters[18], MatchUp.stateMatchUp.NOTHING); // Thresh vs Lux
 
         // PopUp MAnager
-        i_popupManager = this.GetComponent<PopUpManager>(); ;
-
+        i_popupManager = this.GetComponent<PopUpManager>();
 
         Instance = this;
 
@@ -215,9 +216,13 @@ public class GameManager : MonoBehaviour
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
         }*/
 
-        i_stateToScene.Add(GameState.Hub, "Hub");
-        i_stateToScene.Add(GameState.Hub1, "Hub1");
-        i_stateToScene.Add(GameState.Hub2, "Hub2");
+        i_stateToScene.Add(GameState.Menu, "Menu");
+        i_stateToScene.Add(GameState.CutScene, "CutScene");
+        i_stateToScene.Add(GameState.Avatar, "Avatar");
+        i_stateToScene.Add(GameState.Logo, "Logo");
+        i_stateToScene.Add(GameState.Buddy, "Buddy");
+        i_stateToScene.Add(GameState.Hiring, "Hiring");
+        i_stateToScene.Add(GameState.Circuit, "Circuit");
         i_stateToScene.Add(GameState.Hub3, "Hub3");
         i_stateToScene.Add(GameState.Match, "Match");
         i_stateToScene.Add(GameState.Tournaments, "Tournaments");
@@ -225,6 +230,7 @@ public class GameManager : MonoBehaviour
         string allMappings = string.Join(
     ", ",
     i_stateToScene.Select(kv => kv.Key + "→" + kv.Value)
+
 );
         Debug.Log("[GameManager] Mappings = " + allMappings);
     }
@@ -294,6 +300,12 @@ public class GameManager : MonoBehaviour
         return matchUp;
     }
 
+    public void ChangeState(int gameState)
+    {
+        i_GameState = (GameState)gameState;
+        LoadSceneForCurrentState();
+    }
+
     public void LoadSceneForCurrentState()
     {
         Debug.Log($"[LoadScene] État courant = {i_GameState}");
@@ -312,12 +324,20 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Aucune scène n'est associée à l'état " + i_GameState);
+            Debug.Log(i_stateToScene[i_GameState]);
         }
     }
 }
 
 public enum GameState
 {
+    Menu,
+    CutScene,
+    Avatar,
+    Logo,
+    Buddy,
+    Hiring,
+    Circuit,
     Hub,
     Hub1,
     Hub2,

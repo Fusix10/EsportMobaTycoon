@@ -4,7 +4,7 @@ public class SceneButtonHandler : MonoBehaviour
 {
     public void OnTutoButtonGoToHub1()
     {
-        GameManager.Instance.setGameState(GameState.Hub1);
+        GameManager.Instance.setGameState(GameState.Hub);
         GameManager.Instance.LoadSceneForCurrentState();
     }
 

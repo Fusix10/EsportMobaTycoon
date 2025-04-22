@@ -49,6 +49,6 @@ public class Simulation : MonoBehaviour
             GameManager.Instance.i_allPlayerData.Add(data);
         }
         GameManager.Instance.setGameState(GameState.Tournaments);
-        SceneManager.LoadScene("Simulation");
+        //SceneManager.LoadScene("Simulation");
     }
 }

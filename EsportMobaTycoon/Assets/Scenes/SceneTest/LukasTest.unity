@@ -42529,7 +42529,8 @@ MonoBehaviour:
   i_popupManager: {fileID: 0}
   i_manager: {fileID: 1116037349}
   i_allPlayers: []
-  i_allCharacters: []
+  i_allPlayerData: []
+  i_GameState: 0
 --- !u!4 &1116037347
 Transform:
   m_ObjectHideFlags: 0
@@ -62328,7 +62329,7 @@ MonoBehaviour:
   - {fileID: 2030584908}
   i_sliderMeca: {fileID: 1385248891}
   i_sliderConnai: {fileID: 1752470365}
-  "i_sliderCoh\xE9": {fileID: 2071185585}
+  i_sliderCoh: {fileID: 0}
   i_champFav: {fileID: 563071809}
 --- !u!1 &1676282154
 GameObject:

@@ -47,7 +47,16 @@ public class RecrutementPlayer : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
+            if(i < 2)
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.ADC));
+            else if (i < 4)
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.SUPPORT));
+            else if (i < 6)
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.MIDLANER));
+            else if (i < 8)
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.JUNGLER));
+            else if (i < 10)
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.TOPLANER));
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f + (i * i_allPlayers[i].transform.localScale.x * 2), 1.29f, 0.7858481f); 
             GameManager.Instance.i_allPlayers.Add(i_allPlayers[i]);
         }
