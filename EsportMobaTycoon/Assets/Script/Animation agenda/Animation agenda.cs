@@ -13,13 +13,13 @@ public class Animationagenda : MonoBehaviour
     public GameObject i_continuButton;
     public enum Day
     {
-        lundi,
-        mardi,
-        mercredi,
-        jeudi,
-        vendredi,
-        samedi,
-        dimanche,
+        Lundi,
+        Mardi,
+        Mercredi,
+        Jeudi,
+        Vendredi,
+        Samedi,
+        Dimanche,
         //dimanche = -1
     }
 
@@ -68,5 +68,6 @@ public class Animationagenda : MonoBehaviour
         text[1].text = ((Day)(GameManager.Instance.GetItimeSystem().GetTime() % 7)).ToString();
         text[2].text = ((Day)((GameManager.Instance.GetItimeSystem().GetTime() + 1) % 7)).ToString();
         text[3].text = ((Day)((GameManager.Instance.GetItimeSystem().GetTime() + 2) % 7)).ToString();
+        text[4].text = ((Day)((GameManager.Instance.GetItimeSystem().GetTime() + 3) % 7)).ToString();
     }
 }
