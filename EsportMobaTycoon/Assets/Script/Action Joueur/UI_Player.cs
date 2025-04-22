@@ -40,7 +40,7 @@ public class UI_Player : MonoBehaviour
     public List<Image> i_PotentielE;
     public Slider i_sliderMeca;
     public Slider i_sliderConnai;
-    public Slider i_sliderCohé;
+    public Slider i_sliderCoh;
     public TMP_Text i_champFav;
 
     void Start()

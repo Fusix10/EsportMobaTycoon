@@ -106,7 +106,7 @@ public class PlayerFactory : MonoBehaviour
         int potential = UnityEngine.Random.Range(1, 5);
         GameManager.Role currentRole = GameManager.Instance.GetRandomRole();
         int reputation = UnityEngine.Random.Range(0, 100);
-        Character favoriteCharacterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
+
         Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
 
         //Sprite icon = characterImage.sprite;
@@ -114,7 +114,6 @@ public class PlayerFactory : MonoBehaviour
         Lvl teamSpirit = new Lvl(UnityEngine.Random.Range(1, 5), UnityEngine.Random.Range(0f, 100f));
 
         Mechanic mechanic = new Mechanic();
-        mechanic.s_lvlCombo.Add(favoriteCharacterId.i_Id, new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f)));
         mechanic.s_stamina = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
         mechanic.s_reflexe = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
 
@@ -130,6 +129,21 @@ public class PlayerFactory : MonoBehaviour
                 mechanic.s_lvlCombo.Add(character.i_Id, new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f)));
             }
         }
+
+        int bestlvlid = -55555555;
+        int lvl = -6555555;
+        foreach (KeyValuePair<int, Lvl> character in mechanic.s_lvlCombo)
+        {
+           
+            if (character.Value.s_lvl > lvl)
+            {
+                bestlvlid = character.Key;
+                lvl = character.Value.s_lvl;
+            }
+        }
+
+        Character favoriteCharacterId = GameManager.Instance.i_allCharacters[bestlvlid];
+
 
         Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[favoriteCharacterId.i_Id].s_lvl);
         Debug.Log(name + " s_stamina = " + mechanic.s_stamina.s_lvl);

@@ -39,7 +39,6 @@ public class PanelManager : MonoBehaviour
         i_manager = GameManager.Instance.i_manager;
         i_NombreMoney.text = i_manager.i_currentMoney.ToString();
         i_NombreMoneyPrenium.text = i_manager.i_currentMoneyPrenium.ToString();
-        i_nombreReputation.text = i_manager.i_reputation.ToString();
         ChangeColorSynergie();
 
     }
