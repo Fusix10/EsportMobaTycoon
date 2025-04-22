@@ -38,3 +38,4 @@ public class PlayerData
         i_potential = p.i_potentiel;
         i_mood = p.i_mood;
     }
+}
