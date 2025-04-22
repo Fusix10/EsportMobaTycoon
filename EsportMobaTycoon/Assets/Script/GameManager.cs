@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.MPE;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -17,7 +19,6 @@ public class GameManager : MonoBehaviour
     //PopUpManager 
     [SerializeField] public PopUpManager i_popupManager;
 
-
     int i_testID = 0;
     List<ActionMother> i_allActions;
     public List<Mood> i_allMood;
@@ -27,7 +28,10 @@ public class GameManager : MonoBehaviour
     public List<Character> i_allCharacters;
     [SerializeField] public List<MatchUp> i_allMatchUps;
     public List<PlayerData> i_allPlayerData;
-    private GameState i_GameState;
+
+    public GameState i_GameState;
+
+    private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
 
     public class MatchUp
     {
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("[GameManager] Awake() démarré sur l’instance " + this.GetInstanceID());
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -203,6 +208,25 @@ public class GameManager : MonoBehaviour
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
         knowledge.s_placement = new Lvl(0, 0);
+        //J'ai fait des tests, il faudra remettre le code mais pour l'instant cette partie empeche le changement de scene, probablement parce que je n'ai pas les joueurs.
+        /*for (int i = 0; i < 5; i++)
+        {
+            i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
+            i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
+        }*/
+
+        i_stateToScene.Add(GameState.Hub, "Hub");
+        i_stateToScene.Add(GameState.Hub1, "Hub1");
+        i_stateToScene.Add(GameState.Hub2, "Hub2");
+        i_stateToScene.Add(GameState.Hub3, "Hub3");
+        i_stateToScene.Add(GameState.Match, "Match");
+        i_stateToScene.Add(GameState.Tournaments, "Tournaments");
+        i_stateToScene.Add(GameState.Result, "Result");
+        string allMappings = string.Join(
+    ", ",
+    i_stateToScene.Select(kv => kv.Key + "→" + kv.Value)
+);
+        Debug.Log("[GameManager] Mappings = " + allMappings);
     }
     void Update()
     {
@@ -270,11 +294,34 @@ public class GameManager : MonoBehaviour
         return matchUp;
     }
 
+    public void LoadSceneForCurrentState()
+    {
+        Debug.Log($"[LoadScene] État courant = {i_GameState}");
+
+        if (i_GameState == GameState.Hub)
+        {
+            Debug.Log("[LoadScene] On est encore en Hub, on ne change pas de scène.");
+            return;
+        }
+
+        if (i_stateToScene.TryGetValue(i_GameState, out string sceneName))
+        {
+            Debug.Log("Chargement de la scène " + sceneName);
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.Log("Aucune scène n'est associée à l'état " + i_GameState);
+        }
+    }
 }
 
 public enum GameState
 {
     Hub,
+    Hub1,
+    Hub2,
+    Hub3,
     Match,
     Tournaments,
     Result
@@ -289,3 +336,4 @@ public class GameData
 {
     public int i_id;
 }*/
+
