@@ -142,4 +142,50 @@ public class PlayerFactory : MonoBehaviour
         playerObj.GetComponent<Player>().Init(name, knickname, role, mechanic, knowledge, favoriteCharacterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0, 9)], currentRole, characterId);
         return playerObj.GetComponent<Player>();
     }
+
+    public Player CreateRandomPlayerWithRole(GameManager.Role role)
+    {
+        GameObject playerObj = Instantiate(PlayerPrefabs);
+
+        string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
+        string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
+        GameManager.Role favoriteRole = GameManager.Instance.GetRandomRole();
+        int potential = UnityEngine.Random.Range(1, 5);
+        GameManager.Role currentRole = role;
+        int reputation = UnityEngine.Random.Range(0, 100);
+        Character favoriteCharacterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
+        Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
+
+        //Sprite icon = characterImage.sprite;
+
+        Lvl teamSpirit = new Lvl(UnityEngine.Random.Range(1, 5), UnityEngine.Random.Range(0f, 100f));
+
+        Mechanic mechanic = new Mechanic();
+        mechanic.s_lvlCombo.Add(favoriteCharacterId.i_Id, new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f)));
+        mechanic.s_stamina = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+        mechanic.s_reflexe = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+
+        Knowledge knowledge = new Knowledge();
+        knowledge.s_objective = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_placement = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+        knowledge.s_teamFight = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+
+        foreach (Character character in GameManager.Instance.i_allCharacters)
+        {
+            if ((GameManager.Role)character.i_roleId == role)
+            {
+                mechanic.s_lvlCombo[favoriteCharacterId.i_Id] = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+            }
+        }
+        Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[favoriteCharacterId.i_Id].s_lvl);
+        Debug.Log(name + " s_stamina = " + mechanic.s_stamina.s_lvl);
+        Debug.Log(name + " s_reflexe = " + mechanic.s_reflexe.s_lvl);
+        Debug.Log(name + " s_objective = " + knowledge.s_objective.s_lvl);
+        Debug.Log(name + " s_placement = " + knowledge.s_placement.s_lvl);
+        Debug.Log(name + " s_teamFight = " + knowledge.s_teamFight.s_lvl);
+
+
+        playerObj.GetComponent<Player>().Init(name, knickname, favoriteRole, mechanic, knowledge, favoriteCharacterId, teamSpirit, reputation, potential, GameManager.Instance.i_allMood[UnityEngine.Random.Range(0, 9)], currentRole, characterId);
+        return playerObj.GetComponent<Player>();
+    }
 }

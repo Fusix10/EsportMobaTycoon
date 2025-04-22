@@ -47,9 +47,29 @@ public class RecrutementPlayer : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
-            i_allPlayers[i].transform.position = new Vector3(-0.2574105f + (i * i_allPlayers[i].transform.localScale.x * 2), 1.29f, 0.7858481f); 
+            if (i < 2)
+            {
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.ADC));
+            }
+            else if (i < 4)
+            {
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.SUPPORT));
+            }
+            else if (i < 6)
+            {
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.MIDLANER));
+            }
+            else if (i < 8)
+            {
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.JUNGLER));
+            }
+            else if (i < 10)
+            {
+                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.TOPLANER));
+            }
+            i_allPlayers[i].transform.position = new Vector3(-0.2574105f + (i * i_allPlayers[i].transform.localScale.x * 2), 1.29f, 0.7858481f);
             GameManager.Instance.i_allPlayers.Add(i_allPlayers[i]);
+            Debug.Log(i);
         }
 
         UpdateUI();
@@ -63,7 +83,10 @@ public class RecrutementPlayer : MonoBehaviour
 
     public void ScrollRight()
     {
-        i_currentIndex = (i_currentIndex + 1) % i_allPlayers.Count;
+        if (i_allPlayers.Count > 0)
+        {
+            i_currentIndex = (i_currentIndex + 1) % i_allPlayers.Count;
+        }
         UpdateUI();
     }
 
@@ -78,9 +101,10 @@ public class RecrutementPlayer : MonoBehaviour
             return;
         }
 
-        if (i_manager.GetPlayerByRole(i_selected.i_role) != null)
+        if (i_manager.GetPlayerByRole(i_selected.i_currentRole) != null)
         {
             Debug.Log("Ce rÙle est dejÅa pris.");
+
             return;
         }
 
@@ -91,6 +115,7 @@ public class RecrutementPlayer : MonoBehaviour
         }
 
         i_selectedTeam.Add(i_selected);
+
         Debug.Log($"{i_selected.i_name} ajoutÔøΩEÔøΩEl'ÔøΩquipe en tant que {i_selected.i_currentRole.ToString()}.");
         Transform rolePanel = GetPanelForRole(i_selected.i_currentRole);
         if (rolePanel != null)
@@ -119,6 +144,8 @@ public class RecrutementPlayer : MonoBehaviour
         PlayAddAnimation();
 
         UpdateUI();
+
+           
     }
     public void MovePlayerToNewRole(Role newRole)
     {
@@ -247,12 +274,12 @@ public class RecrutementPlayer : MonoBehaviour
             i_Potentiel[i].color = Color.yellow;
         }
 
-        for (int i = 0; i < mecha ; i++)
+        for (int i = 0; i < mecha; i++)
         {
             i_Mechanic[i].color = Color.yellow;
         }
 
-        for(int i = 0;i < know; i++)
+        for (int i = 0; i < know; i++)
         {
             i_knowledge[i].color = Color.yellow;
         }
@@ -270,9 +297,9 @@ public class RecrutementPlayer : MonoBehaviour
             i_Potentiel[i].color = Color.white;
         }
 
-        for(int i = 0; i < 5 ; i++)
+        for (int i = 0; i < 5; i++)
         {
-            i_Mechanic[i].color= Color.white;
+            i_Mechanic[i].color = Color.white;
         }
 
         for (int i = 0; i < 5; i++)
