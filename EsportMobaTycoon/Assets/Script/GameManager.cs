@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if(Instance != null)
+        Debug.Log("[GameManager] Awake() démarré sur l’instance " + this.GetInstanceID());
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -63,16 +65,25 @@ public class GameManager : MonoBehaviour
         i_popupManager = this.GetComponent<PopUpManager>(); ;
 
 
-        for (int i = 0; i < 5; i++)
+        //J'ai fait des tests, il faudra remettre le code mais pour l'instant cette partie empeche le changement de scene, probablement parce que je n'ai pas les joueurs.
+        /*for (int i = 0; i < 5; i++)
         {
             i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_allPlayers[i].transform.position = new Vector3(-0.2574105f+(i*i_allPlayers[i].transform.localScale.x*2), 1.29f, 0.7858481f);
-        }
+        }*/
 
         i_stateToScene.Add(GameState.Hub, "Hub");
         i_stateToScene.Add(GameState.Hub1, "Hub1");
         i_stateToScene.Add(GameState.Hub2, "Hub2");
         i_stateToScene.Add(GameState.Hub3, "Hub3");
+        i_stateToScene.Add(GameState.Match, "Match");
+        i_stateToScene.Add(GameState.Tournaments, "Tournaments");
+        i_stateToScene.Add(GameState.Result, "Result");
+        string allMappings = string.Join(
+    ", ",
+    i_stateToScene.Select(kv => kv.Key + "→" + kv.Value)
+);
+        Debug.Log("[GameManager] Mappings = " + allMappings);
     }
     void Update()
     {
@@ -104,19 +115,22 @@ public class GameManager : MonoBehaviour
 
     public void LoadSceneForCurrentState()
     {
+        Debug.Log($"[LoadScene] État courant = {i_GameState}");
+
         if (i_GameState == GameState.Hub)
         {
+            Debug.Log("[LoadScene] On est encore en Hub, on ne change pas de scène.");
             return;
         }
 
-        if(i_stateToScene.TryGetValue(i_GameState, out string sceneName))
+        if (i_stateToScene.TryGetValue(i_GameState, out string sceneName))
         {
-            Debug.Log("Chargement de la scene" + sceneName);
+            Debug.Log("Chargement de la scène " + sceneName);
             SceneManager.LoadScene(sceneName);
         }
         else
         {
-            Debug.Log("Aucune scene n'est associé");
+            Debug.Log("Aucune scène n'est associée à l'état " + i_GameState);
         }
     }
 }

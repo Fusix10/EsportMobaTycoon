@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneTest/UpgradeHub.unity
     guid: c11b0698e22c06242a6a3604ce209557
   - enabled: 1
+    path: Assets/Scenes/FinishScene/Hub.unity
+    guid: 75a8283d458f54c49932d96d70790db8
+  - enabled: 1
     path: Assets/Scenes/FinishScene/Hub1.unity
     guid: 00d0127e82122ce43ab96f5e677d2fc0
   - enabled: 1
