@@ -176,7 +176,7 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         foreach (var player in teamPlayers)
         {
-            if (player.i_role == (GameManager.Role)role)
+            if (player.i_currentRole == (GameManager.Role)role)
                 return player;
         }
         return null;

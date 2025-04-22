@@ -200,11 +200,11 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        for (int i = 0; i < 5; i++)
+        /*for (int i = 0; i < 5; i++)
         {
             i_manager.AddPlayer(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_manager.GetPlayer()[i].transform.position = new Vector3(-0.2574105f+(i*i_manager.GetPlayer()[i].transform.localScale.x*2), 1.29f, 0.7858481f);
-        }
+        }*/
         Knowledge knowledge = new Knowledge();
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
