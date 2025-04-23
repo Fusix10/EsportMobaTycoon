@@ -4,7 +4,28 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Menu.unity
+    guid: 15bc7089a423ef145a75640420f1009d
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/CutScene.unity
+    guid: 194f39b2f904ca94facae86aadb4bbbf
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Avatar.unity
+    guid: 9550478227b683b45bf1052cfc1c0a60
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Logo.unity
+    guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Buddy.unity
+    guid: 3edb13ec6b0b54f4e95af298196ee7e5
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Hiring.unity
+    guid: 83750aa7cd786864098d4a33001250ec
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Circuit.unity
+    guid: 6a04e566f68147044a523bf17a0b32e6
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: c2fc0fd8ed33f144ab489676e1e53465, type: 2}

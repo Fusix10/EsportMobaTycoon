@@ -13,25 +13,26 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public float requiredHoldTime;
     public UnityEvent onLongClick;
     public Slider SliderTime;
+    public Button ButtonTime;
 
+    private bool i_TimePassActivate;
     private void Start()
     {
         if(SliderTime != null)
         {
             SliderTime.maxValue = requiredHoldTime;
         }
+        i_TimePassActivate = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         pointerDown = true;
-        Debug.Log("Down");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         Reset();
-        Debug.Log("Up");
     }
 
     void Update()
@@ -43,10 +44,11 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 SliderTime.value = pointerDownTimer;
             }
-            if (pointerDownTimer >= requiredHoldTime)
+            if (pointerDownTimer >= requiredHoldTime && !i_TimePassActivate )
             {
                 if(onLongClick != null)
                 {
+                    i_TimePassActivate = true;
                     onLongClick.Invoke();
                 }
                 Reset();
@@ -56,6 +58,7 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Reset()
     {
+        i_TimePassActivate = false;
         pointerDown = false;
         pointerDownTimer = 0;
         if (SliderTime != null)

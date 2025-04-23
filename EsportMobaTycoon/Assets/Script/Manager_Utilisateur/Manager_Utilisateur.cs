@@ -6,6 +6,7 @@ public class Manager_Utilisateur : MonoBehaviour
 {
     //Stats dans manager
     public float i_currentMoney = 1000;//
+    public float i_currentMoneyPrenium = 1000;//
     public int i_reputation = 0;//
     private List<Player> teamPlayers = new ();//
 
@@ -13,7 +14,7 @@ public class Manager_Utilisateur : MonoBehaviour
 
     public Budget budget;
 
-    private Dictionary<int, Player> teamPlayersByRole = new();
+    private Dictionary<GameManager.Role, Player> teamPlayersByRole = new();
 
     //Avatar Data 
     public string i_lastName;
@@ -57,12 +58,12 @@ public class Manager_Utilisateur : MonoBehaviour
         if (infoText != null)
         {
             infoText.text = "Argent Actuel : " + i_currentMoney + "$\n" +
-                            "Popularit�E: " + i_reputation + "\n" +
+                            "PopularitE: " + i_reputation + "\n" +
                             "Joueurs (" + teamPlayers.Count + ") :\n";
         }
         else
         {
-            Debug.LogWarning("infoText n'est pas assign�E!");
+            Debug.LogWarning("infoText n'est pas assignE!");
         }
     }
 
@@ -166,6 +167,11 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
+    public List<Player> GetPlayer()
+    {
+        return teamPlayers;
+    }
+
     public void RemovePlayer(Player player)
     {
         if (teamPlayers.Contains(player))
@@ -179,14 +185,14 @@ public class Manager_Utilisateur : MonoBehaviour
         }
     }
 
-    public void MovePlayerToRole(Player player, int newRole)
+    public void MovePlayerToRole(Player player, GameManager.Role newRole)
     {
         if (!teamPlayers.Contains(player)) return;
 
         if (teamPlayersByRole.ContainsKey(player.i_role) && teamPlayersByRole[player.i_role] == player)
             teamPlayersByRole.Remove(player.i_role);
 
-        player.SetRole(newRole);
+        player.SetRole((GameManager.Role)newRole);
         teamPlayersByRole[newRole] = player;
     }
 
@@ -207,11 +213,11 @@ public class Manager_Utilisateur : MonoBehaviour
         get { return teamPlayers; }
     }
 
-    public Player GetPlayerByRole(int role)
+    public Player GetPlayerByRole(GameManager.Role role)
     {
         foreach (var player in teamPlayers)
         {
-            if (player.i_role == role)
+            if (player.i_currentRole == (GameManager.Role)role)
                 return player;
         }
         return null;
