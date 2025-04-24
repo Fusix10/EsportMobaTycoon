@@ -103,7 +103,7 @@ public class RecrutementPlayer : MonoBehaviour
             return;
         }
 
-        if (i_manager.GetPlayerByRole(i_selected.i_currentRole) != null)
+        if (manager.GetPlayerByRole(selected.i_currentRole) != null)
         {
             Debug.Log("Ce r�le est dej�a pris.");
             
