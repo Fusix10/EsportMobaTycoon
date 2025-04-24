@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class SceneManagerUI : MonoBehaviour
 {
-    [Header("Button to trigger scene change")]
-    public Button i_sceneChangeButton;
+    //[Header("Button to trigger scene change")]
+    //public Button i_sceneChangeButton;
 
     private void Start()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        /*int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (i_sceneChangeButton != null)
         {
             i_sceneChangeButton.onClick.RemoveAllListeners();
@@ -18,6 +19,30 @@ public class SceneManagerUI : MonoBehaviour
         else
         {
             Debug.LogWarning("Scene Change Button is not assigned!");
-        }
+        }*/
+    }
+    [TextArea(4, 10)]
+    [Tooltip("Mapping des actions par ID.")]
+    public string aideMemoire = "Menu 0\r\nCutScene 1\r\nAvatar 2\r\nLogo 3\r\nBuddy 4\r\nHiring 5\r\nCircuit 6\r\nHub 7\r\nHub1 8\r\nHub2 9\r\nHub3 10\r\nMatch 11\r\nTournaments 12\r\nResult 13";
+    public void ChangeStateButton(int State)
+    {
+        GameManager.Instance.ChangeState(State);
+        Debug.Log("jsui passé par la");
+        /*
+            Menu,           0
+            CutScene,       1
+            Avatar,         2
+            Logo,           3
+            Buddy,          4
+            Hiring,         5
+            Circuit,        6
+            Hub,            7
+            Hub1,           8
+            Hub2,           9
+            Hub3,           10
+            Match,          11
+            Tournaments,    12
+            Result          13
+         */
     }
 }
