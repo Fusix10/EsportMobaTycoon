@@ -1,52 +1,49 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class ValidateButton : MonoBehaviour
 {
-
+    [SerializeField] private TeamData teamData;
     [SerializeField] private List<UnputFieldGrabber> inputFieldGrabberList;
     [SerializeField] private List<Carouselle> CarouselleList;
-    GameManager gameManager;
     [SerializeField] private bool isGenderXX;
-    //[SerializeField] private GameManager gameManager;
 
     void Start()
     {
-        //if (gameManager == null)
-        //{
-        //    Debug.LogError("GameManager slot is not assigned.");
-        //}
-        gameManager = GameManager.Instance;
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void ValidatePlayer(Manager_Utilisateur manager)
-    {
-        inputFieldGrabberList[0].getInputText();
-        inputFieldGrabberList[1].getInputText();
-
-        CarouselleList[0].getSprite();
-        CarouselleList[1].getSprite();
-        CarouselleList[2].getSprite();
-        CarouselleList[3].getSprite();
-
-        manager.init(inputFieldGrabberList[0].getInputText(), inputFieldGrabberList[1].getInputText(), CarouselleList[0].getSprite(),
-            CarouselleList[1].getSprite(), CarouselleList[2].getSprite(), CarouselleList[3].getSprite(), isGenderXX);
+        if (teamData == null)
+            Debug.LogError("TeamData n'est pas assigné !");
+        if (CarouselleList == null || CarouselleList.Count < 3)
+            Debug.LogError("Il faut 3 Carouselle dans CarouselleList !");
     }
 
     public void ValidateTeam()
     {
-        GameManager.Instance.i_manager.TeamInit(inputFieldGrabberList[0].getInputText(), inputFieldGrabberList[1].getInputText(),
-            CarouselleList[0].getSprite(), CarouselleList[1].getSprite());
-    }
+        teamData.i_name = inputFieldGrabberList[0].getInputText();
+        teamData.i_nickName = inputFieldGrabberList[1].getInputText();
 
-    public void ToggleGender()
-    {
-        isGenderXX = !isGenderXX;
+        teamData.i_LogoBack = CarouselleList[0].getSprite();
+        teamData.i_LogoCrown = CarouselleList[1].getSprite();
+        teamData.i_Logo = CarouselleList[2].getSprite();
+
+        Color colorBack = CarouselleList[0].getColor();
+        Color colorCrown = CarouselleList[1].getColor();
+        Color colorMain = CarouselleList[2].getColor();
+
+        Debug.Log($"[ValidateTeam] Back={colorBack}, Crown={colorCrown}, Main={colorMain}");
+
+        teamData.i_LogoBackColor = colorBack;
+        teamData.i_LogoCrownColor = colorCrown;
+        teamData.i_LogoMainColor = colorMain;
+
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(teamData);
+        AssetDatabase.SaveAssets();
+#endif
+
+        Debug.Log("[ValidateTeam] TeamData mise à jour et sauvegardée.");
     }
 }
+

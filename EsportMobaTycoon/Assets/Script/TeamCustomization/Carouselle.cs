@@ -1,57 +1,74 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Carouselle : MonoBehaviour
 {
+    [Header("UI References")]
     [SerializeField] private Image targetImage;
     [SerializeField] private List<Sprite> sprites;
+
+    [Header("Les 3 assets à colorer")]
+    [SerializeField] private List<Image> targetImages;
+
+    [Header("Color Controls (3 boutons)")]
     [SerializeField] private List<Button> colorButtons;
     [SerializeField] private List<Color> colors;
-    [SerializeField] private int colorsIndex;
 
     private int SpriteIndex = 0;
-    private int colorButtonIndex; 
+    private int[] colorIndices;
 
     void Start()
     {
-        if (targetImage == null)
+        if (targetImage == null) Debug.LogError("Target Image is not assigned.");
+        if (sprites == null || sprites.Count == 0) Debug.LogError("Sprites list is empty.");
+        if (targetImages == null || targetImages.Count != colorButtons.Count)
+            Debug.LogError("Il faut autant de targetImages que de colorButtons !");
+        if (colorButtons == null || colorButtons.Count == 0)
+            Debug.LogError("No Color Buttons Assigned to Carouselle");
+        if (colors == null || colors.Count == 0)
+            Debug.LogError("Colors list is empty.");
+
+        UpdateImage();
+
+        colorIndices = new int[colorButtons.Count];
+        for (int i = 0; i < colorIndices.Length; i++)
+            colorIndices[i] = -1;
+
+        for (int i = 0; i < colorButtons.Count; i++)
         {
-            Debug.LogError("Target Image is not assigned.");
+            int idx = i;
+
+            colorButtons[idx].image.color = Color.white;
+
+            colorButtons[idx].onClick.AddListener(() => CycleColor(idx));
         }
+    }
 
-        if (sprites.Count == 0)
-        {
-            Debug.LogError("Sprites list is empty.");
-        }
+    private void CycleColor(int idx)
+    {
+        if (idx < 0 || idx >= colorIndices.Length) return;
+        if (colors.Count == 0) return;
 
-        else
-        {
-            UpdateImage();
-            if (colorButtons.Count > 1)
-            {
-                Debug.Log("More than 1 color Button detected");
-                UpdateColor(0);
-            }
+        //passe à la couleur suivante
+        colorIndices[idx] = (colorIndices[idx] + 1) % colors.Count;
+        Color c = colors[colorIndices[idx]];
+        c.a = 1f;
 
-            else if (colorButtons.Count == 1) 
-            {
-                Debug.Log("1 color Button detected");
-                colorButtonIndex = 0;
-                UpdateColorCarouselle(colorButtons[colorButtonIndex]);
-            }
+        //applique au bouton
+        if (colorButtons[idx].image != null)
+            colorButtons[idx].image.color = c;
 
-            else
-            {
-                Debug.LogError("No Color Buttons Assigned to Carouselle");
-            }
-        }
+        //applique au 3ème asset correspondant
+        if (targetImages[idx] != null)
+            targetImages[idx].color = c;
     }
 
     private void UpdateImage()
     {
-        targetImage.sprite = sprites[SpriteIndex];
+        if (sprites != null && sprites.Count > 0 && targetImage != null)
+            targetImage.sprite = sprites[SpriteIndex];
     }
 
     public void NextImage()
@@ -66,45 +83,38 @@ public class Carouselle : MonoBehaviour
         UpdateImage();
     }
 
-    public void UpdateColor(int index)
-    {
-        if (index >= 0 && index < colorButtons.Count)
-        {
-            Button button = colorButtons[index];
-            if (button != null && targetImage != null)
-            {
-                targetImage.color = button.image.color;
-                colorButtonIndex = index; 
-            }
-        }
-        else
-        {
-            Debug.LogError("Index out of range for color buttons.");
-        }
-    }
-
-    public void UpdateColorCarouselle(Button myButton)
-    {
-        colorButtonIndex = (colorButtonIndex + 1) % colors.Count;
-        targetImage.color = colors[colorButtonIndex];
-        myButton.image.color = colors[colorButtonIndex];
-    }
-
     public void Randomize()
     {
         SpriteIndex = Random.Range(0, sprites.Count);
         UpdateImage();
 
-        colorButtonIndex = Random.Range(0, colorButtons.Count);
-        UpdateColor(colorButtonIndex);
+        for (int i = 0; i < colorIndices.Length; i++)
+        {
+            colorIndices[i] = Random.Range(0, colors.Count);
+            Color c = colors[colorIndices[i]];
+            c.a = 1f;
+            if (colorButtons[i].image != null)
+                colorButtons[i].image.color = c;
+            if (targetImages[i] != null)
+                targetImages[i].color = c;
+        }
     }
 
     public void Resette()
     {
         SpriteIndex = 0;
         UpdateImage();
-        colorButtonIndex = 0;
-        UpdateColor(colorButtonIndex);
+
+        for (int i = 0; i < colorIndices.Length; i++)
+        {
+            colorIndices[i] = 0;
+            Color c = colors[0];
+            c.a = 1f;
+            if (colorButtons[i].image != null)
+                colorButtons[i].image.color = c;
+            if (targetImages[i] != null)
+                targetImages[i].color = c;
+        }
     }
 
     public Sprite getSprite()
@@ -114,7 +124,8 @@ public class Carouselle : MonoBehaviour
 
     public Color getColor()
     {
-        return colorButtons[colorButtonIndex].image.color;
+        if (colorIndices.Length > 0)
+            return colors[colorIndices[0]];
+        return Color.white;
     }
-
 }
