@@ -173,15 +173,16 @@ public class PlayerFactory : MonoBehaviour
         {
             if ((GameManager.Role)character.i_roleId == role)
             {
-                mechanic.s_lvlCombo[favoriteCharacterId.i_Id] = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
+                mechanic.s_lvlCombo[character.i_Id] = new Lvl(UnityEngine.Random.Range(1, potential), UnityEngine.Random.Range(0f, 100f));
             }
         }
 
         int bestlvlid = -55555555;
         int lvl = -6555555;
+
         foreach (KeyValuePair<int, Lvl> character in mechanic.s_lvlCombo)
         {
-           
+
             if (character.Value.s_lvl > lvl)
             {
                 bestlvlid = character.Key;
@@ -190,7 +191,6 @@ public class PlayerFactory : MonoBehaviour
         }
 
         Character favoriteCharacterId = GameManager.Instance.i_allCharacters[bestlvlid];
-
 
         Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[favoriteCharacterId.i_Id].s_lvl);
         Debug.Log(name + " s_stamina = " + mechanic.s_stamina.s_lvl);

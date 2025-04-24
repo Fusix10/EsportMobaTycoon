@@ -40,7 +40,7 @@ public class Quest : MonoBehaviour
             if (i_listQuestYellow[i].objectBool && i_listQuestYellow[i].isColected)
             {
                 i_buttonColect[i].interactable = false;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja collecté";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja collect";
                 i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 40;
                 i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
             }
@@ -72,7 +72,7 @@ public class Quest : MonoBehaviour
             if (i_listQuestBlue[i].objectBool && i_listQuestBlue[i].isColected)
             {
                 i_buttonColect[i].interactable = false;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja collecté";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja collect";
                 i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 40;
                 i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
             }
