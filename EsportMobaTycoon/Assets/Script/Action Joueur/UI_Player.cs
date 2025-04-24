@@ -133,10 +133,12 @@ public class UI_Player : MonoBehaviour
     void ActuliseContent(Transform content)
     {
         widthContent = 0;
-        widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * (content.childCount - 1);
-        content.GetComponent<RectTransform>().sizeDelta = new Vector2(widthContent, content.GetComponent<RectTransform>().sizeDelta.y);
+        if(content.childCount != 0)
+        {
+            widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * (content.childCount - 1);
+            content.GetComponent<RectTransform>().sizeDelta = new Vector2(widthContent, content.GetComponent<RectTransform>().sizeDelta.y);
+        }
     }
-    //to do il faut que l
 
     void ClearChampion()
     {
