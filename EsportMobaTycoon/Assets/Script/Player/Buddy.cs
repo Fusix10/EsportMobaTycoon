@@ -10,7 +10,7 @@ public class Buddy : Player
     {
     }
 
-    void buddyCreate(string NickName, Sprite sprite)
+    public void buddyCreate(string NickName, Sprite sprite = null)
     {
         Mechanic mechanic = new Mechanic();
         mechanic.s_stamina = new Lvl(2, 0);

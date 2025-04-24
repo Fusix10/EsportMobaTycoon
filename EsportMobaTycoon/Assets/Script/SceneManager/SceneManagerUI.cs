@@ -27,22 +27,5 @@ public class SceneManagerUI : MonoBehaviour
     public void ChangeStateButton(int State)
     {
         GameManager.Instance.ChangeState(State);
-        Debug.Log("jsui passé par la");
-        /*
-            Menu,           0
-            CutScene,       1
-            Avatar,         2
-            Logo,           3
-            Buddy,          4
-            Hiring,         5
-            Circuit,        6
-            Hub,            7
-            Hub1,           8
-            Hub2,           9
-            Hub3,           10
-            Match,          11
-            Tournaments,    12
-            Result          13
-         */
     }
 }
