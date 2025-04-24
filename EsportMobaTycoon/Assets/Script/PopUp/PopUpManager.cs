@@ -44,6 +44,11 @@ public class PopUpManager : MonoBehaviour
         i_PopUpsToDisplay.Enqueue(eventBase.popUpData);
     }
 
+    public void PopUpRequest(PopUpData popUpData)
+    {
+        i_PopUpsToDisplay.Enqueue(popUpData);
+    }
+
     private void Update()
     {
 
@@ -84,6 +89,9 @@ public class PopUpManager : MonoBehaviour
     {
         popUp.Display();
         popUp.i_isOccupied = true;
+
+
+        Instantiate(popUpData.Panel);
 
         // Si aucune action, créer un bouton qui ferme la popUp
         if (popUpData.actions == null)

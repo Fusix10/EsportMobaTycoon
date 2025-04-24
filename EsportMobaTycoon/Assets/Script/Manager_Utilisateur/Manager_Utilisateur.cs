@@ -16,6 +16,42 @@ public class Manager_Utilisateur : MonoBehaviour
 
     private Dictionary<GameManager.Role, Player> teamPlayersByRole = new();
 
+    //Avatar Data 
+    public string i_lastName;
+    public string i_name;
+
+    public Sprite i_hair;
+    public Sprite i_face;
+    public Sprite i_Torso;
+    public Sprite i_legs;
+
+    public bool i_isGenderXX; //true female false male 
+
+
+
+    //my team Data 
+    [SerializeField] public TeamData teamData;
+
+    public void init(string name, string lastName, Sprite hair, Sprite face, Sprite torso, Sprite legs, bool isGenderXX)
+    {
+        i_lastName = lastName;
+        i_name = name;
+        i_hair = hair;
+        i_face = face;
+        i_Torso = torso;
+        i_legs = legs;
+        i_isGenderXX = isGenderXX;
+    }
+
+    public void TeamInit(string teamName, string teamNickName, Sprite logoFront, Sprite logoBack)
+    {
+        teamData.i_name = teamName;
+        teamData.i_nickName = teamNickName;
+        teamData.i_LogoFront = logoFront;
+        teamData.i_LogoBack = logoBack;
+    }
+
+
     //met a jour le texte de la fen�tre avec les stats actuelles
     public void UpdateUi()
     {
@@ -29,6 +65,11 @@ public class Manager_Utilisateur : MonoBehaviour
         {
             Debug.LogWarning("infoText n'est pas assignE!");
         }
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
     void Start()
