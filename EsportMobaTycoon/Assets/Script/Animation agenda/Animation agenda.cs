@@ -10,7 +10,6 @@ public class Animationagenda : MonoBehaviour
     public bool startAnim;
     public GameObject panel;
     public float time;
-    public GameObject i_continuButton;
     public enum Day
     {
         Lundi,
@@ -45,7 +44,6 @@ public class Animationagenda : MonoBehaviour
             panel.SetActive(false);
             i_animator.SetBool("isActivate", false);
             startAnim = false;
-            i_continuButton.SetActive(true);
         }
     }
 
@@ -58,7 +56,6 @@ public class Animationagenda : MonoBehaviour
             startAnim = true;
             panel.SetActive(true);
             i_animator.SetBool("isActivate", true);
-            i_continuButton.SetActive(false);
         }
     }
 

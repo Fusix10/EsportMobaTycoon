@@ -21,7 +21,7 @@ public class Quest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        QuestYellow();
     }
 
     // Update is called once per frame
@@ -40,17 +40,23 @@ public class Quest : MonoBehaviour
             if (i_listQuestYellow[i].objectBool && i_listQuestYellow[i].isColected)
             {
                 i_buttonColect[i].interactable = false;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja colectez";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja collecté";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 40;
+                i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
             }
             else if (i_listQuestYellow[i].objectBool)
             {
                 i_buttonColect[i].interactable = true;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Colectez";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Collecter";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 50;
+                i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
             else
             {
                 i_buttonColect[i].interactable = false;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Colectez";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Collecter";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 50;
+                i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         i_YellowOrBlue = true;
@@ -66,16 +72,23 @@ public class Quest : MonoBehaviour
             if (i_listQuestBlue[i].objectBool && i_listQuestBlue[i].isColected)
             {
                 i_buttonColect[i].interactable = false;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja colectez";
-            }else if(i_listQuestBlue[i].objectBool)
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Déja collecté";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 40;
+                i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else if(i_listQuestBlue[i].objectBool)
             {
                 i_buttonColect[i].interactable = true;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Colectez";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Collecter";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 50;
+                i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
             else
             {
                 i_buttonColect[i].interactable = false;
-                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Colectez";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().text = "Collecter";
+                i_buttonColect[i].gameObject.transform.GetComponentInChildren<TMP_Text>().fontSize = 50;
+                i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
         i_YellowOrBlue = false; 
@@ -98,6 +111,7 @@ public class Quest : MonoBehaviour
     }
 
 }
+
 [System.Serializable]
 public class DataQuest
 {
