@@ -36,15 +36,17 @@ public class PlayerFactory : MonoBehaviour
     public TMP_Dropdown moodDropdown;
     public GameObject playerPrefab;
     public Material baseMaterial;
+    private string[] firstNameArray;
+    private string[] lastNameArray;
 
     public GameObject PlayerPrefabs;
 
     void Start()
     {
-       
+        
     }
 
-    public Player CreatePlayerFromData(PlayerData data)
+public Player CreatePlayerFromData(PlayerData data)
     {
         string name = data.i_name;
         string knickname = data.i_knickname;
@@ -101,7 +103,7 @@ public class PlayerFactory : MonoBehaviour
     {
         GameObject playerObj = Instantiate(PlayerPrefabs);
 
-        string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
+        //string name = firstNameArray[UnityEngine.Random.Range(0, firstNameArray.Length)] + lastNameArray[UnityEngine.Random.Range(0, lastNameArray.Length)];
         string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
         GameManager.Role role = GameManager.Instance.GetRandomRole();
         int potential = UnityEngine.Random.Range(1, 5);
@@ -147,13 +149,15 @@ public class PlayerFactory : MonoBehaviour
     {
         GameObject playerObj = Instantiate(PlayerPrefabs);
 
-        string name = "Joueur_" + UnityEngine.Random.Range(1, 1000);
+        string[] firstNameArray = { "Léa", "Julien", "Clémence", "Hugo", "James", "Emily", "Michael", "Ashley", "Carlos", "Isabella", "Diego", "Lucia", "Marco", "Giulia", "Luca", "Sofia", "Youssef", "Layla", "Amine", "Fatima", "Haruto", "Aiko", "Ren", "Yuna", "Kwame", "Aminata", "Tariq", "Zahra", "Erik", "Freya", "Sven", "Astrid", "Raj", "Priya", "Anil", "Deepa", "Wei", "Mei", "Li", "Xiao", "Hans", "Greta", "Klaus", "Anna", "Ivan", "Anastasia", "Yuri", "Olga", "Noah", "Maya", "Elijah", "Zoe", "Kai", "Nina", "Aria", "Leo", "Salim", "Aisha", "Kenji", "Inari", "Mateo", "Lina", "Rami", "Elsa" };
+        string[] lastNameArray = { "Dupont", "Lemoine", "Charrier", "Giraud", "Smith", "Johnson", "Williams", "Brown", "Fernandez", "Gomez", "Sanchez", "Morales", "Rossi", "Bianchi", "Esposito", "Conti", "Al-Farsi", "Benali", "El-Mansouri", "Zahiri", "Takahashi", "Saito", "Kobayashi", "Fujimoto", "Diop", "Traoré", "Kouyaté", "Ndiaye", "Andersen", "Johansson", "Larsen", "Hansen", "Patel", "Reddy", "Sharma", "Kumar", "Zhang", "Wang", "Chen", "Liu", "Schmidt", "Müller", "Kaiser", "Fischer", "Volkov", "Smirnov", "Petrov", "Ivanov", "Nguyen", "Kim", "Okafor", "Diallo", "Silva", "Costa", "Tanaka", "Ahmed" };
+
+        string name = firstNameArray[UnityEngine.Random.Range(0, firstNameArray.Length)] + $"  " + lastNameArray[UnityEngine.Random.Range(0, lastNameArray.Length)];
         string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
         GameManager.Role favoriteRole = GameManager.Instance.GetRandomRole();
         int potential = UnityEngine.Random.Range(1, 5);
         GameManager.Role currentRole = role;
         int reputation = UnityEngine.Random.Range(0, 100);
-
         Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
 
         //Sprite icon = characterImage.sprite;

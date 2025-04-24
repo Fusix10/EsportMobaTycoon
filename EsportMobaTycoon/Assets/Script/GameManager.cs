@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
 
-    public class MatchUp
+    public class 
+        MatchUp
     {
         public enum stateMatchUp {COUNTER, ISCOUNTERED, NOTHING}
         public Character firstCharacter;
@@ -208,6 +209,7 @@ public class GameManager : MonoBehaviour
             i_manager.AddPlayer(this.GetComponent<PlayerFactory>().CreateRandomPlayer());
             i_manager.GetPlayer()[i].transform.position = new Vector3(-0.2574105f+(i*i_manager.GetPlayer()[i].transform.localScale.x*2), 1.29f, 0.7858481f);
         }*/
+        
         Knowledge knowledge = new Knowledge();
         knowledge.s_teamFight = new Lvl(0, 0);
         knowledge.s_objective = new Lvl(0, 0);
