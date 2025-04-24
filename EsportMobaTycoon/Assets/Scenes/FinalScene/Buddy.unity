@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneChangeButton: {fileID: 1463279659}
+  i_sceneChangeButton: {fileID: 1463279659}
 --- !u!4 &867014722
 Transform:
   m_ObjectHideFlags: 0
