@@ -16,27 +16,45 @@ public class Simulation : MonoBehaviour
     {
        
     }
+    public void MatchMaking(List<Match> allMatch)
+    {
+        i_match = allMatch;
 
-    void Draft()
+        if (i_match.Count == 0)
+        {
+            Debug.LogWarning("No matches to simulate.");
+            return;
+        }
+
+        TeamData redTeam = i_match[0].i_team;
+
+        Draft(i_teamBlue, redTeam);
+        Simulate(redTeam);
+
+    }
+
+
+
+    void Draft(TeamData managerTeam, TeamData otherTeam)
     {
         List<Character> selectedCharacters = new List<Character>();
 
-        for (int i = 0; i < i_teamBlue.GetTeam().Count; i++)
+        for (int i = 0; i < managerTeam.GetTeam().Count; i++)
         {
-            Character bluePick = TryAssignCharacter(i_teamBlue.GetTeam()[i], selectedCharacters);
+            Character bluePick = TryAssignCharacter(managerTeam.GetTeam()[i], selectedCharacters);
             if (bluePick != null)
             {
-                i_teamBlue.GetTeam()[i].i_characterId = bluePick;
+                managerTeam.GetTeam()[i].i_characterId = bluePick;
                 selectedCharacters.Add(bluePick);
-                Debug.Log($" {i_teamBlue.GetTeam()[i].i_name} drafted {bluePick.i_name}");
+                Debug.Log($" {managerTeam.GetTeam()[i].i_name} drafted {bluePick.i_name}");
             }
 
-            Character redPick = TryAssignCharacter(i_teamRed.GetTeam()[i], selectedCharacters);
+            Character redPick = TryAssignCharacter(otherTeam.GetTeam()[i], selectedCharacters);
             if (redPick != null)
             {
-                i_teamRed.GetTeam()[i].i_characterId = redPick;
+                otherTeam.GetTeam()[i].i_characterId = redPick;
                 selectedCharacters.Add(redPick);
-                Debug.Log($" {i_teamRed.GetTeam()[i].i_name} drafted {redPick.i_name}");
+                Debug.Log($" {otherTeam.GetTeam()[i].i_name} drafted {redPick.i_name}");
             }
         }
 
@@ -66,9 +84,9 @@ public class Simulation : MonoBehaviour
     {
         
     }
-    public void Simulate(TeamData teamRed)
+    public void Simulate(TeamData ennemyTeam)
     {
-        i_teamRed = teamRed;
+        i_teamRed = ennemyTeam;
         List<Player> red = new List<Player>();
         List<Player> blue = new List<Player>();
         for(int i = 0; i < 5; i++)
