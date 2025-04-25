@@ -1,48 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MenuStart : MonoBehaviour
 {
-    [Header("Panels de navigation")]
-    [Tooltip("Le panneau principal du menu Start")]
-    [SerializeField] private GameObject panelStart;
-    [SerializeField] private GameObject panelOptions;
-
-    [Header("Prefab � instancier")]
-    [Tooltip("Le prefab du panneau Options (UI)")]
-    [SerializeField] private GameObject optionsPrefab;
+    [Header("Panels")]
+    [Tooltip("Ton menu principal")]
+    public GameObject PanelStart;
+    [Tooltip("Ton panneau d’options (si il existe déjà en scène)")]
+    public GameObject PanelOptions;
+    [Tooltip("Sinon, ton prefab Options à instancier")]
+    public GameObject OptionsPrefab;
 
     private GameObject optionsInstance;
 
-    public void OpenOptions()
+    void Start()
     {
-        if (panelStart != null) panelStart.SetActive(false);
+        // (tu n’avais rien ici)
+    }
 
-        if (panelOptions != null)
-        {
-            panelOptions.SetActive(true);
-            return;
-        }
+    void Update()
+    {
+        // (tu n’avais rien ici non plus)
+    }
 
-        if (optionsInstance == null && optionsPrefab != null)
+    /// <summary>
+    /// Lié à ton bouton “Options” dans le menu Start.
+    /// </summary>
+    public void ButtonOptions()
+    {
+        // Masque le menu principal
+        PanelStart.SetActive(false);
+
+        if (PanelOptions != null) PanelOptions.SetActive(true);
+        // …et désactive le menu principal
+        if (PanelStart != null) PanelStart.SetActive(false);
+
+        // Sinon, on instancie le prefab
+        if (optionsInstance == null && OptionsPrefab != null)
         {
-            var parent = panelStart != null ? panelStart.transform.parent : transform;
-            optionsInstance = Instantiate(optionsPrefab, parent, worldPositionStays: false);
+            var parent = PanelStart.transform.parent;
+            optionsInstance = Instantiate(OptionsPrefab, parent, worldPositionStays: false);
         }
 
         if (optionsInstance != null)
             optionsInstance.SetActive(true);
     }
 
+    /// <summary>
+    /// Fermeture du panneau Options → revient au menu Start.
+    /// À appeler depuis ton MenuOptions ou ton bouton “Retour”.
+    /// </summary>
     public void CloseOptions()
     {
-        if (panelOptions != null)
-            panelOptions.SetActive(false);
-        if (optionsInstance != null)
-            optionsInstance.SetActive(false);
-
-        if (panelStart != null)
-            panelStart.SetActive(true);
+        if (PanelOptions != null) PanelOptions.SetActive(false);
+        if (optionsInstance != null) optionsInstance.SetActive(false);
+        PanelStart.SetActive(true);
     }
 }

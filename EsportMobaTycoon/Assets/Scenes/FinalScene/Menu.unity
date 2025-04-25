@@ -180,8 +180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9f6a932885885478db7429366e1f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelStart: {fileID: 556610240}
-  optionsPrefab: {fileID: 1894655376}
+  PanelStart: {fileID: 556610240}
+  PanelOptions: {fileID: 0}
+  OptionsPrefab: {fileID: 1894655376}
 --- !u!1 &75414086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1839,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 16068652}
         m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
-        m_MethodName: OpenOptions
+        m_MethodName: ButtonOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2883,12 +2884,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 16068650}
+      objectReference: {fileID: 16068652}
+    - target: {fileID: 1117356316188579507, guid: 22df918952d051c43ab90a2ab1e463ef,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117356316188579507, guid: 22df918952d051c43ab90a2ab1e463ef,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuStart, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1389811171060104150, guid: 22df918952d051c43ab90a2ab1e463ef,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 16068650}
+      objectReference: {fileID: 16068652}
+    - target: {fileID: 1389811171060104150, guid: 22df918952d051c43ab90a2ab1e463ef,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseOptions
+      objectReference: {fileID: 0}
     - target: {fileID: 1505627665653427113, guid: 22df918952d051c43ab90a2ab1e463ef,
         type: 3}
       propertyPath: m_Pivot.x

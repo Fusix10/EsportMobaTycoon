@@ -2931,9 +2931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9f6a932885885478db7429366e1f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelStart: {fileID: 4131000918965632292}
-  panelOptions: {fileID: 9135740543128269474}
-  optionsPrefab: {fileID: 0}
+  PanelStart: {fileID: 0}
+  PanelOptions: {fileID: 0}
+  OptionsPrefab: {fileID: 0}
 --- !u!1 &4629330092018502251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3192,9 +3192,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7953398323108741389}
-        m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
-        m_MethodName: CloseOptions
+      - m_Target: {fileID: 4783619518557881913}
+        m_TargetAssemblyTypeName: MenuOptions, Assembly-CSharp
+        m_MethodName: ButtonBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
