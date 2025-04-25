@@ -579,7 +579,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 158327735}
-  groups: []
+  groups:
+  - groupName: 
+    variants:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   cycleColorButtons: []
 --- !u!114 &158327735
 MonoBehaviour:
@@ -1708,7 +1713,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2327,7 +2332,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 91.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2577,7 +2582,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3558,7 +3563,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 892045595}
-  groups: []
+  groups:
+  - groupName: B1
+    variants:
+    - {fileID: 21300000, guid: d5de729d24a5eda4f926d062e07117d8, type: 3}
+    - {fileID: 21300000, guid: ae595849c00655b40bfdce10b4eafe57, type: 3}
+  - groupName: BS1
+    variants:
+    - {fileID: 21300000, guid: 5ffaf4ad8bc4ab147ab144b0bb1e4abe, type: 3}
+    - {fileID: 21300000, guid: e95759818bf184d40820afcf3eee4bf2, type: 3}
+  - groupName: B2
+    variants:
+    - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
+    - {fileID: 21300000, guid: ebca3b1d59fec8f4dafa89245a46d782, type: 3}
+  - groupName: BS2
+    variants:
+    - {fileID: 21300000, guid: 2faecb830072ee34ca0bae0a0174fcaa, type: 3}
+    - {fileID: 21300000, guid: b36cf819397dd5f409e8181019ecbff7, type: 3}
   cycleColorButtons: []
 --- !u!1 &909603053
 GameObject:
@@ -4998,7 +5019,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5924,7 +5945,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
