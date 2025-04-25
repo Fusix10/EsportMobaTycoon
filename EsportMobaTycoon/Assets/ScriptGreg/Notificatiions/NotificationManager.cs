@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Notifications.Android;
-using Unity.Notifications.iOS;
+//using Unity.Notifications.iOS;
 
 public class NotificationManager : MonoBehaviour
 {

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
-using UnityEditor.Scripting;
+//using UnityEditor.Scripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static GameManager;
-using static UnityEditor.Experimental.GraphView.GraphView;
+//using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class RecrutementPlayer : MonoBehaviour
 {

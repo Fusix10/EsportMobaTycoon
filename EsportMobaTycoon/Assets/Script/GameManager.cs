@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.MPE;
+//using UnityEditor.MPE;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
@@ -219,11 +219,11 @@ public class GameManager : MonoBehaviour
         i_stateToScene.Add(GameState.Menu, "Menu");
         i_stateToScene.Add(GameState.CutScene, "CutScene");
         i_stateToScene.Add(GameState.Avatar, "Avatar");
-        i_stateToScene.Add(GameState.Logo, "Logo");
+        i_stateToScene.Add(GameState.TeamCustom, "TeamCustom");
         i_stateToScene.Add(GameState.Buddy, "Buddy");
         i_stateToScene.Add(GameState.Hiring, "Hiring");
         i_stateToScene.Add(GameState.Circuit, "Circuit");
-        i_stateToScene.Add(GameState.Hub3, "Hub3");
+        i_stateToScene.Add(GameState.Hub, "Hub");
         i_stateToScene.Add(GameState.Match, "Match");
         i_stateToScene.Add(GameState.Tournaments, "Tournaments");
         i_stateToScene.Add(GameState.Result, "Result");
@@ -310,12 +310,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[LoadScene] État courant = {i_GameState}");
 
-        if (i_GameState == GameState.Hub)
-        {
-            Debug.Log("[LoadScene] On est encore en Hub, on ne change pas de scène.");
-            return;
-        }
-
         if (i_stateToScene.TryGetValue(i_GameState, out string sceneName))
         {
             Debug.Log("Chargement de la scène " + sceneName);
@@ -334,7 +328,7 @@ public enum GameState
     Menu,
     CutScene,
     Avatar,
-    Logo,
+    TeamCustom,
     Buddy,
     Hiring,
     Circuit,

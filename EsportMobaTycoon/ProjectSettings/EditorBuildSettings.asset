@@ -26,6 +26,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene/Circuit.unity
     guid: 6a04e566f68147044a523bf17a0b32e6
+  - enabled: 1
+    path: Assets/Scenes/AvatarTeambuddy/TeamCustom.unity
+    guid: 25d63126ae62de644ab2aaf5cc75717a
+  - enabled: 1
+    path: Assets/Scenes/FinishScene/Hub3.unity
+    guid: f0b78aeb3ee51af4f95fd6771a6c9e38
+  - enabled: 1
+    path: Assets/Scenes/FinishScene/Hub.unity
+    guid: 75a8283d458f54c49932d96d70790db8
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: c2fc0fd8ed33f144ab489676e1e53465, type: 2}

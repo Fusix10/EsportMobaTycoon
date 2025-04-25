@@ -306,16 +306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 80347335}
-  sprites:
-  - {fileID: 21300000, guid: bcf2a34dc9f147e47b787b1ed8c74862, type: 3}
-  - {fileID: 21300000, guid: e59517b81e78f044682b4cafd2e27531, type: 3}
-  colorButtons:
-  - {fileID: 1817135402}
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  colorsIndex: 0
+  groups: []
+  cycleColorButtons: []
 --- !u!114 &80347335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i_currentMoney: 1000
+  i_currentMoneyPrenium: 1000
   i_reputation: 0
   infoText: {fileID: 0}
   budget: {fileID: 0}
@@ -547,7 +540,7 @@ MonoBehaviour:
   i_Torso: {fileID: 0}
   i_legs: {fileID: 0}
   i_isGenderXX: 0
-  teamData: {fileID: 0}
+  i_teamData: {fileID: 0}
 --- !u!1 &89498727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1030,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.1
+  m_fontSize: 65.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1878,7 +1871,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.1
+  m_fontSize: 65.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2588,16 +2581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 554106629}
-  sprites:
-  - {fileID: 21300000, guid: bcf2a34dc9f147e47b787b1ed8c74862, type: 3}
-  - {fileID: 21300000, guid: b2391da8771f9fd4d968c88b677467d1, type: 3}
-  colorButtons:
-  - {fileID: 1581078826}
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  colorsIndex: 0
+  groups: []
+  cycleColorButtons: []
 --- !u!114 &554106629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3891,6 +3876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aeafa55b768b9246a83536fc68e2baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamData: {fileID: 0}
   inputFieldGrabberList:
   - {fileID: 565169638}
   - {fileID: 1997157922}
@@ -3952,6 +3938,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
+        m_MethodName: ChangeStateButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4159,16 +4157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 915017752}
-  sprites:
-  - {fileID: 21300000, guid: 5651157d8aa394b449ce23971aa2dfed, type: 3}
-  - {fileID: 21300000, guid: 90f95fb594236214f992b5d9307c9612, type: 3}
-  colorButtons:
-  - {fileID: 516044944}
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  colorsIndex: 0
+  groups: []
+  cycleColorButtons: []
 --- !u!114 &915017752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6426,7 +6416,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.1
+  m_fontSize: 65.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6971,16 +6961,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 2007854026}
-  sprites:
-  - {fileID: 21300000, guid: 90f95fb594236214f992b5d9307c9612, type: 3}
-  - {fileID: 21300000, guid: bcf2a34dc9f147e47b787b1ed8c74862, type: 3}
-  colorButtons:
-  - {fileID: 796735515}
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  colorsIndex: 0
+  groups: []
+  cycleColorButtons: []
 --- !u!114 &2007854026
 MonoBehaviour:
   m_ObjectHideFlags: 0

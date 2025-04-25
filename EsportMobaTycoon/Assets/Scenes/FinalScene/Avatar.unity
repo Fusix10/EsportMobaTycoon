@@ -307,10 +307,10 @@ MonoBehaviour:
 
     Hub3 10
 
-    Match
-    11
+    Match 11
 
-    Tournaments 12
+    Tournaments
+    12
 
     Result 13'
 --- !u!4 &605994432
@@ -365,6 +365,14 @@ MonoBehaviour:
   i_reputation: 0
   infoText: {fileID: 0}
   budget: {fileID: 0}
+  i_lastName: 
+  i_name: 
+  i_hair: {fileID: 0}
+  i_face: {fileID: 0}
+  i_Torso: {fileID: 0}
+  i_legs: {fileID: 0}
+  i_isGenderXX: 0
+  i_teamData: {fileID: 0}
 --- !u!114 &1150884574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +443,7 @@ MonoBehaviour:
   i_manager: {fileID: 1150884573}
   i_allPlayers: []
   i_allPlayerData: []
+  i_allTeam: []
   i_GameState: 0
 --- !u!4 &1150884577
 Transform:
@@ -848,10 +857,10 @@ MonoBehaviour:
 
     Hub3 10
 
-    Match
-    11
+    Match 11
 
-    Tournaments 12
+    Tournaments
+    12
 
     Result 13'
 --- !u!1 &1883733599
