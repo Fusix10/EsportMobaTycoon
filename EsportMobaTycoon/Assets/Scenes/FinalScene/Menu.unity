@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9f6a932885885478db7429366e1f25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelStart: {fileID: 556610240}
-  PanelOptions: {fileID: 1894655376}
+  panelStart: {fileID: 556610240}
+  optionsPrefab: {fileID: 1894655376}
 --- !u!1 &75414086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1838,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 16068652}
         m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
-        m_MethodName: ButtonOptions
+        m_MethodName: OpenOptions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

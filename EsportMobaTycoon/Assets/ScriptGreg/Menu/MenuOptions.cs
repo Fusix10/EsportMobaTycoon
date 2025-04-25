@@ -28,8 +28,8 @@ public class MenuOptions : MonoBehaviour
 
     public void ButtonBack()
     {
-        PanelOptions.SetActive(false);
-        PanelStart.SetActive(true);
+        if (PanelOptions != null) PanelOptions.SetActive(false);
+        if (PanelStart != null) PanelStart.SetActive(true);
     }
 
     public void SetQuality(int qualityIndex)

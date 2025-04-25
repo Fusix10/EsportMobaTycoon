@@ -4,25 +4,45 @@ using UnityEngine;
 
 public class MenuStart : MonoBehaviour
 {
+    [Header("Panels de navigation")]
+    [Tooltip("Le panneau principal du menu Start")]
+    [SerializeField] private GameObject panelStart;
+    [SerializeField] private GameObject panelOptions;
 
-    public GameObject PanelStart;
-    public GameObject PanelOptions;
+    [Header("Prefab à instancier")]
+    [Tooltip("Le prefab du panneau Options (UI)")]
+    [SerializeField] private GameObject optionsPrefab;
 
-    // Start is called before the first frame update
-    void Start()
+    private GameObject optionsInstance;
+
+    public void OpenOptions()
     {
-        
+        if (panelStart != null) panelStart.SetActive(false);
+
+        if (panelOptions != null)
+        {
+            panelOptions.SetActive(true);
+            return;
+        }
+
+        if (optionsInstance == null && optionsPrefab != null)
+        {
+            var parent = panelStart != null ? panelStart.transform.parent : transform;
+            optionsInstance = Instantiate(optionsPrefab, parent, worldPositionStays: false);
+        }
+
+        if (optionsInstance != null)
+            optionsInstance.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseOptions()
     {
-        
-    }
+        if (panelOptions != null)
+            panelOptions.SetActive(false);
+        if (optionsInstance != null)
+            optionsInstance.SetActive(false);
 
-    public void ButtonOptions()
-    {
-        PanelOptions.SetActive(true);
-        PanelStart.SetActive(false);
+        if (panelStart != null)
+            panelStart.SetActive(true);
     }
 }
