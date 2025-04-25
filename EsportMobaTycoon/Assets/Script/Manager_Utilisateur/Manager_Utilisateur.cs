@@ -47,8 +47,6 @@ public class Manager_Utilisateur : MonoBehaviour
     {
         i_teamData.i_name = teamName;
         i_teamData.i_nickName = teamNickName;
-        //teamData.i_LogoFront = logoFront;
-        i_teamData.i_LogoBack = logoBack;
     }
 
 

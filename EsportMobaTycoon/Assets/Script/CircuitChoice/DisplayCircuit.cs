@@ -42,21 +42,79 @@ public class DisplayCircuit : MonoBehaviour
     [SerializeField]
     TMP_Text i_contre3;
 
-    // Start is called before the first frame update
-    void Start()
+
+    List<Circuit> i_circuit;
+    int i_currentId;
+
+    public void Init(List<Circuit> circuit)
     {
+        i_circuit = circuit;
+        i_currentId = 0;
     }
 
-    public void Init(Circuit circuit)
+    public void ShowCircuit(Circuit circuit)
     {
         i_name1.text += circuit.i_tournaments[0].i_name;
         i_difficulty1.text += circuit.i_difficulty;
-        i_time1.text += circuit.i_tournaments[0].i_name;
+        i_time1.text += circuit.i_tournaments[0].i_time;
+
+        i_nbMatch1.text += circuit.i_tournaments[0].i_matches.Count;
+        for (int i = 0; i < circuit.i_tournaments[0].i_matches.Count; i++)
+        {
+            i_contre1.text = circuit.i_tournaments[0].i_matches[i].i_team.i_name;
+        }
+
+        i_name2.text += circuit.i_tournaments[1].i_name;
+        i_difficulty2.text += circuit.i_difficulty;
+        i_time2.text += circuit.i_tournaments[1].i_time;
+
+        i_nbMatch1.text += circuit.i_tournaments[1].i_matches.Count;
+        for (int i = 0; i < circuit.i_tournaments[1].i_matches.Count; i++)
+        {
+            i_contre1.text = circuit.i_tournaments[1].i_matches[i].i_team.i_name;
+        }
+
+        i_name3.text += circuit.i_tournaments[2].i_name;
+        i_difficulty3.text += circuit.i_difficulty;
+        i_time3.text += circuit.i_tournaments[2].i_time;
+
+        i_nbMatch1.text += circuit.i_tournaments[2].i_matches.Count;
+        for (int i = 0; i < circuit.i_tournaments[2].i_matches.Count; i++)
+        {
+            i_contre1.text = circuit.i_tournaments[2].i_matches[i].i_team.i_name;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SlideR()
     {
-        
+        if (i_currentId >= i_circuit.Count - 1) 
+        {
+            i_currentId = 0;
+        }
+        else
+        {
+            i_currentId++;
+        }
+
+        UpdateCanva();
+    }
+
+    public void SlideL()
+    {
+        if (i_currentId <= 0)
+        {
+            i_currentId = (i_circuit.Count - 1);
+        }
+        else
+        {
+            i_currentId++;
+        }
+
+        UpdateCanva();
+    }
+
+    public void UpdateCanva()
+    {
+        ShowCircuit(i_circuit[i_currentId]);
     }
 }
