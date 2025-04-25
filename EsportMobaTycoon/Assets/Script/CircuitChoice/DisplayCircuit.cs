@@ -45,12 +45,13 @@ public class DisplayCircuit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        i_name1.text += "dinosaure";
     }
 
     public void Init(Circuit circuit)
     {
         i_name1.text += circuit.i_tournaments[0].i_name;
+        i_difficulty1.text += circuit.i_difficulty;
+        i_time1.text += circuit.i_tournaments[0].i_name;
     }
 
     // Update is called once per frame
