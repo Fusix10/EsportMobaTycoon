@@ -105,4 +105,3 @@ public class TeamCustom : MonoBehaviour
         outColor = colorIndex;
     }
 }
-
