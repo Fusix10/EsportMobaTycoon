@@ -48,6 +48,7 @@ public class CircuitManager : MonoBehaviour
         {
             circuitDifficulty = CircuitDifficulty.Hard;
         }
+
         int tournamentCount = 3;
         for (int i = 0; i < tournamentCount; i++)
         {
@@ -75,6 +76,7 @@ public class CircuitManager : MonoBehaviour
             int offset = i * 60;
             tournaments.Add(new(Random.Range(offset + 30, offset + 50), matches, tournamentName[Random.Range(0, (tournamentName.Count-1))]));
         }
+
         GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
     }
 }

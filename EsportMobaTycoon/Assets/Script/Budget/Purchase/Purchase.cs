@@ -31,10 +31,6 @@ public class Purchase : MonoBehaviour
             //alreadyPurchased = true;
             //désactiver l'objet ou changer son apparence après l'achat ?
             //gameObject.SetActive(false);
-            if (budget.manager != null)
-            {
-                budget.manager.UpdateUi();
-            }
         }
         else
         {
