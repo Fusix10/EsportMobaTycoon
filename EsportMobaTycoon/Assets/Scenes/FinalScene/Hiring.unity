@@ -2247,8 +2247,9 @@ MonoBehaviour:
   i_PanelPotential: {fileID: 1034177424}
   i_playerSlotPrefab: {fileID: 4254904471582111767, guid: e6c66178ee761e447b705b483290fb5c,
     type: 3}
+  i_allPlayersObejct: []
   i_allPlayers: []
-  i_selectedTeam: []
+  i_selectedTeam: {fileID: 0}
   i_teamAnimator: {fileID: 1309016441}
   i_lvl:
   - {fileID: 1113711765}
@@ -3067,6 +3068,14 @@ MonoBehaviour:
   i_reputation: 0
   infoText: {fileID: 0}
   budget: {fileID: 0}
+  i_lastName: 
+  i_name: 
+  i_hair: {fileID: 0}
+  i_face: {fileID: 0}
+  i_Torso: {fileID: 0}
+  i_legs: {fileID: 0}
+  i_isGenderXX: 0
+  i_teamData: {fileID: 0}
 --- !u!4 &738233618
 Transform:
   m_ObjectHideFlags: 0
@@ -3492,6 +3501,7 @@ MonoBehaviour:
   i_manager: {fileID: 738233617}
   i_allPlayers: []
   i_allPlayerData: []
+  i_allTeam: []
   i_GameState: 0
 --- !u!4 &895882255
 Transform:
@@ -5281,7 +5291,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 100
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
