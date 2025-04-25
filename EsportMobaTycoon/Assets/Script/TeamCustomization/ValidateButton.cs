@@ -84,11 +84,6 @@ public class ValidateButton : MonoBehaviour
     {
         isGenderMale = !isGenderMale;
 
-        hair.SetGender(isGenderMale);
-        face.SetGender(isGenderMale);
-        torso.SetGender(isGenderMale);
-        legs.SetGender(isGenderMale);
-
         Draw();
     }
 

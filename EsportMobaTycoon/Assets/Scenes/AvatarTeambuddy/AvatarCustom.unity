@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -73.589355, y: 20.381386}
+  m_AnchoredPosition: {x: -75.563, y: 20.381}
   m_SizeDelta: {x: 174.1266, y: 188.9109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &80347334
@@ -265,6 +265,7 @@ MonoBehaviour:
     - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
     - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
     name: Clothe 1
+  isSitting: 0
 --- !u!114 &80347335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,7 +1778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66.34849, y: -156.55057}
+  m_AnchoredPosition: {x: -68.322, y: -155.5}
   m_SizeDelta: {x: 151.1288, y: 252.155}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554106628
@@ -1852,6 +1853,7 @@ MonoBehaviour:
     - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
     - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
     name: Clothe 3
+  isSitting: 0
 --- !u!114 &554106629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3543,6 +3545,7 @@ MonoBehaviour:
     - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
     - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
     name: Hair 4
+  isSitting: 0
 --- !u!114 &915017752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3597,7 +3600,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.24041, y: 249.21141}
+  m_AnchoredPosition: {x: -86.24041, y: 246.5}
   m_SizeDelta: {x: 195.4818, y: 155.2355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &921931429
@@ -3629,11 +3632,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 777433627}
+  - {fileID: 1083718825}
   - {fileID: 2007854024}
   - {fileID: 915017754}
-  - {fileID: 1083718825}
-  - {fileID: 80347333}
   - {fileID: 554106627}
+  - {fileID: 80347333}
   - {fileID: 1708025958}
   m_Father: {fileID: 641083699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4006,6 +4009,7 @@ MonoBehaviour:
     - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
     - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
     name: Body
+  isSitting: 0
 --- !u!114 &1083718827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,6 +5376,7 @@ MonoBehaviour:
     colors:
     - {r: 0.21568629, g: 0.21568629, b: 0.21568629, a: 1}
     name: Shoes
+  isSitting: 0
 --- !u!114 &1708025960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6156,6 +6161,7 @@ MonoBehaviour:
     - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
     - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
     name: Neutral 2
+  isSitting: 0
 --- !u!114 &2007854026
 MonoBehaviour:
   m_ObjectHideFlags: 0

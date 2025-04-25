@@ -7,60 +7,59 @@ using UnityEngine.UI;
 public class SkinCarouselle : MonoBehaviour
 {
     [Header("Target Image à mettre à jour")]
-    [SerializeField] private Image[] targetImage;
-    [SerializeField] private Image targetColor;
-    [SerializeField] private TMP_Text targetText;
+    [SerializeField] private Image[] i_targetImage;
+    [SerializeField] private Image i_targetColor;
+    [SerializeField] private TMP_Text i_targetText;
 
     [Header("Tous les sprites")]
-    [SerializeField] private SkinGroup[] standingSprites;
-    [SerializeField] private SkinGroup[] sittingSprites;
+    [SerializeField] private SkinGroup[] i_standingSprites;
+    [SerializeField] private SkinGroup[] i_sittingSprites;
 
-    private int groupIndex;
-    private int colorIndex;
-    private int maxGroupIndex;
-    private int maxColorIndex;
+    private int i_groupIndex;
+    private int i_colorIndex;
+    private int i_maxGroupIndex;
+    private int i_maxColorIndex;
 
-    private bool isMale;
-
-    void Start()
+    void Awake()
     {
-        if (targetImage.Length == 0) Debug.LogError("TargetImage manquant.", gameObject);
-        if (standingSprites.Length == 0) Debug.LogError("Aucun sprite configuré.", gameObject);
-        if (standingSprites.Length != sittingSprites.Length) Debug.LogError("Les liste de sprites ne sont pas égals", gameObject);
+        if (i_targetImage.Length == 0) Debug.LogError("TargetImage manquant.", gameObject);
+        if (i_standingSprites.Length == 0) Debug.LogError("Aucun sprite configuré.", gameObject);
+        if (i_standingSprites.Length != i_sittingSprites.Length) Debug.LogError("Les liste de sprites ne sont pas égals", gameObject);
 
-        groupIndex = 0;
-        colorIndex = 0;
-        maxGroupIndex = standingSprites.Length;
-        maxColorIndex = standingSprites[0].sprites.Length;
+        i_groupIndex = 0;
+        i_colorIndex = 0;
+        i_maxGroupIndex = i_standingSprites.Length;
+        i_maxColorIndex = i_standingSprites[0].sprites.Length;
+    }
 
-        isMale = true;
-
+    private void Start()
+    {
         UpdateDisplay();
     }
 
     public void NextGroup()
     {
-        groupIndex = (groupIndex + 1) % maxGroupIndex;
-        colorIndex = 0;
+        i_groupIndex = (i_groupIndex + 1) % i_maxGroupIndex;
+        i_colorIndex = 0;
 
-        maxColorIndex = standingSprites[groupIndex].sprites.Length;
+        i_maxColorIndex = i_standingSprites[i_groupIndex].sprites.Length;
 
         UpdateDisplay();
     }
 
     public void PreviousGroup()
     {
-        groupIndex = (groupIndex - 1 + maxGroupIndex) % maxGroupIndex;
-        colorIndex = 0;
+        i_groupIndex = (i_groupIndex - 1 + i_maxGroupIndex) % i_maxGroupIndex;
+        i_colorIndex = 0;
 
-        maxColorIndex = standingSprites[groupIndex].sprites.Length;
+        i_maxColorIndex = i_standingSprites[i_groupIndex].sprites.Length;
 
         UpdateDisplay();
     }
 
     public void NextColor()
     {
-        colorIndex = (colorIndex + 1) % maxColorIndex;
+        i_colorIndex = (i_colorIndex + 1) % i_maxColorIndex;
 
         UpdateDisplay();
     }
@@ -68,54 +67,48 @@ public class SkinCarouselle : MonoBehaviour
     public void PreviousColor()
     {
 
-        colorIndex = (colorIndex - 1 + maxColorIndex) % maxColorIndex;
+        i_colorIndex = (i_colorIndex - 1 + i_maxColorIndex) % i_maxColorIndex;
 
         UpdateDisplay();
     }
 
     public void Reset()
     {
-        groupIndex = 0;
-        colorIndex = 0;
+        i_groupIndex = 0;
+        i_colorIndex = 0;
 
         UpdateDisplay();
     }
 
     public void Randomize()
     {
-        groupIndex = UnityEngine.Random.Range(0, maxGroupIndex);
-        colorIndex = 0;
+        i_groupIndex = UnityEngine.Random.Range(0, i_maxGroupIndex);
+        i_colorIndex = 0;
 
         UpdateDisplay();
     }
 
     private void UpdateDisplay()
     {
-        foreach (var target in targetImage)
+        foreach (var target in i_targetImage)
         {
             target.sprite = GetSprite();
         }
 
-        if(targetColor != null) targetColor.color = GetColor();
+        if(i_targetColor != null) i_targetColor.color = GetColor();
 
-        if(targetText != null) targetText.text = GetGroupName();
+        if(i_targetText != null) i_targetText.text = GetGroupName();
     }
 
-    public void SetGender(bool isMale)
-    {
-        this.isMale = isMale;
-        UpdateDisplay();
-    }
+    public Sprite GetSprite(bool isSitting = false) => isSitting ? i_sittingSprites[i_groupIndex].sprites[i_colorIndex] : i_standingSprites[i_groupIndex].sprites[i_colorIndex];
 
-    public Sprite GetSprite(bool sitting = false) => sitting ? sittingSprites[groupIndex].sprites[colorIndex] : standingSprites[groupIndex].sprites[colorIndex];
+    public Color GetColor() => i_sittingSprites[i_groupIndex].colors[i_colorIndex];
 
-    public Color GetColor() => sittingSprites[groupIndex].colors[colorIndex];
-
-    public string GetGroupName() => sittingSprites[groupIndex].name;
+    public string GetGroupName() => i_sittingSprites[i_groupIndex].name;
 
     public void GetIndices(out int outSprite)
     {
-        outSprite = groupIndex;
+        outSprite = i_groupIndex;
     }
 }
 
