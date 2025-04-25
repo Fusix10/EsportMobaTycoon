@@ -246,7 +246,6 @@ public class RecrutementPlayer : MonoBehaviour
                 }
             }
         }
-
         Player i_currentPlayer = i_allPlayers[i_currentIndex];
         i_nameText.text = i_currentPlayer.i_name;
         i_roleText.text = i_currentPlayer.i_currentRole.ToString();
@@ -370,6 +369,5 @@ public class RecrutementPlayer : MonoBehaviour
     {
         i_teamAnimator.SetTrigger("isDown");
     }
-
 
 }
