@@ -240,9 +240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b5ca78b4c1ce24eb05238d70963747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  i_eventManager: {fileID: 0}
+  i_popupManager: {fileID: 0}
   i_manager: {fileID: 1483901347}
   i_allPlayers: []
   i_allPlayerData: []
+  i_GameState: 0
 --- !u!4 &399359726
 Transform:
   m_ObjectHideFlags: 0
@@ -360,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171888383}
-  - component: {fileID: 1171888382}
+  - component: {fileID: 1171888385}
   - component: {fileID: 1171888384}
   m_Layer: 0
   m_Name: SimulationPlayer
@@ -369,19 +372,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1171888382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171888381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e9462c9c671724790d3aa4ba3bbd9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerFactory: {fileID: 1171888384}
 --- !u!4 &1171888383
 Transform:
   m_ObjectHideFlags: 0
@@ -410,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameInput: {fileID: 0}
+  knicknameInput: {fileID: 0}
   characterImage: {fileID: 0}
   teamSpiritXpSlider: {fileID: 0}
   teamSpiritLvlSlider: {fileID: 0}
@@ -437,6 +428,21 @@ MonoBehaviour:
   baseMaterial: {fileID: 0}
   PlayerPrefabs: {fileID: 5809320719845124057, guid: d5146580f8dc1e94ab420560de2977ea,
     type: 3}
+--- !u!114 &1171888385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171888381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4626645ab0dff1c4fa452a64e247f015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i_playerfactory: {fileID: 1171888384}
+  i_teamRed: {fileID: 0}
+  i_teamBlue: {fileID: 0}
 --- !u!1 &1483901346
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,9 +473,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i_currentMoney: 1000
+  i_currentMoneyPrenium: 1000
   i_reputation: 0
   infoText: {fileID: 0}
   budget: {fileID: 0}
+  i_lastName: 
+  i_name: 
+  i_hair: {fileID: 0}
+  i_face: {fileID: 0}
+  i_Torso: {fileID: 0}
+  i_legs: {fileID: 0}
+  i_isGenderXX: 0
+  teamData: {fileID: 0}
 --- !u!4 &1483901348
 Transform:
   m_ObjectHideFlags: 0
