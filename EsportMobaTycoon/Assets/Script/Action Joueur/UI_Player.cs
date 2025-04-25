@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using XCharts.Runtime;
@@ -115,7 +116,9 @@ public class UI_Player : MonoBehaviour
         i_synergie.text = FindSynergie(player.i_teamSpirit.s_lvl);
         i_synergie.color = i_synergieColor;
     }
-
+    int i_exce;
+    int i_bonne;
+    int i_correct;
     public void ActualiseUiPlayerChampion()
     {
         ClearChampion();
@@ -128,33 +131,40 @@ public class UI_Player : MonoBehaviour
             if (pair.Value.s_lvl <= 1)
             {
                predab.transform.SetParent(i_panelCorrect);
+                i_correct++;
             }
             else if(pair.Value.s_lvl == 2 || pair.Value.s_lvl == 3)
             {
                 predab.transform.SetParent(i_panelBonne);
+                i_bonne++;
             }
             else if(pair.Value.s_lvl >= 4 )
             {
                 predab.transform.SetParent(i_panelExce);
+                i_exce++;
             }
-            ActuliseContent(i_panelExce);
-            ActuliseContent(i_panelCorrect);
-            ActuliseContent(i_panelBonne);
         }
+        ActuliseContent(i_panelExce,i_exce);
+        ActuliseContent(i_panelCorrect,i_correct);
+        ActuliseContent(i_panelBonne,i_bonne);
     }
     float widthContent;
-    void ActuliseContent(Transform content)
+    void ActuliseContent(Transform content, int child)
     {
         widthContent = 0;
         if(content.childCount != 0)
         {
-            widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * (content.childCount - 1);
+            widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * child;
             content.GetComponent<RectTransform>().sizeDelta = new Vector2(widthContent, content.GetComponent<RectTransform>().sizeDelta.y);
         }
     }
 
     void ClearChampion()
     {
+        i_exce = 0;
+        i_bonne = 0;
+        i_correct = 0;
+
         for(int i = 0; i < i_panelExce.childCount; i++)
         {
             Destroy(i_panelExce.GetChild(i).gameObject);

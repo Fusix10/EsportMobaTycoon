@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static UnityEngine.ParticleSystem;
 
 public class InteractObject : MonoBehaviour
@@ -13,6 +14,7 @@ public class InteractObject : MonoBehaviour
     public GameObject panelLongClick;
     public GameObject panelPC;
     public GameObject panelPlayer;
+    public GameObject i_cursor;
 
     public SavePlayerSelectedUi savePlayerSelectedUi;
 
@@ -39,6 +41,11 @@ public class InteractObject : MonoBehaviour
                     }
                     //Reset();
                 }
+                if (panelPC.activeSelf)
+                {
+                    i_cursor.transform.GetChild(0).GetComponent<Image>().enabled = false;
+                    i_cursor.transform.position = touch.position;
+                }
             }
             if (touch.phase == TouchPhase.Ended)
             {
@@ -61,6 +68,19 @@ public class InteractObject : MonoBehaviour
                     }
                     isActive = false;
                     pointerDownTimer = 0;
+                }
+                if (panelPC.activeSelf)
+                {
+                    i_cursor.transform.position = touch.position;
+                    i_cursor.transform.GetChild(0).GetComponent<Image>().enabled = true;
+                }
+            }
+            if(touch.phase == TouchPhase.Moved)
+            {
+                if (panelPC.activeSelf)
+                {
+                    i_cursor.transform.GetChild(0).GetComponent<Image>().enabled = false;
+                    i_cursor.transform.position = touch.position;
                 }
             }
         }
