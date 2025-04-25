@@ -12,25 +12,30 @@ public class Simulation : MonoBehaviour
     public TeamData i_teamRed;
     public TeamData i_teamBlue;
     public List<Match> i_match;
+    int i_currentId;
     void Start()
     {
-       
+        i_currentId = 0;  
     }
-    public void MatchMaking(List<Match> allMatch)
-    {
-        i_match = allMatch;
 
-        if (i_match.Count == 0)
+    public void Init(List<Match> allMatch)
+    {
+        i_teamBlue = GameManager.Instance.i_manager.i_teamData;
+        i_match = allMatch;
+    }
+
+    public void MatchMaking()
+    {
+        if (i_currentId >= i_match.Count)
         {
-            Debug.LogWarning("No matches to simulate.");
+            Debug.LogWarning("All matches were simulated.");
             return;
         }
 
-        TeamData redTeam = i_match[0].i_team;
+        TeamData redTeam = i_match[i_currentId].i_team;
 
         Draft(i_teamBlue, redTeam);
         Simulate(redTeam);
-
     }
 
 
@@ -117,6 +122,11 @@ public class Simulation : MonoBehaviour
         }
         float totalsum = blueSum + redSum;
         IsWinning(((blueSum / totalsum) * 100), (redSum / totalsum) * 100);
+        if(i_currentId == i_match.Count-1)
+        {
+            i_currentId = 0;
+        }
+        i_currentId++;
     }
 
     void AddStatsLoser(TeamData team,PlayerData player,int kills, int deaths, int assists)
