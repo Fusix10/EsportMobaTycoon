@@ -20,6 +20,7 @@ public class UI_Player : MonoBehaviour
     public TMP_Text i_surnom;
     public TMP_Text i_caractere;
     public TMP_Text i_synergie;
+    private Color i_synergieColor;
     public TMP_Text i_role;
     //public Image i_imgRole;
     //public TMP_Text i_carac;
@@ -79,8 +80,18 @@ public class UI_Player : MonoBehaviour
         //Meca1
         //i_graphNiv.data[0].data[5] = player.i_mechanic.s_lvlCombo;
 
-        chart.UpdateData(0, 0, new List<double> { player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp, player.i_mechanic.s_reflexe.s_lvl*100 + player.i_mechanic.s_reflexe.s_Xp, player.i_knowledge.s_objective.s_lvl *100 + player.i_knowledge.s_objective.s_Xp, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp });
-
+        chart.UpdateData(0, 0, new List<double> { 0, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp });
+        chart.UpdateData(0, 1, new List<double> { 0, player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp });
+        chart.UpdateData(0, 2, new List<double> { 0, player.i_mechanic.s_reflexe.s_lvl * 100 + player.i_mechanic.s_reflexe.s_Xp });
+        chart.UpdateData(0, 5, new List<double> { 0, player.i_knowledge.s_objective.s_lvl * 100 + player.i_knowledge.s_objective.s_Xp });
+        chart.UpdateData(0, 4, new List<double> { 0, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp });
+        chart.UpdateData(0, 3, new List<double> { 0, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp });
+        Debug.Log("meca 1 = " + (player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp));
+        Debug.Log("meca 2 = " + (player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp));
+        Debug.Log("meca 3 = " + (player.i_mechanic.s_reflexe.s_lvl * 100 + player.i_mechanic.s_reflexe.s_Xp));
+        Debug.Log("connai 1 = " + (player.i_knowledge.s_objective.s_lvl * 100 + player.i_knowledge.s_objective.s_Xp));
+        Debug.Log("connai 2 = " + (player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp));
+        Debug.Log("connai 3 = " + (player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp));
         i_mecaLV.text = "lvl" + moyenMeca.ToString();
         i_connaiLV.text = "lvl" + moyenKnow.ToString();
 
@@ -102,6 +113,7 @@ public class UI_Player : MonoBehaviour
         i_caractere.text = player.i_mood.i_moodName;
 
         i_synergie.text = FindSynergie(player.i_teamSpirit.s_lvl);
+        i_synergie.color = i_synergieColor;
     }
 
     public void ActualiseUiPlayerChampion()
@@ -163,18 +175,25 @@ public class UI_Player : MonoBehaviour
         switch (synergie)
         {
             case 0:
+                i_synergieColor = new Color(0, 0, 0); 
                 return "Désastreux";
             case 1:
+                i_synergieColor = new Color(255, 0, 0);
                 return "Faible";
             case 2:
+                i_synergieColor = new Color(255, 128, 0);
                 return "Correct";
             case 3:
+                i_synergieColor = new Color(1, 0.92f, 0.016f);
                 return "Bon";
             case 4:
+                i_synergieColor = new Color(200, 255, 0);
                 return "Incroyable";
             case 5:
+                i_synergieColor = new Color(0, 255, 0);
                 return "Parfait";
             default:
+                i_synergieColor = new Color(255, 255, 255); 
                 return "";
         }
     }

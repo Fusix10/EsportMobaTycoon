@@ -18,7 +18,7 @@ public class ActualiseButton : MonoBehaviour
         
     }
 
-    public void ButtonSelectByIndex(int index)
+    public void ButtonSelectByIndexPC(int index)
     {
         for (int i = 0; i < i_button.Count; i++)
         {
@@ -29,4 +29,14 @@ public class ActualiseButton : MonoBehaviour
         i_button[index].GetComponentInChildren<TMP_Text>().color = Color.white;
     }
 
+    public void ButtonSelectByIndexPlayer(int index)
+    {
+        for(int i = 0;i < i_button.Count; i++)
+        {
+            i_button[i].GetComponent<Image>().enabled = true;
+            i_button[i].GetComponentInChildren<Image>().enabled = false;
+        }
+        i_button[index].GetComponent<Image>().enabled = false;
+        i_button[index].GetComponentInChildren<Image>().enabled = true;
+    }
 }
