@@ -18,14 +18,15 @@ public class Simulation : MonoBehaviour
         i_currentId = 0;  
     }
 
-    public void Init(List<Match> allMatch)
+    public void Init()
     {
         i_teamBlue = GameManager.Instance.i_manager.i_teamData;
-        i_match = allMatch;
+        i_match = GameManager.Instance.i_circuit.i_tournaments[0].i_matches;
     }
 
     public void MatchMaking()
     {
+        Init();
         if (i_currentId >= i_match.Count)
         {
             Debug.LogWarning("All matches were simulated.");
