@@ -30,7 +30,7 @@ public class Manager_Utilisateur : MonoBehaviour
 
 
     //my team Data 
-    [SerializeField] public TeamData teamData;
+    [SerializeField] public TeamData i_teamData;
 
     public void init(string name, string lastName, Sprite hair, Sprite face, Sprite torso, Sprite legs, bool isGenderXX)
     {
@@ -45,10 +45,10 @@ public class Manager_Utilisateur : MonoBehaviour
 
     public void TeamInit(string teamName, string teamNickName, Sprite logoFront, Sprite logoBack)
     {
-        teamData.i_name = teamName;
-        teamData.i_nickName = teamNickName;
+        i_teamData.i_name = teamName;
+        i_teamData.i_nickName = teamNickName;
         //teamData.i_LogoFront = logoFront;
-        teamData.i_LogoBack = logoBack;
+        i_teamData.i_LogoBack = logoBack;
     }
 
 

@@ -32,23 +32,4 @@ public class Simulation : MonoBehaviour
             }
         }
     }
-
-    public void ChangeScene()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            GameManager.Instance.i_allPlayers.Add(i_playerfactory.CreateRandomPlayer());
-        }
-
-        Single(GameManager.Instance.i_allPlayers);
-
-        for (int i = 0; i < 10; i++)
-        {
-            PlayerData data = new PlayerData();
-            data.SetFromPlayer(GameManager.Instance.i_allPlayers[i]);
-            GameManager.Instance.i_allPlayerData.Add(data);
-        }
-        GameManager.Instance.setGameState(GameState.Tournaments);
-        //SceneManager.LoadScene("Simulation");
-    }
 }

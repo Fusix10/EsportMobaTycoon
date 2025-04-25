@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public List<Character> i_allCharacters;
     [SerializeField] public List<MatchUp> i_allMatchUps;
     public List<PlayerData> i_allPlayerData;
+    public List<TeamData> i_allTeam;
+    public Circuit i_circuit;
 
     public GameState i_GameState;
 

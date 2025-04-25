@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircuitAction : ActionOnTimeEnd
+public class oldCircuitAction : ActionOnTimeEnd
 {
-    private Tournament i_tournament;
+    private oldTournament i_tournament;
     
-    public void InitTournament(Tournament t)
+    public void InitTournament(oldTournament t)
     {
         i_tournament = t;
     }

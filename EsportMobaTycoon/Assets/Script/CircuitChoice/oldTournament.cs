@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tournament
+public class oldTournament
 {
     private enum TournamentStatus
     {
@@ -18,18 +18,18 @@ public class Tournament
 
     private bool i_is_major;
 
-    private List<Match> i_matches;
+    private List<oldMatch> i_matches;
 
     private TournamentStatus i_status;
 
-    public Tournament(int nbTurn, bool is_major, string name)
+    public oldTournament(int nbTurn, bool is_major, string name)
     {
 
         i_nbTurn = nbTurn;
         i_is_major = is_major;
         i_status = TournamentStatus.NotPlayed;
 
-        i_matches = new List<Match>();
+        i_matches = new List<oldMatch>();
         i_name = name;
     }
 
@@ -38,11 +38,11 @@ public class Tournament
         i_status = win ? TournamentStatus.Won : TournamentStatus.Lost;
     }
 
-    public void AddMatch(Match match)
+    public void AddMatch(oldMatch match)
     {
         i_matches.Add(match);
     }
-    public List<Match> GetMatches()
+    public List<oldMatch> GetMatches()
     {
         return i_matches;
     }

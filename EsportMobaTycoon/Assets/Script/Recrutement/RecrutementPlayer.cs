@@ -27,8 +27,9 @@ public class RecrutementPlayer : MonoBehaviour
     public GameObject i_playerSlotPrefab;
 
     [Header("Player List")]
-    public List<Player> i_allPlayers;
-    public List<Player> i_selectedTeam = new List<Player>();
+    public List<Player> i_allPlayersObejct;
+    public List<PlayerData> i_allPlayers;
+    public TeamData i_selectedTeam;
     private int i_currentIndex = 0;
 
     [Header("Anim")]
@@ -45,32 +46,33 @@ public class RecrutementPlayer : MonoBehaviour
 
     void Start()
     {
-        i_selectedTeam = GameManager.Instance.i_manager.TeamPlayers;
+        i_allPlayers = new List<PlayerData>(10);
+        i_selectedTeam = GameManager.Instance.i_manager.i_teamData;
 
         for (int i = 0; i < 10; i++)
         {
             if (i < 2)
             {
-                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.ADC));
+                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.ADC));
             }
             else if (i < 4)
             {
-                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.SUPPORT));
+                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.SUPPORT));
             }
             else if (i < 6)
             {
-                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.MIDLANER));
+                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.MIDLANER));
             }
             else if (i < 8)
             {
-                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.JUNGLER));
+                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.JUNGLER));
             }
             else if (i < 10)
             {
-                i_allPlayers.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.TOPLANER));
+                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.TOPLANER));
             }
-            i_allPlayers[i].transform.position = new Vector3(-0.2574105f + (i * i_allPlayers[i].transform.localScale.x * 2), 1.29f, 0.7858481f);
-            GameManager.Instance.i_allPlayers.Add(i_allPlayers[i]);
+            i_allPlayersObejct[i].transform.position = new Vector3(-0.2574105f + (i * i_allPlayersObejct[i].transform.localScale.x * 2), 1.29f, 0.7858481f);
+            //i_allPlayers[i].SetFromPlayer(i_allPlayersObejct[i]);
             Debug.Log(i);
         }
 
@@ -94,7 +96,7 @@ public class RecrutementPlayer : MonoBehaviour
 
     public void AddToTeam()
     {
-        Player selected = i_allPlayers[i_currentIndex];
+        Player selected = i_allPlayersObejct[i_currentIndex];
         Manager_Utilisateur manager = GameManager.Instance.i_manager;
 
         if (manager.TeamPlayers.Contains(selected))
@@ -116,7 +118,9 @@ public class RecrutementPlayer : MonoBehaviour
             return;
         }
 
-        i_selectedTeam.Add(selected);
+        PlayerData playerData = new PlayerData();
+        playerData.SetFromPlayer(selected);
+        i_selectedTeam.i_players.Add(playerData);
 
         Debug.Log($"{selected.i_name} ajout�E�El'�quipe en tant que {selected.i_currentRole.ToString()}.");
         Transform rolePanel = GetPanelForRole(selected.i_currentRole);
@@ -234,11 +238,11 @@ public class RecrutementPlayer : MonoBehaviour
             }
         }
 
-        Player currentPlayer = i_allPlayers[i_currentIndex];
+        Player currentPlayer = i_allPlayersObejct[i_currentIndex];
         i_nameText.text = $"Nom : " + currentPlayer.i_name;
         i_roleText.text = $"Role : " + currentPlayer.i_currentRole.ToString();
         i_characterText.text = $"Charactere : " + currentPlayer.i_characterId.i_name;
-        i_countText.text = i_selectedTeam.Count.ToString() + $" / 5";
+        i_countText.text = i_selectedTeam.i_players.Count.ToString() + $" / 5";
         InitStat(currentPlayer.i_lvl, currentPlayer.i_potentiel, currentPlayer.i_mechanic, currentPlayer.i_knowledge);
     }
 

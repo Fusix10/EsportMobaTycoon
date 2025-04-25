@@ -1,4 +1,4 @@
-public class Match
+public class oldMatch
 {
     private enum MatchStatus
     {
@@ -9,7 +9,7 @@ public class Match
 
     private MatchStatus i_status;
 
-    public Match()
+    public oldMatch()
     {
         i_status = MatchStatus.NotPlayed;
     }

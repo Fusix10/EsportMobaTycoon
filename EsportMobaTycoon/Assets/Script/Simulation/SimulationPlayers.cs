@@ -22,10 +22,10 @@ public class SimulationPlayers : MonoBehaviour
                 teamRed.Add(GameManager.Instance.i_allPlayers[cmpt]);
             cmpt ++;
         }
-        Simulation();
+        //Simulation();
     }
 
-    public void Simulation()
+    public void Simulation(TeamData RedteamData)
     {
         float blueSum = 0;
         float redSum = 0;

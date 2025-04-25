@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TeamData", menuName = "TeamData")]
@@ -18,14 +20,14 @@ public class TeamData : ScriptableObject
     public Color i_LogoCrownColor = Color.white;
     public Color i_LogoMainColor = Color.white;
 
-    List<Player> i_players;
+    public List<PlayerData> i_players;
 
-    public List<Player> GetTeam()
+    public List<PlayerData> GetTeam()
     {
         return i_players;
     }
 
-    public void AddPlayer(Player player)
+    public void AddPlayer(PlayerData player)
     {
         if(i_players.Count < 5)
         {
@@ -37,7 +39,7 @@ public class TeamData : ScriptableObject
         }
     }
 
-    public void AddAllPlayer(List<Player> players)
+    public void AddAllPlayer(List<PlayerData> players)
     {
         if (i_players.Count + players.Count <= 5)
         {
@@ -79,4 +81,16 @@ public class TeamData : ScriptableObject
         }
     }
 
+    public void CreateAllPlayerFromNothing(int potentiel = 0)
+    {
+        i_players.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.ADC, potentiel));
+
+        i_players.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.SUPPORT, potentiel));
+
+        i_players.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.MIDLANER, potentiel));
+
+        i_players.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.JUNGLER, potentiel));
+
+        i_players.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.TOPLANER, potentiel));
+    }
 }
