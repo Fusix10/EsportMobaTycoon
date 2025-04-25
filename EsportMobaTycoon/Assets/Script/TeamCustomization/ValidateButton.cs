@@ -58,7 +58,7 @@ public class ValidateButton : MonoBehaviour
 {
     [SerializeField] private TeamData teamData;
     [SerializeField] private List<UnputFieldGrabber> inputFieldGrabberList;
-    [SerializeField] private List<Carouselle> CarouselleList;
+    [SerializeField] private List<TeamCustom> CarouselleList;
     [SerializeField] private bool isGenderXX;
 
     void Start()

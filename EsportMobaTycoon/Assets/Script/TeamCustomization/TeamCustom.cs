@@ -12,7 +12,7 @@ public class SpriteVariants
     public List<Sprite> variants;
 }
 
-public class Carouselle : MonoBehaviour
+public class TeamCustom : MonoBehaviour
 {
     [Header("Target Image à mettre à jour")]
     [SerializeField] private Image targetImage;
