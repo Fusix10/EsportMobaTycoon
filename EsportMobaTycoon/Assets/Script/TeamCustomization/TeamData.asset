@@ -17,6 +17,6 @@ MonoBehaviour:
   i_LogoBack: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   i_LogoCrown: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   i_Logo: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  i_LogoBackColor: {r: 0, g: 0, b: 1, a: 0}
-  i_LogoCrownColor: {r: 1, g: 0, b: 0, a: 0}
-  i_LogoMainColor: {r: 1, g: 1, b: 0, a: 0}
+  i_LogoBackColor: {r: 1, g: 0, b: 0, a: 0}
+  i_LogoCrownColor: {r: 0, g: 1, b: 0, a: 0}
+  i_LogoMainColor: {r: 0, g: 0, b: 1, a: 0}
