@@ -107,7 +107,7 @@ public class PlayerFactory : MonoBehaviour
         string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
         GameManager.Role role = GameManager.Instance.GetRandomRole();
         int potential = UnityEngine.Random.Range(1, 5);
-        GameManager.Role currentRole = GameManager.Instance.GetRandomRole(); 
+        GameManager.Role currentRole = GameManager.Instance.GetRandomRole();
         int reputation = UnityEngine.Random.Range(0, 100);
         Character favoriteCharacterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
         Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];

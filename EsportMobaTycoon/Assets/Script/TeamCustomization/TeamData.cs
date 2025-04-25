@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TeamData", menuName = "TeamData")]
 public class TeamData : ScriptableObject
 {
-    [Header("Infos g�n�rales")]
+    [Header("Infos generales")]
     public string i_name;
     public string i_nickName;
 
@@ -29,7 +29,7 @@ public class TeamData : ScriptableObject
 
     public void AddPlayer(PlayerData player)
     {
-        if(i_players.Count < 5)
+        if (i_players.Count < 5)
         {
             i_players.Add(player);
         }
@@ -68,7 +68,7 @@ public class TeamData : ScriptableObject
 
     public void DelMulPlayer(List<int> ids)
     {
-        for(int i = 0;i < ids.Count; i++)
+        for (int i = 0; i < ids.Count; i++)
         {
             if (i_players.Count > 0 && i_players.Count >= ids[i])
             {
