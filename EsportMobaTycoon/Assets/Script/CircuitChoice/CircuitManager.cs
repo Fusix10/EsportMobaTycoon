@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CircuitManager : MonoBehaviour
 {
+    Simulation i_simulation;
     List<string> tournamentName = new List<string>() {
     "Summoner's Clash",
     "Nexus Arena",
@@ -56,7 +57,7 @@ public class CircuitManager : MonoBehaviour
             int matchCount = Random.Range(2, 5);
             for (int j = 0; j < matchCount; j++)
             {
-                TeamData teamData = new TeamData();
+                TeamData teamData = ScriptableObject.CreateInstance<TeamData>();
                 switch (circuitDifficulty)
                 {
                     case CircuitDifficulty.Easy:
@@ -78,6 +79,7 @@ public class CircuitManager : MonoBehaviour
         }
 
         GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
+        i_simulation.MatchMaking();
     }
 }
 

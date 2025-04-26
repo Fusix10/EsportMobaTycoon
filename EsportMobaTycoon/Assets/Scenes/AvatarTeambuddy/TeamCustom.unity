@@ -340,9 +340,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1749537715}
-        m_TargetAssemblyTypeName: Carouselle, Assembly-CSharp
-        m_MethodName: PreviousImage
+      - m_Target: {fileID: 1749537719}
+        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
+        m_MethodName: PreviousGroup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &158327733
 RectTransform:
   m_ObjectHideFlags: 0
@@ -579,19 +579,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 158327735}
-  sprites:
-  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  targetImages:
-  - {fileID: 158327735}
-  colorButtons:
-  - {fileID: 1753126070}
-  colors:
-  - {r: 0, g: 0, b: 1, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 1, g: 1, b: 0, a: 0}
+  groups:
+  - groupName: 
+    variants:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  cycleColorButtons: []
 --- !u!114 &158327735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2473,9 +2467,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 892045597}
-        m_TargetAssemblyTypeName: Carouselle, Assembly-CSharp
-        m_MethodName: NextImage
+      - m_Target: {fileID: 892045598}
+        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
+        m_MethodName: NextGroup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3221,9 +3215,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 892045597}
-        m_TargetAssemblyTypeName: Carouselle, Assembly-CSharp
-        m_MethodName: PreviousImage
+      - m_Target: {fileID: 892045598}
+        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
+        m_MethodName: PreviousGroup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3492,6 +3486,7 @@ GameObject:
   - component: {fileID: 892045596}
   - component: {fileID: 892045595}
   - component: {fileID: 892045597}
+  - component: {fileID: 892045598}
   m_Layer: 5
   m_Name: Carouselle1
   m_TagString: Untagged
@@ -3563,25 +3558,70 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892045593}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 892045595}
-  sprites:
-  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  targetImages:
-  - {fileID: 892045595}
-  colorButtons:
+  groups:
+  - groupName: B1
+    variants:
+    - {fileID: 21300000, guid: d5de729d24a5eda4f926d062e07117d8, type: 3}
+    - {fileID: 21300000, guid: ae595849c00655b40bfdce10b4eafe57, type: 3}
+  - groupName: BS1
+    variants:
+    - {fileID: 21300000, guid: 5ffaf4ad8bc4ab147ab144b0bb1e4abe, type: 3}
+    - {fileID: 21300000, guid: e95759818bf184d40820afcf3eee4bf2, type: 3}
+  - groupName: B2
+    variants:
+    - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
+    - {fileID: 21300000, guid: ebca3b1d59fec8f4dafa89245a46d782, type: 3}
+  - groupName: BS2
+    variants:
+    - {fileID: 21300000, guid: 2faecb830072ee34ca0bae0a0174fcaa, type: 3}
+    - {fileID: 21300000, guid: b36cf819397dd5f409e8181019ecbff7, type: 3}
+  cycleColorButtons: []
+--- !u!114 &892045598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892045593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5c874c9216b904b941b19f3d60c06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 892045595}
+  groups:
+  - groupName: B1
+    variants:
+    - {fileID: 21300000, guid: d5de729d24a5eda4f926d062e07117d8, type: 3}
+    - {fileID: 21300000, guid: ae595849c00655b40bfdce10b4eafe57, type: 3}
+    - {fileID: 21300000, guid: 4c4a085579273554093ea73240d4f332, type: 3}
+    - {fileID: 21300000, guid: bc2494e47b0d27f42b1a2f2ea924fea5, type: 3}
+  - groupName: BS1
+    variants:
+    - {fileID: 21300000, guid: 5ffaf4ad8bc4ab147ab144b0bb1e4abe, type: 3}
+    - {fileID: 21300000, guid: e95759818bf184d40820afcf3eee4bf2, type: 3}
+    - {fileID: 21300000, guid: 852c25a8df287834bad90359aeb8472a, type: 3}
+    - {fileID: 21300000, guid: 8aebd09b891a2b84ca2b4aefb635e137, type: 3}
+  - groupName: B2
+    variants:
+    - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
+    - {fileID: 21300000, guid: ebca3b1d59fec8f4dafa89245a46d782, type: 3}
+    - {fileID: 21300000, guid: 5f73f68b7490af04bad569e1494d0169, type: 3}
+    - {fileID: 21300000, guid: 47e92a2c7c8f7064884d023992c6a62b, type: 3}
+  - groupName: BS2
+    variants:
+    - {fileID: 21300000, guid: 2faecb830072ee34ca0bae0a0174fcaa, type: 3}
+    - {fileID: 21300000, guid: b36cf819397dd5f409e8181019ecbff7, type: 3}
+    - {fileID: 21300000, guid: 5697275f51aaf9d4786010b89e30c5dd, type: 3}
+    - {fileID: 21300000, guid: 5fc7af64dfec09b4d9e32b5a2c8213d4, type: 3}
+  cycleColorButtons:
   - {fileID: 1195597399}
-  colors:
-  - {r: 0, g: 0, b: 1, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 1, g: 1, b: 0, a: 0}
 --- !u!1 &909603053
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,9 +5302,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1749537715}
-        m_TargetAssemblyTypeName: Carouselle, Assembly-CSharp
-        m_MethodName: NextImage
+      - m_Target: {fileID: 1749537719}
+        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
+        m_MethodName: NextGroup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5514,6 +5554,7 @@ GameObject:
   - component: {fileID: 1749537717}
   - component: {fileID: 1749537716}
   - component: {fileID: 1749537715}
+  - component: {fileID: 1749537719}
   m_Layer: 5
   m_Name: Carouselle2
   m_TagString: Untagged
@@ -5528,25 +5569,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749537714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 1749537716}
-  sprites:
-  - {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  targetImages:
-  - {fileID: 1749537716}
-  colorButtons:
-  - {fileID: 553017632}
-  colors:
-  - {r: 0, g: 0, b: 1, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 1, g: 1, b: 0, a: 0}
+  groups: []
+  cycleColorButtons: []
 --- !u!114 &1749537716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5604,6 +5634,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1749537719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749537714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5c874c9216b904b941b19f3d60c06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 1749537716}
+  groups:
+  - groupName: 
+    variants:
+    - {fileID: 21300000, guid: 076431743c38306488e9b9f5cd1b2db0, type: 3}
+    - {fileID: 21300000, guid: 6c41c75c0a1d2434e9a9e9fed2857acb, type: 3}
+  - groupName: 
+    variants:
+    - {fileID: 21300000, guid: 751b2c24314b71c4f907e388d88aeeb9, type: 3}
+    - {fileID: 21300000, guid: e406ee104629b194e9375a702250d26b, type: 3}
+  - groupName: 
+    variants:
+    - {fileID: 21300000, guid: f46f1166486a35148aaf37ee34707f92, type: 3}
+    - {fileID: 21300000, guid: c128637d5d0fcff4c88aec26c2d09516, type: 3}
+  cycleColorButtons:
+  - {fileID: 553017632}
 --- !u!1 &1753126068
 GameObject:
   m_ObjectHideFlags: 0

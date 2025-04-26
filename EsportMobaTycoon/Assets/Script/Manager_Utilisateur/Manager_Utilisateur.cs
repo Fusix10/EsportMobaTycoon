@@ -39,8 +39,6 @@ public class Manager_Utilisateur
     {
         i_teamData.i_name = teamName;
         i_teamData.i_nickName = teamNickName;
-        //teamData.i_LogoFront = logoFront;
-        i_teamData.i_LogoBack = logoBack;
     }
 
     /*public void AjouterPopularite(int points)

@@ -1,35 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuOptions : MonoBehaviour
 {
-
+    [Header("Panels (directement en scène)")]
+    [Tooltip("Le menu principal pour le réafficher")]
     public GameObject PanelStart;
+    [Tooltip("Le panneau d’options à désactiver")]
     public GameObject PanelOptions;
 
+    [Header("Réglages")]
     public Slider vibrationSlider;
     public TMP_Dropdown dropdownFrameRate;
 
-    // Start is called before the first frame update
+    private MenuStart menuStart;
+
+    void Awake()
+    {
+        // Trouve le MenuStart actif dans la scène
+        menuStart = FindFirstObjectByType<MenuStart>();
+        if (menuStart == null)
+            Debug.LogError("MenuStart introuvable dans la scène !");
+    }
+
     void Start()
     {
         vibrationSlider.onValueChanged.AddListener(ChangeVibration);
         dropdownFrameRate.onValueChanged.AddListener(ChangeFrameRate);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // pas d’update spécifique avant
     }
 
+    /// <summary>
+    /// Bouton “Retour” dans le panneau Options.
+    /// Appelle CloseOptions() de MenuStart.
+    /// </summary>
     public void ButtonBack()
     {
-        PanelOptions.SetActive(false);
-        PanelStart.SetActive(true);
+        if (menuStart != null)
+            menuStart.CloseOptions();
+        else
+        {
+            // fallback si jamais
+            PanelOptions.SetActive(false);
+            PanelStart.SetActive(true);
+        }
     }
 
     public void SetQuality(int qualityIndex)
@@ -37,11 +56,11 @@ public class MenuOptions : MonoBehaviour
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    void ChangeVibration(float value)
+    private void ChangeVibration(float value)
     {
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-        AndroidJavaObject vibrator = currentActivity.Call<AndroidJavaObject>("getSystemService", "vibrator");
+        var unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        var currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+        var vibrator = currentActivity.Call<AndroidJavaObject>("getSystemService", "vibrator");
 
         if (vibrator.Call<bool>("hasVibrator"))
         {
@@ -50,13 +69,13 @@ public class MenuOptions : MonoBehaviour
         }
     }
 
-    void ChangeFrameRate(int index)
+    private void ChangeFrameRate(int index)
     {
-        int[] fpsValues = { 30, 60, 120};
+        int[] fpsValues = { 30, 60, 120 };
         if (index < fpsValues.Length)
         {
             Application.targetFrameRate = fpsValues[index];
-            Debug.Log("FPS changEE: " + Application.targetFrameRate);
+            Debug.Log("FPS changé : " + Application.targetFrameRate);
         }
     }
 }
