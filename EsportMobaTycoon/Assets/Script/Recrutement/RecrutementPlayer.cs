@@ -241,7 +241,7 @@ public class RecrutementPlayer : MonoBehaviour
         Player currentPlayer = i_allPlayersObejct[i_currentIndex];
         i_nameText.text = $"Nom : " + currentPlayer.i_name;
         i_roleText.text = $"Role : " + currentPlayer.i_currentRole.ToString();
-        i_characterText.text = $"Charactere : " + currentPlayer.i_characterId.i_name;
+        //i_characterText.text = $"Charactere : " + currentPlayer.i_characterId.i_name;
         i_countText.text = i_selectedTeam.i_players.Count.ToString() + $" / 5";
         InitStat(currentPlayer.i_lvl, currentPlayer.i_potentiel, currentPlayer.i_mechanic, currentPlayer.i_knowledge);
     }
