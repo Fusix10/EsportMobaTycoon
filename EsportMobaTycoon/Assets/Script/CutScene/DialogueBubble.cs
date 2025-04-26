@@ -41,47 +41,47 @@ public class DialogueBubble : MonoBehaviour
     {
         if (signal == i_manager1)
         {
-            ShowBubble("Hé Buddy, t'as deux minutes ? J'ai trouvé un truc de fou.", 5);
+            ShowBubble("Hé Buddy, t'as deux minutes ? J'ai trouvé un truc de fou.", 6);
             Update();
         }
         else if (signal == i_buddy2)
         {
-            ShowBubble("Tu me laisses même pas commencer mon repas... Mais dis moi tout !", 5);
+            ShowBubble("Tu me laisses même pas commencer mon repas... Mais dis moi tout !", 6);
             Update();
         }
         else if (signal == i_manager3)
         {
-            ShowBubble("Regard, un tournoi d'esport sur notre MOBA préféré. Ca a l'air énorme !", 5);
+            ShowBubble("Regard, un tournoi d'esport sur notre MOBA préféré. Ca a l'air énorme !", 6);
             Update();
         }
         else if (signal == i_manager4)
         {
-            ShowBubble("Ca pourrait vraiment nous lancer dans le monde de l'esport.", 5);
+            ShowBubble("Ca pourrait vraiment nous lancer dans le monde de l'esport.", 6);
             Update();
         }
         else if (signal == i_manager5)
         {
-            ShowBubble("Et puis, c'est une super opportunité de se mesurer aux meilleures équipes.", 5);
+            ShowBubble("Et puis, c'est une super opportunité de se mesurer aux meilleures équipes.", 6);
             Update();
         }
         else if (signal == i_buddy6)
         {
-            ShowBubble("Serieux ?! Ca a l'air dingue ! On devrait s'inscire, mais on ne peut y aller juste tous les deux.", 5);
+            ShowBubble("Serieux ?! Ca a l'air dingue ! On devrait s'inscire, mais on ne peut y aller juste tous les deux.", 6);
             Update();
         }
         else if (signal == i_manager7)
         {
-            ShowBubble("Oui il nous faut une équipe complète. On doit recruter d'autres joueurs pour être au top.", 5);
+            ShowBubble("Oui il nous faut une équipe complète. On doit recruter d'autres joueurs pour être au top.", 6);
             Update();
         }
         else if (signal == i_buddy8)
         {
-            ShowBubble("Bonne idée. On pourrait poster une annonce sur le site de notre campus pour trouver des coéquipiers motivés.", 5);
+            ShowBubble("Bonne idée. On pourrait poster une annonce sur le site de notre campus pour trouver des coéquipiers motivés.", 6);
             Update();
         }
         else if (signal == i_manager9)
         {
-            ShowBubble("Exactement, faisons ça et commencons à nous entraîner sérieusement. On doit être prêts pour le tournoi !", 5);
+            ShowBubble("Exactement, faisons ça et commencons à nous entraîner sérieusement. On doit être prêts pour le tournoi !", 6);
             Update();
             i_buttonNext.gameObject.SetActive(true);
             i_textButtonNext.gameObject.SetActive(true);
