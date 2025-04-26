@@ -35,6 +35,7 @@ public class GraphicsManager : MonoBehaviour
         if (current < max)
         {
             i_currentGraphic = (GraphicTier)(current + 1);
+            QualitySettings.IncreaseLevel();
             UpdateGraphics();
         }
     }
@@ -46,6 +47,7 @@ public class GraphicsManager : MonoBehaviour
         if (current > 0)
         {
             i_currentGraphic = (GraphicTier)(current - 1);
+            QualitySettings.DecreaseLevel();
             UpdateGraphics(); 
         }
     }
@@ -54,7 +56,6 @@ public class GraphicsManager : MonoBehaviour
     private void UpdateGraphics()
     {
         Debug.Log($"Graphics set to : {i_currentGraphic}");
-
         // need to do ?
         // update the game graphics 
     }

@@ -10,8 +10,8 @@ public class AudioSettings : MonoBehaviour
 
     // Need to make audio mixer with music and sound files 
 
-    //[SerializeField] 
-    //private AudioMixer i_audioMixer;
+    [SerializeField]
+    private AudioMixer i_audioMixer;
 
     private void Start()
     {
@@ -23,13 +23,13 @@ public class AudioSettings : MonoBehaviour
     {
         Debug.Log($"Music volume set to {value}");
 
-        //i_audioMixer.SetFloat("MusicVolume", SliderValueToDecibel(value));
+        i_audioMixer.SetFloat("MusicVolume", SliderValueToDecibel(value));
     }
 
     private void SetSoundsVolume(float value)
     {
         Debug.Log($"Sounds volume set to {value}");
-        //i_audioMixer.SetFloat("SoundsVolume", SliderValueToDecibel(value));
+        i_audioMixer.SetFloat("SoundsVolume", SliderValueToDecibel(value));
     }
 
     // Convert slider value 0 / 10 to decibels -80 / 0

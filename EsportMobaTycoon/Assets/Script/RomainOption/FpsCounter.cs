@@ -4,9 +4,6 @@ using UnityEngine.Rendering;
 
 public class FpsCounter : MonoBehaviour
 {
-    [SerializeField] 
-    private TextMeshProUGUI i_fpsCurrentText;
-
     [SerializeField]
     private TextMeshProUGUI i_fpsCapText;
 
@@ -41,9 +38,6 @@ public class FpsCounter : MonoBehaviour
 
         if (i_elapsedTime >= i_updateInterval)
         {
-            float fps = i_frameCount / i_elapsedTime;
-            i_fpsCurrentText.text = $"{Mathf.RoundToInt(fps)}";
-
             i_fpsCapText.text = i_currentFpsCap == FpsCap.Uncapped ? "Uncapped" : $"{(int)i_currentFpsCap}";
 
             i_frameCount = 0;
