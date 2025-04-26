@@ -100,9 +100,6 @@ public class GameManager : MonoBehaviour
         i_allCharacters.Add(new Character("Braum",19,true,14,1));
         //To Destroy
 
-        Buddy buddy = new Buddy();
-        buddy.buddyCreate("dd");
-
         i_eventManager = this.GetComponent<EventManager>();
         AddMatchUp(i_allCharacters[17], i_allCharacters[4], MatchUp.stateMatchUp.COUNTER); //Thresh vs Viego
         AddMatchUp(i_allCharacters[3], i_allCharacters[8], MatchUp.stateMatchUp.COUNTER); //Sion vs Viego

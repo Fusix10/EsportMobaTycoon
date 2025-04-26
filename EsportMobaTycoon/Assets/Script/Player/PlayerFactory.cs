@@ -1,11 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
-using System.Linq;
 using TMPro;
-using static Player;
-using System.Xml.Linq;
 
 public class PlayerFactory : MonoBehaviour
 {

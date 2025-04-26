@@ -20,6 +20,7 @@ public class PlayerData
     public int i_lvl;
     public int i_potentiel;
     public Mood i_mood;
+    public Skin i_skin;
 
     public void SetFromPlayer(Player p)
     {
@@ -37,6 +38,7 @@ public class PlayerData
         i_lvl = p.i_lvl;
         i_potentiel = p.i_potentiel;
         i_mood = p.i_mood;
+        i_skin = p.i_skin;
     }
 
     public void SetFromData(

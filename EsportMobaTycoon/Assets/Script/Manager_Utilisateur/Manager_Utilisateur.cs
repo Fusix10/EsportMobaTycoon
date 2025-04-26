@@ -18,10 +18,7 @@ public class Manager_Utilisateur
     public string i_lastName;
     public string i_name;
 
-    public Sprite i_hair;
-    public Sprite i_face;
-    public Sprite i_Torso;
-    public Sprite i_legs;
+    public Skin i_skin;
 
     public bool i_isGenderMale; //true female false male 
 
@@ -30,14 +27,11 @@ public class Manager_Utilisateur
     //my team Data 
     [SerializeField] public TeamData i_teamData;
 
-    public void init(string name, string lastName, Sprite hair, Sprite face, Sprite torso, Sprite legs, bool isGenderXX)
+    public void init(string name, string lastName, Skin skin, bool isGenderXX)
     {
         i_lastName = lastName;
         i_name = name;
-        i_hair = hair;
-        i_face = face;
-        i_Torso = torso;
-        i_legs = legs;
+        i_skin = skin;
         i_isGenderMale = isGenderXX;
     }
 

@@ -8,54 +8,46 @@ public class CharacterSkin : MonoBehaviour
 {
     [Header("Stanting")]
     [SerializeField] GameObject i_standing;
-    [SerializeField] Skin i_standingSkin;
+    [SerializeField] Image i_hairStanding;
+    [SerializeField] Image i_faceStanding;
+    [SerializeField] Image i_bodyStanding;
+    [SerializeField] Image i_shirtStanding;
+    [SerializeField] Image i_legsStanding;
+    [SerializeField] Image i_shoesStanding;
 
     [Header("Sitting")]
     [SerializeField] GameObject i_sitting;
-    [SerializeField] Skin i_sittingSkin;
+    [SerializeField] Image i_hairSitting;
+    [SerializeField] Image i_faceSitting;
+    [SerializeField] Image i_bodySitting;
+    [SerializeField] Image i_shirtSitting;
+    [SerializeField] Image i_legsSitting;
+    [SerializeField] Image i_shoesSitting;
+
+    [SerializeField] Skin i_skin;
 
     [SerializeField] bool i_isStanding;
 
-
-    public void SetHair(Sprite sprite)
+    public void SetSkin(Skin skin)
     {
-        if (i_isStanding) i_standingSkin.i_hairSitting.sprite = sprite;
-        else i_sittingSkin.i_hairSitting.sprite = sprite;
-    }
-    public void SetFace(Sprite sprite)
-    {
-        if (i_isStanding) i_standingSkin.i_faceSitting.sprite = sprite;
-        else i_sittingSkin.i_faceSitting.sprite = sprite;
-    }
-    public void SetBody(Sprite sprite)
-    {
-        if (i_isStanding) i_standingSkin.i_bodySitting.sprite = sprite;
-        else i_sittingSkin.i_bodySitting.sprite = sprite;
-    }
-    public void SetShirt(Sprite sprite)
-    {
-        if (i_isStanding) i_standingSkin.i_shirtSitting.sprite = sprite;
-        else i_sittingSkin.i_shirtSitting.sprite = sprite;
-    }
-    public void SetLegs(Sprite sprite)
-    {
-        if (i_isStanding) i_standingSkin.i_legsSitting.sprite = sprite;
-        else i_sittingSkin.i_legsSitting.sprite = sprite;
-    }
-    public void SetShoes(Sprite sprite)
-    {
-        if (i_isStanding) i_standingSkin.i_shoesSitting.sprite = sprite;
-        else i_sittingSkin.i_shoesSitting.sprite = sprite;
+        i_skin = skin;
+        UpdateSkin();
     }
 
-    public void SetSkin(Sprite hair, Sprite face, Sprite body, Sprite shirt, Sprite legs, Sprite shoes)
+    public void UpdateSkin()
     {
-        SetHair(hair);
-        SetFace(face);
-        SetBody(body);
-        SetShirt(shirt);
-        SetLegs(legs);
-        SetShoes(shoes);
+        i_hairSitting.sprite = i_skin.i_hairSitting;
+        i_hairStanding.sprite = i_skin.i_hairStanding;
+        i_faceSitting.sprite = i_skin.i_faceSitting;
+        i_faceStanding.sprite = i_skin.i_faceStanding;
+        i_bodySitting.sprite = i_skin.i_bodySitting;
+        i_bodyStanding.sprite = i_skin.i_bodyStanding;
+        i_shirtSitting.sprite = i_skin.i_shirtSitting;
+        i_shirtStanding.sprite = i_skin.i_shirtStanding;
+        i_legsSitting.sprite = i_skin.i_legsSitting;
+        i_legsStanding.sprite = i_skin.i_legsStanding;
+        i_shoesSitting.sprite = i_skin.i_shoesSitting;
+        i_shoesStanding.sprite = i_skin.i_shoesStanding;
     }
 
     public void SwitchStanding()
@@ -81,19 +73,17 @@ public class CharacterSkin : MonoBehaviour
 [Serializable]
 public class Skin
 {
-    public GameObject i_standing;
-    public Image i_hairStanding;
-    public Image i_faceStanding;
-    public Image i_bodyStanding;
-    public Image i_shirtStanding;
-    public Image i_legsStanding;
-    public Image i_shoesStanding;
+    public Sprite i_hairStanding;
+    public Sprite i_faceStanding;
+    public Sprite i_bodyStanding;
+    public Sprite i_shirtStanding;
+    public Sprite i_legsStanding;
+    public Sprite i_shoesStanding;
 
-    public GameObject i_sitting;
-    public Image i_hairSitting;
-    public Image i_faceSitting;
-    public Image i_bodySitting;
-    public Image i_shirtSitting;
-    public Image i_legsSitting;
-    public Image i_shoesSitting;
+    public Sprite i_hairSitting;
+    public Sprite i_faceSitting;
+    public Sprite i_bodySitting;
+    public Sprite i_shirtSitting;
+    public Sprite i_legsSitting;
+    public Sprite i_shoesSitting;
 }

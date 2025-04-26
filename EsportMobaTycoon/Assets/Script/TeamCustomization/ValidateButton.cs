@@ -69,10 +69,21 @@ public class ValidateButton : MonoBehaviour
 
     public void Submit()
     {
-        GameManager.Instance.i_manager.i_hair = hair.GetSprite();
-        GameManager.Instance.i_manager.i_face = face.GetSprite();
-        GameManager.Instance.i_manager.i_Torso = torso.GetSprite();
-        GameManager.Instance.i_manager.i_legs = legs.GetSprite();
+        Skin skin = new()
+        {
+            i_hairSitting = hair.GetSprite(true),
+            i_faceSitting = face.GetSprite(true),
+            i_shirtSitting = torso.GetSprite(true),
+            i_legsSitting = legs.GetSprite(true),
+
+            i_hairStanding = hair.GetSprite(),
+            i_faceStanding = face.GetSprite(),
+            i_shirtStanding = torso.GetSprite(),
+            i_legsStanding = legs.GetSprite()
+        };
+
+
+        GameManager.Instance.i_manager.i_skin = skin;
 
         GameManager.Instance.i_manager.i_isGenderMale = isGenderMale;
 

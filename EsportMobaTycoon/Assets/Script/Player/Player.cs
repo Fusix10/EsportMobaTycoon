@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
-using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -13,8 +7,8 @@ public class Player : MonoBehaviour
     public GameManager.Role i_role { get; private set; }
     public GameManager.Role i_currentRole { get; set; }
     public Sprite i_icon { get; protected set; }
-    public Mechanic i_mechanic { get; private set; }//
-    public Knowledge i_knowledge { get; private set; }//
+    public Mechanic i_mechanic { get; private set; }
+    public Knowledge i_knowledge { get; private set; }
     public Character i_favoriteCharacterId { get; private set; }
     public Character i_characterId { get; private set; }
     public float i_totalLuck { get; private set; }
@@ -24,8 +18,10 @@ public class Player : MonoBehaviour
     public int i_lvl { get; private set; }
     public int i_potentiel { get; private set; }
     public Mood i_mood { get; private set; }
+    public Skin i_skin { get; protected set; }
+    public bool i_isBuddy { get; protected set; }
 
-    public void Init//
+    public void Init
     (
     string name,
     string knickname,
@@ -57,17 +53,15 @@ public class Player : MonoBehaviour
         i_currentRole = currentRole;
         i_morale = 100;
 
-
+        i_isBuddy = false;
 
         i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;
 
         UpdateTick();
-
-        Debug.Log(i_name + " potentiel = " + i_potentiel);
-        Debug.Log(i_name + " Lvl = " + i_lvl);
     }
-    public void gainXP(Lvl obj, float Gain)
+
+    public void GainXP(Lvl obj, float Gain)
     {
         if (obj.s_lvl < i_potentiel)
         {
@@ -113,7 +107,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ApplyFavoriteCharacterBonus()//
+    public void ApplyFavoriteCharacterBonus()
     {
         if (i_characterId == i_favoriteCharacterId)
         {
@@ -129,7 +123,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void matchUpLuck(Player opponent)
+    public void MatchUpLuck(Player opponent)
     {
         GameManager.MatchUp matchUp = GameManager.Instance.GetMatchUp(i_characterId, opponent.i_characterId);
         if (matchUp.state == GameManager.MatchUp.stateMatchUp.COUNTER)
@@ -151,7 +145,7 @@ public class Player : MonoBehaviour
         Luck();
         ApplyFavoriteCharacterBonus();
         ApplyRolePenalty();
-        matchUpLuck(opponent);
+        MatchUpLuck(opponent);
     }
 
     public void SetRole(GameManager.Role newRole)
