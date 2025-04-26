@@ -38,7 +38,5 @@ public class SponsorEvent : ActionOnDurationTime
                       "Réputation requise : " + requiredReputation +
                       ", Réputation actuelle : " + manager.i_reputation);
         }
-
-        manager.UpdateUi();
     }
 }
