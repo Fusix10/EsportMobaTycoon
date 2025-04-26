@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-/*public class SpriteVariants
+public class SpriteVariants
 {
     [Tooltip("Nom (facultatif) pour l’UI")]
     public string groupName;
 
     [Tooltip("Vos sprites pour ce groupe, dans l’ordre des couleurs")]
     public List<Sprite> variants;
-}*/
+}
 
 public class TeamCustom : MonoBehaviour
 {
