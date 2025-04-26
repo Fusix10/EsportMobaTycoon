@@ -26,7 +26,7 @@ public class TrainingEvent : ActionOnTimeEnd
             }
             else
             {
-                i_players[i].gainXP(i_lvl, i_gain);
+                i_players[i].GainXP(i_lvl, i_gain);
             }
                 
         }

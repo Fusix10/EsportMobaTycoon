@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5562703145647462768}
   - component: {fileID: 6463600780879112174}
   - component: {fileID: 8853760593527782955}
-  - component: {fileID: 8968370490086446790}
   m_Layer: 5
   m_Name: Target Cheveux
   m_TagString: Untagged
@@ -35,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.61914, y: 352}
-  m_SizeDelta: {x: 240, y: 182}
+  m_AnchoredPosition: {x: 44.61914, y: 228.1}
+  m_SizeDelta: {x: 274, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6463600780879112174
 CanvasRenderer:
@@ -66,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3e86a91193ffe7c4f8de25a1de9e39c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85cf2558d09189248a97879e21066936, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,144 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8968370490086446790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99187288707680888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 8853760593527782955}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: aa08f6ac602d66446a0433558f049db3, type: 3}
-    - {fileID: 21300000, guid: 9302495f91db6a74da1d337119ee9468, type: 3}
-    - {fileID: 21300000, guid: 55ffd67a13d005c4ea59db13ed3049af, type: 3}
-    - {fileID: 21300000, guid: 1a3293b267e08364681108b0ad129296, type: 3}
-    - {fileID: 21300000, guid: 1e40b51779a927a44a8bdf58c804a896, type: 3}
-    - {fileID: 21300000, guid: 86e640cea6f651b49b99e476825cacf3, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 1
-  - sprites:
-    - {fileID: 21300000, guid: bb02f7c1cddd7f945bd90d3dc7a0b69b, type: 3}
-    - {fileID: 21300000, guid: dddf7e0c882f09643abaa32d0e4ed9d9, type: 3}
-    - {fileID: 21300000, guid: 56817048161fce544aaa1d4cdc91016a, type: 3}
-    - {fileID: 21300000, guid: b6067a2fb049cf44582672597c4cdf5b, type: 3}
-    - {fileID: 21300000, guid: 9636bcf1433084c458bd3a2b2fc94a5f, type: 3}
-    - {fileID: 21300000, guid: 5c5339c07f192dd4ab9b092bf0824d50, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 2
-  - sprites:
-    - {fileID: 21300000, guid: 6271c12e95e79a64098906487332d182, type: 3}
-    - {fileID: 21300000, guid: 6710a636d9cf71741b824c82b29da80d, type: 3}
-    - {fileID: 21300000, guid: 44d593ffc4363164c81524419802256b, type: 3}
-    - {fileID: 21300000, guid: 35acd2362e4036247bdf4bd67954a54d, type: 3}
-    - {fileID: 21300000, guid: eccb76f4f19e2304391e1822bd01bbba, type: 3}
-    - {fileID: 21300000, guid: c64c9f5566335b849b238a195a481eb9, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 3
-  - sprites:
-    - {fileID: 21300000, guid: 60e8028e5c2e58244bc9382f9306d008, type: 3}
-    - {fileID: 21300000, guid: 3049bf059083b554abd0001368be81c1, type: 3}
-    - {fileID: 21300000, guid: c30467cbc31698b4e99dedf8e1edc0d7, type: 3}
-    - {fileID: 21300000, guid: 24d46c23cc2428646b31ab01e3efd017, type: 3}
-    - {fileID: 21300000, guid: 39ddbc2284a0ed34ea7a065172e516eb, type: 3}
-    - {fileID: 21300000, guid: 300c2141cc74b6f478d751004ec55114, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 4
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 3be60616798690d459e73bb5d8519770, type: 3}
-    - {fileID: 21300000, guid: 3e86a91193ffe7c4f8de25a1de9e39c0, type: 3}
-    - {fileID: 21300000, guid: 140952f43e1e9db4cb3de8867ea7cce5, type: 3}
-    - {fileID: 21300000, guid: 16a155809c59ab541aea55536483d16a, type: 3}
-    - {fileID: 21300000, guid: 1aae1be3d3a43a94fb0469dceb26dbdb, type: 3}
-    - {fileID: 21300000, guid: 84a8f91edc8f6bf44be584888b011f33, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 1
-  - sprites:
-    - {fileID: 21300000, guid: 50a7341733cb1354fa0e2b913dbfa88a, type: 3}
-    - {fileID: 21300000, guid: a264b589cf5f69647beb37114ec3e47a, type: 3}
-    - {fileID: 21300000, guid: 4d00ba48c111ecd45b93541f1d8c08c5, type: 3}
-    - {fileID: 21300000, guid: 836134b316abe60468624c46392f939e, type: 3}
-    - {fileID: 21300000, guid: 50c65e3f70033804aba862b82274b242, type: 3}
-    - {fileID: 21300000, guid: 8daa3a5013cfc174fa76ac161cf02c67, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 2
-  - sprites:
-    - {fileID: 21300000, guid: 4d34bc828be7c3b4e8792e0d416cf9d5, type: 3}
-    - {fileID: 21300000, guid: bc5bf1f8df02d6f4db66ed8cb2779513, type: 3}
-    - {fileID: 21300000, guid: e4c4fbbce2a63254f8b10b6baa312365, type: 3}
-    - {fileID: 21300000, guid: e05bbbd1b4180654aa742a2c7e6f903b, type: 3}
-    - {fileID: 21300000, guid: 5b30aecc73d55784a8c61a956d0b43b8, type: 3}
-    - {fileID: 21300000, guid: 6d7953269086b0740872cf150f58dc6f, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 3
-  - sprites:
-    - {fileID: 21300000, guid: a56bfe18e0606524bab24e18e5658f17, type: 3}
-    - {fileID: 21300000, guid: 6d4c682b6a8a49146b31b23d939ff3fc, type: 3}
-    - {fileID: 21300000, guid: a7a674be4b20b094ebf06d30d560f921, type: 3}
-    - {fileID: 21300000, guid: f64ddb4e895625e48ae54b839a7e549a, type: 3}
-    - {fileID: 21300000, guid: 2c2becbc62bac55479d279c56ca949c7, type: 3}
-    - {fileID: 21300000, guid: b4461f60824467242a19ddfd30f5258e, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 4
 --- !u!1 &342478373203284002
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +86,6 @@ GameObject:
   - component: {fileID: 6538182600402275597}
   - component: {fileID: 3174334466313100739}
   - component: {fileID: 5622988523027256556}
-  - component: {fileID: 6047727819538233043}
   m_Layer: 5
   m_Name: Target Cheveux
   m_TagString: Untagged
@@ -249,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.6192, y: 352}
-  m_SizeDelta: {x: 195.4818, y: 155.2355}
+  m_AnchoredPosition: {x: 42, y: 224.17}
+  m_SizeDelta: {x: 274, y: 396}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3174334466313100739
 CanvasRenderer:
@@ -280,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9302495f91db6a74da1d337119ee9468, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39ddbc2284a0ed34ea7a065172e516eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -290,144 +150,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6047727819538233043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342478373203284002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 5622988523027256556}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: aa08f6ac602d66446a0433558f049db3, type: 3}
-    - {fileID: 21300000, guid: 9302495f91db6a74da1d337119ee9468, type: 3}
-    - {fileID: 21300000, guid: 55ffd67a13d005c4ea59db13ed3049af, type: 3}
-    - {fileID: 21300000, guid: 1a3293b267e08364681108b0ad129296, type: 3}
-    - {fileID: 21300000, guid: 1e40b51779a927a44a8bdf58c804a896, type: 3}
-    - {fileID: 21300000, guid: 86e640cea6f651b49b99e476825cacf3, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 1
-  - sprites:
-    - {fileID: 21300000, guid: bb02f7c1cddd7f945bd90d3dc7a0b69b, type: 3}
-    - {fileID: 21300000, guid: dddf7e0c882f09643abaa32d0e4ed9d9, type: 3}
-    - {fileID: 21300000, guid: 56817048161fce544aaa1d4cdc91016a, type: 3}
-    - {fileID: 21300000, guid: b6067a2fb049cf44582672597c4cdf5b, type: 3}
-    - {fileID: 21300000, guid: 9636bcf1433084c458bd3a2b2fc94a5f, type: 3}
-    - {fileID: 21300000, guid: 5c5339c07f192dd4ab9b092bf0824d50, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 2
-  - sprites:
-    - {fileID: 21300000, guid: 6271c12e95e79a64098906487332d182, type: 3}
-    - {fileID: 21300000, guid: 6710a636d9cf71741b824c82b29da80d, type: 3}
-    - {fileID: 21300000, guid: 44d593ffc4363164c81524419802256b, type: 3}
-    - {fileID: 21300000, guid: 35acd2362e4036247bdf4bd67954a54d, type: 3}
-    - {fileID: 21300000, guid: eccb76f4f19e2304391e1822bd01bbba, type: 3}
-    - {fileID: 21300000, guid: c64c9f5566335b849b238a195a481eb9, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 3
-  - sprites:
-    - {fileID: 21300000, guid: 60e8028e5c2e58244bc9382f9306d008, type: 3}
-    - {fileID: 21300000, guid: 3049bf059083b554abd0001368be81c1, type: 3}
-    - {fileID: 21300000, guid: c30467cbc31698b4e99dedf8e1edc0d7, type: 3}
-    - {fileID: 21300000, guid: 24d46c23cc2428646b31ab01e3efd017, type: 3}
-    - {fileID: 21300000, guid: 39ddbc2284a0ed34ea7a065172e516eb, type: 3}
-    - {fileID: 21300000, guid: 300c2141cc74b6f478d751004ec55114, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 4
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 3be60616798690d459e73bb5d8519770, type: 3}
-    - {fileID: 21300000, guid: 3e86a91193ffe7c4f8de25a1de9e39c0, type: 3}
-    - {fileID: 21300000, guid: 140952f43e1e9db4cb3de8867ea7cce5, type: 3}
-    - {fileID: 21300000, guid: 16a155809c59ab541aea55536483d16a, type: 3}
-    - {fileID: 21300000, guid: 1aae1be3d3a43a94fb0469dceb26dbdb, type: 3}
-    - {fileID: 21300000, guid: 84a8f91edc8f6bf44be584888b011f33, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 1
-  - sprites:
-    - {fileID: 21300000, guid: 50a7341733cb1354fa0e2b913dbfa88a, type: 3}
-    - {fileID: 21300000, guid: a264b589cf5f69647beb37114ec3e47a, type: 3}
-    - {fileID: 21300000, guid: 4d00ba48c111ecd45b93541f1d8c08c5, type: 3}
-    - {fileID: 21300000, guid: 836134b316abe60468624c46392f939e, type: 3}
-    - {fileID: 21300000, guid: 50c65e3f70033804aba862b82274b242, type: 3}
-    - {fileID: 21300000, guid: 8daa3a5013cfc174fa76ac161cf02c67, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 2
-  - sprites:
-    - {fileID: 21300000, guid: 4d34bc828be7c3b4e8792e0d416cf9d5, type: 3}
-    - {fileID: 21300000, guid: bc5bf1f8df02d6f4db66ed8cb2779513, type: 3}
-    - {fileID: 21300000, guid: e4c4fbbce2a63254f8b10b6baa312365, type: 3}
-    - {fileID: 21300000, guid: e05bbbd1b4180654aa742a2c7e6f903b, type: 3}
-    - {fileID: 21300000, guid: 5b30aecc73d55784a8c61a956d0b43b8, type: 3}
-    - {fileID: 21300000, guid: 6d7953269086b0740872cf150f58dc6f, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 3
-  - sprites:
-    - {fileID: 21300000, guid: a56bfe18e0606524bab24e18e5658f17, type: 3}
-    - {fileID: 21300000, guid: 6d4c682b6a8a49146b31b23d939ff3fc, type: 3}
-    - {fileID: 21300000, guid: a7a674be4b20b094ebf06d30d560f921, type: 3}
-    - {fileID: 21300000, guid: f64ddb4e895625e48ae54b839a7e549a, type: 3}
-    - {fileID: 21300000, guid: 2c2becbc62bac55479d279c56ca949c7, type: 3}
-    - {fileID: 21300000, guid: b4461f60824467242a19ddfd30f5258e, type: 3}
-    colors:
-    - {r: 0.39607847, g: 0.4039216, b: 0.45882356, a: 1}
-    - {r: 0.8470589, g: 0.8431373, b: 0.8000001, a: 1}
-    - {r: 0.60784316, g: 0.44705886, b: 0.34117648, a: 1}
-    - {r: 0.50980395, g: 0.45098042, b: 0.50980395, a: 1}
-    - {r: 0.82745105, g: 0.5686275, b: 0.46274513, a: 1}
-    - {r: 0.8431373, g: 0.8980393, b: 1, a: 1}
-    name: Hair 4
 --- !u!1 &575274032829703407
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +161,6 @@ GameObject:
   - component: {fileID: 8519094955105260684}
   - component: {fileID: 7437709388053952540}
   - component: {fileID: 1780636796184107861}
-  - component: {fileID: 8790480569429234554}
   m_Layer: 5
   m_Name: Target Shoes
   m_TagString: Untagged
@@ -504,34 +225,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8790480569429234554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 575274032829703407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 1780636796184107861}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 2219cb1a536356a46ba662797ff57e34, type: 3}
-    colors:
-    - {r: 0.21568629, g: 0.21568629, b: 0.21568629, a: 1}
-    name: Shoes
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 592841fda417cb84999fea373d93193d, type: 3}
-    colors:
-    - {r: 0.21568629, g: 0.21568629, b: 0.21568629, a: 1}
-    name: Shoes
 --- !u!1 &733842970515629289
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +236,6 @@ GameObject:
   - component: {fileID: 1325154313213261114}
   - component: {fileID: 6658967870936442807}
   - component: {fileID: 8696398812265526382}
-  - component: {fileID: 8752430078457444878}
   m_Layer: 5
   m_Name: Target Torse
   m_TagString: Untagged
@@ -567,8 +259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.927673, y: 27.808472}
-  m_SizeDelta: {x: 174.1266, y: 188.9109}
+  m_AnchoredPosition: {x: 67.109, y: -28}
+  m_SizeDelta: {x: 212, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6658967870936442807
 CanvasRenderer:
@@ -608,114 +300,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8752430078457444878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733842970515629289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 8696398812265526382}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 7eef868ab792954428234eebc7a432d8, type: 3}
-    - {fileID: 21300000, guid: 3cea4e75d9f49c04eba010fb40dc33bc, type: 3}
-    - {fileID: 21300000, guid: b8e1aec10e7f8af4daaf6e7c6cb451b5, type: 3}
-    - {fileID: 21300000, guid: 1c629402f66d1634380a8264a4ef455f, type: 3}
-    - {fileID: 21300000, guid: 2bcef4daa0331874f89f3a19f386f64f, type: 3}
-    - {fileID: 21300000, guid: 7e658d31a86bc3e45bde76ae934d317a, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: a0eab16a37952cf44a9806b7c48b1840, type: 3}
-    - {fileID: 21300000, guid: 37b860c570b7e584ca8c9f89ebcc59f2, type: 3}
-    - {fileID: 21300000, guid: 46269ff1f64dbc347ab97f4e84512e83, type: 3}
-    - {fileID: 21300000, guid: 92af2e8e9b5ec9b4cafa521b9bb115c2, type: 3}
-    - {fileID: 21300000, guid: 0d76cec4558cf6441aa588e46bd4e118, type: 3}
-    - {fileID: 21300000, guid: d4bb536a4cbb4bb40ba313738224c841, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 2
-  - sprites:
-    - {fileID: 21300000, guid: 20e8a948b44416843b20b69e8cd96b03, type: 3}
-    - {fileID: 21300000, guid: b1635bc70fe378a4b8bc1b88baf5ff92, type: 3}
-    - {fileID: 21300000, guid: 92d65c5e91571024e96b0e0dd7ed5439, type: 3}
-    - {fileID: 21300000, guid: a8be9fefe10522d40ba88fd5efc13693, type: 3}
-    - {fileID: 21300000, guid: 35b0d8b9226ebd144b6062f5a50a8701, type: 3}
-    - {fileID: 21300000, guid: 9866dbe0a8aa16748b742c5e683b403f, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 3
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: e4c3e15cc4bc5f64eac52d1d72192de1, type: 3}
-    - {fileID: 21300000, guid: 9dca1fc0a167e4d4499042bcf168b30a, type: 3}
-    - {fileID: 21300000, guid: eff0e48fc685e984da6617b1fce611f7, type: 3}
-    - {fileID: 21300000, guid: 96c36f734dadbfc43994c276804740c3, type: 3}
-    - {fileID: 21300000, guid: 353948970fd3d834994c2eb6ed0c38d1, type: 3}
-    - {fileID: 21300000, guid: 950426b5bc6ace2469dde681c1da0362, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: 5b053defa06a3094bb04c5bca2876d6c, type: 3}
-    - {fileID: 21300000, guid: 37807623ee17f8d4ba665a47ecd2aa77, type: 3}
-    - {fileID: 21300000, guid: 4e9b476639ff81a488deec0778af195d, type: 3}
-    - {fileID: 21300000, guid: 873f052e3e5470f4dbce1b9e0caca13a, type: 3}
-    - {fileID: 21300000, guid: f843eb7ba5e1d9e4487c797b2e75b22c, type: 3}
-    - {fileID: 21300000, guid: c3387d57d2f05ca489886e09c9ec281c, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: bc37df422e451ee4c85ba488e36653db, type: 3}
-    - {fileID: 21300000, guid: 3e9ace817ec34d044b9028d143c833db, type: 3}
-    - {fileID: 21300000, guid: 2f1f5ce02ebabc14db64884ff0637a21, type: 3}
-    - {fileID: 21300000, guid: 9bc6df66112aaa547a0b7a27850655ac, type: 3}
-    - {fileID: 21300000, guid: 9614ead9e7cffc7459db42a9039e5996, type: 3}
-    - {fileID: 21300000, guid: 1930c745beed87645920ae287b83b6a1, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
 --- !u!1 &910722171423756821
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +311,6 @@ GameObject:
   - component: {fileID: 705626520730791728}
   - component: {fileID: 1167676562032138764}
   - component: {fileID: 6517015825546693196}
-  - component: {fileID: 7932363979965609271}
   m_Layer: 5
   m_Name: Target Body
   m_TagString: Untagged
@@ -782,7 +365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 407e19339cbbe344cbbbad924c51fa36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df6ccba63a7431749bdb5f9fbe9103a6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -792,54 +375,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7932363979965609271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910722171423756821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 6517015825546693196}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: bcc48522926d38a4d8fa8df9390e4324, type: 3}
-    - {fileID: 21300000, guid: 13cd9ecce8cc0814f8899e5f1b9f35c2, type: 3}
-    - {fileID: 21300000, guid: 20b27867c3aac7b419a32424b58f14b8, type: 3}
-    - {fileID: 21300000, guid: cda360748dc8f744ab44073e3fb4200e, type: 3}
-    - {fileID: 21300000, guid: d815cb292c6f7c64f9936295db259fcb, type: 3}
-    - {fileID: 21300000, guid: 0e1da104854233c41a1a38e57a1f87e3, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Body
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 0d5c47a025132e143b8e267332cbd37c, type: 3}
-    - {fileID: 21300000, guid: 4dfcaf324a31eed449000fb5c0b092b8, type: 3}
-    - {fileID: 21300000, guid: 2dd04339dd20c9d4da5c3153c9502f32, type: 3}
-    - {fileID: 21300000, guid: c11648cb53c2ad948aec4138683dc1b1, type: 3}
-    - {fileID: 21300000, guid: 407e19339cbbe344cbbbad924c51fa36, type: 3}
-    - {fileID: 21300000, guid: df6ccba63a7431749bdb5f9fbe9103a6, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Body
 --- !u!1 &1154347416340233319
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +386,6 @@ GameObject:
   - component: {fileID: 4996757432875628433}
   - component: {fileID: 9179308463168198054}
   - component: {fileID: 4854583907137134866}
-  - component: {fileID: 2384732834886035904}
   m_Layer: 5
   m_Name: Target Body
   m_TagString: Untagged
@@ -875,8 +409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62.16858, y: -147.65173}
-  m_SizeDelta: {x: 159.3423, y: 433.6738}
+  m_AnchoredPosition: {x: 63, y: -237.83}
+  m_SizeDelta: {x: 194, y: 528}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9179308463168198054
 CanvasRenderer:
@@ -916,54 +450,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2384732834886035904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154347416340233319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 4854583907137134866}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: bcc48522926d38a4d8fa8df9390e4324, type: 3}
-    - {fileID: 21300000, guid: 13cd9ecce8cc0814f8899e5f1b9f35c2, type: 3}
-    - {fileID: 21300000, guid: 20b27867c3aac7b419a32424b58f14b8, type: 3}
-    - {fileID: 21300000, guid: cda360748dc8f744ab44073e3fb4200e, type: 3}
-    - {fileID: 21300000, guid: d815cb292c6f7c64f9936295db259fcb, type: 3}
-    - {fileID: 21300000, guid: 0e1da104854233c41a1a38e57a1f87e3, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Body
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 0d5c47a025132e143b8e267332cbd37c, type: 3}
-    - {fileID: 21300000, guid: 4dfcaf324a31eed449000fb5c0b092b8, type: 3}
-    - {fileID: 21300000, guid: 2dd04339dd20c9d4da5c3153c9502f32, type: 3}
-    - {fileID: 21300000, guid: c11648cb53c2ad948aec4138683dc1b1, type: 3}
-    - {fileID: 21300000, guid: 407e19339cbbe344cbbbad924c51fa36, type: 3}
-    - {fileID: 21300000, guid: df6ccba63a7431749bdb5f9fbe9103a6, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Body
 --- !u!1 &1336655456311680370
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +474,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336655456311680370}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.69748586, y: 0.69748586, z: 0.69748586}
   m_ConstrainProportionsScale: 0
@@ -1028,6 +514,19 @@ MonoBehaviour:
   i_shirtSitting: {fileID: 4277646140961215802}
   i_legsSitting: {fileID: 2196529106127940576}
   i_shoesSitting: {fileID: 1780636796184107861}
+  i_skin:
+    i_hairStanding: {fileID: 0}
+    i_faceStanding: {fileID: 0}
+    i_bodyStanding: {fileID: 0}
+    i_shirtStanding: {fileID: 0}
+    i_legsStanding: {fileID: 0}
+    i_shoesStanding: {fileID: 0}
+    i_hairSitting: {fileID: 0}
+    i_faceSitting: {fileID: 0}
+    i_bodySitting: {fileID: 0}
+    i_shirtSitting: {fileID: 0}
+    i_legsSitting: {fileID: 0}
+    i_shoesSitting: {fileID: 0}
   i_isStanding: 1
 --- !u!1 &2027791603857381709
 GameObject:
@@ -1044,7 +543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7635717057227984514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1057,9 +556,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 705626520730791728}
   - {fileID: 1612016789020334795}
   - {fileID: 5562703145647462768}
+  - {fileID: 705626520730791728}
   - {fileID: 6662703674216633374}
   - {fileID: 706445796065795767}
   - {fileID: 8519094955105260684}
@@ -1098,9 +597,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4996757432875628433}
   - {fileID: 1454451761491747527}
   - {fileID: 6538182600402275597}
+  - {fileID: 4996757432875628433}
   - {fileID: 7043320595325448265}
   - {fileID: 1325154313213261114}
   - {fileID: 3186222640335525150}
@@ -1122,7 +621,6 @@ GameObject:
   - component: {fileID: 3186222640335525150}
   - component: {fileID: 5483815542311559360}
   - component: {fileID: 8430074016587637059}
-  - component: {fileID: 5447251010164462973}
   m_Layer: 5
   m_Name: Target Shoes
   m_TagString: Untagged
@@ -1146,8 +644,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91.60858, y: -418.7328}
-  m_SizeDelta: {x: 133.8804, y: 63.2441}
+  m_AnchoredPosition: {x: 91.60858, y: -575.4}
+  m_SizeDelta: {x: 163, y: 77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5483815542311559360
 CanvasRenderer:
@@ -1187,34 +685,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5447251010164462973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876110707423015093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 8430074016587637059}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 2219cb1a536356a46ba662797ff57e34, type: 3}
-    colors:
-    - {r: 0.21568629, g: 0.21568629, b: 0.21568629, a: 1}
-    name: Shoes
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 592841fda417cb84999fea373d93193d, type: 3}
-    colors:
-    - {r: 0.21568629, g: 0.21568629, b: 0.21568629, a: 1}
-    name: Shoes
 --- !u!1 &3955064001085781840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +696,6 @@ GameObject:
   - component: {fileID: 6662703674216633374}
   - component: {fileID: 6790648452252011497}
   - component: {fileID: 2196529106127940576}
-  - component: {fileID: 2473427178927088010}
   m_Layer: 5
   m_Name: Target Jambes
   m_TagString: Untagged
@@ -1291,78 +760,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2473427178927088010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3955064001085781840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 2196529106127940576}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 24b89349521f3314a8c2995b74a261a5, type: 3}
-    - {fileID: 21300000, guid: f169a5a0c8dc45142bffc6d58d387797, type: 3}
-    - {fileID: 21300000, guid: ba078bf921c59a344aac45ab249a9f7a, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: 4e678feaa51f39f41a4e0721968f163b, type: 3}
-    - {fileID: 21300000, guid: 5101aa838f286ea4abcaae0c35771967, type: 3}
-    - {fileID: 21300000, guid: 7c98af8b02368b84c95e3f1d3d51797d, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 2
-  - sprites:
-    - {fileID: 21300000, guid: d86ab73296a44ac4a88b5044d679bd35, type: 3}
-    - {fileID: 21300000, guid: 1dcce3b6b64aa354786f1ce03b70f595, type: 3}
-    - {fileID: 21300000, guid: 19086c0cc630eed40b980ec7f4a11cb3, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 3
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: cd82398c7653b1b4c902b363f0a6337e, type: 3}
-    - {fileID: 21300000, guid: cb35955278df9e0479601a8f69b41285, type: 3}
-    - {fileID: 21300000, guid: 74fb8cec736ce134ca1322e4be51e03a, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: 4b24ac35d7f278c4b9585336955e6c88, type: 3}
-    - {fileID: 21300000, guid: d059932f7c9996d458a56b495750a012, type: 3}
-    - {fileID: 21300000, guid: fb196dee038bbe34b901ecdcd694b412, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 2
-  - sprites:
-    - {fileID: 21300000, guid: fa3dd3d443c0d304c89b8a80da0069ba, type: 3}
-    - {fileID: 21300000, guid: 300b6d4eb25ee434683546d413b18e20, type: 3}
-    - {fileID: 21300000, guid: 3d3861898d923074d987a5244bc82b9d, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 3
 --- !u!1 &6170179817463176118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,7 +771,6 @@ GameObject:
   - component: {fileID: 7043320595325448265}
   - component: {fileID: 8749503213329874592}
   - component: {fileID: 6427781710649925823}
-  - component: {fileID: 8010494390615790095}
   m_Layer: 5
   m_Name: Target Jambes
   m_TagString: Untagged
@@ -1398,8 +794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70.309204, y: -224.35583}
-  m_SizeDelta: {x: 151.1288, y: 252.155}
+  m_AnchoredPosition: {x: 73.4, y: -333.7}
+  m_SizeDelta: {x: 184, y: 307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8749503213329874592
 CanvasRenderer:
@@ -1439,78 +835,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8010494390615790095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6170179817463176118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 6427781710649925823}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 24b89349521f3314a8c2995b74a261a5, type: 3}
-    - {fileID: 21300000, guid: f169a5a0c8dc45142bffc6d58d387797, type: 3}
-    - {fileID: 21300000, guid: ba078bf921c59a344aac45ab249a9f7a, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: 4e678feaa51f39f41a4e0721968f163b, type: 3}
-    - {fileID: 21300000, guid: 5101aa838f286ea4abcaae0c35771967, type: 3}
-    - {fileID: 21300000, guid: 7c98af8b02368b84c95e3f1d3d51797d, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 2
-  - sprites:
-    - {fileID: 21300000, guid: d86ab73296a44ac4a88b5044d679bd35, type: 3}
-    - {fileID: 21300000, guid: 1dcce3b6b64aa354786f1ce03b70f595, type: 3}
-    - {fileID: 21300000, guid: 19086c0cc630eed40b980ec7f4a11cb3, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 3
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: cd82398c7653b1b4c902b363f0a6337e, type: 3}
-    - {fileID: 21300000, guid: cb35955278df9e0479601a8f69b41285, type: 3}
-    - {fileID: 21300000, guid: 74fb8cec736ce134ca1322e4be51e03a, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: 4b24ac35d7f278c4b9585336955e6c88, type: 3}
-    - {fileID: 21300000, guid: d059932f7c9996d458a56b495750a012, type: 3}
-    - {fileID: 21300000, guid: fb196dee038bbe34b901ecdcd694b412, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 2
-  - sprites:
-    - {fileID: 21300000, guid: fa3dd3d443c0d304c89b8a80da0069ba, type: 3}
-    - {fileID: 21300000, guid: 300b6d4eb25ee434683546d413b18e20, type: 3}
-    - {fileID: 21300000, guid: 3d3861898d923074d987a5244bc82b9d, type: 3}
-    colors:
-    - {r: 0.19215688, g: 0.20392159, b: 0.227451, a: 1}
-    - {r: 0.24705884, g: 0.3137255, b: 0.41176474, a: 1}
-    - {r: 0.34901962, g: 0.40000004, b: 0.36862746, a: 1}
-    name: Clothe 3
 --- !u!1 &6336340029458824305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +846,6 @@ GameObject:
   - component: {fileID: 1454451761491747527}
   - component: {fileID: 7274442005185475117}
   - component: {fileID: 2630820533645032731}
-  - component: {fileID: 7715912085335992764}
   m_Layer: 5
   m_Name: Target Visage
   m_TagString: Untagged
@@ -1547,7 +870,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 55, y: 299.6692}
-  m_SizeDelta: {x: 172.4839, y: 201.2312}
+  m_SizeDelta: {x: 210, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7274442005185475117
 CanvasRenderer:
@@ -1587,144 +910,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7715912085335992764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6336340029458824305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 2630820533645032731}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: b3f6102afec526342a8f7ad1a10361d4, type: 3}
-    - {fileID: 21300000, guid: cbe3bccc92819d747873b0f4d404595b, type: 3}
-    - {fileID: 21300000, guid: c75edbfdf51a69b4d82f9de92f188f1b, type: 3}
-    - {fileID: 21300000, guid: 2b1a453feaeed214c87ad3a7bdab7d38, type: 3}
-    - {fileID: 21300000, guid: ad70c0acbe2774b45abcb4c4423f2065, type: 3}
-    - {fileID: 21300000, guid: 17fc733d6bbe58d4eb12e806644d0c42, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 1
-  - sprites:
-    - {fileID: 21300000, guid: 0c08da03110e8ff4fbddc803a63081a3, type: 3}
-    - {fileID: 21300000, guid: cc684f4f574ea1945ba21697acc4666e, type: 3}
-    - {fileID: 21300000, guid: d96ae782c445c694182420c83dc75235, type: 3}
-    - {fileID: 21300000, guid: 300f28f5128d46b4b886e361e5385815, type: 3}
-    - {fileID: 21300000, guid: 0a548be6ae3465d4e952cd1dbd3b5946, type: 3}
-    - {fileID: 21300000, guid: ac2c352586addd448a9012bdf8994aaa, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 1
-  - sprites:
-    - {fileID: 21300000, guid: 76b5e83c44bf8a0468904d818635836e, type: 3}
-    - {fileID: 21300000, guid: dfa834199bf86b24ca4e07a9ed091a54, type: 3}
-    - {fileID: 21300000, guid: 50aa2a58d73be4c44a6d6b004ea67756, type: 3}
-    - {fileID: 21300000, guid: 0ec3e25ddde0d884599fd4a5eb7c45de, type: 3}
-    - {fileID: 21300000, guid: 677649d828b9d534787103a9124d8f6b, type: 3}
-    - {fileID: 21300000, guid: 5bd5f710e44c3a3449b29afec58813c8, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 2
-  - sprites:
-    - {fileID: 21300000, guid: 3fb5b907c43faec4787df9e47ca3ded2, type: 3}
-    - {fileID: 21300000, guid: aedadc1de05d8414e841c66cef5862ac, type: 3}
-    - {fileID: 21300000, guid: 2261f07440e9086438833f2394a0c9ce, type: 3}
-    - {fileID: 21300000, guid: 756a4c4c265c9374785e25c0640a165c, type: 3}
-    - {fileID: 21300000, guid: fe2dce9ce923d1c4390e8c9ec825181e, type: 3}
-    - {fileID: 21300000, guid: 416c3821d47843342b142963027a4fea, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 2
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 3b33080a6dcb3db42a926e37ef735792, type: 3}
-    - {fileID: 21300000, guid: ec1380f2095471547ab7889e37628a2e, type: 3}
-    - {fileID: 21300000, guid: 5a0e0a270195ff449a6aa06e6220fe93, type: 3}
-    - {fileID: 21300000, guid: 5718b9f75a614d74eb1642c9da2a5b11, type: 3}
-    - {fileID: 21300000, guid: fc1b0cd994767bd4692440b357f50a54, type: 3}
-    - {fileID: 21300000, guid: 789816802537d9e419eab99e77a7f5e6, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 1
-  - sprites:
-    - {fileID: 21300000, guid: 52b7a98ad0b0a3e43a58147b38939bd7, type: 3}
-    - {fileID: 21300000, guid: d1f9e3199f7709c41ae99c4e35f34be3, type: 3}
-    - {fileID: 21300000, guid: 69270d5035f5204459c844383c5abe76, type: 3}
-    - {fileID: 21300000, guid: 050cdf2fed17cc3498ecc6bb28a2f2da, type: 3}
-    - {fileID: 21300000, guid: 99bb1daa44ee9be40bb381e97f2211ad, type: 3}
-    - {fileID: 21300000, guid: 8a4ca8eb3d64c57478f8c1515a126ee1, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 1
-  - sprites:
-    - {fileID: 21300000, guid: 54c441da05f8a5945906ee35ae9ef05f, type: 3}
-    - {fileID: 21300000, guid: 07e9beeacee8c004bad6730093b3b5f0, type: 3}
-    - {fileID: 21300000, guid: 0723c80aa67bdbe4d937147ac7ca078c, type: 3}
-    - {fileID: 21300000, guid: 997158b6537c91e43b52df71982efd59, type: 3}
-    - {fileID: 21300000, guid: 987919ec0b6629141901e7671bd6d0d5, type: 3}
-    - {fileID: 21300000, guid: ef0f3f6174ad7ef4388cad08b16b2293, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 2
-  - sprites:
-    - {fileID: 21300000, guid: 8ec932a4248e3ef42a8830a14029b9bc, type: 3}
-    - {fileID: 21300000, guid: 30e7941b8fbabc642967f056371e866d, type: 3}
-    - {fileID: 21300000, guid: db059cda14ffb6f4eb6023e7285a4d31, type: 3}
-    - {fileID: 21300000, guid: 37cbfe133928c3b43abb62098f95bd12, type: 3}
-    - {fileID: 21300000, guid: e7a88127b7caa234c96caebe397a7a77, type: 3}
-    - {fileID: 21300000, guid: 7ba7f8303fafdae4aab7326aaa2bc685, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 2
 --- !u!1 &6528686893765279355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +921,6 @@ GameObject:
   - component: {fileID: 706445796065795767}
   - component: {fileID: 7634920715171563475}
   - component: {fileID: 4277646140961215802}
-  - component: {fileID: 2168478546965810097}
   m_Layer: 5
   m_Name: Target Torse
   m_TagString: Untagged
@@ -1801,114 +985,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2168478546965810097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6528686893765279355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 4277646140961215802}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 7eef868ab792954428234eebc7a432d8, type: 3}
-    - {fileID: 21300000, guid: 3cea4e75d9f49c04eba010fb40dc33bc, type: 3}
-    - {fileID: 21300000, guid: b8e1aec10e7f8af4daaf6e7c6cb451b5, type: 3}
-    - {fileID: 21300000, guid: 1c629402f66d1634380a8264a4ef455f, type: 3}
-    - {fileID: 21300000, guid: 2bcef4daa0331874f89f3a19f386f64f, type: 3}
-    - {fileID: 21300000, guid: 7e658d31a86bc3e45bde76ae934d317a, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: a0eab16a37952cf44a9806b7c48b1840, type: 3}
-    - {fileID: 21300000, guid: 37b860c570b7e584ca8c9f89ebcc59f2, type: 3}
-    - {fileID: 21300000, guid: 46269ff1f64dbc347ab97f4e84512e83, type: 3}
-    - {fileID: 21300000, guid: 92af2e8e9b5ec9b4cafa521b9bb115c2, type: 3}
-    - {fileID: 21300000, guid: 0d76cec4558cf6441aa588e46bd4e118, type: 3}
-    - {fileID: 21300000, guid: d4bb536a4cbb4bb40ba313738224c841, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 2
-  - sprites:
-    - {fileID: 21300000, guid: 20e8a948b44416843b20b69e8cd96b03, type: 3}
-    - {fileID: 21300000, guid: b1635bc70fe378a4b8bc1b88baf5ff92, type: 3}
-    - {fileID: 21300000, guid: 92d65c5e91571024e96b0e0dd7ed5439, type: 3}
-    - {fileID: 21300000, guid: a8be9fefe10522d40ba88fd5efc13693, type: 3}
-    - {fileID: 21300000, guid: 35b0d8b9226ebd144b6062f5a50a8701, type: 3}
-    - {fileID: 21300000, guid: 9866dbe0a8aa16748b742c5e683b403f, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 3
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: e4c3e15cc4bc5f64eac52d1d72192de1, type: 3}
-    - {fileID: 21300000, guid: 9dca1fc0a167e4d4499042bcf168b30a, type: 3}
-    - {fileID: 21300000, guid: eff0e48fc685e984da6617b1fce611f7, type: 3}
-    - {fileID: 21300000, guid: 96c36f734dadbfc43994c276804740c3, type: 3}
-    - {fileID: 21300000, guid: 353948970fd3d834994c2eb6ed0c38d1, type: 3}
-    - {fileID: 21300000, guid: 950426b5bc6ace2469dde681c1da0362, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: 5b053defa06a3094bb04c5bca2876d6c, type: 3}
-    - {fileID: 21300000, guid: 37807623ee17f8d4ba665a47ecd2aa77, type: 3}
-    - {fileID: 21300000, guid: 4e9b476639ff81a488deec0778af195d, type: 3}
-    - {fileID: 21300000, guid: 873f052e3e5470f4dbce1b9e0caca13a, type: 3}
-    - {fileID: 21300000, guid: f843eb7ba5e1d9e4487c797b2e75b22c, type: 3}
-    - {fileID: 21300000, guid: c3387d57d2f05ca489886e09c9ec281c, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
-  - sprites:
-    - {fileID: 21300000, guid: bc37df422e451ee4c85ba488e36653db, type: 3}
-    - {fileID: 21300000, guid: 3e9ace817ec34d044b9028d143c833db, type: 3}
-    - {fileID: 21300000, guid: 2f1f5ce02ebabc14db64884ff0637a21, type: 3}
-    - {fileID: 21300000, guid: 9bc6df66112aaa547a0b7a27850655ac, type: 3}
-    - {fileID: 21300000, guid: 9614ead9e7cffc7459db42a9039e5996, type: 3}
-    - {fileID: 21300000, guid: 1930c745beed87645920ae287b83b6a1, type: 3}
-    colors:
-    - {r: 0.2784314, g: 0.2901961, b: 0.42352945, a: 1}
-    - {r: 0.41176474, g: 0.48627454, b: 0.4039216, a: 1}
-    - {r: 0.63529414, g: 0.67058825, b: 0.74509805, a: 1}
-    - {r: 0.59607846, g: 0.5176471, b: 0.77647066, a: 1}
-    - {r: 0.6156863, g: 0.2392157, b: 0.18823531, a: 1}
-    - {r: 0.85098046, g: 0.8745099, b: 0.9490197, a: 1}
-    name: Clothe 1
 --- !u!1 &8425396301114846384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +996,6 @@ GameObject:
   - component: {fileID: 1612016789020334795}
   - component: {fileID: 999327346912021834}
   - component: {fileID: 716780186629981119}
-  - component: {fileID: 5307552271550209737}
   m_Layer: 5
   m_Name: Target Visage
   m_TagString: Untagged
@@ -1985,141 +1060,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5307552271550209737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8425396301114846384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetImage:
-  - {fileID: 716780186629981119}
-  targetColor: {fileID: 0}
-  targetText: {fileID: 0}
-  standingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: b3f6102afec526342a8f7ad1a10361d4, type: 3}
-    - {fileID: 21300000, guid: cbe3bccc92819d747873b0f4d404595b, type: 3}
-    - {fileID: 21300000, guid: c75edbfdf51a69b4d82f9de92f188f1b, type: 3}
-    - {fileID: 21300000, guid: 2b1a453feaeed214c87ad3a7bdab7d38, type: 3}
-    - {fileID: 21300000, guid: ad70c0acbe2774b45abcb4c4423f2065, type: 3}
-    - {fileID: 21300000, guid: 17fc733d6bbe58d4eb12e806644d0c42, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 1
-  - sprites:
-    - {fileID: 21300000, guid: 0c08da03110e8ff4fbddc803a63081a3, type: 3}
-    - {fileID: 21300000, guid: cc684f4f574ea1945ba21697acc4666e, type: 3}
-    - {fileID: 21300000, guid: d96ae782c445c694182420c83dc75235, type: 3}
-    - {fileID: 21300000, guid: 300f28f5128d46b4b886e361e5385815, type: 3}
-    - {fileID: 21300000, guid: 0a548be6ae3465d4e952cd1dbd3b5946, type: 3}
-    - {fileID: 21300000, guid: ac2c352586addd448a9012bdf8994aaa, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 1
-  - sprites:
-    - {fileID: 21300000, guid: 76b5e83c44bf8a0468904d818635836e, type: 3}
-    - {fileID: 21300000, guid: dfa834199bf86b24ca4e07a9ed091a54, type: 3}
-    - {fileID: 21300000, guid: 50aa2a58d73be4c44a6d6b004ea67756, type: 3}
-    - {fileID: 21300000, guid: 0ec3e25ddde0d884599fd4a5eb7c45de, type: 3}
-    - {fileID: 21300000, guid: 677649d828b9d534787103a9124d8f6b, type: 3}
-    - {fileID: 21300000, guid: 5bd5f710e44c3a3449b29afec58813c8, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 2
-  - sprites:
-    - {fileID: 21300000, guid: 3fb5b907c43faec4787df9e47ca3ded2, type: 3}
-    - {fileID: 21300000, guid: aedadc1de05d8414e841c66cef5862ac, type: 3}
-    - {fileID: 21300000, guid: 2261f07440e9086438833f2394a0c9ce, type: 3}
-    - {fileID: 21300000, guid: 756a4c4c265c9374785e25c0640a165c, type: 3}
-    - {fileID: 21300000, guid: fe2dce9ce923d1c4390e8c9ec825181e, type: 3}
-    - {fileID: 21300000, guid: 416c3821d47843342b142963027a4fea, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 2
-  sittingSprites:
-  - sprites:
-    - {fileID: 21300000, guid: 3b33080a6dcb3db42a926e37ef735792, type: 3}
-    - {fileID: 21300000, guid: ec1380f2095471547ab7889e37628a2e, type: 3}
-    - {fileID: 21300000, guid: 5a0e0a270195ff449a6aa06e6220fe93, type: 3}
-    - {fileID: 21300000, guid: 5718b9f75a614d74eb1642c9da2a5b11, type: 3}
-    - {fileID: 21300000, guid: fc1b0cd994767bd4692440b357f50a54, type: 3}
-    - {fileID: 21300000, guid: 789816802537d9e419eab99e77a7f5e6, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 1
-  - sprites:
-    - {fileID: 21300000, guid: 52b7a98ad0b0a3e43a58147b38939bd7, type: 3}
-    - {fileID: 21300000, guid: d1f9e3199f7709c41ae99c4e35f34be3, type: 3}
-    - {fileID: 21300000, guid: 69270d5035f5204459c844383c5abe76, type: 3}
-    - {fileID: 21300000, guid: 050cdf2fed17cc3498ecc6bb28a2f2da, type: 3}
-    - {fileID: 21300000, guid: 99bb1daa44ee9be40bb381e97f2211ad, type: 3}
-    - {fileID: 21300000, guid: 8a4ca8eb3d64c57478f8c1515a126ee1, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 1
-  - sprites:
-    - {fileID: 21300000, guid: 54c441da05f8a5945906ee35ae9ef05f, type: 3}
-    - {fileID: 21300000, guid: 07e9beeacee8c004bad6730093b3b5f0, type: 3}
-    - {fileID: 21300000, guid: 0723c80aa67bdbe4d937147ac7ca078c, type: 3}
-    - {fileID: 21300000, guid: 997158b6537c91e43b52df71982efd59, type: 3}
-    - {fileID: 21300000, guid: 987919ec0b6629141901e7671bd6d0d5, type: 3}
-    - {fileID: 21300000, guid: ef0f3f6174ad7ef4388cad08b16b2293, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Happy 2
-  - sprites:
-    - {fileID: 21300000, guid: 8ec932a4248e3ef42a8830a14029b9bc, type: 3}
-    - {fileID: 21300000, guid: 30e7941b8fbabc642967f056371e866d, type: 3}
-    - {fileID: 21300000, guid: db059cda14ffb6f4eb6023e7285a4d31, type: 3}
-    - {fileID: 21300000, guid: 37cbfe133928c3b43abb62098f95bd12, type: 3}
-    - {fileID: 21300000, guid: e7a88127b7caa234c96caebe397a7a77, type: 3}
-    - {fileID: 21300000, guid: 7ba7f8303fafdae4aab7326aaa2bc685, type: 3}
-    colors:
-    - {r: 0.5764706, g: 0.39607847, b: 0.32156864, a: 1}
-    - {r: 0.3529412, g: 0.20000002, b: 0.1764706, a: 1}
-    - {r: 1, g: 0.9333334, b: 0.9058824, a: 1}
-    - {r: 0.9960785, g: 0.85098046, b: 0.72156864, a: 1}
-    - {r: 0.93725497, g: 0.7254902, b: 0.62352943, a: 1}
-    - {r: 1, g: 0.854902, b: 0.78823537, a: 1}
-    name: Neutral 2

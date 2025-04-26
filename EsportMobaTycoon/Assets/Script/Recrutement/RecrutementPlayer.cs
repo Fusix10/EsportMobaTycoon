@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using TMPro;
-using UnityEditor.Scripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static GameManager;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class RecrutementPlayer : MonoBehaviour
 {
@@ -165,9 +162,9 @@ public class RecrutementPlayer : MonoBehaviour
         GameManager.Role currentRole = player.i_currentRole;
         GameManager.Role newRole;
         if (moveRight)
-            newRole = (Role)(((int)currentRole + 1) % 5);
+            newRole = (GameManager.Role)(((int)currentRole + 1) % 5);
         else
-            newRole = (Role)(((int)currentRole - 1 + 5) % 5);
+            newRole = (GameManager.Role)(((int)currentRole - 1 + 5) % 5);
 
         Player playerAtNewRole = manager.GetPlayerByRole(newRole);
 
