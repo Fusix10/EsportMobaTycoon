@@ -14,27 +14,20 @@ public class MenuStart : MonoBehaviour
 
     void Start()
     {
-        // (tu n’avais rien ici)
     }
 
     void Update()
     {
-        // (tu n’avais rien ici non plus)
     }
-
-    /// <summary>
-    /// Lié à ton bouton “Options” dans le menu Start.
-    /// </summary>
     public void ButtonOptions()
     {
-        // Masque le menu principal
         PanelStart.SetActive(false);
 
         if (PanelOptions != null) PanelOptions.SetActive(true);
-        // …et désactive le menu principal
+        //désactive le menu principal
         if (PanelStart != null) PanelStart.SetActive(false);
 
-        // Sinon, on instancie le prefab
+        //sinon, instancie le prefab
         if (optionsInstance == null && OptionsPrefab != null)
         {
             var parent = PanelStart.transform.parent;
@@ -45,10 +38,6 @@ public class MenuStart : MonoBehaviour
             optionsInstance.SetActive(true);
     }
 
-    /// <summary>
-    /// Fermeture du panneau Options → revient au menu Start.
-    /// À appeler depuis ton MenuOptions ou ton bouton “Retour”.
-    /// </summary>
     public void CloseOptions()
     {
         if (PanelOptions != null) PanelOptions.SetActive(false);
