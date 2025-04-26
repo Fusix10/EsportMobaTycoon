@@ -205,6 +205,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
+        i_manager = new();
         /*for (int i = 0; i < 5; i++)
         {
             i_manager.AddPlayer(this.GetComponent<PlayerFactory>().CreateRandomPlayer());

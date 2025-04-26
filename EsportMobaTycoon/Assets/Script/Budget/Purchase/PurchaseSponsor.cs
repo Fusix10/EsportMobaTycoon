@@ -23,7 +23,6 @@ public class PurchaseSponsor : MonoBehaviour
         if (PeutAcheterSponsor(cout))
         {
             manager.i_reputation -= cout;
-            manager.UpdateUi();
             Debug.Log("Achat sponsor réussi. Nouvelle popularité : " + manager.i_reputation);
             return true;
         }
