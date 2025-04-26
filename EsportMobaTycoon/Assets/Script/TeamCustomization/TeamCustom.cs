@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class SpriteVariants
@@ -120,6 +121,9 @@ public class TeamCustom : MonoBehaviour
     private int shapeIndex = 0;
     private int shapeColorIndex = 0;
 
+    [Header("Info Texte Shape")]
+    [SerializeField] private TMP_Text blasonInfoText;
+
     // ——— 2) Logo Picker ————————————————————————————
     [Header("Logo")]
     [SerializeField] private Image logoImage;
@@ -130,6 +134,9 @@ public class TeamCustom : MonoBehaviour
 
     private int logoIndex = 0;
     private int logoColorIndex = 0;
+
+    [Header("Info Texte Logo")]
+    [SerializeField] private TMP_Text logoInfoText;
 
     // ——— 3) Border Picker —————————————————————————
     [Header("Contour")]
@@ -194,6 +201,10 @@ public class TeamCustom : MonoBehaviour
         var v = shapeGroups[shapeIndex].variants;
         if (v != null && v.Count > 0) shapeImage.sprite = v[shapeColorIndex];
         else Debug.LogError($"Shape group {shapeIndex} vide");
+
+        // Met à jour le texte Blason
+        if (blasonInfoText != null)
+            blasonInfoText.text = $"Blason {shapeIndex + 1}";
     }
 
     public void NextShape()
@@ -233,6 +244,10 @@ public class TeamCustom : MonoBehaviour
         var v = logoGroups[logoIndex].variants;
         if (v != null && v.Count > 0) logoImage.sprite = v[logoColorIndex];
         else Debug.LogError($"Logo group {logoIndex} vide");
+
+        // Met à jour le texte Logo
+        if (logoInfoText != null)
+            logoInfoText.text = $"Logo {logoIndex + 1}";
     }
 
     public void NextLogo()

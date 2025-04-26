@@ -820,19 +820,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 135407586}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: CycleShapeColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &135407586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,11 +970,13 @@ MonoBehaviour:
   shapePrevButton: {fileID: 0}
   shapeNextButton: {fileID: 0}
   shapeColorButtons: []
+  blasonInfoText: {fileID: 0}
   logoImage: {fileID: 0}
   logoGroups: []
   logoPrevButton: {fileID: 0}
   logoNextButton: {fileID: 0}
   logoColorButtons: []
+  logoInfoText: {fileID: 0}
   borderImage: {fileID: 0}
   borderGroups: []
   toggleBorderButton: {fileID: 0}
@@ -2040,7 +2030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Couleur
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e1d2bc82f64f684fb14f67f18182501, type: 2}
   m_sharedMaterial: {fileID: -4247803495129324672, guid: 2e1d2bc82f64f684fb14f67f18182501,
@@ -2982,19 +2972,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 605546233}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: CycleBorderColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &605546233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3628,7 +3606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Logo 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e1d2bc82f64f684fb14f67f18182501, type: 2}
   m_sharedMaterial: {fileID: -4247803495129324672, guid: 2e1d2bc82f64f684fb14f67f18182501,
@@ -4349,7 +4327,7 @@ RectTransform:
   m_GameObject: {fileID: 892045593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.64, y: 1.09, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 189225952}
@@ -4417,16 +4395,50 @@ MonoBehaviour:
     - {fileID: 21300000, guid: ae595849c00655b40bfdce10b4eafe57, type: 3}
     - {fileID: 21300000, guid: 4c4a085579273554093ea73240d4f332, type: 3}
     - {fileID: 21300000, guid: bc2494e47b0d27f42b1a2f2ea924fea5, type: 3}
+    - {fileID: 21300000, guid: cebffe791eea1ea4b9fd5df5e4ac2cd6, type: 3}
+    - {fileID: 21300000, guid: 074c81632e7564d45897dc87df8e9710, type: 3}
+    - {fileID: 21300000, guid: 7cd14f0de02335b42a94886ff82495ef, type: 3}
   - groupName: B2
     variants:
     - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
     - {fileID: 21300000, guid: ebca3b1d59fec8f4dafa89245a46d782, type: 3}
     - {fileID: 21300000, guid: 5f73f68b7490af04bad569e1494d0169, type: 3}
     - {fileID: 21300000, guid: 47e92a2c7c8f7064884d023992c6a62b, type: 3}
+    - {fileID: 21300000, guid: be6c82a02e63f3f4ab6aec04199b7e6d, type: 3}
+    - {fileID: 21300000, guid: d935afabcf52f6248b727b750b168240, type: 3}
+    - {fileID: 21300000, guid: 8706724015cbea74aaf5d248470fd06c, type: 3}
+  - groupName: B3
+    variants:
+    - {fileID: 21300000, guid: 211065f597ee9e2478597c2f6cd0cfa9, type: 3}
+    - {fileID: 21300000, guid: bcd96cfaa65ea4c4581052cc66899589, type: 3}
+    - {fileID: 21300000, guid: 979d941e5e626b84a9f5c5f7cfd165b2, type: 3}
+    - {fileID: 21300000, guid: 5d81d51104c9b7c4cb872e7f52e50c6d, type: 3}
+    - {fileID: 21300000, guid: f42fed042c684f941ae51cf1ea09d2ae, type: 3}
+    - {fileID: 21300000, guid: 541e52f17eba1264a97efb0648d55ddf, type: 3}
+    - {fileID: 21300000, guid: a2330d40abb764a4d86899f1b40abb9c, type: 3}
+  - groupName: B4
+    variants:
+    - {fileID: 21300000, guid: 475b0edaadb0198488e9bbda22305904, type: 3}
+    - {fileID: 21300000, guid: f7d2053dfe0b8424eabf37ba78eb38e2, type: 3}
+    - {fileID: 21300000, guid: 0d017dc70363e934c9c0d6c9455a9ba9, type: 3}
+    - {fileID: 21300000, guid: 7f95848f8b083b04c855fcbee39bc29f, type: 3}
+    - {fileID: 21300000, guid: b9645aca8cf16f24396fb78cb2e4193c, type: 3}
+    - {fileID: 21300000, guid: 63749fb4742a6ab4a878cf08aa6fe898, type: 3}
+    - {fileID: 21300000, guid: 4b0737896514d5041a6a71e210dd229c, type: 3}
+  - groupName: B5
+    variants:
+    - {fileID: 21300000, guid: d9e3501528dc40d4b881e7901b665022, type: 3}
+    - {fileID: 21300000, guid: be34974640ccaa04880ef45bfe658ff6, type: 3}
+    - {fileID: 21300000, guid: a5da88b851193d54c8c13356e3a4d8ce, type: 3}
+    - {fileID: 21300000, guid: 1966c327554b6ed49869f1af871251c8, type: 3}
+    - {fileID: 21300000, guid: 02bb87295ef3740439759dc93902443c, type: 3}
+    - {fileID: 21300000, guid: 3ef3ee4c1635ddf4595ce1c6c83afdd0, type: 3}
+    - {fileID: 21300000, guid: 01fd375c9a8c30942bca03ad88a6de56, type: 3}
   shapePrevButton: {fileID: 2077901667}
   shapeNextButton: {fileID: 1796739995}
   shapeColorButtons:
-  - {fileID: 605546232}
+  - {fileID: 135407585}
+  blasonInfoText: {fileID: 1415000566}
   logoImage: {fileID: 1749537716}
   logoGroups:
   - groupName: L1
@@ -4435,16 +4447,45 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6c41c75c0a1d2434e9a9e9fed2857acb, type: 3}
     - {fileID: 21300000, guid: 7fdf8f610758eeb43b335d4e718aa248, type: 3}
     - {fileID: 21300000, guid: 63e1093ae64ae914e9a4166faaf9f8ee, type: 3}
+    - {fileID: 21300000, guid: e874f73ddf1a51a4d89393b73d375e40, type: 3}
+    - {fileID: 21300000, guid: 07ad71a85da38c44ab6cc603631c3758, type: 3}
   - groupName: L2
     variants:
     - {fileID: 21300000, guid: 751b2c24314b71c4f907e388d88aeeb9, type: 3}
     - {fileID: 21300000, guid: e406ee104629b194e9375a702250d26b, type: 3}
     - {fileID: 21300000, guid: 784b6fb8badb4e04987fbf744024774a, type: 3}
     - {fileID: 21300000, guid: 2aff34d54ba66f542a6b4072c69ffdbf, type: 3}
+    - {fileID: 21300000, guid: 0ae6a8cd6f92db147813be69d2e0f035, type: 3}
+    - {fileID: 21300000, guid: 13d4fbbfee4b5d24b9d0c485c84ebf5b, type: 3}
+  - groupName: L3
+    variants:
+    - {fileID: 21300000, guid: f46f1166486a35148aaf37ee34707f92, type: 3}
+    - {fileID: 21300000, guid: c128637d5d0fcff4c88aec26c2d09516, type: 3}
+    - {fileID: 21300000, guid: f16298d5b0726ad488cfe4edba1d041a, type: 3}
+    - {fileID: 21300000, guid: c5678920d087d1a43acfe35f13011f70, type: 3}
+    - {fileID: 21300000, guid: 203efb40015a35e4db6cf2528622ac75, type: 3}
+    - {fileID: 21300000, guid: 50a3e3f7bbb82984483edd56dbc7d2b2, type: 3}
+  - groupName: L4
+    variants:
+    - {fileID: 21300000, guid: 6d66b6ca4adbecc449677aaa0451dd65, type: 3}
+    - {fileID: 21300000, guid: 5ba63e95a1ff1b44c8b73355eee00965, type: 3}
+    - {fileID: 21300000, guid: e4dd0337ac459c14cb19682555e132bf, type: 3}
+    - {fileID: 21300000, guid: 5cbafe08886c4714cbf33ed66e5d7bf8, type: 3}
+    - {fileID: 21300000, guid: 2bffa0020261baf43adb08e0046308b4, type: 3}
+    - {fileID: 21300000, guid: 60ad79eca780921449259a357485fd3c, type: 3}
+  - groupName: L5
+    variants:
+    - {fileID: 21300000, guid: bc311ffc7eedd82499c0272c7c404c91, type: 3}
+    - {fileID: 21300000, guid: 1fd1477ea08cebe4d99c1a86bf9e4553, type: 3}
+    - {fileID: 21300000, guid: 6dba66ca9a07b414a98e34ee97118599, type: 3}
+    - {fileID: 21300000, guid: 764f2425333991f458fa5a726b4beeca, type: 3}
+    - {fileID: 21300000, guid: 08e7e826b24197b498ad3e3a517a625e, type: 3}
+    - {fileID: 21300000, guid: cbef041ab771de5458ad542a2f21667e, type: 3}
   logoPrevButton: {fileID: 969953244}
   logoNextButton: {fileID: 2040194362}
   logoColorButtons:
   - {fileID: 1782825839}
+  logoInfoText: {fileID: 774098457}
   borderImage: {fileID: 1156183311}
   borderGroups:
   - groupName: B1
@@ -4453,9 +4494,18 @@ MonoBehaviour:
   - groupName: B2
     variants:
     - {fileID: 21300000, guid: c116590ccf1f9284581802c8f72848e7, type: 3}
+  - groupName: B3
+    variants:
+    - {fileID: 21300000, guid: 3039e97a95acb4e4688432d89b567829, type: 3}
+  - groupName: B4
+    variants:
+    - {fileID: 21300000, guid: dd95a992cfa7a4442933fa9e3fde1fdd, type: 3}
+  - groupName: B5
+    variants:
+    - {fileID: 21300000, guid: 1888991a50287d14aa7b5a3592a67b54, type: 3}
   toggleBorderButton: {fileID: 605546232}
   borderColorButtons:
-  - {fileID: 1094121880}
+  - {fileID: 0}
 --- !u!1 &899434617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,19 +5217,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 969953245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: PreviousLogo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &969953245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5580,7 +5618,7 @@ RectTransform:
   m_GameObject: {fileID: 1156183307}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.64, y: 1.09, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 189225952}
@@ -7048,7 +7086,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Blason 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e1d2bc82f64f684fb14f67f18182501, type: 2}
   m_sharedMaterial: {fileID: -4247803495129324672, guid: 2e1d2bc82f64f684fb14f67f18182501,
@@ -8788,14 +8826,14 @@ RectTransform:
   m_GameObject: {fileID: 1749537714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.5484375, z: 0.703125}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 189225952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -187.5, y: -40}
+  m_AnchoredPosition: {x: -187.5, y: -85}
   m_SizeDelta: {x: -195, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1782825837
@@ -8880,19 +8918,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1782825840}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: CycleLogoColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1782825840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9012,19 +9038,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1796739996}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: NextShape
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1796739996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9823,6 +9837,7 @@ GameObject:
   - component: {fileID: 1923389741}
   - component: {fileID: 1923389740}
   - component: {fileID: 1923389739}
+  - component: {fileID: 1923389742}
   m_Layer: 5
   m_Name: ValidateButton
   m_TagString: Untagged
@@ -9944,6 +9959,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923389736}
   m_CullTransparentMesh: 1
+--- !u!114 &1923389742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923389736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aeafa55b768b9246a83536fc68e2baf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamData: {fileID: 11400000, guid: 3d1eb45c023fed94f8b0f75ec42d44d6, type: 2}
+  inputFieldGrabberList: []
+  CarouselleList: []
+  nameField: {fileID: 0}
+  lastNameField: {fileID: 0}
+  hair: {fileID: 0}
+  face: {fileID: 0}
+  torso: {fileID: 0}
+  legs: {fileID: 0}
+  male: {fileID: 0}
+  female: {fileID: 0}
+  maleSelect: {fileID: 0}
+  femaleSelect: {fileID: 0}
+  maleUnselect: {fileID: 0}
+  femaleUnselect: {fileID: 0}
+  isGenderMale: 0
 --- !u!1 &1955392919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10461,19 +10504,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2040194363}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: NextLogo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2040194363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10593,19 +10624,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2077901668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 892045598}
-        m_TargetAssemblyTypeName: TeamCustom, Assembly-CSharp
-        m_MethodName: PreviousShape
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2077901668
 MonoBehaviour:
   m_ObjectHideFlags: 0
