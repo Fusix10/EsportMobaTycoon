@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using XCharts.Runtime;
@@ -20,6 +21,7 @@ public class UI_Player : MonoBehaviour
     public TMP_Text i_surnom;
     public TMP_Text i_caractere;
     public TMP_Text i_synergie;
+    private Color i_synergieColor;
     public TMP_Text i_role;
     //public Image i_imgRole;
     //public TMP_Text i_carac;
@@ -79,8 +81,18 @@ public class UI_Player : MonoBehaviour
         //Meca1
         //i_graphNiv.data[0].data[5] = player.i_mechanic.s_lvlCombo;
 
-        chart.UpdateData(0, 0, new List<double> { player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp, player.i_mechanic.s_reflexe.s_lvl*100 + player.i_mechanic.s_reflexe.s_Xp, player.i_knowledge.s_objective.s_lvl *100 + player.i_knowledge.s_objective.s_Xp, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp });
-
+        chart.UpdateData(0, 0, new List<double> { 0, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp });
+        chart.UpdateData(0, 1, new List<double> { 0, player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp });
+        chart.UpdateData(0, 2, new List<double> { 0, player.i_mechanic.s_reflexe.s_lvl * 100 + player.i_mechanic.s_reflexe.s_Xp });
+        chart.UpdateData(0, 5, new List<double> { 0, player.i_knowledge.s_objective.s_lvl * 100 + player.i_knowledge.s_objective.s_Xp });
+        chart.UpdateData(0, 4, new List<double> { 0, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp });
+        chart.UpdateData(0, 3, new List<double> { 0, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp });
+        Debug.Log("meca 1 = " + (player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp));
+        Debug.Log("meca 2 = " + (player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp));
+        Debug.Log("meca 3 = " + (player.i_mechanic.s_reflexe.s_lvl * 100 + player.i_mechanic.s_reflexe.s_Xp));
+        Debug.Log("connai 1 = " + (player.i_knowledge.s_objective.s_lvl * 100 + player.i_knowledge.s_objective.s_Xp));
+        Debug.Log("connai 2 = " + (player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp));
+        Debug.Log("connai 3 = " + (player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp));
         i_mecaLV.text = "lvl" + moyenMeca.ToString();
         i_connaiLV.text = "lvl" + moyenKnow.ToString();
 
@@ -101,8 +113,11 @@ public class UI_Player : MonoBehaviour
         i_caractere.text = player.i_mood.i_moodName;
 
         i_synergie.text = FindSynergie(player.i_teamSpirit.s_lvl);
+        i_synergie.color = i_synergieColor;
     }
-
+    int i_exce;
+    int i_bonne;
+    int i_correct;
     public void ActualiseUiPlayerChampion()
     {
         ClearChampion();
@@ -115,33 +130,40 @@ public class UI_Player : MonoBehaviour
             if (pair.Value.s_lvl <= 1)
             {
                predab.transform.SetParent(i_panelCorrect);
+                i_correct++;
             }
             else if(pair.Value.s_lvl == 2 || pair.Value.s_lvl == 3)
             {
                 predab.transform.SetParent(i_panelBonne);
+                i_bonne++;
             }
             else if(pair.Value.s_lvl >= 4 )
             {
                 predab.transform.SetParent(i_panelExce);
+                i_exce++;
             }
-            ActuliseContent(i_panelExce);
-            ActuliseContent(i_panelCorrect);
-            ActuliseContent(i_panelBonne);
         }
+        ActuliseContent(i_panelExce,i_exce);
+        ActuliseContent(i_panelCorrect,i_correct);
+        ActuliseContent(i_panelBonne,i_bonne);
     }
     float widthContent;
-    void ActuliseContent(Transform content)
+    void ActuliseContent(Transform content, int child)
     {
         widthContent = 0;
         if(content.childCount != 0)
         {
-            widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * (content.childCount - 1);
+            widthContent = content.GetChild(0).GetComponent<RectTransform>().sizeDelta.x * child;
             content.GetComponent<RectTransform>().sizeDelta = new Vector2(widthContent, content.GetComponent<RectTransform>().sizeDelta.y);
         }
     }
 
     void ClearChampion()
     {
+        i_exce = 0;
+        i_bonne = 0;
+        i_correct = 0;
+
         for(int i = 0; i < i_panelExce.childCount; i++)
         {
             Destroy(i_panelExce.GetChild(i).gameObject);
@@ -162,18 +184,25 @@ public class UI_Player : MonoBehaviour
         switch (synergie)
         {
             case 0:
+                i_synergieColor = new Color(0, 0, 0); 
                 return "D�sastreux";
             case 1:
+                i_synergieColor = new Color(255, 0, 0);
                 return "Faible";
             case 2:
+                i_synergieColor = new Color(255, 128, 0);
                 return "Correct";
             case 3:
+                i_synergieColor = new Color(1, 0.92f, 0.016f);
                 return "Bon";
             case 4:
+                i_synergieColor = new Color(200, 255, 0);
                 return "Incroyable";
             case 5:
+                i_synergieColor = new Color(0, 255, 0);
                 return "Parfait";
             default:
+                i_synergieColor = new Color(255, 255, 255); 
                 return "";
         }
     }
