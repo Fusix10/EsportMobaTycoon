@@ -1339,7 +1339,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190083736}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -2972,7 +2972,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 605546233}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 892045593}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &605546233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4398,6 +4410,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: cebffe791eea1ea4b9fd5df5e4ac2cd6, type: 3}
     - {fileID: 21300000, guid: 074c81632e7564d45897dc87df8e9710, type: 3}
     - {fileID: 21300000, guid: 7cd14f0de02335b42a94886ff82495ef, type: 3}
+    colors:
+    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 0}
+    - {r: 0.16862746, g: 0.17254902, b: 0.17254902, a: 1}
+    - {r: 0.13725491, g: 0.25490198, b: 0.227451, a: 1}
+    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 0}
+    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 0}
+    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 0}
+    - {r: 1, g: 1, b: 1, a: 0}
   - groupName: B2
     variants:
     - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
@@ -4407,6 +4427,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: be6c82a02e63f3f4ab6aec04199b7e6d, type: 3}
     - {fileID: 21300000, guid: d935afabcf52f6248b727b750b168240, type: 3}
     - {fileID: 21300000, guid: 8706724015cbea74aaf5d248470fd06c, type: 3}
+    colors:
+    - {r: 0, g: 0, b: 0, a: 0}
   - groupName: B3
     variants:
     - {fileID: 21300000, guid: 211065f597ee9e2478597c2f6cd0cfa9, type: 3}
@@ -4416,6 +4438,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f42fed042c684f941ae51cf1ea09d2ae, type: 3}
     - {fileID: 21300000, guid: 541e52f17eba1264a97efb0648d55ddf, type: 3}
     - {fileID: 21300000, guid: a2330d40abb764a4d86899f1b40abb9c, type: 3}
+    colors: []
   - groupName: B4
     variants:
     - {fileID: 21300000, guid: 475b0edaadb0198488e9bbda22305904, type: 3}
@@ -4425,6 +4448,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: b9645aca8cf16f24396fb78cb2e4193c, type: 3}
     - {fileID: 21300000, guid: 63749fb4742a6ab4a878cf08aa6fe898, type: 3}
     - {fileID: 21300000, guid: 4b0737896514d5041a6a71e210dd229c, type: 3}
+    colors: []
   - groupName: B5
     variants:
     - {fileID: 21300000, guid: d9e3501528dc40d4b881e7901b665022, type: 3}
@@ -4434,6 +4458,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 02bb87295ef3740439759dc93902443c, type: 3}
     - {fileID: 21300000, guid: 3ef3ee4c1635ddf4595ce1c6c83afdd0, type: 3}
     - {fileID: 21300000, guid: 01fd375c9a8c30942bca03ad88a6de56, type: 3}
+    colors: []
   shapePrevButton: {fileID: 2077901667}
   shapeNextButton: {fileID: 1796739995}
   shapeColorButtons:
@@ -4449,6 +4474,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 63e1093ae64ae914e9a4166faaf9f8ee, type: 3}
     - {fileID: 21300000, guid: e874f73ddf1a51a4d89393b73d375e40, type: 3}
     - {fileID: 21300000, guid: 07ad71a85da38c44ab6cc603631c3758, type: 3}
+    colors: []
   - groupName: L2
     variants:
     - {fileID: 21300000, guid: 751b2c24314b71c4f907e388d88aeeb9, type: 3}
@@ -4457,6 +4483,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2aff34d54ba66f542a6b4072c69ffdbf, type: 3}
     - {fileID: 21300000, guid: 0ae6a8cd6f92db147813be69d2e0f035, type: 3}
     - {fileID: 21300000, guid: 13d4fbbfee4b5d24b9d0c485c84ebf5b, type: 3}
+    colors: []
   - groupName: L3
     variants:
     - {fileID: 21300000, guid: f46f1166486a35148aaf37ee34707f92, type: 3}
@@ -4465,6 +4492,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: c5678920d087d1a43acfe35f13011f70, type: 3}
     - {fileID: 21300000, guid: 203efb40015a35e4db6cf2528622ac75, type: 3}
     - {fileID: 21300000, guid: 50a3e3f7bbb82984483edd56dbc7d2b2, type: 3}
+    colors: []
   - groupName: L4
     variants:
     - {fileID: 21300000, guid: 6d66b6ca4adbecc449677aaa0451dd65, type: 3}
@@ -4473,6 +4501,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5cbafe08886c4714cbf33ed66e5d7bf8, type: 3}
     - {fileID: 21300000, guid: 2bffa0020261baf43adb08e0046308b4, type: 3}
     - {fileID: 21300000, guid: 60ad79eca780921449259a357485fd3c, type: 3}
+    colors: []
   - groupName: L5
     variants:
     - {fileID: 21300000, guid: bc311ffc7eedd82499c0272c7c404c91, type: 3}
@@ -4481,6 +4510,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 764f2425333991f458fa5a726b4beeca, type: 3}
     - {fileID: 21300000, guid: 08e7e826b24197b498ad3e3a517a625e, type: 3}
     - {fileID: 21300000, guid: cbef041ab771de5458ad542a2f21667e, type: 3}
+    colors: []
   logoPrevButton: {fileID: 969953244}
   logoNextButton: {fileID: 2040194362}
   logoColorButtons:
@@ -4491,18 +4521,23 @@ MonoBehaviour:
   - groupName: B1
     variants:
     - {fileID: 21300000, guid: 27292e35839b3be479e8c1f7b2c849bc, type: 3}
+    colors: []
   - groupName: B2
     variants:
     - {fileID: 21300000, guid: c116590ccf1f9284581802c8f72848e7, type: 3}
+    colors: []
   - groupName: B3
     variants:
     - {fileID: 21300000, guid: 3039e97a95acb4e4688432d89b567829, type: 3}
+    colors: []
   - groupName: B4
     variants:
     - {fileID: 21300000, guid: dd95a992cfa7a4442933fa9e3fde1fdd, type: 3}
+    colors: []
   - groupName: B5
     variants:
     - {fileID: 21300000, guid: 1888991a50287d14aa7b5a3592a67b54, type: 3}
+    colors: []
   toggleBorderButton: {fileID: 605546232}
   borderColorButtons:
   - {fileID: 0}
@@ -6302,7 +6337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Manager
+  m_text: Logo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e1d2bc82f64f684fb14f67f18182501, type: 2}
   m_sharedMaterial: {fileID: -4247803495129324672, guid: 2e1d2bc82f64f684fb14f67f18182501,
@@ -10834,6 +10869,6 @@ SceneRoots:
   - {fileID: 570104317}
   - {fileID: 2085058600}
   - {fileID: 1453489360}
-  - {fileID: 190083740}
   - {fileID: 1050943864}
   - {fileID: 506931948}
+  - {fileID: 190083740}
