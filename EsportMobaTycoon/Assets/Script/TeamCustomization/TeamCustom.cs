@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+//using UnityEngine.UI.Extensions;
 
 [System.Serializable]
 public class SpriteVariants
@@ -10,98 +12,221 @@ public class SpriteVariants
 
     [Tooltip("Vos sprites pour ce groupe, dans l’ordre des couleurs")]
     public List<Sprite> variants;
-}
 
+    [Tooltip("Couleurs correspondantes pour chaque variante")]
+    public List<Color> colors;
+}
 public class TeamCustom : MonoBehaviour
 {
-    [Header("Target Image à mettre à jour")]
-    [SerializeField] private Image targetImage;
+    //Shape Picker
+    [Header("Shape (fond)")]
+    [SerializeField] private Image shapeImage;
+    [SerializeField] private List<SpriteVariants> shapeGroups;
+    [SerializeField] private Button shapePrevButton;
+    [SerializeField] private Button shapeNextButton;
+    [SerializeField] private List<Button> shapeColorButtons;
+    [SerializeField] private List<Image> shapeColorSquares;
 
-    [Header("Tous les groupes de variantes")]
-    [SerializeField] private List<SpriteVariants> groups;
+    private int shapeIndex = 0;
+    private int shapeColorIndex = 0;
 
-    [Header("Boutons UI (un bouton = changer la couleur)")]
-    [SerializeField] private List<Button> cycleColorButtons;
+    [Header("Info Texte Shape")]
+    [SerializeField] private TMP_Text blasonInfoText;
 
-    private int groupIndex = 0;
-    private int colorIndex = 0;
+    //Logo Picker
+    [Header("Logo")]
+    [SerializeField] private Image logoImage;
+    [SerializeField] private List<SpriteVariants> logoGroups;
+    [SerializeField] private Button logoPrevButton;
+    [SerializeField] private Button logoNextButton;
+    [SerializeField] private List<Button> logoColorButtons;
 
+    [SerializeField] private List<Image> logoColorSquares;
+
+    private int logoIndex = 0;
+    private int logoColorIndex = 0;
+
+    [Header("Info Texte Logo")]
+    [SerializeField] private TMP_Text logoInfoText;
+
+    //Border Picker
+    [Header("Contour")]
+    [SerializeField] private Image borderImage;
+    [SerializeField] private List<SpriteVariants> borderGroups;
+    [SerializeField] private Button toggleBorderButton;
+    [SerializeField] private List<Button> borderColorButtons;
+
+    [SerializeField] private List<Image> borderColorSquares;
+
+    private int borderColorIndex = 0;
+    private bool useBorder = false;
+
+    public Sprite GetShapeSprite()
+    {
+        return shapeImage.sprite;
+    }
+    public Sprite GetLogoSprite()
+    {
+        return logoImage.sprite;
+    }
+    public Sprite GetBorderSprite()
+    {
+        return borderImage.sprite;
+    }
     void Start()
     {
-        if (targetImage == null) Debug.LogError("TargetImage manquant.");
-        if (groups == null || groups.Count == 0) Debug.LogError("Aucun groupe configuré.");
-        if (cycleColorButtons == null || cycleColorButtons.Count == 0)
-            Debug.LogError("Aucun bouton de cycle configuré.");
+        //validation
+        if (shapeImage == null) Debug.LogError("ShapeImage manquant");
+        if (shapeGroups == null || shapeGroups.Count == 0) Debug.LogError("shapeGroups non configuré");
+        if (shapePrevButton == null || shapeNextButton == null)
+            Debug.LogError("Shape Prev/Next buttons manquants");
+        if (shapeColorButtons == null || shapeColorButtons.Count == 0)
+            Debug.LogError("Shape color buttons manquants");
 
-        for (int i = 0; i < cycleColorButtons.Count; i++)
+        if (logoImage == null) Debug.LogError("LogoImage manquant");
+        if (logoGroups == null || logoGroups.Count == 0) Debug.LogError("logoGroups non configuré");
+        if (logoPrevButton == null || logoNextButton == null)
+            Debug.LogError("Logo Prev/Next buttons manquants");
+        if (logoColorButtons == null || logoColorButtons.Count == 0)
+            Debug.LogError("Logo color buttons manquants");
+
+        if (borderImage == null) Debug.LogError("BorderImage manquant");
+        if (borderGroups == null || borderGroups.Count == 0)
+            Debug.LogError("borderGroups non configuré");
+        if (toggleBorderButton == null)
+            Debug.LogError("toggleBorderButton manquant");
+        if (borderColorButtons == null || borderColorButtons.Count == 0)
+            Debug.LogError("Border color buttons manquants");
+
+        shapePrevButton.onClick.AddListener(PreviousShape);
+        shapeNextButton.onClick.AddListener(NextShape);
+        foreach (var b in shapeColorButtons) b.onClick.AddListener(CycleShapeColor);
+
+        logoPrevButton.onClick.AddListener(PreviousLogo);
+        logoNextButton.onClick.AddListener(NextLogo);
+        foreach (var b in logoColorButtons) b.onClick.AddListener(CycleLogoColor);
+
+        toggleBorderButton.onClick.AddListener(ToggleBorder);
+        foreach (var b in borderColorButtons) b.onClick.AddListener(CycleBorderColor);
+
+
+        UpdateShapeDisplay();
+        UpdateLogoDisplay();
+    }
+
+    //Shape methods
+    private void UpdateShapeDisplay()
+    {
+        var sprites = shapeGroups[shapeIndex].variants;
+        if (sprites != null && sprites.Count > shapeColorIndex)
+            shapeImage.sprite = sprites[shapeColorIndex];
+
+
+        if (blasonInfoText != null)
+            blasonInfoText.text = $"Blason {shapeIndex + 1}";
+        var colors = shapeGroups[shapeIndex].colors;
+        if (colors != null && colors.Count > shapeColorIndex)
         {
-            cycleColorButtons[i].onClick.AddListener(CycleColor);
+            Color c = colors[shapeColorIndex];
+            foreach (var img in shapeColorSquares)
+                img.color = c;
         }
-
-        UpdateDisplay();
     }
 
-    private void CycleColor()
+    public void NextShape()
     {
-        var variants = groups[groupIndex].variants;
-        if (variants == null || variants.Count == 0) return;
-
-        colorIndex = (colorIndex + 1) % variants.Count;
-        UpdateDisplay();
+        shapeIndex = (shapeIndex + 1) % shapeGroups.Count;
+        UpdateShapeDisplay();
+        UpdateBorderDisplay();
     }
 
-    public void NextGroup()
+    public void PreviousShape()
     {
-        groupIndex = (groupIndex + 1) % groups.Count;
-        var variants = groups[groupIndex].variants;
-        colorIndex = Mathf.Clamp(colorIndex, 0, variants.Count - 1);
-        UpdateDisplay();
+        shapeIndex = (shapeIndex - 1 + shapeGroups.Count) % shapeGroups.Count;
+        UpdateShapeDisplay();
+        UpdateBorderDisplay();
     }
 
-    public void PreviousGroup()
+    public void CycleShapeColor()
     {
-        groupIndex = (groupIndex - 1 + groups.Count) % groups.Count;
-        var variants = groups[groupIndex].variants;
-        colorIndex = Mathf.Clamp(colorIndex, 0, variants.Count - 1);
-        UpdateDisplay();
+        var v = shapeGroups[shapeIndex].variants;
+        shapeColorIndex = (shapeColorIndex + 1) % v.Count;
+        UpdateShapeDisplay();
     }
 
-    public void Resette()
+    //Logo methods
+    private void UpdateLogoDisplay()
     {
-        groupIndex = 0;
-        colorIndex = 0;
-        UpdateDisplay();
+        var logoSprites = logoGroups[logoIndex].variants;
+        if (logoSprites != null && logoSprites.Count > logoColorIndex)
+            logoImage.sprite = logoSprites[logoColorIndex];
+
+        if (logoInfoText != null)
+            logoInfoText.text = $"Logo {logoIndex + 1}";
+        var logoColors = logoGroups[logoIndex].colors;
+        if (logoColors != null && logoColors.Count > logoColorIndex)
+        {
+            Color c = logoColors[logoColorIndex];
+            foreach (var img in logoColorSquares)
+                img.color = c;
+        }
     }
 
-    public void Randomize()
+    public void NextLogo()
     {
-        groupIndex = Random.Range(0, groups.Count);
-        var variants = groups[groupIndex].variants;
-        if (variants != null && variants.Count > 0)
-            colorIndex = Random.Range(0, variants.Count);
-        UpdateDisplay();
+        logoIndex = (logoIndex + 1) % logoGroups.Count;
+        UpdateLogoDisplay();
     }
 
-    private void UpdateDisplay()
+    public void PreviousLogo()
     {
-        var variants = groups[groupIndex].variants;
-        if (variants != null && variants.Count > 0)
-            targetImage.sprite = variants[colorIndex];
-        else
-            Debug.LogError($"Groupe {groupIndex} sans variantes !");
+        logoIndex = (logoIndex - 1 + logoGroups.Count) % logoGroups.Count;
+        UpdateLogoDisplay();
     }
 
-    public Sprite getSprite()
+    public void CycleLogoColor()
     {
-        var variants = groups[groupIndex].variants;
-        return (variants != null && variants.Count > 0)
-            ? variants[colorIndex]
-            : null;
+        var v = logoGroups[logoIndex].variants;
+        logoColorIndex = (logoColorIndex + 1) % v.Count;
+        UpdateLogoDisplay();
     }
 
-    public void GetIndices(out int outGroup, out int outColor)
+    //Border methods
+    public void ToggleBorder()
     {
-        outGroup = groupIndex;
-        outColor = colorIndex;
+        useBorder = !useBorder;
+
+        Color c = useBorder
+            ? borderGroups[shapeIndex].colors[borderColorIndex]
+            : borderGroups[shapeIndex].colors[0];
+
+        foreach (var img in borderColorSquares)
+        {
+            if (img != null)
+                img.color = c;
+        }
+    }
+
+    private void UpdateBorderDisplay()
+    {
+        var sprites = borderGroups[shapeIndex].variants;
+        if (sprites != null && sprites.Count > borderColorIndex)
+            borderImage.sprite = sprites[borderColorIndex];
+
+
+        var colors = borderGroups[shapeIndex].colors;
+        if (colors != null && colors.Count > borderColorIndex)
+        {
+            Color c = colors[borderColorIndex];
+            foreach (var img in borderColorSquares)
+                img.color = c;
+        }
+    }
+
+    public void CycleBorderColor()
+    {
+        var v = borderGroups[shapeIndex].variants;
+        borderColorIndex = (borderColorIndex + 1) % v.Count;
+        UpdateBorderDisplay();
     }
 }
