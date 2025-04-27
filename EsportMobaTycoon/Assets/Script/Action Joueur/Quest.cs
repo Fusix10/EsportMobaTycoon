@@ -18,6 +18,8 @@ public class Quest : MonoBehaviour
 
     private bool i_YellowOrBlue; //Yellow = true // Blue = false
 
+    [SerializeField] PanelManager PanelManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,7 +93,7 @@ public class Quest : MonoBehaviour
                 i_buttonColect[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
-        i_YellowOrBlue = false; 
+        i_YellowOrBlue = false;
     }
 
     public void ColectQuest(int id)
@@ -108,6 +110,8 @@ public class Quest : MonoBehaviour
             i_listQuestBlue[id].isColected = true;
             QuestBlue();
         }
+
+        PanelManager.UpdateMoney();
     }
 
 }

@@ -32,13 +32,16 @@ public class PanelManager : MonoBehaviour
     [Header("Réputation")]
     [SerializeField]
     TMP_Text i_nombreReputation;
+    [Header("Tournament")]
+    [SerializeField]
+    TMP_Text i_tournamentName;
+    TMP_Text i_tournamentDayLeft;
 
 
     void Start()
     {
         i_manager = GameManager.Instance.i_manager;
-        i_NombreMoney.text = i_manager.i_currentMoney.ToString();
-        i_NombreMoneyPrenium.text = i_manager.i_currentMoneyPrenium.ToString();
+        UpdateMoney();
         i_nombreReputation.text = i_manager.i_reputation.ToString();
         ChangeColorSynergie();
 
@@ -46,6 +49,12 @@ public class PanelManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateMoney()
+    {
+        i_NombreMoney.text = i_manager.i_currentMoney.ToString();
+        i_NombreMoneyPrenium.text = i_manager.i_currentMoneyPrenium.ToString();
     }
 
     void ChangeColorSynergie()

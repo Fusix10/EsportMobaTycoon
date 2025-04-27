@@ -32,6 +32,7 @@ public class CircuitManager : MonoBehaviour
     "The Ranked Royale",
     "SummonerÅfs Crown"
     };
+
     public void Generate()
     {
         List<Tournament> tournaments = new();
@@ -112,6 +113,7 @@ public class Tournament
     {
         i_name = name;
         i_time = time;
+
         ActionCircuit actionCircuit = new ActionCircuit();
         actionCircuit.setTimer(time);
         this.i_matches = matches;
