@@ -578,14 +578,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetImage: {fileID: 158327735}
-  groups:
-  - groupName: 
-    variants:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  cycleColorButtons: []
+  i_targetImage: []
+  i_targetColor: {fileID: 0}
+  i_targetText: {fileID: 0}
+  i_standingSprites: []
+  i_sittingSprites: []
 --- !u!114 &158327735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,7 +1710,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.25
+  m_fontSize: 66.3
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2332,7 +2329,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 91.95
+  m_fontSize: 93.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2582,7 +2579,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.25
+  m_fontSize: 66.3
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3563,25 +3560,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetImage: {fileID: 892045595}
-  groups:
-  - groupName: B1
-    variants:
-    - {fileID: 21300000, guid: d5de729d24a5eda4f926d062e07117d8, type: 3}
-    - {fileID: 21300000, guid: ae595849c00655b40bfdce10b4eafe57, type: 3}
-  - groupName: BS1
-    variants:
-    - {fileID: 21300000, guid: 5ffaf4ad8bc4ab147ab144b0bb1e4abe, type: 3}
-    - {fileID: 21300000, guid: e95759818bf184d40820afcf3eee4bf2, type: 3}
-  - groupName: B2
-    variants:
-    - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
-    - {fileID: 21300000, guid: ebca3b1d59fec8f4dafa89245a46d782, type: 3}
-  - groupName: BS2
-    variants:
-    - {fileID: 21300000, guid: 2faecb830072ee34ca0bae0a0174fcaa, type: 3}
-    - {fileID: 21300000, guid: b36cf819397dd5f409e8181019ecbff7, type: 3}
-  cycleColorButtons: []
+  i_targetImage: []
+  i_targetColor: {fileID: 0}
+  i_targetText: {fileID: 0}
+  i_standingSprites: []
+  i_sittingSprites: []
 --- !u!114 &892045598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5060,7 +5043,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.25
+  m_fontSize: 66.3
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5574,9 +5557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d154a654027e54aaa7bbdb69d9d58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetImage: {fileID: 1749537716}
-  groups: []
-  cycleColorButtons: []
+  i_targetImage: []
+  i_targetColor: {fileID: 0}
+  i_targetText: {fileID: 0}
+  i_standingSprites: []
+  i_sittingSprites: []
 --- !u!114 &1749537716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5808,6 +5793,7 @@ GameObject:
   - component: {fileID: 1866953851}
   - component: {fileID: 1866953850}
   - component: {fileID: 1866953849}
+  - component: {fileID: 1866953853}
   m_Layer: 5
   m_Name: ValidateButton
   m_TagString: Untagged
@@ -5855,7 +5841,19 @@ MonoBehaviour:
   - {fileID: 892045597}
   - {fileID: 1749537715}
   - {fileID: 158327734}
-  isGenderXX: 0
+  nameField: {fileID: 0}
+  lastNameField: {fileID: 0}
+  hair: {fileID: 0}
+  face: {fileID: 0}
+  torso: {fileID: 0}
+  legs: {fileID: 0}
+  male: {fileID: 0}
+  female: {fileID: 0}
+  maleSelect: {fileID: 0}
+  femaleSelect: {fileID: 0}
+  maleUnselect: {fileID: 0}
+  femaleUnselect: {fileID: 0}
+  isGenderMale: 0
 --- !u!114 &1866953850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5912,6 +5910,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1866953853}
+        m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
+        m_MethodName: ChangeStateButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1866953851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5950,6 +5960,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866953847}
   m_CullTransparentMesh: 1
+--- !u!114 &1866953853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866953847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
 --- !u!1 &1923172721
 GameObject:
   m_ObjectHideFlags: 0
@@ -6015,7 +6066,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.25
+  m_fontSize: 66.3
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
