@@ -393,7 +393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 119625570}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 218452680}
+        m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
+        m_MethodName: ChangeStateButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &119625570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,6 +482,7 @@ GameObject:
   - component: {fileID: 218452676}
   - component: {fileID: 218452675}
   - component: {fileID: 218452679}
+  - component: {fileID: 218452680}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -576,6 +589,47 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: a29581e326d85ad45af088b83b99dd75, type: 2}
   MusicSlider: {fileID: 211334205}
   sfxSlider: {fileID: 670682780}
+--- !u!114 &218452680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218452674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
 --- !u!1 &261365493
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +642,6 @@ GameObject:
   - component: {fileID: 261365497}
   - component: {fileID: 261365496}
   - component: {fileID: 261365495}
-  - component: {fileID: 261365494}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -596,31 +649,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &261365494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261365493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5810c14ec92d084d9d9065d7e2900d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i_currentMoney: 1000
-  i_currentMoneyPrenium: 1000
-  i_reputation: 0
-  infoText: {fileID: 0}
-  budget: {fileID: 0}
-  i_lastName: 
-  i_name: 
-  i_hair: {fileID: 0}
-  i_face: {fileID: 0}
-  i_Torso: {fileID: 0}
-  i_legs: {fileID: 0}
-  i_isGenderXX: 0
-  i_teamData: {fileID: 0}
 --- !u!114 &261365495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,11 +716,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_eventManager: {fileID: 0}
   i_popupManager: {fileID: 0}
-  i_manager: {fileID: 261365494}
   i_allPlayers: []
   i_allPlayerData: []
   i_allTeam: []
   i_GameState: 0
+  i_skins:
+    hairStanding: []
+    faceStanding: []
+    bodyStanding: []
+    shirtStanding: []
+    legsStanding: []
+    shoesStanding: []
+    hairSitting: []
+    faceSitting: []
+    bodySitting: []
+    shirtSitting: []
+    legsSitting: []
+    shoesSitting: []
 --- !u!4 &261365498
 Transform:
   m_ObjectHideFlags: 0
@@ -2036,7 +2076,6 @@ GameObject:
   - component: {fileID: 1743218502}
   - component: {fileID: 1743218501}
   - component: {fileID: 1743218500}
-  - component: {fileID: 1743218503}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2103,12 +2142,12 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1743218501}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1743218503}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
         m_MethodName: ChangeStateButton
         m_Mode: 3
@@ -2158,47 +2197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743218498}
   m_CullTransparentMesh: 1
---- !u!114 &1743218503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743218498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aideMemoire: 'Menu 0
-
-    CutScene 1
-
-    Avatar 2
-
-    Logo 3
-
-    Buddy 4
-
-    Hiring
-    5
-
-    Circuit 6
-
-    Hub 7
-
-    Hub1 8
-
-    Hub2 9
-
-    Hub3 10
-
-    Match 11
-
-    Tournaments
-    12
-
-    Result 13'
 --- !u!1 &1761564136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,6 +2520,7 @@ GameObject:
   - component: {fileID: 1852536464}
   - component: {fileID: 1852536463}
   - component: {fileID: 1852536466}
+  - component: {fileID: 1852536467}
   m_Layer: 5
   m_Name: Help
   m_TagString: Untagged
@@ -2644,6 +2643,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i_text: {fileID: 0}
+--- !u!114 &1852536467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852536461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
 --- !u!114 &1877674325 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5785761256477796482, guid: 22df918952d051c43ab90a2ab1e463ef,

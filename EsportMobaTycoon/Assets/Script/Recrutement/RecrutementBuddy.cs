@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class RecrutementBuddy : MonoBehaviour
 {
-    [SerializeField] List<Skin> i_BuddySkin;
+    [SerializeField] int i_BuddyCount;
 
     [SerializeField] TMP_InputField i_PseudoInput;
-
-    [SerializeField] Buddy i_PrefabBuddy;
 
 
     [Header("UI Elements")]
@@ -35,10 +33,11 @@ public class RecrutementBuddy : MonoBehaviour
     void Start()
     {
         i_allPlayers = new List<Player>();
-        foreach (Skin skin in i_BuddySkin)
+        for (int i = 0; i < i_BuddyCount; i++)
         {
-            Buddy localBud = Instantiate(i_PrefabBuddy);
-            localBud.BuddyCreate(skin);
+            Player localBud = GameManager.Instance.i_playerFactory.CreateRandomPlayerWithRole((GameManager.Role)Random.Range(0, 6), 0, null, false, true);
+            
+            
             i_allPlayers.Add(localBud);
             GameManager.Instance.i_allPlayers.Add(localBud);
         }

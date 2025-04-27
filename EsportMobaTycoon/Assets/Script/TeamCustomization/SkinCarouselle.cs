@@ -119,3 +119,21 @@ public struct SkinGroup
     public Color[] colors;
     public string name;
 }
+
+[Serializable]
+public struct SkinGroupData
+{
+    public SkinGroup[] hairStanding;
+    public SkinGroup[] faceStanding;
+    public SkinGroup[] bodyStanding;
+    public SkinGroup[] shirtStanding;
+    public SkinGroup[] legsStanding;
+    public SkinGroup[] shoesStanding;
+
+    public SkinGroup[] hairSitting;
+    public SkinGroup[] faceSitting;
+    public SkinGroup[] bodySitting;
+    public SkinGroup[] shirtSitting;
+    public SkinGroup[] legsSitting;
+    public SkinGroup[] shoesSitting;
+}

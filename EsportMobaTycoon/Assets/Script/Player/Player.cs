@@ -35,7 +35,8 @@ public class Player : MonoBehaviour
     Mood mood,
     GameManager.Role currentRole,
     Character characterId = null,
-    Sprite icon = null
+    Sprite icon = null,
+    bool isBuddy = false
     )
     {
         i_name = name;
@@ -53,7 +54,9 @@ public class Player : MonoBehaviour
         i_currentRole = currentRole;
         i_morale = 100;
 
-        i_isBuddy = false;
+        i_isBuddy = isBuddy;
+
+        i_skin = CharacterSkinRandom.RandomSkin();
 
         i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
         i_lvl = i_lvl / 6;

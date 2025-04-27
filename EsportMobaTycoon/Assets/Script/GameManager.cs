@@ -32,10 +32,15 @@ public class GameManager : MonoBehaviour
     public List<PlayerData> i_allPlayerData;
     public List<TeamData> i_allTeam;
     public Circuit i_circuit;
+    public PlayerFactory i_playerFactory { get; private set; }
 
     public GameState i_GameState;
 
     private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
+
+
+    [Header("Tous les sprites")]
+    public SkinGroupData i_skins;
 
     public class 
         MatchUp
@@ -60,6 +65,10 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+
+        i_playerFactory = GetComponent<PlayerFactory>();
+
         i_GameState = GameState.Menu;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
@@ -237,10 +246,6 @@ public class GameManager : MonoBehaviour
 
 );
         Debug.Log("[GameManager] Mappings = " + allMappings);
-    }
-    void Update()
-    {
-
     }
 
     public Role GetRandomRole()
