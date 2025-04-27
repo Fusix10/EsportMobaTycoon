@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -13,6 +13,7 @@ public class ValidateButton : MonoBehaviour
     [SerializeField] private TeamData teamData;
     [SerializeField] private List<UnputFieldGrabber> inputFieldGrabberList;
     [SerializeField] private List<SkinCarouselle> CarouselleList;
+    [SerializeField] private List<TeamCustom> teamCustomList;
 
 
     [SerializeField] TMP_Text nameField;
@@ -37,35 +38,51 @@ public class ValidateButton : MonoBehaviour
     void Awake()
     {
         if (teamData == null)
-            Debug.LogError("TeamData n'est pas assign� !");
+            Debug.LogError("TeamData n'est pas assigné !");
         if (inputFieldGrabberList == null || inputFieldGrabberList.Count < 2)
             Debug.LogError("Il faut 2 UnputFieldGrabber dans inputFieldGrabberList !");
-        if (CarouselleList == null || CarouselleList.Count < 3)
-            Debug.LogError("Il faut 3 Carouselle dans CarouselleList !");
+        /*if (CarouselleList == null || CarouselleList.Count < 3)
+            Debug.LogError("Il faut 3 Carouselle dans CarouselleList !");*/
     }
 
     private void Start()
     {
         Draw();
     }
-
+    [ContextMenu("▶ Validate Team (Editor)")]
     public void ValidateTeam()
     {
-        teamData.i_name = inputFieldGrabberList[0].getInputText();
-        teamData.i_nickName = inputFieldGrabberList[1].getInputText();
+        if (nameField != null && lastNameField != null)
+        {
+            teamData.i_name = nameField.text;
+            teamData.i_nickName = lastNameField.text;
+        }
 
-        teamData.i_LogoBack = CarouselleList[0].GetSprite();
-        teamData.i_LogoCrown = CarouselleList[1].GetSprite();
-        teamData.i_Logo = CarouselleList[2].GetSprite();
+        // 3 sprites
+        if (teamCustomList != null)
+        {
+            if (teamCustomList.Count > 0 && teamCustomList[0] != null)
+                teamData.i_LogoBack = teamCustomList[0].GetShapeSprite();
+
+            if (teamCustomList.Count > 1 && teamCustomList[1] != null)
+            {
+                teamData.i_LogoCrown = teamCustomList[1].GetLogoSprite();
+            }
+
+            if (teamCustomList.Count > 2 && teamCustomList[2] != null)
+                teamData.i_Logo = teamCustomList[2].GetBorderSprite();
+        }
 
 #if UNITY_EDITOR
-
         EditorUtility.SetDirty(teamData);
         AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
 #endif
 
-        Debug.Log("[ValidateTeam] TeamData mise � jour avec les 3 sprites color�s.");
+        Debug.Log("[ValidateTeam] opérations terminées, sprites manquants ignorés.");
     }
+
+
 
     public void Submit()
     {
@@ -89,7 +106,10 @@ public class ValidateButton : MonoBehaviour
 
     void Draw()
     {
-        male.sprite = isGenderMale ? maleSelect : maleUnselect;
-        female.sprite = !isGenderMale ? femaleSelect : femaleUnselect;
+        if (male != null)
+            male.sprite = isGenderMale ? maleSelect : maleUnselect;
+
+        if (female != null)
+            female.sprite = !isGenderMale ? femaleSelect : femaleUnselect;
     }
 }

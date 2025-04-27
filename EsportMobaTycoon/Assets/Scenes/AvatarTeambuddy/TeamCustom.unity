@@ -942,17 +942,20 @@ MonoBehaviour:
   shapePrevButton: {fileID: 0}
   shapeNextButton: {fileID: 0}
   shapeColorButtons: []
+  shapeColorSquares: []
   blasonInfoText: {fileID: 0}
   logoImage: {fileID: 0}
   logoGroups: []
   logoPrevButton: {fileID: 0}
   logoNextButton: {fileID: 0}
   logoColorButtons: []
+  logoColorSquares: []
   logoInfoText: {fileID: 0}
   borderImage: {fileID: 0}
   borderGroups: []
   toggleBorderButton: {fileID: 0}
   borderColorButtons: []
+  borderColorSquares: []
 --- !u!1 &164477563
 GameObject:
   m_ObjectHideFlags: 0
@@ -4411,13 +4414,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 074c81632e7564d45897dc87df8e9710, type: 3}
     - {fileID: 21300000, guid: 7cd14f0de02335b42a94886ff82495ef, type: 3}
     colors:
-    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 0}
+    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 1}
     - {r: 0.16862746, g: 0.17254902, b: 0.17254902, a: 1}
     - {r: 0.13725491, g: 0.25490198, b: 0.227451, a: 1}
-    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 0}
-    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 0}
-    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 0}
-    - {r: 1, g: 1, b: 1, a: 0}
+    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 1}
+    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 1}
+    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: B2
     variants:
     - {fileID: 21300000, guid: aa17ea332d4e6a047801ef04d92913d8, type: 3}
@@ -4428,7 +4431,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: d935afabcf52f6248b727b750b168240, type: 3}
     - {fileID: 21300000, guid: 8706724015cbea74aaf5d248470fd06c, type: 3}
     colors:
-    - {r: 0, g: 0, b: 0, a: 0}
+    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 1}
+    - {r: 0.16862746, g: 0.17254902, b: 0.17254902, a: 1}
+    - {r: 0.13725491, g: 0.25490198, b: 0.227451, a: 1}
+    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 1}
+    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 1}
+    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: B3
     variants:
     - {fileID: 21300000, guid: 211065f597ee9e2478597c2f6cd0cfa9, type: 3}
@@ -4438,7 +4447,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f42fed042c684f941ae51cf1ea09d2ae, type: 3}
     - {fileID: 21300000, guid: 541e52f17eba1264a97efb0648d55ddf, type: 3}
     - {fileID: 21300000, guid: a2330d40abb764a4d86899f1b40abb9c, type: 3}
-    colors: []
+    colors:
+    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 1}
+    - {r: 0.16862746, g: 0.17254902, b: 0.17254902, a: 1}
+    - {r: 0.13725491, g: 0.25490198, b: 0.227451, a: 1}
+    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 1}
+    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 1}
+    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: B4
     variants:
     - {fileID: 21300000, guid: 475b0edaadb0198488e9bbda22305904, type: 3}
@@ -4448,7 +4464,14 @@ MonoBehaviour:
     - {fileID: 21300000, guid: b9645aca8cf16f24396fb78cb2e4193c, type: 3}
     - {fileID: 21300000, guid: 63749fb4742a6ab4a878cf08aa6fe898, type: 3}
     - {fileID: 21300000, guid: 4b0737896514d5041a6a71e210dd229c, type: 3}
-    colors: []
+    colors:
+    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 1}
+    - {r: 0.16862746, g: 0.17254902, b: 0.17254902, a: 1}
+    - {r: 0.13725491, g: 0.25490198, b: 0.227451, a: 1}
+    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 1}
+    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 1}
+    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: B5
     variants:
     - {fileID: 21300000, guid: d9e3501528dc40d4b881e7901b665022, type: 3}
@@ -4458,11 +4481,20 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 02bb87295ef3740439759dc93902443c, type: 3}
     - {fileID: 21300000, guid: 3ef3ee4c1635ddf4595ce1c6c83afdd0, type: 3}
     - {fileID: 21300000, guid: 01fd375c9a8c30942bca03ad88a6de56, type: 3}
-    colors: []
+    colors:
+    - {r: 0.10588236, g: 0.1764706, b: 0.24313727, a: 1}
+    - {r: 0.16862746, g: 0.17254902, b: 0.17254902, a: 1}
+    - {r: 0.13725491, g: 0.25490198, b: 0.227451, a: 1}
+    - {r: 0.6, g: 0.27450982, b: 0.08627451, a: 1}
+    - {r: 0.121568635, g: 0.1137255, b: 0.2392157, a: 1}
+    - {r: 0.3019608, g: 0.06666667, b: 0.07058824, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   shapePrevButton: {fileID: 2077901667}
   shapeNextButton: {fileID: 1796739995}
   shapeColorButtons:
   - {fileID: 135407585}
+  shapeColorSquares:
+  - {fileID: 876497809}
   blasonInfoText: {fileID: 1415000566}
   logoImage: {fileID: 1749537716}
   logoGroups:
@@ -4474,7 +4506,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 63e1093ae64ae914e9a4166faaf9f8ee, type: 3}
     - {fileID: 21300000, guid: e874f73ddf1a51a4d89393b73d375e40, type: 3}
     - {fileID: 21300000, guid: 07ad71a85da38c44ab6cc603631c3758, type: 3}
-    colors: []
+    colors:
+    - {r: 0.21960786, g: 0.5058824, b: 0.59607846, a: 1}
+    - {r: 0.38823533, g: 0.6509804, b: 0.427451, a: 1}
+    - {r: 0.9450981, g: 0.6392157, b: 0.043137256, a: 1}
+    - {r: 0.45098042, g: 0.21176472, b: 0.67058825, a: 1}
+    - {r: 0.6666667, g: 0.10980393, b: 0.1137255, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: L2
     variants:
     - {fileID: 21300000, guid: 751b2c24314b71c4f907e388d88aeeb9, type: 3}
@@ -4483,7 +4521,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2aff34d54ba66f542a6b4072c69ffdbf, type: 3}
     - {fileID: 21300000, guid: 0ae6a8cd6f92db147813be69d2e0f035, type: 3}
     - {fileID: 21300000, guid: 13d4fbbfee4b5d24b9d0c485c84ebf5b, type: 3}
-    colors: []
+    colors:
+    - {r: 0.21960786, g: 0.5058824, b: 0.59607846, a: 1}
+    - {r: 0.38823533, g: 0.6509804, b: 0.427451, a: 1}
+    - {r: 0.9450981, g: 0.6392157, b: 0.043137256, a: 1}
+    - {r: 0.45098042, g: 0.21176472, b: 0.67058825, a: 1}
+    - {r: 0.6666667, g: 0.10980393, b: 0.1137255, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: L3
     variants:
     - {fileID: 21300000, guid: f46f1166486a35148aaf37ee34707f92, type: 3}
@@ -4492,7 +4536,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: c5678920d087d1a43acfe35f13011f70, type: 3}
     - {fileID: 21300000, guid: 203efb40015a35e4db6cf2528622ac75, type: 3}
     - {fileID: 21300000, guid: 50a3e3f7bbb82984483edd56dbc7d2b2, type: 3}
-    colors: []
+    colors:
+    - {r: 0.21960786, g: 0.5058824, b: 0.59607846, a: 1}
+    - {r: 0.38823533, g: 0.6509804, b: 0.427451, a: 1}
+    - {r: 0.9450981, g: 0.6392157, b: 0.043137256, a: 1}
+    - {r: 0.45098042, g: 0.21176472, b: 0.67058825, a: 1}
+    - {r: 0.6666667, g: 0.10980393, b: 0.1137255, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: L4
     variants:
     - {fileID: 21300000, guid: 6d66b6ca4adbecc449677aaa0451dd65, type: 3}
@@ -4501,7 +4551,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5cbafe08886c4714cbf33ed66e5d7bf8, type: 3}
     - {fileID: 21300000, guid: 2bffa0020261baf43adb08e0046308b4, type: 3}
     - {fileID: 21300000, guid: 60ad79eca780921449259a357485fd3c, type: 3}
-    colors: []
+    colors:
+    - {r: 0.21960786, g: 0.5058824, b: 0.59607846, a: 1}
+    - {r: 0.38823533, g: 0.6509804, b: 0.427451, a: 1}
+    - {r: 0.9450981, g: 0.6392157, b: 0.043137256, a: 1}
+    - {r: 0.45098042, g: 0.21176472, b: 0.67058825, a: 1}
+    - {r: 0.6666667, g: 0.10980393, b: 0.1137255, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - groupName: L5
     variants:
     - {fileID: 21300000, guid: bc311ffc7eedd82499c0272c7c404c91, type: 3}
@@ -4510,37 +4566,62 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 764f2425333991f458fa5a726b4beeca, type: 3}
     - {fileID: 21300000, guid: 08e7e826b24197b498ad3e3a517a625e, type: 3}
     - {fileID: 21300000, guid: cbef041ab771de5458ad542a2f21667e, type: 3}
-    colors: []
+    colors:
+    - {r: 0.21960786, g: 0.5058824, b: 0.59607846, a: 1}
+    - {r: 0.38823533, g: 0.6509804, b: 0.427451, a: 1}
+    - {r: 0.9450981, g: 0.6392157, b: 0.043137256, a: 1}
+    - {r: 0.45098042, g: 0.21176472, b: 0.67058825, a: 1}
+    - {r: 0.6666667, g: 0.10980393, b: 0.1137255, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   logoPrevButton: {fileID: 969953244}
   logoNextButton: {fileID: 2040194362}
   logoColorButtons:
   - {fileID: 1782825839}
+  logoColorSquares:
+  - {fileID: 1853218817}
   logoInfoText: {fileID: 774098457}
   borderImage: {fileID: 1156183311}
   borderGroups:
   - groupName: B1
     variants:
     - {fileID: 21300000, guid: 27292e35839b3be479e8c1f7b2c849bc, type: 3}
-    colors: []
+    - {fileID: 21300000, guid: 537012a0c7628ec41846fe8f027daeb5, type: 3}
+    colors:
+    - {r: 0.9607844, g: 0.9294118, b: 0.8000001, a: 1}
+    - {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   - groupName: B2
     variants:
     - {fileID: 21300000, guid: c116590ccf1f9284581802c8f72848e7, type: 3}
-    colors: []
+    - {fileID: 21300000, guid: bef4d3ea87c973f419da2408d761f85d, type: 3}
+    colors:
+    - {r: 0.9607844, g: 0.9294118, b: 0.8000001, a: 1}
+    - {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   - groupName: B3
     variants:
     - {fileID: 21300000, guid: 3039e97a95acb4e4688432d89b567829, type: 3}
-    colors: []
+    - {fileID: 21300000, guid: e310ed881c658cb4d9990e09a5756276, type: 3}
+    colors:
+    - {r: 0.9607844, g: 0.9294118, b: 0.8000001, a: 1}
+    - {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   - groupName: B4
     variants:
     - {fileID: 21300000, guid: dd95a992cfa7a4442933fa9e3fde1fdd, type: 3}
-    colors: []
+    - {fileID: 21300000, guid: c224cbb6a9478ef43bae3c5e446b5f03, type: 3}
+    colors:
+    - {r: 0.9607844, g: 0.9294118, b: 0.8000001, a: 1}
+    - {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   - groupName: B5
     variants:
     - {fileID: 21300000, guid: 1888991a50287d14aa7b5a3592a67b54, type: 3}
-    colors: []
+    - {fileID: 21300000, guid: f356f55b5535d4d4da7ae0b0a7658a30, type: 3}
+    colors:
+    - {r: 0.9607844, g: 0.9294118, b: 0.8000001, a: 1}
+    - {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   toggleBorderButton: {fileID: 605546232}
   borderColorButtons:
-  - {fileID: 0}
+  - {fileID: 605546232}
+  borderColorSquares:
+  - {fileID: 1160429319}
 --- !u!1 &899434617
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,7 +5724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1156183308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5683,7 +5764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 27292e35839b3be479e8c1f7b2c849bc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9322,6 +9403,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 158327734}
+  teamCustomList: []
   nameField: {fileID: 0}
   lastNameField: {fileID: 0}
   hair: {fileID: 0}
@@ -9944,9 +10026,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1923389742}
         m_TargetAssemblyTypeName: ValidateButton, Assembly-CSharp
-        m_MethodName: Submit
+        m_MethodName: ValidateTeam
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10006,17 +10088,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aeafa55b768b9246a83536fc68e2baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamData: {fileID: 11400000, guid: 3d1eb45c023fed94f8b0f75ec42d44d6, type: 2}
-  inputFieldGrabberList: []
+  teamData: {fileID: 11400000, guid: 47fbc94f89dcd65448758ed0b60d239e, type: 2}
+  inputFieldGrabberList:
+  - {fileID: 1168161421}
+  - {fileID: 113544292}
   CarouselleList: []
-  nameField: {fileID: 0}
-  lastNameField: {fileID: 0}
+  teamCustomList:
+  - {fileID: 892045598}
+  - {fileID: 892045598}
+  - {fileID: 892045598}
+  nameField: {fileID: 99315425}
+  lastNameField: {fileID: 1872594493}
   hair: {fileID: 0}
   face: {fileID: 0}
   torso: {fileID: 0}
   legs: {fileID: 0}
-  male: {fileID: 0}
-  female: {fileID: 0}
+  male: {fileID: 363793371}
+  female: {fileID: 522478097}
   maleSelect: {fileID: 0}
   femaleSelect: {fileID: 0}
   maleUnselect: {fileID: 0}
