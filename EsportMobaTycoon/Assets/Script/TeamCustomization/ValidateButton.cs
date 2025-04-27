@@ -37,8 +37,8 @@ public class ValidateButton : MonoBehaviour
 
     void Awake()
     {
-        if (teamData == null)
-            Debug.LogError("TeamData n'est pas assigné !");
+        //if (teamData == null)
+            //Debug.LogError("TeamData n'est pas assigné !");
         if (inputFieldGrabberList == null || inputFieldGrabberList.Count < 2)
             Debug.LogError("Il faut 2 UnputFieldGrabber dans inputFieldGrabberList !");
         /*if (CarouselleList == null || CarouselleList.Count < 3)

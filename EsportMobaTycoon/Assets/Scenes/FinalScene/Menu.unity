@@ -588,7 +588,6 @@ GameObject:
   - component: {fileID: 261365497}
   - component: {fileID: 261365496}
   - component: {fileID: 261365495}
-  - component: {fileID: 261365494}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -596,31 +595,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &261365494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261365493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5810c14ec92d084d9d9065d7e2900d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i_currentMoney: 1000
-  i_currentMoneyPrenium: 1000
-  i_reputation: 0
-  infoText: {fileID: 0}
-  budget: {fileID: 0}
-  i_lastName: 
-  i_name: 
-  i_hair: {fileID: 0}
-  i_face: {fileID: 0}
-  i_Torso: {fileID: 0}
-  i_legs: {fileID: 0}
-  i_isGenderXX: 0
-  i_teamData: {fileID: 0}
 --- !u!114 &261365495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,7 +662,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   i_eventManager: {fileID: 0}
   i_popupManager: {fileID: 0}
-  i_manager: {fileID: 261365494}
   i_allPlayers: []
   i_allPlayerData: []
   i_allTeam: []

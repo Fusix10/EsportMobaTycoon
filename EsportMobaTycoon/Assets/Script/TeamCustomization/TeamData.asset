@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4659cc72a107aeb42a7d2ad23e0525d1, type: 3}
   m_Name: TeamData
   m_EditorClassIdentifier: 
-  i_name: "zz\u200B"
-  i_nickName: "ee\u200B"
-  i_LogoBack: {fileID: 21300000, guid: 7f95848f8b083b04c855fcbee39bc29f, type: 3}
-  i_LogoCrown: {fileID: 21300000, guid: 6d66b6ca4adbecc449677aaa0451dd65, type: 3}
-  i_Logo: {fileID: 21300000, guid: c224cbb6a9478ef43bae3c5e446b5f03, type: 3}
+  i_name: "Dinosaure\u200B"
+  i_nickName: "DIDIDID\u200B"
+  i_LogoBack: {fileID: 21300000, guid: 4b0737896514d5041a6a71e210dd229c, type: 3}
+  i_LogoCrown: {fileID: 21300000, guid: 203efb40015a35e4db6cf2528622ac75, type: 3}
+  i_Logo: {fileID: 21300000, guid: dd95a992cfa7a4442933fa9e3fde1fdd, type: 3}
   i_LogoBackColor: {r: 1, g: 1, b: 1, a: 1}
   i_LogoCrownColor: {r: 1, g: 1, b: 1, a: 1}
   i_LogoMainColor: {r: 1, g: 1, b: 1, a: 1}

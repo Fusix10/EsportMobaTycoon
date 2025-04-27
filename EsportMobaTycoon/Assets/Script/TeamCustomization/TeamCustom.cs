@@ -77,14 +77,14 @@ public class TeamCustom : MonoBehaviour
     {
         //validation
         if (shapeImage == null) Debug.LogError("ShapeImage manquant");
-        if (shapeGroups == null || shapeGroups.Count == 0) Debug.LogError("shapeGroups non configuré");
+        if (shapeGroups == null || shapeGroups.Count == 0) Debug.LogError("shapeGroups non configur");
         if (shapePrevButton == null || shapeNextButton == null)
             Debug.LogError("Shape Prev/Next buttons manquants");
         if (shapeColorButtons == null || shapeColorButtons.Count == 0)
             Debug.LogError("Shape color buttons manquants");
 
         if (logoImage == null) Debug.LogError("LogoImage manquant");
-        if (logoGroups == null || logoGroups.Count == 0) Debug.LogError("logoGroups non configuré");
+        if (logoGroups == null || logoGroups.Count == 0) Debug.LogError("logoGroups non configur");
         if (logoPrevButton == null || logoNextButton == null)
             Debug.LogError("Logo Prev/Next buttons manquants");
         if (logoColorButtons == null || logoColorButtons.Count == 0)
@@ -92,7 +92,7 @@ public class TeamCustom : MonoBehaviour
 
         if (borderImage == null) Debug.LogError("BorderImage manquant");
         if (borderGroups == null || borderGroups.Count == 0)
-            Debug.LogError("borderGroups non configuré");
+            Debug.LogError("borderGroups non configur");
         if (toggleBorderButton == null)
             Debug.LogError("toggleBorderButton manquant");
         if (borderColorButtons == null || borderColorButtons.Count == 0)
