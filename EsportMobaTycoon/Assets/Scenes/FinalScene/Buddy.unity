@@ -2020,34 +2020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c4a74580963964fafd641df71a3447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_BuddySkin:
-  - i_hairStanding: {fileID: 21300000, guid: 44d593ffc4363164c81524419802256b, type: 3}
-    i_faceStanding: {fileID: 21300000, guid: d96ae782c445c694182420c83dc75235, type: 3}
-    i_bodyStanding: {fileID: 21300000, guid: 20b27867c3aac7b419a32424b58f14b8, type: 3}
-    i_shirtStanding: {fileID: 21300000, guid: 2bcef4daa0331874f89f3a19f386f64f, type: 3}
-    i_legsStanding: {fileID: 21300000, guid: ba078bf921c59a344aac45ab249a9f7a, type: 3}
-    i_shoesStanding: {fileID: 21300000, guid: 2219cb1a536356a46ba662797ff57e34, type: 3}
-    i_hairSitting: {fileID: 21300000, guid: 6e16fe48b0d92804f830d8e3aaeadfb7, type: 3}
-    i_faceSitting: {fileID: 21300000, guid: 69270d5035f5204459c844383c5abe76, type: 3}
-    i_bodySitting: {fileID: 21300000, guid: 2dd04339dd20c9d4da5c3153c9502f32, type: 3}
-    i_shirtSitting: {fileID: 21300000, guid: 950426b5bc6ace2469dde681c1da0362, type: 3}
-    i_legsSitting: {fileID: 21300000, guid: fa3dd3d443c0d304c89b8a80da0069ba, type: 3}
-    i_shoesSitting: {fileID: 21300000, guid: 592841fda417cb84999fea373d93193d, type: 3}
-  - i_hairStanding: {fileID: 21300000, guid: 9302495f91db6a74da1d337119ee9468, type: 3}
-    i_faceStanding: {fileID: 21300000, guid: c75edbfdf51a69b4d82f9de92f188f1b, type: 3}
-    i_bodyStanding: {fileID: 21300000, guid: 20b27867c3aac7b419a32424b58f14b8, type: 3}
-    i_shirtStanding: {fileID: 21300000, guid: b1635bc70fe378a4b8bc1b88baf5ff92, type: 3}
-    i_legsStanding: {fileID: 21300000, guid: 24b89349521f3314a8c2995b74a261a5, type: 3}
-    i_shoesStanding: {fileID: 21300000, guid: 2219cb1a536356a46ba662797ff57e34, type: 3}
-    i_hairSitting: {fileID: 21300000, guid: 351ae1ada67ee0549bd30ae2bcab34c2, type: 3}
-    i_faceSitting: {fileID: 21300000, guid: 5a0e0a270195ff449a6aa06e6220fe93, type: 3}
-    i_bodySitting: {fileID: 21300000, guid: 2dd04339dd20c9d4da5c3153c9502f32, type: 3}
-    i_shirtSitting: {fileID: 21300000, guid: 9614ead9e7cffc7459db42a9039e5996, type: 3}
-    i_legsSitting: {fileID: 21300000, guid: fb196dee038bbe34b901ecdcd694b412, type: 3}
-    i_shoesSitting: {fileID: 21300000, guid: 592841fda417cb84999fea373d93193d, type: 3}
+  i_BuddyCount: 0
   i_PseudoInput: {fileID: 1003792247}
-  i_PrefabBuddy: {fileID: 1045514915361438401, guid: 1b2c25b516cfb3f4db64882434e1d160,
-    type: 3}
   i_nameText: {fileID: 2019196947}
   i_roleText: {fileID: 820325540}
   i_skinUI: {fileID: 905569647}
@@ -4858,6 +4832,19 @@ MonoBehaviour:
   i_allPlayerData: []
   i_allTeam: []
   i_GameState: 0
+  i_skins:
+    hairStanding: []
+    faceStanding: []
+    bodyStanding: []
+    shirtStanding: []
+    legsStanding: []
+    shoesStanding: []
+    hairSitting: []
+    faceSitting: []
+    bodySitting: []
+    shirtSitting: []
+    legsSitting: []
+    shoesSitting: []
 --- !u!4 &1574718697
 Transform:
   m_ObjectHideFlags: 0
@@ -5897,6 +5884,7 @@ GameObject:
   - component: {fileID: 1879681425}
   - component: {fileID: 1879681424}
   - component: {fileID: 1879681423}
+  - component: {fileID: 1879681426}
   m_Layer: 5
   m_Name: ButtonValidate
   m_TagString: Untagged
@@ -5979,6 +5967,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1879681426}
+        m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
+        m_MethodName: ChangeStateButton
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1879681424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6017,6 +6017,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879681421}
   m_CullTransparentMesh: 1
+--- !u!114 &1879681426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879681421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
 --- !u!1 &1893961397
 GameObject:
   m_ObjectHideFlags: 0
