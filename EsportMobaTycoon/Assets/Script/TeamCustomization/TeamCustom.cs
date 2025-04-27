@@ -1,126 +1,39 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+//using UnityEngine.UI.Extensions;
 
 [System.Serializable]
 public class SpriteVariants
 {
-    [Tooltip("Nom (facultatif) pour l’UI")]
+    [Tooltip("Nom (facultatif) pour lâ€™UI")]
     public string groupName;
 
-    [Tooltip("Vos sprites pour ce groupe, dans l’ordre des couleurs")]
+    [Tooltip("Vos sprites pour ce groupe, dans lâ€™ordre des couleurs")]
     public List<Sprite> variants;
+
+    [Tooltip("Couleurs correspondantes pour chaque variante")]
+    public List<Color> colors;
 }
-
-/*public class TeamCustom : MonoBehaviour
-{
-    [Header("Target Image à mettre à jour")]
-    [SerializeField] private Image targetImage;
-
-    [Header("Tous les groupes de variantes")]
-    [SerializeField] private List<SpriteVariants> groups;
-
-    [Header("Boutons UI (un bouton = changer la couleur)")]
-    [SerializeField] private List<Button> cycleColorButtons;
-
-    private int groupIndex = 0;
-    private int colorIndex = 0;
-
-    private int borderGroupIndex = 0;
-    private int borderColorIndex = 0;
-    void Start()
-    {
-        if (targetImage == null) Debug.LogError("TargetImage manquant.");
-        if (groups == null || groups.Count == 0) Debug.LogError("Aucun groupe configuré.");
-        if (cycleColorButtons == null || cycleColorButtons.Count == 0)
-            Debug.LogError("Aucun bouton de cycle configuré.");
-
-        for (int i = 0; i < cycleColorButtons.Count; i++)
-        {
-            cycleColorButtons[i].onClick.AddListener(CycleColor);
-        }
-
-        UpdateDisplay();
-    }
-
-    private void CycleColor()
-    {
-        var variants = groups[groupIndex].variants;
-        if (variants == null || variants.Count == 0) return;
-
-        colorIndex = (colorIndex + 1) % variants.Count;
-        UpdateDisplay();
-    }
-
-    public void NextGroup()
-    {
-        groupIndex = (groupIndex + 1) % groups.Count;
-        var variants = groups[groupIndex].variants;
-        colorIndex = Mathf.Clamp(colorIndex, 0, variants.Count - 1);
-        UpdateDisplay();
-    }
-
-    public void PreviousGroup()
-    {
-        groupIndex = (groupIndex - 1 + groups.Count) % groups.Count;
-        var variants = groups[groupIndex].variants;
-        colorIndex = Mathf.Clamp(colorIndex, 0, variants.Count - 1);
-        UpdateDisplay();
-    }
-
-    public void Resette()
-    {
-        groupIndex = 0;
-        colorIndex = 0;
-        UpdateDisplay();
-    }
-
-    public void Randomize()
-    {
-        groupIndex = Random.Range(0, groups.Count);
-        var variants = groups[groupIndex].variants;
-        if (variants != null && variants.Count > 0)
-            colorIndex = Random.Range(0, variants.Count);
-        UpdateDisplay();
-    }
-
-    private void UpdateDisplay()
-    {
-        var variants = groups[groupIndex].variants;
-        if (variants != null && variants.Count > 0)
-            targetImage.sprite = variants[colorIndex];
-        else
-            Debug.LogError($"Groupe {groupIndex} sans variantes !");
-    }
-
-    public Sprite getSprite()
-    {
-        var variants = groups[groupIndex].variants;
-        return (variants != null && variants.Count > 0)
-            ? variants[colorIndex]
-            : null;
-    }
-
-    public void GetIndices(out int outGroup, out int outColor)
-    {
-        outGroup = groupIndex;
-        outColor = colorIndex;
-    }
-}*/
 public class TeamCustom : MonoBehaviour
 {
-    // ——— 1) Shape Picker ———————————————————————————
+    //Shape Picker
     [Header("Shape (fond)")]
     [SerializeField] private Image shapeImage;
     [SerializeField] private List<SpriteVariants> shapeGroups;
     [SerializeField] private Button shapePrevButton;
     [SerializeField] private Button shapeNextButton;
     [SerializeField] private List<Button> shapeColorButtons;
+    [SerializeField] private List<Image> shapeColorSquares;
 
     private int shapeIndex = 0;
     private int shapeColorIndex = 0;
 
-    // ——— 2) Logo Picker ————————————————————————————
+    [Header("Info Texte Shape")]
+    [SerializeField] private TMP_Text blasonInfoText;
+
+    //Logo Picker
     [Header("Logo")]
     [SerializeField] private Image logoImage;
     [SerializeField] private List<SpriteVariants> logoGroups;
@@ -128,31 +41,38 @@ public class TeamCustom : MonoBehaviour
     [SerializeField] private Button logoNextButton;
     [SerializeField] private List<Button> logoColorButtons;
 
+    [SerializeField] private List<Image> logoColorSquares;
+
     private int logoIndex = 0;
     private int logoColorIndex = 0;
 
-    // ——— 3) Border Picker —————————————————————————
+    [Header("Info Texte Logo")]
+    [SerializeField] private TMP_Text logoInfoText;
+
+    //Border Picker
     [Header("Contour")]
     [SerializeField] private Image borderImage;
     [SerializeField] private List<SpriteVariants> borderGroups;
     [SerializeField] private Button toggleBorderButton;
     [SerializeField] private List<Button> borderColorButtons;
 
+    [SerializeField] private List<Image> borderColorSquares;
+
     private int borderColorIndex = 0;
     private bool useBorder = false;
 
     void Start()
     {
-        // —– validation rapide ——
+        //validation
         if (shapeImage == null) Debug.LogError("ShapeImage manquant");
-        if (shapeGroups == null || shapeGroups.Count == 0) Debug.LogError("shapeGroups non configuré");
+        if (shapeGroups == null || shapeGroups.Count == 0) Debug.LogError("shapeGroups non configurÃ©");
         if (shapePrevButton == null || shapeNextButton == null)
             Debug.LogError("Shape Prev/Next buttons manquants");
         if (shapeColorButtons == null || shapeColorButtons.Count == 0)
             Debug.LogError("Shape color buttons manquants");
 
         if (logoImage == null) Debug.LogError("LogoImage manquant");
-        if (logoGroups == null || logoGroups.Count == 0) Debug.LogError("logoGroups non configuré");
+        if (logoGroups == null || logoGroups.Count == 0) Debug.LogError("logoGroups non configurÃ©");
         if (logoPrevButton == null || logoNextButton == null)
             Debug.LogError("Logo Prev/Next buttons manquants");
         if (logoColorButtons == null || logoColorButtons.Count == 0)
@@ -160,40 +80,65 @@ public class TeamCustom : MonoBehaviour
 
         if (borderImage == null) Debug.LogError("BorderImage manquant");
         if (borderGroups == null || borderGroups.Count == 0)
-            Debug.LogError("borderGroups non configuré");
+            Debug.LogError("borderGroups non configurÃ©");
         if (toggleBorderButton == null)
             Debug.LogError("toggleBorderButton manquant");
         if (borderColorButtons == null || borderColorButtons.Count == 0)
             Debug.LogError("Border color buttons manquants");
 
-        // —– branchements Shape ——
+        //branchements Shape
         shapePrevButton.onClick.AddListener(PreviousShape);
         shapeNextButton.onClick.AddListener(NextShape);
         foreach (var b in shapeColorButtons) b.onClick.AddListener(CycleShapeColor);
 
-        // —– branchements Logo ——
+        //branchements Logo
         logoPrevButton.onClick.AddListener(PreviousLogo);
         logoNextButton.onClick.AddListener(NextLogo);
         foreach (var b in logoColorButtons) b.onClick.AddListener(CycleLogoColor);
 
-        // —– branchements Border ——
+        //branchements Border
         toggleBorderButton.onClick.AddListener(ToggleBorder);
         foreach (var b in borderColorButtons) b.onClick.AddListener(CycleBorderColor);
 
-        // masquage initial du contour
-        borderImage.gameObject.SetActive(false);
+        //borderImage.gameObject.SetActive(false);
 
-        // affiche tout de suite
         UpdateShapeDisplay();
         UpdateLogoDisplay();
     }
 
-    // ===== Shape methods =====
+    //Shape methods
     private void UpdateShapeDisplay()
     {
-        var v = shapeGroups[shapeIndex].variants;
-        if (v != null && v.Count > 0) shapeImage.sprite = v[shapeColorIndex];
-        else Debug.LogError($"Shape group {shapeIndex} vide");
+        /* var v = shapeGroups[shapeIndex].variants;
+         if (v != null && v.Count > 0) shapeImage.sprite = v[shapeColorIndex];
+         else Debug.LogError($"Shape group {shapeIndex} vide");*/
+        var sprites = shapeGroups[shapeIndex].variants;
+        if (sprites != null && sprites.Count > shapeColorIndex)
+            shapeImage.sprite = sprites[shapeColorIndex];
+
+
+        //met Ã  jour le texte Blason
+        if (blasonInfoText != null)
+            blasonInfoText.text = $"Blason {shapeIndex + 1}";
+        /*if (shapeGroups[shapeIndex].colors != null && shapeGroups[shapeIndex].colors.Count > shapeColorIndex)
+        {
+            Color btnColor = shapeGroups[shapeIndex].colors[shapeColorIndex];
+            foreach (var btn in shapeColorButtons)
+            {
+                // On cherche l'image enfant nommÃ©e "Color" et on change sa couleur
+                var colorImg = btn.transform.Find("Color")?.GetComponent<Image>();
+                if (colorImg != null)
+                    colorImg.color = btnColor;
+            }
+        }*/
+        var colors = shapeGroups[shapeIndex].colors;
+        if (colors != null && colors.Count > shapeColorIndex)
+        {
+            Color c = colors[shapeColorIndex];
+            // Applique cette teinte UNIQUEMENT aux Images enfant "Color"
+            foreach (var img in shapeColorSquares)
+                img.color = c;
+        }
     }
 
     public void NextShape()
@@ -201,23 +146,25 @@ public class TeamCustom : MonoBehaviour
         shapeIndex = (shapeIndex + 1) % shapeGroups.Count;
         shapeColorIndex = 0;
         UpdateShapeDisplay();
-        if (useBorder)
+        /*if (useBorder)
         {
-            borderColorIndex = 0;        // ou conservez la même couleur si vous préférez
+            borderColorIndex = 0;
             UpdateBorderDisplay();
-        }
+        }*/
+        UpdateBorderDisplay();
     }
 
     public void PreviousShape()
     {
         shapeIndex = (shapeIndex - 1 + shapeGroups.Count) % shapeGroups.Count;
         shapeColorIndex = 0;
-        UpdateShapeDisplay(); 
-        if (useBorder)
+        UpdateShapeDisplay();
+        /*if (useBorder)
         {
             borderColorIndex = 0;
             UpdateBorderDisplay();
-        }
+        }*/
+        UpdateBorderDisplay();
     }
 
     public void CycleShapeColor()
@@ -227,12 +174,40 @@ public class TeamCustom : MonoBehaviour
         UpdateShapeDisplay();
     }
 
-    // ===== Logo methods =====
+    //Logo methods
     private void UpdateLogoDisplay()
     {
-        var v = logoGroups[logoIndex].variants;
+        /*var v = logoGroups[logoIndex].variants;
         if (v != null && v.Count > 0) logoImage.sprite = v[logoColorIndex];
-        else Debug.LogError($"Logo group {logoIndex} vide");
+        else Debug.LogError($"Logo group {logoIndex} vide");*/
+        var logoSprites = logoGroups[logoIndex].variants;
+        if (logoSprites != null && logoSprites.Count > logoColorIndex)
+            logoImage.sprite = logoSprites[logoColorIndex];
+
+        //met Ã  jour le texte Logo
+        if (logoInfoText != null)
+            logoInfoText.text = $"Logo {logoIndex + 1}";
+        /*if (logoGroups[logoIndex].colors != null && logoGroups[logoIndex].colors.Count > logoColorIndex)
+        {
+            Color btnColor = logoGroups[logoIndex].colors[logoColorIndex];
+            foreach (var btn in logoColorButtons)
+            {
+                if (btn.image != null)
+                    btn.image.color = btnColor;
+            }
+        }
+        foreach (var btn in logoColorButtons)
+        {
+            if (btn.image != null)
+                btn.image.sprite = v[logoColorIndex];
+        }*/
+        var logoColors = logoGroups[logoIndex].colors;
+        if (logoColors != null && logoColors.Count > logoColorIndex)
+        {
+            Color c = logoColors[logoColorIndex];
+            foreach (var img in logoColorSquares)
+                img.color = c;
+        }
     }
 
     public void NextLogo()
@@ -256,25 +231,45 @@ public class TeamCustom : MonoBehaviour
         UpdateLogoDisplay();
     }
 
-    // ===== Border methods =====
+    //Border methods
     public void ToggleBorder()
     {
         useBorder = !useBorder;
-        borderImage.gameObject.SetActive(useBorder);
-        if (useBorder)
+
+        // Choisis la couleur Ã  appliquer sur les carrÃ©s â€œColorâ€
+        Color c = useBorder
+            ? borderGroups[shapeIndex].colors[borderColorIndex]  // couleur active
+            : borderGroups[shapeIndex].colors[0];                // couleur â€œinactiveâ€ (indice 0)
+
+        // Applique-la UNIQUEMENT aux images enfant â€œColorâ€
+        foreach (var img in borderColorSquares)
         {
-            borderColorIndex = 0;
-            UpdateBorderDisplay();
+            if (img != null)
+                img.color = c;
         }
     }
 
     private void UpdateBorderDisplay()
     {
-        var v = borderGroups[shapeIndex].variants;
+        /*var v = borderGroups[shapeIndex].variants;
         if (v != null && v.Count > 0)
             borderImage.sprite = v[borderColorIndex];
         else
-            Debug.LogError($"Border group {shapeIndex} vide");
+            Debug.LogError($"Border group {shapeIndex} vide");*/
+        var sprites = borderGroups[shapeIndex].variants;
+        if (sprites != null && sprites.Count > borderColorIndex)
+            borderImage.sprite = sprites[borderColorIndex];
+
+
+        var colors = borderGroups[shapeIndex].colors;
+        if (colors != null && colors.Count > borderColorIndex)
+        {
+            Color c = colors[borderColorIndex];
+            // applique la mÃªme teinte Ã  tous les carrÃ©s â€œColorâ€,
+            // y compris celui du bouton ToggleBorder
+            foreach (var img in borderColorSquares)
+                img.color = c;
+        }
     }
 
     public void CycleBorderColor()
