@@ -13,7 +13,6 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public float requiredHoldTime;
     public UnityEvent onLongClick;
     public Slider SliderTime;
-    public Button ButtonTime;
 
     private bool i_TimePassActivate;
 
@@ -32,7 +31,6 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         pointerDown = true;
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(583, 180);
         this.GetComponent<Image>().sprite = i_selecte;
     }
 
@@ -71,7 +69,6 @@ public class LongClick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             SliderTime.value = 0;
         }
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(558, 167);
 
         this.GetComponent<Image>().sprite = i_dontSelecte;
     }
