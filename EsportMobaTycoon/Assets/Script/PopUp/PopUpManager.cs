@@ -8,10 +8,11 @@ using UnityEngine.UI; // Ajoutez pour Text et Button
 public class PopUpManager : MonoBehaviour
 {
 
-    [SerializeField] public EventManager i_EventManager;
-    [SerializeField] public GameObject PopUpsContainer;
+    [SerializeField] private EventManager i_EventManager;
+    [SerializeField] private PopUpBase PrefabPopUp;
 
     [SerializeField] private List<PopUpBase> i_popUpList;
+    [SerializeField] private int PopUpCount;
 
     private Queue<PopUpData> i_PopUpsToDisplay; 
 
@@ -23,7 +24,7 @@ public class PopUpManager : MonoBehaviour
         i_EventManager = this.GetComponent<EventManager>();
         i_EventManager.i_onEventPlay.AddListener(OnEventPlay);
 
-        GetPopUpFromContainer(PopUpsContainer);
+        CreatePopUpPool();
     }
 
     private void GetPopUpFromContainer(GameObject container)
@@ -145,5 +146,14 @@ public class PopUpManager : MonoBehaviour
     {
         popUp.Hide();
         popUp.i_isOccupied = false;
+    }
+
+    private void CreatePopUpPool()
+    {
+        for (int i = 0; i < PopUpCount; i++)
+        {
+            PopUpBase popUpInstance = Instantiate(PrefabPopUp);
+            i_popUpList.Add(popUpInstance);
+        }
     }
 }
