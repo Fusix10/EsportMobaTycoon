@@ -2,16 +2,17 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using UnityEngine.Playables;
 
 public class DialogueBubble : MonoBehaviour
 {
-    public GameObject i_bubblePrefab; 
+    public GameObject i_bubblePrefab;
+    
     public Transform i_target; 
     public Vector3 i_offset = new Vector3(0, 2f, 0); 
     public Canvas i_parentCanvas;
 
-    private GameObject i_currentBubble;
-    private TypewriterEffect i_currentTypewriter;
     public SignalAsset i_manager1;
     public SignalAsset i_buddy2;
     public SignalAsset i_manager3;
@@ -21,71 +22,131 @@ public class DialogueBubble : MonoBehaviour
     public SignalAsset i_manager7;
     public SignalAsset i_buddy8;
     public SignalAsset i_manager9;
-    public Button i_buttonNext;
-    public TMP_Text i_textButtonNext;
 
-    public void ShowBubble(string message, float duration = 2f)
+    public Button i_buttonNextDia;
+    public Button i_buttonNext;
+
+    public TMP_Text i_textButtonNextDia;
+    public TMP_Text i_textButtonNext;
+    public PlayableDirector i_playableDirector;
+
+    private Queue<string> i_dialogueQueue = new Queue<string>();
+
+    private bool i_isDialogueActive = false;
+
+    private GameObject i_currentBubble;
+    private TypewriterEffect i_currentTypewriter;
+
+    private void Start()
     {
+        i_textButtonNextDia.gameObject.SetActive(false);
+        i_textButtonNext.gameObject.SetActive(false);
+        i_buttonNextDia.gameObject.SetActive(false);
+        i_buttonNext.gameObject.SetActive(false);
+    }
+
+    public void ShowBubble(string message)
+    {
+        if (i_currentBubble != null)
+            Destroy(i_currentBubble);
 
         i_currentBubble = Instantiate(i_bubblePrefab, i_target.transform);
         i_currentBubble.SetActive(true);
 
         i_currentTypewriter = i_currentBubble.GetComponentInChildren<TypewriterEffect>(true);
-
         i_currentTypewriter.StartTypewriter(message);
 
-        Destroy(i_currentBubble, duration); 
+        i_buttonNextDia.gameObject.SetActive(true);
+        i_textButtonNextDia.gameObject.SetActive(true);
     }
 
     public void OnSignalReceived(SignalAsset signal)
     {
+        if (i_playableDirector != null)
+            i_playableDirector.Pause();
+
+        i_dialogueQueue.Clear();
+
         if (signal == i_manager1)
         {
-            ShowBubble("Hé Buddy, t'as deux minutes ? J'ai trouvé un truc de fou.", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Hé Buddy, t'as deux minutes ? J'ai trouvé un truc de fou.");
         }
         else if (signal == i_buddy2)
         {
-            ShowBubble("Tu me laisses même pas commencer mon repas... Mais dis moi tout !", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Tu me laisses même pas commencer mon repas... Mais dis moi tout !");
         }
         else if (signal == i_manager3)
         {
-            ShowBubble("Regard, un tournoi d'esport sur notre MOBA préféré. Ca a l'air énorme !", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Regard, un tournoi d'esport sur notre MOBA préféré. Ca a l'air énorme !");
         }
         else if (signal == i_manager4)
         {
-            ShowBubble("Ca pourrait vraiment nous lancer dans le monde de l'esport.", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Ca pourrait vraiment nous lancer dans le monde de l'esport.");
         }
         else if (signal == i_manager5)
         {
-            ShowBubble("Et puis, c'est une super opportunité de se mesurer aux meilleures équipes.", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Et puis, c'est une super opportunité de se mesurer aux meilleures équipes.");
         }
         else if (signal == i_buddy6)
         {
-            ShowBubble("Serieux ?! Ca a l'air dingue ! On devrait s'inscire, mais on ne peut y aller juste tous les deux.", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Sérieux ?! Ça a l'air dingue ! On devrait s'inscrire, mais on ne peut y aller juste tous les deux.");
         }
         else if (signal == i_manager7)
         {
-            ShowBubble("Oui il nous faut une équipe complète. On doit recruter d'autres joueurs pour être au top.", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Oui il nous faut une équipe complète. On doit recruter d'autres joueurs pour être au top.");
         }
         else if (signal == i_buddy8)
         {
-            ShowBubble("Bonne idée. On pourrait poster une annonce sur le site de notre campus pour trouver des coéquipiers motivés.", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Bonne idée. On pourrait poster une annonce sur le site de notre campus pour trouver des coéquipiers motivés.");
         }
         else if (signal == i_manager9)
         {
-            ShowBubble("Exactement, faisons ça et commencons à nous entraîner sérieusement. On doit être prêts pour le tournoi !", 6);
-            Update();
+            i_dialogueQueue.Enqueue("Exactement, faisons ça et commençons à nous entraîner sérieusement. On doit être prêts pour le tournoi !");
             i_buttonNext.gameObject.SetActive(true);
             i_textButtonNext.gameObject.SetActive(true);
         }
+
+        if (i_dialogueQueue.Count > 0)
+        {
+            i_isDialogueActive = true;
+            DisplayNextDialogue();
+        }
+    }
+
+    private void DisplayNextDialogue()
+    {
+        if (i_dialogueQueue.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        string nextLine = i_dialogueQueue.Dequeue();
+        ShowBubble(nextLine);
+    }
+
+    public void OnNextButtonPressed()
+    {
+        if (!i_isDialogueActive)
+            return;
+
+        if (i_currentBubble != null)
+            Destroy(i_currentBubble);
+
+        DisplayNextDialogue();
+    }
+
+    private void EndDialogue()
+    {
+        i_isDialogueActive = false;
+        i_buttonNextDia.gameObject.SetActive(false);
+        i_textButtonNextDia.gameObject.SetActive(false);
+
+        if (i_currentBubble != null)
+            Destroy(i_currentBubble);
+
+        if (i_playableDirector != null)
+            i_playableDirector.Play();
     }
 
     void Update()
