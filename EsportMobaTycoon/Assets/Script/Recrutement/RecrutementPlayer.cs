@@ -186,7 +186,7 @@ public class RecrutementPlayer : MonoBehaviour
 
     public void MoveRoleLeft(SlotScript slot)
     {
-        slot.
+        
     }
 
 

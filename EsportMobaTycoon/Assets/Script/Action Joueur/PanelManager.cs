@@ -34,26 +34,80 @@ public class PanelManager : MonoBehaviour
     [SerializeField]
     TMP_Text i_nombreReputation;
     [Header("Tournament")]
-    [SerializeField] TMP_Text i_tournamentName;
-    [SerializeField] TMP_Text i_tournamentDayLeft;
+    [SerializeField] TMP_Text[] i_tournamentName;
+    [SerializeField] TMP_Text[] i_tournamentDayLeft;
+    [Header("Sponsor")]
+    [SerializeField] TMP_Text[] i_sponsorName;
     [Header("Chart")]
     [SerializeField] BarChart i_budgetChart;
     [SerializeField] BarChart i_fansChart;
     float[] i_moneyMonth;
     int[] i_fansMonth;
 
+    public void Generate()
+    {
+        List<Tournament> tournaments = new();
+        CircuitDifficulty circuitDifficulty = new();
 
+        if (GameManager.Instance.i_manager.i_reputation < 10000)
+        {
+            circuitDifficulty = CircuitDifficulty.Easy;
+        }
+        else if (GameManager.Instance.i_manager.i_reputation > 10000 && GameManager.Instance.i_manager.i_reputation < 100000)
+        {
+            circuitDifficulty = CircuitDifficulty.Normal;
+        }
+        else if (GameManager.Instance.i_manager.i_reputation > 100000)
+        {
+            circuitDifficulty = CircuitDifficulty.Hard;
+        }
+
+        int tournamentCount = 3;
+        for (int i = 0; i < tournamentCount; i++)
+        {
+            List<Match> matches = new();
+            int matchCount = Random.Range(2, 5);
+            for (int j = 0; j < matchCount; j++)
+            {
+                TeamData teamData = ScriptableObject.CreateInstance<TeamData>();
+                switch (circuitDifficulty)
+                {
+                    case CircuitDifficulty.Easy:
+                        teamData.CreateAllPlayerFromNothing(Random.Range(1, 3));
+                        break;
+                    case CircuitDifficulty.Normal:
+                        teamData.CreateAllPlayerFromNothing(Random.Range(2, 5));
+                        break;
+                    case CircuitDifficulty.Hard:
+                        teamData.CreateAllPlayerFromNothing(5);
+                        break;
+                }
+                GameManager.Instance.i_allTeam.Add(teamData);
+                matches.Add(new(teamData));
+            }
+
+            int offset = i * 60;
+            tournaments.Add(new(Random.Range(offset + 30, offset + 50), matches, "NAME TEST"));
+        }
+
+        GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
+    }
 
 
     void Start()
     {
         Debug.Log("DELETE THIS LINE", gameObject);
+        Generate();
 
         i_moneyMonth = new float[12];
         i_fansMonth = new int[12];
 
         i_manager = GameManager.Instance.i_manager;
+
         UpdateMoney();
+        UpdateNextTournement();
+        UpdateSponsor();
+
         i_nombreReputation.text = i_manager.i_reputation.ToString();
         ChangeColorSynergie();
 
@@ -69,6 +123,11 @@ public class PanelManager : MonoBehaviour
         i_fansMonth[date.monthID] = GameManager.Instance.i_manager.i_reputation;
 
         UpdateNextTournement();
+    }
+
+    public void PassTime()
+    {
+        GameManager.Instance.PassTimeButton();
     }
 
     void Update()
@@ -100,12 +159,32 @@ public class PanelManager : MonoBehaviour
     {
         foreach (var tournement in GameManager.Instance.i_circuit.i_tournaments)
         {
-            if(tournement.i_time >= GameManager.Instance.i_timeSystem.GetTime())
+            if (tournement.i_time >= GameManager.Instance.i_timeSystem.GetTime())
             {
-                i_tournamentName.text = tournement.i_name;
-                i_tournamentDayLeft.text = (tournement.i_time - GameManager.Instance.i_timeSystem.GetTime()).ToString();
+                foreach (var name in i_tournamentName)
+                {
+                    name.text = tournement.i_name;
+                }
+                foreach (var day in i_tournamentDayLeft)
+                {
+                    day.text = (tournement.i_time - GameManager.Instance.i_timeSystem.GetTime()).ToString();
+                }
+
+                if(GameManager.Instance.i_timeSystem.GetTime() < 6)
+                {
+
+                }
+
                 break;
             }
+        }
+    }
+
+    public void UpdateSponsor()
+    {
+        foreach (var sponsor in i_sponsorName)
+        {
+            sponsor.text = GameManager.Instance.i_manager.i_sponsorEvent != null ? GameManager.Instance.i_manager.i_sponsorEvent.name : "";
         }
     }
 

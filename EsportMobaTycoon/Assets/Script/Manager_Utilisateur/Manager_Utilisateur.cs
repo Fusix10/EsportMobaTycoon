@@ -19,6 +19,7 @@ public class Manager_Utilisateur
     public string i_name;
 
     public Skin i_skin;
+    public SponsorEvent i_sponsorEvent;
 
     public bool i_isGenderMale; //true female false male 
 
