@@ -585,7 +585,7 @@ PrefabInstance:
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleRight
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -596,11 +596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 103090239}
+      objectReference: {fileID: 1089162888}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SlotScript, Assembly-CSharp
+      value: MoveRoleParam, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -625,7 +625,7 @@ PrefabInstance:
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleLeft
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -636,8 +636,48 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 103090239}
+      objectReference: {fileID: 2138947022}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: MoveRoleParam, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590200992}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteToTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RecrutementPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 103090239}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: SlotScript, Assembly-CSharp
@@ -1881,7 +1921,7 @@ PrefabInstance:
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleRight
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -1892,11 +1932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 395008447}
+      objectReference: {fileID: 937244980}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SlotScript, Assembly-CSharp
+      value: MoveRoleParam, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -1921,7 +1961,7 @@ PrefabInstance:
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleLeft
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -1932,8 +1972,48 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 395008447}
+      objectReference: {fileID: 513865400}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: MoveRoleParam, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590200992}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteToTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RecrutementPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 395008447}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: SlotScript, Assembly-CSharp
@@ -2515,7 +2595,7 @@ PrefabInstance:
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleRight
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -2526,11 +2606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 519150446}
+      objectReference: {fileID: 463243022}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SlotScript, Assembly-CSharp
+      value: MoveRoleParam, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -2555,7 +2635,7 @@ PrefabInstance:
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleLeft
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -2566,8 +2646,48 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 519150446}
+      objectReference: {fileID: 1788892506}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: MoveRoleParam, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590200992}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteToTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RecrutementPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 519150446}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: SlotScript, Assembly-CSharp
@@ -6118,7 +6238,7 @@ PrefabInstance:
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleRight
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -6129,11 +6249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1237695186}
+      objectReference: {fileID: 987332881}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SlotScript, Assembly-CSharp
+      value: MoveRoleParam, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -6158,7 +6278,7 @@ PrefabInstance:
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleLeft
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -6169,8 +6289,48 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1237695186}
+      objectReference: {fileID: 1158375684}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: MoveRoleParam, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590200992}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteToTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RecrutementPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1237695186}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: SlotScript, Assembly-CSharp
@@ -7054,7 +7214,7 @@ PrefabInstance:
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleRight
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -7065,11 +7225,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1543326306}
+      objectReference: {fileID: 283190949}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: SlotScript, Assembly-CSharp
+      value: MoveRoleParam, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4427991252811401103, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -7099,7 +7259,7 @@ PrefabInstance:
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveRoleLeft
+      value: MoveRole
       objectReference: {fileID: 0}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -7110,8 +7270,48 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1543326306}
+      objectReference: {fileID: 1122997914}
     - target: {fileID: 4883342462014866837, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: MoveRoleParam, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590200992}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteToTeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RecrutementPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1543326306}
+    - target: {fileID: 5002358694050574195, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: SlotScript, Assembly-CSharp
@@ -8639,7 +8839,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &2081122419
 GameObject:
   m_ObjectHideFlags: 0

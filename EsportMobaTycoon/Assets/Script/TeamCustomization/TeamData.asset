@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4659cc72a107aeb42a7d2ad23e0525d1, type: 3}
   m_Name: TeamData
   m_EditorClassIdentifier: 
-  i_name: "\u200B"
-  i_nickName: "\u200B"
-  i_LogoBack: {fileID: 21300000, guid: d5de729d24a5eda4f926d062e07117d8, type: 3}
-  i_LogoCrown: {fileID: 21300000, guid: 076431743c38306488e9b9f5cd1b2db0, type: 3}
-  i_Logo: {fileID: 21300000, guid: 27292e35839b3be479e8c1f7b2c849bc, type: 3}
+  i_name: "fezfezf\u200B"
+  i_nickName: "zefezfzef\u200B"
+  i_LogoBack: {fileID: 21300000, guid: 02bb87295ef3740439759dc93902443c, type: 3}
+  i_LogoCrown: {fileID: 21300000, guid: 63e1093ae64ae914e9a4166faaf9f8ee, type: 3}
+  i_Logo: {fileID: 21300000, guid: 1888991a50287d14aa7b5a3592a67b54, type: 3}
   i_LogoBackColor: {r: 1, g: 1, b: 1, a: 1}
   i_LogoCrownColor: {r: 1, g: 1, b: 1, a: 1}
   i_LogoMainColor: {r: 1, g: 1, b: 1, a: 1}

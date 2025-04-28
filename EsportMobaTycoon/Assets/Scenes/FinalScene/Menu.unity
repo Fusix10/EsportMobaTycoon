@@ -394,7 +394,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 218452680}
+      - m_Target: {fileID: 119625572}
         m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
         m_MethodName: ChangeStateButton
         m_Mode: 1
@@ -453,10 +453,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 119625567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382169dea2918b743b43f24f5f4d8323, type: 3}
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_text: {fileID: 0}
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
+  i_state: 2
+  i_lock: 0
 --- !u!114 &211334205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8434971745060832451, guid: 22df918952d051c43ab90a2ab1e463ef,
@@ -482,7 +512,6 @@ GameObject:
   - component: {fileID: 218452676}
   - component: {fileID: 218452675}
   - component: {fileID: 218452679}
-  - component: {fileID: 218452680}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
