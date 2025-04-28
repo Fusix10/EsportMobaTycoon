@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerData
 {
     public string i_name;
-    public string i_knickname;
+    public string i_nickname;
     public GameManager.Role i_role;
     public GameManager.Role i_currentRole;
     public Sprite i_icon;
@@ -21,6 +21,7 @@ public class PlayerData
     public int i_potentiel;
     public Mood i_mood;
     public Skin i_skin;
+    public bool i_isBuddy;
 
     public void SetFromPlayer(Player p)
     {
@@ -39,6 +40,7 @@ public class PlayerData
         i_potentiel = p.i_potentiel;
         i_mood = p.i_mood;
         i_skin = p.i_skin;
+        i_isBuddy = p.i_isBuddy;
     }
 
     public void SetFromData(
@@ -54,13 +56,14 @@ public class PlayerData
     Mood mood,
     GameManager.Role currentRole,
     Character characterId = null,
-    Sprite icon = null
+    Skin skin = null,
+    bool isBuddy = false
     )
     {
         i_name = name;
-        i_knickname = knickname;
+        i_nickname = knickname;
         i_role = role;
-        i_icon = icon;
+        i_skin = skin;
         i_mechanic = mechanic;
         i_knowledge = knowledge;
         i_favoriteCharacterId = favoriteCharacterId;
@@ -71,5 +74,6 @@ public class PlayerData
         i_characterId = characterId;
         i_currentRole = currentRole;
         i_morale = 100;
+        i_isBuddy = isBuddy;
     }
 }

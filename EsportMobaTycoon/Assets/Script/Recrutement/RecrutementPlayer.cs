@@ -22,12 +22,12 @@ public class RecrutementPlayer : MonoBehaviour
     public Transform i_PanelLevel;
     public Transform i_PanelPotential;
     public GameObject i_playerSlotPrefab;
+    public List<GameObject> i_playerSlotPrefabs;
 
     [Header("Player List")]
-    public List<Player> i_allPlayersObejct;
     public List<PlayerData> i_allPlayers;
     public TeamData i_selectedTeam;
-    private int i_currentIndex = 0;
+    private int i_currentIndex;
 
     [Header("Anim")]
     public Animator i_teamAnimator;
@@ -41,45 +41,46 @@ public class RecrutementPlayer : MonoBehaviour
     public Sprite i_spriteEmpty;
 
 
+    private PlayerData selected;
+
     void Start()
     {
-        i_allPlayers = new List<PlayerData>(10);
         i_selectedTeam = GameManager.Instance.i_manager.i_teamData;
+        PlayerFactory playerFactory = this.GetComponent<PlayerFactory>();
 
         for (int i = 0; i < 10; i++)
         {
             if (i < 2)
             {
-                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.ADC));
+                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.ADC));
             }
             else if (i < 4)
             {
-                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.SUPPORT));
+                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.SUPPORT));
             }
             else if (i < 6)
             {
-                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.MIDLANER));
+                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.MIDLANER));
             }
             else if (i < 8)
             {
-                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.JUNGLER));
+                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.JUNGLER));
             }
             else if (i < 10)
             {
-                i_allPlayersObejct.Add(this.GetComponent<PlayerFactory>().CreateRandomPlayerWithRole(GameManager.Role.TOPLANER));
+                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.TOPLANER));
             }
-            i_allPlayersObejct[i].transform.position = new Vector3(-0.2574105f + (i * i_allPlayersObejct[i].transform.localScale.x * 2), 1.29f, 0.7858481f);
-            //i_allPlayers[i].SetFromPlayer(i_allPlayersObejct[i]);
-            Debug.Log(i);
         }
-
-        UpdateUI();
+        i_currentIndex = 0;
+        selected = i_allPlayers[i_currentIndex];
     }
 
     public void ScrollLeft()
     {
-        i_currentIndex = (i_currentIndex - 1 + i_allPlayers.Count) % i_allPlayers.Count;
-        UpdateUI();
+        if (i_allPlayers.Count > 0)
+        {
+            i_currentIndex = (i_currentIndex - 1 + i_allPlayers.Count) % i_allPlayers.Count;
+        }
     }
 
     public void ScrollRight()
@@ -88,272 +89,257 @@ public class RecrutementPlayer : MonoBehaviour
         {
             i_currentIndex = (i_currentIndex + 1) % i_allPlayers.Count;
         }
-        UpdateUI();
+    }
+
+    public void InitInfo(PlayerData playerData, GameObject Prefabs)
+    {
+        Prefabs.GetComponent<SlotScript>().i_face.sprite = playerData.i_skin.i_faceSitting;
+        Prefabs.GetComponent<SlotScript>().i_hair.sprite = playerData.i_skin.i_hairSitting;
+        Prefabs.GetComponent<SlotScript>().i_name.text = playerData.i_name;
     }
 
     public void AddToTeam()
     {
-        Player selected = i_allPlayersObejct[i_currentIndex];
-        Manager_Utilisateur manager = GameManager.Instance.i_manager;
-
-        if (manager.TeamPlayers.Contains(selected))
+        if (i_selectedTeam.i_players.Count >= 5)
         {
-            Debug.Log("Ce joueur est dej�a dans l'equipe.");
-            return;
+            Debug.Log("Plus de place");
         }
-
-        if (manager.GetPlayerByRole(selected.i_currentRole) != null)
-        {
-            Debug.Log("Ce r�le est dej�a pris.");
-            
-            return;
-        }
-
-        if (manager.TeamPlayers.Count >= 5)
-        {
-            Debug.Log("L'equipe est complete.");
-            return;
-        }
-
-        PlayerData playerData = new PlayerData();
-        playerData.SetFromPlayer(selected);
-        i_selectedTeam.i_players.Add(playerData);
-
-        Debug.Log($"{selected.i_name} ajout�E�El'�quipe en tant que {selected.i_currentRole.ToString()}.");
-        Transform rolePanel = GetPanelForRole(selected.i_currentRole);
-        if (rolePanel != null)
-        {
-            GameObject slot = Instantiate(i_playerSlotPrefab, rolePanel);
-            slot.GetComponentInChildren<TMP_Text>().text = selected.i_name;
-
-            Button i_removeButton = slot.transform.Find("Remove").GetComponent<Button>();
-            Button i_moveLeftButton = slot.transform.Find("MoveLeft").GetComponent<Button>();
-            Button i_moveRightButton = slot.transform.Find("MoveRight").GetComponent<Button>();
-            if (i_removeButton != null)
-            {
-                i_removeButton.onClick.AddListener(() => RemovePlayer(selected));
-            }
-            if (i_moveLeftButton != null)
-            {
-                i_moveLeftButton.onClick.AddListener(() => OnRoleChangeButtonClicked(selected, false));
-            }
-
-            if (i_moveRightButton != null)
-            {
-                i_moveRightButton.onClick.AddListener(() => OnRoleChangeButtonClicked(selected, true));
-            }
-        }
-
-        PlayAddAnimation();
-
-        UpdateUI();    
-    }
-
-    public void MovePlayerToAdjacentRole(Player player, bool moveRight)
-    {
-        Manager_Utilisateur manager = GameManager.Instance.i_manager;
-
-        if (!manager.TeamPlayers.Contains(player))
-        {
-            Debug.Log("Le joueur n'est pas dans l'�quipe.");
-            return;
-        }
-
-        GameManager.Role currentRole = player.i_currentRole;
-        GameManager.Role newRole;
-        if (moveRight)
-            newRole = (GameManager.Role)(((int)currentRole + 1) % 5);
         else
-            newRole = (GameManager.Role)(((int)currentRole - 1 + 5) % 5);
-
-        Player playerAtNewRole = manager.GetPlayerByRole(newRole);
-
-        if (playerAtNewRole != null)
         {
-            playerAtNewRole.SetRole((GameManager.Role)currentRole);
-            Debug.Log($"�change entre {player.i_name} et {playerAtNewRole.i_name}");
-        }
-        player.SetRole((GameManager.Role)newRole);
-
-        UpdateUI();
-    }
-
-    public void OnRoleChangeButtonClicked(Player player, bool moveRight)
-    {
-        MovePlayerToAdjacentRole(player, moveRight);
-    }
-
-    public void RemovePlayer(Player player)
-    {
-        GameManager.Instance.i_manager.RemovePlayer(player);
-
-        Debug.Log($"{player.i_name} a �t�Eretir�Ede l'�quipe.");
-
-        UpdateUI();
-    }
-
-    public void OnRemoveButtonClicked(Player player)
-    {
-        RemovePlayer(player);
-    }
-
-    private void UpdateUI()
-    {
-        ClearRolePanels();
-
-        foreach (Player player in GameManager.Instance.i_manager.TeamPlayers)
-        {
-            Transform rolePanel = GetPanelForRole(player.i_currentRole);
-            if (rolePanel != null)
+            for (int i = 0; i < i_selectedTeam.i_players.Count; i++) 
             {
-                GameObject existingSlot = rolePanel.Find(player.i_name)?.gameObject;
-
-                if (existingSlot == null)
+                if (selected.i_currentRole == i_selectedTeam.i_players[i].i_currentRole)
                 {
-                    GameObject slot = Instantiate(i_playerSlotPrefab, rolePanel);
-                    slot.GetComponentInChildren<TMP_Text>().text = player.i_name;
-
-                    Button removeButton = slot.transform.Find("Remove").GetComponent<Button>();
-                    Button moveLeftButton = slot.transform.Find("MoveLeft").GetComponent<Button>();
-                    Button moveRightButton = slot.transform.Find("MoveRight").GetComponent<Button>();
-                    if (removeButton != null)
-                    {
-                        removeButton.onClick.RemoveAllListeners();
-                        removeButton.onClick.AddListener(() => RemovePlayer(player));
-                    }
-                    if (moveLeftButton != null)
-                    {
-                        moveLeftButton.onClick.RemoveAllListeners();
-                        moveLeftButton.onClick.AddListener(() => OnRoleChangeButtonClicked(player, false));
-                    }
-                    if (moveRightButton != null)
-                    {
-                        moveRightButton.onClick.RemoveAllListeners();
-                        moveRightButton.onClick.AddListener(() => OnRoleChangeButtonClicked(player, true));
-                    }
+                    Debug.Log("Ce r�le est dej�a pris.");
+                    return;
                 }
             }
-        }
 
-        Player currentPlayer = i_allPlayersObejct[i_currentIndex];
-        i_nameText.text = $"Nom : " + currentPlayer.i_name;
-        i_roleText.text = $"Role : " + currentPlayer.i_currentRole.ToString();
-        //i_characterText.text = $"Charactere : " + currentPlayer.i_characterId.i_name;
-
-        InitStat(currentPlayer.i_lvl, currentPlayer.i_potentiel, currentPlayer.i_mechanic, currentPlayer.i_knowledge);
-    }
-
-    public void InitStat(int lvl, int potentiel, Mechanic mechanic, Knowledge knowledge)
-    {
-        CleanUp();
-
-        int mecha = (mechanic.s_stamina.s_lvl + mechanic.s_reflexe.s_lvl) / 2;
-        int know = (knowledge.s_teamFight.s_lvl + knowledge.s_objective.s_lvl + knowledge.s_placement.s_lvl) / 2;
-
-        for (int i = 0; i < lvl; i++)
-        {
-            i_lvl[i].sprite = i_spriteStar;
-        }
-
-        for (int i = 0; i < potentiel; i++)
-        {
-            i_Potentiel[i].sprite = i_spriteStar;
-        }
-
-        for (int i = 0; i < mecha; i++)
-        {
-            i_Mechanic[i].sprite = i_spriteStar;
-        }
-
-        for (int i = 0; i < know; i++)
-        {
-            i_knowledge[i].sprite = i_spriteStar;
-        }
-    }
-
-    public void CleanUp()
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            i_lvl[i].sprite = i_spriteEmpty;
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            i_Potentiel[i].sprite = i_spriteEmpty;
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            i_Mechanic[i].sprite = i_spriteEmpty;
-        }
-
-        for (int i = 0; i < 5; i++)
-        {
-            i_knowledge[i].sprite = i_spriteEmpty;
-        }
-    }
-
-    private void ClearRolePanels()
-    {
-        foreach (Transform child in i_topPanel)
-        {
-            if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
+            if (i_selectedTeam.i_players.Contains(selected))
             {
-                Destroy(child.gameObject);
+                Debug.Log("Ce joueur est dej�a dans l'equipe.");
+                return;
             }
-        }
-
-        foreach (Transform child in i_junglePanel)
-        {
-            if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
-            {
-                Destroy(child.gameObject);
-            }
-        }
-
-        foreach (Transform child in i_midPanel)
-        {
-            if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
-            {
-                Destroy(child.gameObject);
-            }
-        }
-
-        foreach (Transform child in i_adcPanel)
-        {
-            if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
-            {
-                Destroy(child.gameObject);
-            }
-        }
-
-        foreach (Transform child in i_supportPanel)
-        {
-            if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
-            {
-                Destroy(child.gameObject);
-            }
+            i_selectedTeam.AddPlayer(selected);
+            i_allPlayers.Remove(selected);
         }
     }
 
-    private string GetRoleName(GameManager.Role role)
+    public void DeleteToTeam()
     {
-        return role.ToString();
-    }
-
-    private Transform GetPanelForRole(GameManager.Role role)
-    {
-        switch (role)
+        if (i_selectedTeam.i_players.Count >= 5)
         {
-            case GameManager.Role.TOPLANER: return i_topPanel;
-            case GameManager.Role.JUNGLER: return i_junglePanel;
-            case GameManager.Role.MIDLANER: return i_midPanel;
-            case GameManager.Role.SUPPORT: return i_supportPanel;
-            case GameManager.Role.ADC: return i_adcPanel;
-            default: return null;
+            Debug.Log("Plus de place");
+        }
+        else
+        {
+            for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
+            {
+                if (selected.i_currentRole == i_selectedTeam.i_players[i].i_currentRole)
+                {
+                    Debug.Log("Ce r�le est dej�a pris.");
+                    return;
+                }
+            }
+
+            if (i_selectedTeam.i_players.Contains(selected))
+            {
+                Debug.Log("Ce joueur est dej�a dans l'equipe.");
+                return;
+            }
+            i_selectedTeam.AddPlayer(selected);
+            i_allPlayers.Remove(selected);
         }
     }
+
+    //public void MovePlayerToAdjacentRole(Player player, bool moveRight)
+    //{
+    //    Manager_Utilisateur manager = GameManager.Instance.i_manager;
+
+    //    if (!manager.TeamPlayers.Contains(player))
+    //    {
+    //        Debug.Log("Le joueur n'est pas dans l'�quipe.");
+    //        return;
+    //    }
+
+    //    GameManager.Role currentRole = player.i_currentRole;
+    //    GameManager.Role newRole;
+    //    if (moveRight)
+    //        newRole = (GameManager.Role)(((int)currentRole + 1) % 5);
+    //    else
+    //        newRole = (GameManager.Role)(((int)currentRole - 1 + 5) % 5);
+
+    //    Player playerAtNewRole = manager.GetPlayerByRole(newRole);
+
+    //    if (playerAtNewRole != null)
+    //    {
+    //        playerAtNewRole.SetRole((GameManager.Role)currentRole);
+    //        Debug.Log($"�change entre {player.i_name} et {playerAtNewRole.i_name}");
+    //    }
+    //    player.SetRole((GameManager.Role)newRole);
+
+    //    UpdateUI();
+    //}
+
+    //public void OnRoleChangeButtonClicked(Player player, bool moveRight)
+    //{
+    //    MovePlayerToAdjacentRole(player, moveRight);
+    //}
+
+
+
+    //private void UpdateUI()
+    //{
+    //    ClearRolePanels();
+
+    //    foreach (Player player in GameManager.Instance.i_manager.TeamPlayers)
+    //    {
+    //        Transform rolePanel = GetPanelForRole(player.i_currentRole);
+    //        if (rolePanel != null)
+    //        {
+    //            GameObject existingSlot = rolePanel.Find(player.i_name)?.gameObject;
+
+    //            if (existingSlot == null)
+    //            {
+    //                GameObject slot = Instantiate(i_playerSlotPrefab, rolePanel);
+    //                slot.GetComponentInChildren<TMP_Text>().text = player.i_name;
+
+    //                Button removeButton = slot.transform.Find("Remove").GetComponent<Button>();
+    //                Button moveLeftButton = slot.transform.Find("MoveLeft").GetComponent<Button>();
+    //                Button moveRightButton = slot.transform.Find("MoveRight").GetComponent<Button>();
+    //                if (removeButton != null)
+    //                {
+    //                    removeButton.onClick.RemoveAllListeners();
+    //                    removeButton.onClick.AddListener(() => RemovePlayer(player));
+    //                }
+    //                if (moveLeftButton != null)
+    //                {
+    //                    moveLeftButton.onClick.RemoveAllListeners();
+    //                    moveLeftButton.onClick.AddListener(() => OnRoleChangeButtonClicked(player, false));
+    //                }
+    //                if (moveRightButton != null)
+    //                {
+    //                    moveRightButton.onClick.RemoveAllListeners();
+    //                    moveRightButton.onClick.AddListener(() => OnRoleChangeButtonClicked(player, true));
+    //                }
+    //            }
+    //        }
+    //    }
+
+    //    Player currentPlayer = i_allPlayersObejct[i_currentIndex];
+    //    i_nameText.text = $"Nom : " + currentPlayer.i_name;
+    //    i_roleText.text = $"Role : " + currentPlayer.i_currentRole.ToString();
+    //    //i_characterText.text = $"Charactere : " + currentPlayer.i_characterId.i_name;
+
+    //    InitStat(currentPlayer.i_lvl, currentPlayer.i_potentiel, currentPlayer.i_mechanic, currentPlayer.i_knowledge);
+    //}
+
+    //public void InitStat(int lvl, int potentiel, Mechanic mechanic, Knowledge knowledge)
+    //{
+    //    CleanUp();
+
+    //    int mecha = (mechanic.s_stamina.s_lvl + mechanic.s_reflexe.s_lvl) / 2;
+    //    int know = (knowledge.s_teamFight.s_lvl + knowledge.s_objective.s_lvl + knowledge.s_placement.s_lvl) / 2;
+
+    //    for (int i = 0; i < lvl; i++)
+    //    {
+    //        i_lvl[i].sprite = i_spriteStar;
+    //    }
+
+    //    for (int i = 0; i < potentiel; i++)
+    //    {
+    //        i_Potentiel[i].sprite = i_spriteStar;
+    //    }
+
+    //    for (int i = 0; i < mecha; i++)
+    //    {
+    //        i_Mechanic[i].sprite = i_spriteStar;
+    //    }
+
+    //    for (int i = 0; i < know; i++)
+    //    {
+    //        i_knowledge[i].sprite = i_spriteStar;
+    //    }
+    //}
+
+    //public void CleanUp()
+    //{
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        i_lvl[i].sprite = i_spriteEmpty;
+    //    }
+
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        i_Potentiel[i].sprite = i_spriteEmpty;
+    //    }
+
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        i_Mechanic[i].sprite = i_spriteEmpty;
+    //    }
+
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        i_knowledge[i].sprite = i_spriteEmpty;
+    //    }
+    //}
+
+    //private void ClearRolePanels()
+    //{
+    //    foreach (Transform child in i_topPanel)
+    //    {
+    //        if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
+    //        {
+    //            Destroy(child.gameObject);
+    //        }
+    //    }
+
+    //    foreach (Transform child in i_junglePanel)
+    //    {
+    //        if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
+    //        {
+    //            Destroy(child.gameObject);
+    //        }
+    //    }
+
+    //    foreach (Transform child in i_midPanel)
+    //    {
+    //        if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
+    //        {
+    //            Destroy(child.gameObject);
+    //        }
+    //    }
+
+    //    foreach (Transform child in i_adcPanel)
+    //    {
+    //        if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
+    //        {
+    //            Destroy(child.gameObject);
+    //        }
+    //    }
+
+    //    foreach (Transform child in i_supportPanel)
+    //    {
+    //        if (child.gameObject.name != "MoveLeft" && child.gameObject.name != "Remove" && child.gameObject.name != "MoveRight")
+    //        {
+    //            Destroy(child.gameObject);
+    //        }
+    //    }
+    //}
+
+    //private Transform GetPanelForRole(GameManager.Role role)
+    //{
+    //    switch (role)
+    //    {
+    //        case GameManager.Role.TOPLANER: return i_topPanel;
+    //        case GameManager.Role.JUNGLER: return i_junglePanel;
+    //        case GameManager.Role.MIDLANER: return i_midPanel;
+    //        case GameManager.Role.SUPPORT: return i_supportPanel;
+    //        case GameManager.Role.ADC: return i_adcPanel;
+    //        default: return null;
+    //    }
+    //}
 
     public void PlayAddAnimation()
     {
