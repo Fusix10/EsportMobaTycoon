@@ -13,7 +13,7 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    TimeSystem i_timeSystem;
+    public TimeSystem i_timeSystem { get; private set; }
 
     // Event MAnager
     [SerializeField] public EventManager i_eventManager;
