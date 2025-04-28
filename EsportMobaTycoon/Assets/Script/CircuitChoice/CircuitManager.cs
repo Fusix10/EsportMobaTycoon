@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CircuitManager : MonoBehaviour
 {
-    Simulation i_simulation;
+
+    public DisplayCircuit i_circuitManager;
     List<string> tournamentName = new List<string>() {
     "Summoner's Clash",
     "Nexus Arena",
@@ -32,6 +33,18 @@ public class CircuitManager : MonoBehaviour
     "The Ranked Royale",
     "SummonerÅfs Crown"
     };
+
+    List<Circuit> i_circuits;
+
+    private void Start()
+    {
+        i_circuits = new List<Circuit>();
+        Generate();
+        Generate();
+        Generate();
+        i_circuitManager.Init(i_circuits);
+        i_circuitManager.UpdateCanva();
+    }
 
     public void Generate()
     {
@@ -71,7 +84,7 @@ public class CircuitManager : MonoBehaviour
                         teamData.CreateAllPlayerFromNothing(5);
                         break;
                 }
-                GameManager.Instance.i_allTeam.Add(teamData);
+                //GameManager.Instance.i_allTeam.Add(teamData);
                 matches.Add(new(teamData));
             }
 
@@ -79,8 +92,8 @@ public class CircuitManager : MonoBehaviour
             tournaments.Add(new(Random.Range(offset + 30, offset + 50), matches, tournamentName[Random.Range(0, (tournamentName.Count-1))]));
         }
 
-        GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
-        i_simulation.MatchMaking();
+        //GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
+        i_circuits.Add(new Circuit(tournaments, circuitDifficulty));
     }
 }
 
@@ -98,6 +111,7 @@ public class Circuit
 
     public Circuit(List<Tournament> tournaments, CircuitDifficulty difficulty)
     {
+        i_tournaments = new List<Tournament>();
         this.i_tournaments = tournaments;
         this.i_difficulty = difficulty;
     }
@@ -111,6 +125,8 @@ public class Tournament
     
     public Tournament(int time, List<Match> matches, string name)
     {
+        i_matches = new List<Match>();
+
         i_name = name;
         i_time = time;
 
