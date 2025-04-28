@@ -10,6 +10,7 @@ TagManager:
   - Remove
   - Move
   - PopUpBase
+  - Character
   layers:
   - Default
   - TransparentFX

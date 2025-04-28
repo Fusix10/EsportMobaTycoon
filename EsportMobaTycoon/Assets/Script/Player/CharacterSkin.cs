@@ -50,11 +50,13 @@ public class CharacterSkin : MonoBehaviour
         i_shoesStanding.sprite = i_skin.i_shoesStanding;
     }
 
-    public void SwitchStanding()
+    public void SwitchStanding() => SetStanding(!i_standing);
+    public void SetStanding(bool isStanding)
     {
         i_isStanding = !i_isStanding;
         Draw();
     }
+
 
     void Draw()
     {

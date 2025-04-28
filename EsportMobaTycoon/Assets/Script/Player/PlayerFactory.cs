@@ -93,7 +93,7 @@ public class PlayerFactory : MonoBehaviour
         return playerComponent;
     }
 
-    public Player CreateRandomPlayer()//
+    public Player CreateRandomPlayer()
     {
         GameObject playerObj = Instantiate(PlayerPrefabs);
 

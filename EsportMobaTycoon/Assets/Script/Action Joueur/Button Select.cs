@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,6 +15,9 @@ public class ButtonSelect : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     public Sprite i_select;
     public Sprite i_dontSelect;
+
+    public Color i_colorBase;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class ButtonSelect : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerUp(PointerEventData eventData)
     {
         GetComponent<Image>().sprite = i_dontSelect;
-        GetComponentInChildren<TMP_Text>().color = Color.black;
+        GetComponentInChildren<TMP_Text>().color = i_colorBase;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -49,7 +51,7 @@ public class ButtonSelect : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         for (int i = 0; i < i_button.Count; i++)
         {
             i_button[i].GetComponent<Image>().sprite = i_dontSelect;
-            i_button[i].GetComponentInChildren<TMP_Text>().color = Color.black;
+            i_button[i].GetComponentInChildren<TMP_Text>().color = i_colorBase;
         }
         UISystemProfilerApi.AddMarker("Button.onClick", this);
         m_OnClick.Invoke();
