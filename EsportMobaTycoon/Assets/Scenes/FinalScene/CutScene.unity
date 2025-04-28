@@ -457,33 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b45d364bd4e6b4eb09ba9d4295f5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInput: {fileID: 0}
-  knicknameInput: {fileID: 0}
-  characterImage: {fileID: 0}
-  teamSpiritXpSlider: {fileID: 0}
-  teamSpiritLvlSlider: {fileID: 0}
-  xpSlider: {fileID: 0}
-  roleSlider: {fileID: 0}
-  rolePlayedSlider: {fileID: 0}
-  potentialSlider: {fileID: 0}
-  reputationSlider: {fileID: 0}
-  reflexelvlSlider: {fileID: 0}
-  reflexexpSlider: {fileID: 0}
-  staminalvlSlider: {fileID: 0}
-  staminaxpSlider: {fileID: 0}
-  combolvlSlider: {fileID: 0}
-  comboxpSlider: {fileID: 0}
-  objectivexpSlider: {fileID: 0}
-  objectivelvlSlider: {fileID: 0}
-  placementxpSlider: {fileID: 0}
-  placementlvlSlider: {fileID: 0}
-  teamFightxpSlider: {fileID: 0}
-  teamFightlvlSlider: {fileID: 0}
-  favoriteCharacterSlider: {fileID: 0}
-  characterPlayedSlider: {fileID: 0}
-  moodDropdown: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  baseMaterial: {fileID: 0}
   PlayerPrefabs: {fileID: 5809320719845124057, guid: d5146580f8dc1e94ab420560de2977ea,
     type: 3}
 --- !u!114 &79271818
@@ -545,6 +518,7 @@ GameObject:
   - component: {fileID: 87253899}
   - component: {fileID: 87253898}
   - component: {fileID: 87253901}
+  - component: {fileID: 87253902}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -615,7 +589,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 87253899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 87253902}
+        m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
+        m_MethodName: ChangeStateButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &87253899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +662,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &87253902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87253896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
+  i_state: 5
+  i_lock: 0
 --- !u!1 &399793894
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30.455, y: 0}
+  m_AnchoredPosition: {x: -30.454987, y: 0}
   m_SizeDelta: {x: -174.327, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &585163844
@@ -975,6 +1004,8 @@ MonoBehaviour:
     12
 
     Result 13'
+  i_state: 0
+  i_lock: 0
 --- !u!4 &614666483
 Transform:
   m_ObjectHideFlags: 0
@@ -1024,7 +1055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -39.906, y: 0}
+  m_AnchoredPosition: {x: -39.906006, y: 0}
   m_SizeDelta: {x: -180.628, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &786035064
