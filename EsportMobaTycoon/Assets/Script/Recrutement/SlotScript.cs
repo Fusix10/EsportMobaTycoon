@@ -14,6 +14,8 @@ public class SlotScript : MonoBehaviour
     [Header("Panel")]
     public GameObject i_panelRole;
     public GameObject i_panelRoleActivate;
+
+    public GameManager.Role i_role;
     void Start()
     {
 

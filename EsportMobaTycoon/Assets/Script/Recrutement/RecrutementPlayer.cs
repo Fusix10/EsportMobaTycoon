@@ -49,14 +49,11 @@ public class RecrutementPlayer : MonoBehaviour
         {
             i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole((GameManager.Role)i));
             i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole((GameManager.Role)i));
+
+            i_playerSlotPrefabs[i].GetComponent<SlotScript>().i_role = (GameManager.Role)i;
         }
         i_currentIndex = 0;
         selected = i_allPlayers[i_currentIndex];
-
-        for (int i = 0; i < 5; i++) 
-        {
-
-        }
 
         UpdateUiSelected();
     }
@@ -132,17 +129,12 @@ public class RecrutementPlayer : MonoBehaviour
 
     public void UpdateUiSelected()
     {
-        Debug.Log("i_player : "+i_selectedTeam.i_players);
         for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
         {
-            Debug.Log("role mec = " + i_selectedTeam.i_players[i].i_role);
             for (int j = 0; j < i_playerSlotPrefabs.Count; j++)
             {
-                Debug.Log("role prefabs = " + (GameManager.Role)j);
-                if (i_selectedTeam.i_players[i].i_role == (GameManager.Role)j)
+                if (i_selectedTeam.i_players[i].i_currentRole == (GameManager.Role)j)
                 {
-                    Debug.Log("role prefabs selected = " + (GameManager.Role)j + "so j = " + j);
-                    Debug.Log("role mec = " + i_selectedTeam.i_players[i].i_role);
                     i_playerSlotPrefabs[j].GetComponent<SlotScript>().InitInfo(i_selectedTeam.i_players[i]);
                     UpdateUiPreview();
                     break;
@@ -184,9 +176,83 @@ public class RecrutementPlayer : MonoBehaviour
         }
     }
 
-    public void MoveRoleLeft(SlotScript slot)
+    public void MoveRoleLeft()
     {
-        slot.
+        MoveRoleParam moveRoleParam = this.GetComponent<MoveRoleParam>();
+        PlayerData Acutelplayer = null; 
+        PlayerData playerWithRole = null; 
+        for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
+        {
+            if (moveRoleParam.slot.i_name.text == i_selectedTeam.i_players[i].i_name)
+            {
+                Acutelplayer = i_selectedTeam.i_players[i];
+            }
+
+            if(moveRoleParam.role == i_selectedTeam.i_players[i].i_currentRole)
+            {
+                playerWithRole = i_selectedTeam.i_players[i];
+            }
+
+
+        }
+
+        if(playerWithRole == null)
+        {
+            Acutelplayer.i_currentRole = moveRoleParam.role;
+        }
+        else
+        {
+            playerWithRole.i_currentRole = Acutelplayer.i_currentRole;
+            Acutelplayer.i_currentRole = moveRoleParam.role;
+
+        }
+    }
+
+    public void MoveRoleRight(SlotScript slot)
+    {
+        for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
+        {
+            if (slot.i_name.text == i_selectedTeam.i_players[i].i_name)
+            {
+                for (int j = 0; j < i_selectedTeam.i_players.Count; j++)
+                {
+                    if ((int)i_selectedTeam.i_players[i].i_currentRole < 5)
+                    {
+                        if ((int)i_selectedTeam.i_players[j].i_currentRole == (int)i_selectedTeam.i_players[i].i_currentRole + 1)
+                        {
+                            GameManager.Role roleholder = i_selectedTeam.i_players[i].i_currentRole;
+                            i_selectedTeam.i_players[i].i_currentRole = i_selectedTeam.i_players[j].i_currentRole;
+                            i_selectedTeam.i_players[j].i_currentRole = roleholder;
+                            UpdateUiSelected();
+                            break;
+                        }
+                        else
+                        {
+                            i_selectedTeam.i_players[i].i_currentRole = (GameManager.Role)(int)i_selectedTeam.i_players[i].i_currentRole + 1;
+                            UpdateUiSelected();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (i_selectedTeam.i_players[j].i_currentRole == GameManager.Role.TOPLANER)
+                        {
+                            GameManager.Role roleholder = i_selectedTeam.i_players[i].i_currentRole;
+                            i_selectedTeam.i_players[i].i_currentRole = i_selectedTeam.i_players[j].i_currentRole;
+                            i_selectedTeam.i_players[j].i_currentRole = roleholder;
+                            UpdateUiSelected();
+                            break;
+                        }
+                        else
+                        {
+                            i_selectedTeam.i_players[i].i_currentRole = GameManager.Role.TOPLANER;
+                            UpdateUiSelected();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
 
