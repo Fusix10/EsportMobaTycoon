@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene/Credit.unity
     guid: 4b374a2fbd9f29d4c879add3d85db26b
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Hub.unity
+    guid: cb8f8d27d421ca8479a1a6321f6b6771
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: c2fc0fd8ed33f144ab489676e1e53465, type: 2}
