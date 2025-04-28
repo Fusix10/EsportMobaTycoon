@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using TMPro;
 
 public class AudioSettings : MonoBehaviour
 {
@@ -15,6 +14,9 @@ public class AudioSettings : MonoBehaviour
 
     private void Start()
     {
+        i_musicSlider.value = PlayerPrefs.GetFloat("Music");
+        i_soundsSlider.value = PlayerPrefs.GetFloat("Sounds");
+
         i_musicSlider.onValueChanged.AddListener(SetMusicVolume);
         i_soundsSlider.onValueChanged.AddListener(SetSoundsVolume);
     }
@@ -24,12 +26,18 @@ public class AudioSettings : MonoBehaviour
         Debug.Log($"Music volume set to {value}");
 
         i_audioMixer.SetFloat("MusicVolume", SliderValueToDecibel(value));
+
+        PlayerPrefs.SetFloat("Music", value);
+        PlayerPrefs.Save();
     }
 
     private void SetSoundsVolume(float value)
     {
         Debug.Log($"Sounds volume set to {value}");
         i_audioMixer.SetFloat("SoundsVolume", SliderValueToDecibel(value));
+
+        PlayerPrefs.SetFloat("Sounds", value);
+        PlayerPrefs.Save();
     }
 
     // Convert slider value 0 / 10 to decibels -80 / 0

@@ -7,26 +7,14 @@ public class HapticsToggle : MonoBehaviour
 
     private void Start()
     {
-        i_hapticsToggle.onValueChanged.AddListener(OnToggleChanged);
-
-        UpdateHapticsState(i_hapticsToggle.isOn);
+        i_hapticsToggle.isOn = PlayerPrefs.GetInt("Haptics") == 1;
     }
 
-    private void OnToggleChanged(bool isOn)
+    public void OnToggleChanged(bool isOn)
     {
-        UpdateHapticsState(isOn);
-    }
+        if (isOn) PlayerPrefs.SetInt("Haptics", 1);
+        else PlayerPrefs.SetInt("Haptics", 0);
 
-    private void UpdateHapticsState(bool isEnabled)
-    {
-        if (isEnabled)
-        {
-            Debug.Log("Haptics enabled");
-        }
-        else
-        {
-            Debug.Log("Haptics disbaled");
-        }
-
+        PlayerPrefs.Save();
     }
 }

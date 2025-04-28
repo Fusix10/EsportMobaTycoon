@@ -9,11 +9,12 @@ public class PlayerPanelUI : MonoBehaviour
     public Player i_player;
 
     [Header("Profil UI")]
-    public TMP_Text i_mecaLV;
-    public TMP_Text i_connaiLV;
-
+    public Sprite i_circle;
+    public Sprite i_circleFull;
     public List<Image> i_lvl;
     public List<Image> i_Potentiel;
+    public List<Image> i_mecanique;
+    public List<Image> i_know;
 
     public TMP_Text i_prenom;
     public TMP_Text i_surnom;
@@ -77,23 +78,27 @@ public class PlayerPanelUI : MonoBehaviour
         chart.UpdateData(0, 5, new List<double> { 0, i_player.i_knowledge.s_objective.s_lvl * 100 + i_player.i_knowledge.s_objective.s_Xp });
         chart.UpdateData(0, 4, new List<double> { 0, i_player.i_knowledge.s_teamFight.s_lvl * 100 + i_player.i_knowledge.s_teamFight.s_Xp });
         chart.UpdateData(0, 3, new List<double> { 0, i_player.i_knowledge.s_placement.s_lvl * 100 + i_player.i_knowledge.s_placement.s_Xp });
-        Debug.Log("meca 1 = " + (i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId.i_Id].s_lvl * 100 + i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId.i_Id].s_Xp));
-        Debug.Log("meca 2 = " + (i_player.i_mechanic.s_stamina.s_lvl * 100 + i_player.i_mechanic.s_stamina.s_Xp));
-        Debug.Log("meca 3 = " + (i_player.i_mechanic.s_reflexe.s_lvl * 100 + i_player.i_mechanic.s_reflexe.s_Xp));
-        Debug.Log("connai 1 = " + (i_player.i_knowledge.s_objective.s_lvl * 100 + i_player.i_knowledge.s_objective.s_Xp));
-        Debug.Log("connai 2 = " + (i_player.i_knowledge.s_teamFight.s_lvl * 100 + i_player.i_knowledge.s_teamFight.s_Xp));
-        Debug.Log("connai 3 = " + (i_player.i_knowledge.s_placement.s_lvl * 100 + i_player.i_knowledge.s_placement.s_Xp));
-        i_mecaLV.text = "lvl" + moyenMeca.ToString();
-        i_connaiLV.text = "lvl" + moyenKnow.ToString();
+        
+       
 
-        for (int i = 0; i < i_player.i_lvl; i++)
+        for (int i = 0; i < 5; i++)
         {
-            i_lvl[i].color = Color.yellow;
+            i_lvl[i].sprite = i < i_player.i_lvl ? i_circleFull : i_circle;
         }
 
-        for (int i = 0; i < potentiel; i++)
+        for (int i = 0; i < 5; i++)
         {
-            i_Potentiel[i].color = Color.yellow;
+            i_Potentiel[i].sprite = i < potentiel ? i_circleFull : i_circle;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            i_mecanique[i].sprite = i < moyenMeca ? i_circleFull : i_circle;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            i_know[i].sprite = i < moyenKnow ? i_circleFull : i_circle;
         }
 
         i_prenom.text = i_player.i_name;
