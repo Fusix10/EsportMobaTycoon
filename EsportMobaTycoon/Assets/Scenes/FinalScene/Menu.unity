@@ -394,10 +394,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 218452680}
+      - m_Target: {fileID: 119625572}
         m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
         m_MethodName: ChangeStateButton
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -453,10 +453,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 119625567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382169dea2918b743b43f24f5f4d8323, type: 3}
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  i_text: {fileID: 0}
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
+  i_state: 2
+  i_lock: 0
 --- !u!114 &211334205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8434971745060832451, guid: 22df918952d051c43ab90a2ab1e463ef,
@@ -482,7 +512,6 @@ GameObject:
   - component: {fileID: 218452676}
   - component: {fileID: 218452675}
   - component: {fileID: 218452679}
-  - component: {fileID: 218452680}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -589,47 +618,6 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: a29581e326d85ad45af088b83b99dd75, type: 2}
   MusicSlider: {fileID: 211334205}
   sfxSlider: {fileID: 670682780}
---- !u!114 &218452680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218452674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aideMemoire: 'Menu 0
-
-    CutScene 1
-
-    Avatar 2
-
-    Logo 3
-
-    Buddy 4
-
-    Hiring
-    5
-
-    Circuit 6
-
-    Hub 7
-
-    Hub1 8
-
-    Hub2 9
-
-    Hub3 10
-
-    Match
-    11
-
-    Tournaments 12
-
-    Result 13'
 --- !u!1 &261365493
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,33 +661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b45d364bd4e6b4eb09ba9d4295f5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameInput: {fileID: 0}
-  knicknameInput: {fileID: 0}
-  characterImage: {fileID: 0}
-  teamSpiritXpSlider: {fileID: 0}
-  teamSpiritLvlSlider: {fileID: 0}
-  xpSlider: {fileID: 0}
-  roleSlider: {fileID: 0}
-  rolePlayedSlider: {fileID: 0}
-  potentialSlider: {fileID: 0}
-  reputationSlider: {fileID: 0}
-  reflexelvlSlider: {fileID: 0}
-  reflexexpSlider: {fileID: 0}
-  staminalvlSlider: {fileID: 0}
-  staminaxpSlider: {fileID: 0}
-  combolvlSlider: {fileID: 0}
-  comboxpSlider: {fileID: 0}
-  objectivexpSlider: {fileID: 0}
-  objectivelvlSlider: {fileID: 0}
-  placementxpSlider: {fileID: 0}
-  placementlvlSlider: {fileID: 0}
-  teamFightxpSlider: {fileID: 0}
-  teamFightlvlSlider: {fileID: 0}
-  favoriteCharacterSlider: {fileID: 0}
-  characterPlayedSlider: {fileID: 0}
-  moodDropdown: {fileID: 0}
-  playerPrefab: {fileID: 0}
-  baseMaterial: {fileID: 0}
   PlayerPrefabs: {fileID: 5809320719845124057, guid: d5146580f8dc1e94ab420560de2977ea,
     type: 3}
 --- !u!114 &261365497
@@ -2678,12 +2639,14 @@ MonoBehaviour:
 
     Hub3 10
 
-    Match
-    11
+    Match 11
 
-    Tournaments 12
+    Tournaments
+    12
 
     Result 13'
+  i_state: 0
+  i_lock: 0
 --- !u!114 &1877674325 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5785761256477796482, guid: 22df918952d051c43ab90a2ab1e463ef,
