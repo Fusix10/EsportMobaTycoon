@@ -692,6 +692,11 @@ PrefabInstance:
       propertyPath: i_role
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9143579524092251687, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0000076
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2033,6 +2038,11 @@ PrefabInstance:
       propertyPath: i_role
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9143579524092251687, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0000076
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2701,6 +2711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: i_role
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143579524092251687, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0000076
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6345,6 +6360,11 @@ PrefabInstance:
       propertyPath: i_role
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9143579524092251687, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0000076
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7189,7 +7209,7 @@ PrefabInstance:
     - target: {fileID: 2175033272665460229, guid: d39792286f270f548aa999814754efcf,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4053759469870921721, guid: d39792286f270f548aa999814754efcf,
         type: 3}
@@ -7320,6 +7340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TopLane
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143579524092251687, guid: d39792286f270f548aa999814754efcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0000076
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
