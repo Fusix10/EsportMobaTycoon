@@ -26,7 +26,7 @@ public class TeamData : ScriptableObject
     public List<Sprite> i_LogoCrowns;
     public List<Sprite> i_Logos;*/
 
-    public List<PlayerData> i_players;
+    public List<PlayerData> i_players = new();
 
     List<string> i_allName = new List<string>
     {

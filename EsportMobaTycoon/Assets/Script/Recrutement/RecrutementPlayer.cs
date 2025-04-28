@@ -14,20 +14,17 @@ public class RecrutementPlayer : MonoBehaviour
     public TMP_Text i_countText;
 
     [Header("Role Panels")]
-    public Transform i_topPanel;
-    public Transform i_junglePanel;
-    public Transform i_midPanel;
-    public Transform i_adcPanel;
-    public Transform i_supportPanel;
-    public Transform i_PanelLevel;
-    public Transform i_PanelPotential;
-    public GameObject i_playerSlotPrefab;
+    //0 = toplane, 1 = jungle, 2 = midlane, 3 = botlane, 4 = support
     public List<GameObject> i_playerSlotPrefabs;
+    public GameObject i_playerPreviewPrefabs;
+    public GameObject i_ValideButton;
 
     [Header("Player List")]
     public List<PlayerData> i_allPlayers;
     public TeamData i_selectedTeam;
     private int i_currentIndex;
+
+
 
     [Header("Anim")]
     public Animator i_teamAnimator;
@@ -48,31 +45,20 @@ public class RecrutementPlayer : MonoBehaviour
         i_selectedTeam = GameManager.Instance.i_manager.i_teamData;
         PlayerFactory playerFactory = this.GetComponent<PlayerFactory>();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
-            if (i < 2)
-            {
-                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.ADC));
-            }
-            else if (i < 4)
-            {
-                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.SUPPORT));
-            }
-            else if (i < 6)
-            {
-                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.MIDLANER));
-            }
-            else if (i < 8)
-            {
-                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.JUNGLER));
-            }
-            else if (i < 10)
-            {
-                i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.TOPLANER));
-            }
+            i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole((GameManager.Role)i));
+            i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole((GameManager.Role)i));
         }
         i_currentIndex = 0;
         selected = i_allPlayers[i_currentIndex];
+
+        for (int i = 0; i < 5; i++) 
+        {
+
+        }
+
+        UpdateUiSelected();
     }
 
     public void ScrollLeft()
@@ -80,6 +66,8 @@ public class RecrutementPlayer : MonoBehaviour
         if (i_allPlayers.Count > 0)
         {
             i_currentIndex = (i_currentIndex - 1 + i_allPlayers.Count) % i_allPlayers.Count;
+            selected = i_allPlayers[i_currentIndex];
+            UpdateUiPreview();
         }
     }
 
@@ -88,44 +76,12 @@ public class RecrutementPlayer : MonoBehaviour
         if (i_allPlayers.Count > 0)
         {
             i_currentIndex = (i_currentIndex + 1) % i_allPlayers.Count;
+            selected = i_allPlayers[i_currentIndex];
+            UpdateUiPreview();
         }
-    }
-
-    public void InitInfo(PlayerData playerData, GameObject Prefabs)
-    {
-        Prefabs.GetComponent<SlotScript>().i_face.sprite = playerData.i_skin.i_faceSitting;
-        Prefabs.GetComponent<SlotScript>().i_hair.sprite = playerData.i_skin.i_hairSitting;
-        Prefabs.GetComponent<SlotScript>().i_name.text = playerData.i_name;
     }
 
     public void AddToTeam()
-    {
-        if (i_selectedTeam.i_players.Count >= 5)
-        {
-            Debug.Log("Plus de place");
-        }
-        else
-        {
-            for (int i = 0; i < i_selectedTeam.i_players.Count; i++) 
-            {
-                if (selected.i_currentRole == i_selectedTeam.i_players[i].i_currentRole)
-                {
-                    Debug.Log("Ce r�le est dej�a pris.");
-                    return;
-                }
-            }
-
-            if (i_selectedTeam.i_players.Contains(selected))
-            {
-                Debug.Log("Ce joueur est dej�a dans l'equipe.");
-                return;
-            }
-            i_selectedTeam.AddPlayer(selected);
-            i_allPlayers.Remove(selected);
-        }
-    }
-
-    public void DeleteToTeam()
     {
         if (i_selectedTeam.i_players.Count >= 5)
         {
@@ -147,10 +103,94 @@ public class RecrutementPlayer : MonoBehaviour
                 Debug.Log("Ce joueur est dej�a dans l'equipe.");
                 return;
             }
+            selected = i_allPlayers[i_currentIndex];
             i_selectedTeam.AddPlayer(selected);
             i_allPlayers.Remove(selected);
+            i_currentIndex = 0;
+            UpdateUiSelected();
+            if(i_selectedTeam.i_players.Count >= 5)
+            {
+                i_ValideButton.GetComponent<SceneManagerUI>().i_lock = false;
+            }
         }
     }
+
+    public void DeleteToTeam()
+    {
+        foreach (PlayerData player in i_selectedTeam.i_players)
+        {
+            if (player.i_name == this.GetComponent<SlotScript>().i_name.text)
+            {
+                i_allPlayers.Add(player);
+                i_selectedTeam.i_players.Remove(player);
+                i_currentIndex = 0;
+                selected = i_allPlayers[i_currentIndex];
+                UpdateUiSelected();
+            }
+        }
+    }
+
+    public void UpdateUiSelected()
+    {
+        Debug.Log("i_player : "+i_selectedTeam.i_players);
+        for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
+        {
+            Debug.Log("role mec = " + i_selectedTeam.i_players[i].i_role);
+            for (int j = 0; j < i_playerSlotPrefabs.Count; j++)
+            {
+                Debug.Log("role prefabs = " + (GameManager.Role)j);
+                if (i_selectedTeam.i_players[i].i_role == (GameManager.Role)j)
+                {
+                    Debug.Log("role prefabs selected = " + (GameManager.Role)j + "so j = " + j);
+                    Debug.Log("role mec = " + i_selectedTeam.i_players[i].i_role);
+                    i_playerSlotPrefabs[j].GetComponent<SlotScript>().InitInfo(i_selectedTeam.i_players[i]);
+                    UpdateUiPreview();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void UpdateUiPreview()
+    {
+        i_playerPreviewPrefabs.GetComponent<CharacterSkin>().SetSkin(selected.i_skin);
+        DisplayPlayer();
+    }
+
+    private void DisplayPlayer()
+    {
+        i_nameText.text = selected.i_name;
+        i_roleText.text = selected.i_role.ToString();
+        i_characterText.text = selected.i_favoriteCharacterId.i_name;
+
+        StartCount(i_lvl, selected.i_lvl);
+        StartCount(i_Potentiel, selected.i_potentiel);
+        int moyen = (selected.i_mechanic.s_lvlCombo[selected.i_favoriteCharacterId.i_Id].s_lvl + selected.i_mechanic.s_reflexe.s_lvl + selected.i_mechanic.s_stamina.s_lvl)/3;
+        StartCount(i_Mechanic, moyen);
+        moyen = (selected.i_knowledge.s_teamFight.s_lvl + selected.i_knowledge.s_objective.s_lvl + selected.i_knowledge.s_placement.s_lvl) / 3;
+        StartCount(i_knowledge, moyen);
+    }
+
+    private void StartCount(List<Image> stars, int Stat)
+    {
+        for (int i = 0; i < stars.Count; i++)
+        {
+            stars[i].sprite = i_spriteEmpty;
+        }
+
+        for (int i = 0; i < Stat; i++)
+        {
+            stars[i].sprite = i_spriteStar;
+        }
+    }
+
+    public void MoveRoleLeft(SlotScript slot)
+    {
+        slot.
+    }
+
+
+
 
     //public void MovePlayerToAdjacentRole(Player player, bool moveRight)
     //{

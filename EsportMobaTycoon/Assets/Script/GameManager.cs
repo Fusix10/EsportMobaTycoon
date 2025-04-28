@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public enum NameCharacter {Gragas, Jayce, Jax, Sion,Viego, LeeSin,Nidalee, JarvanIV, Yasuo, Azir, Ahri, Akali, Jinx, Ezreal, MissFortune
     , Draven, Lulu, Thresh, Lux, Braum}
-    public enum Role {TOPLANER, JUNGLER, MIDLANER, SUPPORT, ADC }
+    public enum Role {TOPLANER, JUNGLER, MIDLANER, ADC, SUPPORT, NONE }
 
     private void Awake()
     {
@@ -212,6 +212,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         i_manager = new();
+
         /*for (int i = 0; i < 5; i++)
         {
             i_manager.AddPlayer(this.GetComponent<PlayerFactory>().CreateRandomPlayer());

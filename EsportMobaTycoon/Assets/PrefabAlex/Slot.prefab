@@ -751,6 +751,8 @@ MonoBehaviour:
   i_name: {fileID: 2136431745930045225}
   i_face: {fileID: 8616734116272102949}
   i_hair: {fileID: 678931190928317767}
+  i_panelRole: {fileID: 4427991252811401103}
+  i_panelRoleActivate: {fileID: 2175033272665460229}
 --- !u!1 &7194975349474640977
 GameObject:
   m_ObjectHideFlags: 0

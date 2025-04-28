@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerFactory : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class PlayerFactory : MonoBehaviour
         return playerObj.GetComponent<Player>();
     }
 
-    public Player CreateRandomPlayerWithRole(GameManager.Role role, int potential = 0, Skin skin = null, bool Data = false, bool isBuddy = false)
+    public Player CreateRandomPlayerWithRole(GameManager.Role role = GameManager.Role.NONE, int potential = 0, Skin skin = null, bool Data = false, bool isBuddy = false)
     {
         GameObject playerObj = Instantiate(PlayerPrefabs);
 
@@ -75,12 +76,25 @@ public class PlayerFactory : MonoBehaviour
 
         string name = firstNameArray[Random.Range(0, firstNameArray.Length)] + $"  " + lastNameArray[UnityEngine.Random.Range(0, lastNameArray.Length)];
         string knickname = "Knickname" + Random.Range(1, 1000);
-        GameManager.Role favoriteRole = GameManager.Instance.GetRandomRole();
+
+        GameManager.Role favoriteRole;
+
+        if (role == GameManager.Role.NONE)
+        {
+            favoriteRole = GameManager.Instance.GetRandomRole();
+        }
+        else
+        {
+            favoriteRole = role;
+        }
+
         if (potential == 0)
         {
-            potential = Random.Range(1, 5);
+            potential = UnityEngine.Random.Range(1, 5);
         }
-        GameManager.Role currentRole = role;
+
+        GameManager.Role currentRole = favoriteRole;
+
         int reputation = Random.Range(0, 100);
         //Character characterId = GameManager.Instance.i_allCharacters[UnityEngine.Random.Range(0, 19)];
 
@@ -132,7 +146,7 @@ public class PlayerFactory : MonoBehaviour
         return playerObj.GetComponent<Player>();
     }
 
-    public PlayerData CreateRandomPlayerDataWithRole(GameManager.Role role, int potential = 0, Skin skin = null, bool Data = false)
+    public PlayerData CreateRandomPlayerDataWithRole(GameManager.Role role = GameManager.Role.NONE , int potential = 0, Skin skin = null, bool Data = false)
     {
         PlayerData playerData = new();
 
@@ -141,12 +155,24 @@ public class PlayerFactory : MonoBehaviour
 
         string name = firstNameArray[UnityEngine.Random.Range(0, firstNameArray.Length)] + $"  " + lastNameArray[UnityEngine.Random.Range(0, lastNameArray.Length)];
         string knickname = "Knickname" + UnityEngine.Random.Range(1, 1000);
-        GameManager.Role favoriteRole = GameManager.Instance.GetRandomRole();
+
+        GameManager.Role favoriteRole;
+
+        if (role == GameManager.Role.NONE)
+        {
+            favoriteRole = GameManager.Instance.GetRandomRole();
+        }
+        else
+        {
+            favoriteRole = role;
+        }
+
         if (potential == 0)
         {
             potential = UnityEngine.Random.Range(1, 5);
         }
-        GameManager.Role currentRole = role;
+
+        GameManager.Role currentRole = favoriteRole;
         int reputation = UnityEngine.Random.Range(0, 100);
 
         if (skin == null)

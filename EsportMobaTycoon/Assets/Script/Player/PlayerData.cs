@@ -41,6 +41,9 @@ public class PlayerData
         i_mood = p.i_mood;
         i_skin = p.i_skin;
         i_isBuddy = p.i_isBuddy;
+
+        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        i_lvl = i_lvl / 6;
     }
 
     public void SetFromData(
@@ -75,5 +78,8 @@ public class PlayerData
         i_currentRole = currentRole;
         i_morale = 100;
         i_isBuddy = isBuddy;
+
+        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        i_lvl = i_lvl / 6;
     }
 }
