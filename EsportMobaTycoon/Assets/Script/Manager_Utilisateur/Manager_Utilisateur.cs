@@ -25,7 +25,7 @@ public class Manager_Utilisateur
 
 
     //my team Data 
-    [SerializeField] public TeamData i_teamData;
+    [SerializeField] public TeamData i_teamData = new();
 
     public void init(string name, string lastName, Skin skin, bool isGenderXX)
     {
