@@ -8,42 +8,42 @@ using XCharts.Runtime;
 public class PanelManager : MonoBehaviour
 {
     private Manager_Utilisateur i_manager; 
+
     [Header("Money")]
-    [SerializeField]
-    Image i_iconMoney;
-    [SerializeField]
-    TMP_Text i_NombreMoney;
-    [SerializeField]
-    Image i_iconMoneyPrenium;
-    [SerializeField]
-    TMP_Text i_NombreMoneyPrenium;
+    [SerializeField] Image i_iconMoney;
+    [SerializeField] TMP_Text i_NombreMoney;
+    [SerializeField] Image i_iconMoneyPrenium;
+    [SerializeField] TMP_Text i_NombreMoneyPrenium;
+
     [Header("Synergie")]
-    [SerializeField]
-    Image i_colorSynergie;
-    [SerializeField]
-    TMP_Text i_textSynergie;
+    [SerializeField] Image i_colorSynergie;
+    [SerializeField] TMP_Text i_textSynergie;
+
     [Header("Meta")]
-    [SerializeField]
-    Image i_iconCharacter;
+    [SerializeField] Image i_iconCharacter;
+
     [Header("Agenda")]
-    [SerializeField]
-    TMP_Text i_nomTournois;
-    [SerializeField]
-    TMP_Text i_joursAvantTournois;
+    [SerializeField] TMP_Text i_nomTournois;
+    [SerializeField] TMP_Text i_joursAvantTournois;
+
     [Header("Réputation")]
-    [SerializeField]
-    TMP_Text i_nombreReputation;
+    [SerializeField] TMP_Text i_nombreReputation;
+
     [Header("Tournament")]
     [SerializeField] TMP_Text[] i_tournamentName;
     [SerializeField] TMP_Text[] i_tournamentDayLeft;
+
     [Header("Sponsor")]
     [SerializeField] TMP_Text[] i_sponsorName;
+    [SerializeField] Image[] i_sponsorImage;
+
     [Header("Chart")]
     [SerializeField] BarChart i_budgetChart;
     [SerializeField] BarChart i_fansChart;
     float[] i_moneyMonth;
     int[] i_fansMonth;
 
+    #if DEBUG
     public void Generate()
     {
         List<Tournament> tournaments = new();
@@ -92,12 +92,15 @@ public class PanelManager : MonoBehaviour
 
         GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
     }
+    #endif
 
 
     void Start()
     {
+        #if DEBUG
         Debug.Log("DELETE THIS LINE", gameObject);
         Generate();
+        #endif
 
         i_moneyMonth = new float[12];
         i_fansMonth = new int[12];
@@ -128,11 +131,6 @@ public class PanelManager : MonoBehaviour
     public void PassTime()
     {
         GameManager.Instance.PassTimeButton();
-    }
-
-    void Update()
-    {
-        
     }
 
     public void UpdateMoney()

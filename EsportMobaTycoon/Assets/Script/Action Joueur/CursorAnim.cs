@@ -10,6 +10,7 @@ public class CursorAnim : MonoBehaviour
 
     void Update()
     {
+        if (Input.touchCount <= 0) return;
 
         if (Input.GetTouch(0).phase == TouchPhase.Ended)
         {
