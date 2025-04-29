@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-//using UnityEngine.UI.Extensions;
 
 [System.Serializable]
 public class SpriteVariants

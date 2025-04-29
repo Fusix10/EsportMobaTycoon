@@ -10003,8 +10003,8 @@ GameObject:
   - component: {fileID: 1923389741}
   - component: {fileID: 1923389740}
   - component: {fileID: 1923389739}
-  - component: {fileID: 1923389742}
   - component: {fileID: 1923389743}
+  - component: {fileID: 1923389744}
   m_Layer: 5
   m_Name: ValidateButton
   m_TagString: Untagged
@@ -10076,9 +10076,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1923389742}
-        m_TargetAssemblyTypeName: ValidateButton, Assembly-CSharp
-        m_MethodName: ValidateTeam
+      - m_Target: {fileID: 1923389744}
+        m_TargetAssemblyTypeName: LogoValidateButton, Assembly-CSharp
+        m_MethodName: Submit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10138,40 +10138,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923389736}
   m_CullTransparentMesh: 1
---- !u!114 &1923389742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923389736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aeafa55b768b9246a83536fc68e2baf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamData: {fileID: 11400000, guid: 47fbc94f89dcd65448758ed0b60d239e, type: 2}
-  inputFieldGrabberList:
-  - {fileID: 1168161421}
-  - {fileID: 113544292}
-  CarouselleList: []
-  teamCustomList:
-  - {fileID: 892045598}
-  - {fileID: 892045598}
-  - {fileID: 892045598}
-  nameField: {fileID: 99315425}
-  lastNameField: {fileID: 1872594493}
-  hair: {fileID: 0}
-  face: {fileID: 0}
-  torso: {fileID: 0}
-  legs: {fileID: 0}
-  male: {fileID: 363793371}
-  female: {fileID: 522478097}
-  maleSelect: {fileID: 0}
-  femaleSelect: {fileID: 0}
-  maleUnselect: {fileID: 0}
-  femaleUnselect: {fileID: 0}
-  isGenderMale: 0
 --- !u!114 &1923389743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10215,6 +10181,19 @@ MonoBehaviour:
     Result 13'
   i_state: 4
   i_lock: 0
+--- !u!114 &1923389744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923389736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5247a8931d841c44ba7e06dd6072cdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logo: {fileID: 892045598}
 --- !u!1 &1955392919
 GameObject:
   m_ObjectHideFlags: 0

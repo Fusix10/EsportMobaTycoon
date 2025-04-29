@@ -52,10 +52,10 @@ public class DisplayCircuit : MonoBehaviour
     {
         i_difficulty.text = circuit.i_difficulty.ToString();
         
-        i_name1.text += circuit.i_tournaments[0].i_name;
-        i_time1.text += circuit.i_tournaments[0].i_time;
+        i_name1.text = "Nom: " + circuit.i_tournaments[0].i_name;
+        i_time1.text = "Temps: " + circuit.i_tournaments[0].i_time;
 
-        i_nbMatch1.text += circuit.i_tournaments[0].i_matches.Count;
+        i_nbMatch1.text = "Nb Match: " + circuit.i_tournaments[0].i_matches.Count;
         i_contre1.text = "";
         for (int i = 0; i < circuit.i_tournaments[0].i_matches.Count; i++)
         {
@@ -63,10 +63,10 @@ public class DisplayCircuit : MonoBehaviour
             i_contre1.text += " & ";
         }
 
-        i_name2.text += circuit.i_tournaments[1].i_name;
-        i_time2.text += circuit.i_tournaments[1].i_time;
+        i_name2.text = "Nom: " + circuit.i_tournaments[1].i_name;
+        i_time2.text = "Temps: " + circuit.i_tournaments[1].i_time;
 
-        i_nbMatch2.text += circuit.i_tournaments[1].i_matches.Count;
+        i_nbMatch2.text = "Nb Match: " + circuit.i_tournaments[1].i_matches.Count;
         i_contre2.text = "";
         for (int i = 0; i < circuit.i_tournaments[1].i_matches.Count; i++)
         {
@@ -74,10 +74,10 @@ public class DisplayCircuit : MonoBehaviour
             i_contre2.text += " & ";
         }
 
-        i_name3.text += circuit.i_tournaments[2].i_name;
-        i_time3.text += circuit.i_tournaments[2].i_time;
+        i_name3.text = "Nom: " + circuit.i_tournaments[2].i_name;
+        i_time3.text = "Temps: " + circuit.i_tournaments[2].i_time;
 
-        i_nbMatch3.text += circuit.i_tournaments[2].i_matches.Count;
+        i_nbMatch3.text = "Nb Match: " + circuit.i_tournaments[2].i_matches.Count;
         i_contre3.text = "";
         for (int i = 0; i < circuit.i_tournaments[2].i_matches.Count; i++)
         {
