@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
         i_stateToScene.Add(GameState.Match, "Match");
         i_stateToScene.Add(GameState.Tournaments, "Tournaments");
         i_stateToScene.Add(GameState.Result, "Result");
+        i_stateToScene.Add(GameState.OptionScreen, "OptionScreen");
         string allMappings = string.Join(
     ", ",
     i_stateToScene.Select(kv => kv.Key + "→" + kv.Value)
@@ -355,7 +356,8 @@ public enum GameState
     Hub3,
     Match,
     Tournaments,
-    Result
+    Result,
+    OptionScreen
 }
 /*[System.Serializable]
 public class GameData

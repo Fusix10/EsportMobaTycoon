@@ -746,7 +746,7 @@ GameObject:
   - component: {fileID: 239879301}
   - component: {fileID: 239879300}
   - component: {fileID: 239879299}
-  - component: {fileID: 239879298}
+  - component: {fileID: 239879302}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -774,19 +774,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.23370361, y: 0.6010132}
   m_SizeDelta: {x: -1.2896996, y: -2.8880997}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &239879298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239879296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382169dea2918b743b43f24f5f4d8323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i_text: {fileID: 0}
 --- !u!114 &239879299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,9 +818,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 16068652}
+      - m_Target: {fileID: 239879302}
         m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
-        m_MethodName: ButtonOptions
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -881,6 +868,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239879296}
   m_CullTransparentMesh: 1
+--- !u!114 &239879302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239879296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
+  i_state: 0
+  i_lock: 0
 --- !u!1 &261365493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4862,7 +4892,6 @@ GameObject:
   - component: {fileID: 1352891198}
   - component: {fileID: 1352891197}
   - component: {fileID: 1352891196}
-  - component: {fileID: 1352891195}
   - component: {fileID: 1352891201}
   m_Layer: 5
   m_Name: Canvas
@@ -4871,49 +4900,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1352891195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352891194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aideMemoire: 'Menu 0
-
-    CutScene 1
-
-    Avatar 2
-
-    Logo 3
-
-    Buddy 4
-
-    Hiring
-    5
-
-    Circuit 6
-
-    Hub 7
-
-    Hub1 8
-
-    Hub2 9
-
-    Hub3 10
-
-    Match 11
-
-    Tournaments
-    12
-
-    Result 13'
-  i_state: 0
-  i_lock: 0
 --- !u!114 &1352891196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5211,6 +5197,7 @@ GameObject:
   - component: {fileID: 1433132302}
   - component: {fileID: 1433132301}
   - component: {fileID: 1433132300}
+  - component: {fileID: 1433132304}
   m_Layer: 5
   m_Name: Tutoriel
   m_TagString: Untagged
@@ -5295,10 +5282,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1352891195}
+      - m_Target: {fileID: 1433132304}
         m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
         m_MethodName: ChangeStateButton
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5345,6 +5332,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433132298}
   m_CullTransparentMesh: 1
+--- !u!114 &1433132304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433132298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba460172c5df304595fd2e06112efb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aideMemoire: 'Menu 0
+
+    CutScene 1
+
+    Avatar 2
+
+    Logo 3
+
+    Buddy 4
+
+    Hiring
+    5
+
+    Circuit 6
+
+    Hub 7
+
+    Hub1 8
+
+    Hub2 9
+
+    Hub3 10
+
+    Match
+    11
+
+    Tournaments 12
+
+    Result 13'
+  i_state: 2
+  i_lock: 0
 --- !u!1 &1446499623
 GameObject:
   m_ObjectHideFlags: 0
