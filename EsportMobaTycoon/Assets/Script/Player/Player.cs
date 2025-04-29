@@ -151,8 +151,8 @@ public class Player : MonoBehaviour
     public void ChangeLuck(Player opponent)
     {
         i_totalLuck = 0f;
-        Luck();
         ApplyFavoriteCharacterBonus();
+        Luck();
         ApplyRolePenalty();
         MatchUpLuck(opponent);
     }

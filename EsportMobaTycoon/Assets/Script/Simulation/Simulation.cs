@@ -9,36 +9,44 @@ using UnityEngine.SceneManagement;
 
 public class Simulation : MonoBehaviour
 {
-    public PlayerFactory i_playerfactory;
+    private PlayerFactory i_playerfactory;
     public TeamData i_teamRed;
     public TeamData i_teamBlue;
     public List<Match> i_match;
     int i_currentId;
     void Start()
     {
+        i_playerfactory = GameManager.Instance.i_playerFactory;
         i_match = new List<Match>();
-        i_currentId = 0;  
+        i_currentId = 0;
+        Init();
     }
 
-    public void Init()
+    public void Init(List<Match> match = null)
     {
-        i_teamBlue = GameManager.Instance.i_manager.i_teamData;
-        i_match = GameManager.Instance.i_circuit.i_tournaments[0].i_matches;
+        //i_match = match;
+        //i_teamBlue = GameManager.Instance.i_manager.i_teamData;
+        i_teamBlue = new TeamData();
+        i_teamBlue.CreateAllPlayerFromNothing();
+        for (int i = 0; i < 3; i++)
+        {
+            TeamData team = new TeamData();
+            team.CreateAllPlayerFromNothing();
+            i_match.Add(new(team));
+        }
+
     }
 
     public void MatchMaking()
     {
-        Init();
+        i_teamRed = i_match[i_currentId].i_team;
         if (i_currentId >= i_match.Count)
         {
-            Debug.LogWarning("All matches were simulated.");
+            Debug.Log("All matches were simulated.");
             return;
         }
-
-        TeamData redTeam = i_match[i_currentId].i_team;
-
-        Draft(i_teamBlue, redTeam);
-        Simulate(redTeam);
+        Draft(i_teamBlue, i_teamRed);
+        Simulate(i_teamRed);
     }
 
 
@@ -100,13 +108,16 @@ public class Simulation : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             blue.Add(i_playerfactory.CreatePlayerFromData(i_teamBlue.GetTeam()[i]));
+        }
+        for (int i = 0; i < 5; i++)
+        {
             red.Add(i_playerfactory.CreatePlayerFromData(i_teamRed.GetTeam()[i]));
         }
         float blueSum = 0;
         float redSum = 0;
-        for (int i = 0; i < i_teamRed.GetTeam().Count; i++)
+        for (int i = 0; i < i_teamRed.i_players.Count; i++)
         {
-            for (int j = 0; j < i_teamBlue.GetTeam().Count; j++)
+            for (int j = 0; j < i_teamBlue.i_players.Count; j++)
             {
                 if (blue[i].i_currentRole == red[j].i_currentRole)
                 {

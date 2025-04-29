@@ -70,15 +70,15 @@ public class TeamDataFactory : MonoBehaviour
         teamData.i_Logo = i_Logos[UnityEngine.Random.Range(0, i_Logos.Count)];
         teamData.i_LogoCrown = i_LogoCrowns[UnityEngine.Random.Range(0, i_LogoCrowns.Count)];
 
-        teamData.i_players.Add(GameManager.Instance.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.ADC, potentiel));
+        teamData.i_players.Add(GameManager.Instance.i_playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.ADC, potentiel));
 
-        teamData.i_players.Add(GameManager.Instance.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.SUPPORT, potentiel));
+        teamData.i_players.Add(GameManager.Instance.i_playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.SUPPORT, potentiel));
 
-        teamData.i_players.Add(GameManager.Instance.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.MIDLANER, potentiel));
+        teamData.i_players.Add(GameManager.Instance.i_playerFactory .CreateRandomPlayerDataWithRole(GameManager.Role.MIDLANER, potentiel));
 
-        teamData.i_players.Add(GameManager.Instance.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.JUNGLER, potentiel));
+        teamData.i_players.Add(GameManager.Instance.i_playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.JUNGLER, potentiel));
 
-        teamData.i_players.Add(GameManager.Instance.GetComponent<PlayerFactory>().CreateRandomPlayerDataWithRole(GameManager.Role.TOPLANER, potentiel));
+        teamData.i_players.Add(GameManager.Instance.i_playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.TOPLANER, potentiel));
    
     }
 }
