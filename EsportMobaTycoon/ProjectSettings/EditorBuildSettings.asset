@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScene/Menu.unity
     guid: 15bc7089a423ef145a75640420f1009d
   - enabled: 1
-    path: Assets/Scenes/FinalScene/CutScene.unity
-    guid: 194f39b2f904ca94facae86aadb4bbbf
-  - enabled: 1
     path: Assets/Scenes/FinalScene/Avatar.unity
     guid: ed6da893b8eb61843a252241b7a44619
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/CutScene.unity
+    guid: 194f39b2f904ca94facae86aadb4bbbf
   - enabled: 1
     path: Assets/Scenes/FinalScene/Logo.unity
     guid: 25d63126ae62de644ab2aaf5cc75717a
@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene/Hub.unity
     guid: cb8f8d27d421ca8479a1a6321f6b6771
+  - enabled: 1
+    path: Assets/Scenes/FinalScene/Simulation.unity
+    guid: 2788af40d98433144a4fcfffacf1f7bf
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
       guid: c2fc0fd8ed33f144ab489676e1e53465, type: 2}
