@@ -819,8 +819,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 239879302}
-        m_TargetAssemblyTypeName: MenuStart, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
+        m_MethodName: ChangeStateButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -903,13 +903,13 @@ MonoBehaviour:
 
     Hub3 10
 
-    Match
-    11
+    Match 11
 
-    Tournaments 12
+    Tournaments
+    12
 
     Result 13'
-  i_state: 0
+  i_state: 14
   i_lock: 0
 --- !u!1 &261365493
 GameObject:
@@ -5367,10 +5367,10 @@ MonoBehaviour:
 
     Hub3 10
 
-    Match
-    11
+    Match 11
 
-    Tournaments 12
+    Tournaments
+    12
 
     Result 13'
   i_state: 2
