@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4659cc72a107aeb42a7d2ad23e0525d1, type: 3}
   m_Name: TeamData
   m_EditorClassIdentifier: 
-  i_name: "Vitality\u200B"
-  i_nickName: "BDS\u200B"
-  i_LogoBack: {fileID: 21300000, guid: 8706724015cbea74aaf5d248470fd06c, type: 3}
-  i_LogoCrown: {fileID: 21300000, guid: 6dba66ca9a07b414a98e34ee97118599, type: 3}
+  i_name: "B\xE9bou\u200B"
+  i_nickName: "dieux\u200B"
+  i_LogoBack: {fileID: 21300000, guid: 5f73f68b7490af04bad569e1494d0169, type: 3}
+  i_LogoCrown: {fileID: 21300000, guid: 6c41c75c0a1d2434e9a9e9fed2857acb, type: 3}
   i_Logo: {fileID: 21300000, guid: c116590ccf1f9284581802c8f72848e7, type: 3}
   i_LogoBackColor: {r: 1, g: 1, b: 1, a: 1}
   i_LogoCrownColor: {r: 1, g: 1, b: 1, a: 1}
