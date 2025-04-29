@@ -13,7 +13,7 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    TimeSystem i_timeSystem;
+    public TimeSystem i_timeSystem { get; private set; }
 
     // Event MAnager
     [SerializeField] public EventManager i_eventManager;
@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
     public void PassTimeButton()
     {
         i_timeSystem.passingTime();
-        i_eventManager.Churn();
+        i_eventManager?.Churn();
     }
     public void AddAction(ActionMother NewAction)
     {

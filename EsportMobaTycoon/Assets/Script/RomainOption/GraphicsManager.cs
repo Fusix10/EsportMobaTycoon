@@ -19,7 +19,9 @@ public class GraphicsManager : MonoBehaviour
 
     void Start()
     {
-        i_currentGraphic = GraphicTier.Medium;
+        i_currentGraphic = (GraphicTier)PlayerPrefs.GetInt("Graphic");
+
+        QualitySettings.SetQualityLevel((int)i_currentGraphic);
     }
 
     void Update()
@@ -35,8 +37,11 @@ public class GraphicsManager : MonoBehaviour
         if (current < max)
         {
             i_currentGraphic = (GraphicTier)(current + 1);
+
+            PlayerPrefs.SetInt("Graphic", (int)i_currentGraphic);
+            PlayerPrefs.Save();
+
             QualitySettings.IncreaseLevel();
-            UpdateGraphics();
         }
     }
 
@@ -47,16 +52,11 @@ public class GraphicsManager : MonoBehaviour
         if (current > 0)
         {
             i_currentGraphic = (GraphicTier)(current - 1);
+
+            PlayerPrefs.SetInt("Graphic", (int)i_currentGraphic);
+            PlayerPrefs.Save();
+
             QualitySettings.DecreaseLevel();
-            UpdateGraphics(); 
         }
-    }
-
-
-    private void UpdateGraphics()
-    {
-        Debug.Log($"Graphics set to : {i_currentGraphic}");
-        // need to do ?
-        // update the game graphics 
     }
 }

@@ -12,6 +12,8 @@ public class ActualiseButton : MonoBehaviour
     public Sprite i_select;
     public Sprite i_dontSelect;
 
+    public Color i_textColor;
+
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +25,7 @@ public class ActualiseButton : MonoBehaviour
         for (int i = 0; i < i_button.Count; i++)
         {
             i_button[i].GetComponent<Image>().sprite = i_dontSelect;
-            i_button[i].GetComponentInChildren<TMP_Text>().color = Color.black;
+            i_button[i].GetComponentInChildren<TMP_Text>().color = i_textColor;
         }
         i_button[index].GetComponent<Image>().sprite = i_select;
         i_button[index].GetComponentInChildren<TMP_Text>().color = Color.white;

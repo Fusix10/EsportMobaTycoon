@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEngine.ParticleSystem;
 
 public class InteractObject : MonoBehaviour
 {
@@ -22,13 +17,11 @@ public class InteractObject : MonoBehaviour
 
     public float requiredHoldTime;
 
-
     // Update is called once per frame
     void Update()
     {
         if (Input.touchCount > 0)
         {
-            
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Stationary)
             {

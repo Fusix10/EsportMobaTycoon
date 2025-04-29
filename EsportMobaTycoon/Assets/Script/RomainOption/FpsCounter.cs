@@ -27,7 +27,10 @@ public class FpsCounter : MonoBehaviour
         i_elapsedTime = 0f;
         i_updateInterval = 0.5f;
 
-        i_currentFpsCap = FpsCap.Medium;
+        i_currentFpsCap = (FpsCap)PlayerPrefs.GetInt("FPS");
+
+        QualitySettings.SetQualityLevel((int)i_currentFpsCap);
+
         UpdateFps();
     }
 
@@ -53,6 +56,10 @@ public class FpsCounter : MonoBehaviour
         if (currentIndex < values.Length - 1)
         {
             i_currentFpsCap = values[currentIndex + 1];
+
+            PlayerPrefs.SetInt("FPS", (int)i_currentFpsCap);
+            PlayerPrefs.Save();
+
             UpdateFps();
         }
     }
@@ -65,6 +72,10 @@ public class FpsCounter : MonoBehaviour
         if (currentIndex > 0) 
         {
             i_currentFpsCap = values[currentIndex - 1];
+
+            PlayerPrefs.SetInt("FPS", (int)i_currentFpsCap);
+            PlayerPrefs.Save();
+
             UpdateFps();
         }
     }

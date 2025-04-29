@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class TimeSystem : MonoBehaviour
         
     }
 
-    public int GetTime()//
+    public int GetTime()
     {
         return i_actualTime;
     }
@@ -26,17 +27,17 @@ public class TimeSystem : MonoBehaviour
     public delegate void TurnPass();
     public event TurnPass OnTurnPass;
 
-    public void AddAction(ActionMother NewAction)//
+    public void AddAction(ActionMother NewAction)
     {
         OnTurnPass += NewAction.actualise;
     }
 
-    public void DeleteAction(ActionMother NewAction)//
+    public void DeleteAction(ActionMother NewAction)
     {
         OnTurnPass -= NewAction.actualise;
     }
 
-    public void passingTime()//
+    public void passingTime()
     {
         i_actualTime++;
 

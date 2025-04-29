@@ -14,6 +14,8 @@ public class ButtonChangeSpriteAndSize : MonoBehaviour, IPointerDownHandler, IPo
     private ButtonClickedEvent m_OnClick = new ButtonClickedEvent();
     public Image i_isDown;
     public Image i_isUp;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -22,14 +24,14 @@ public class ButtonChangeSpriteAndSize : MonoBehaviour, IPointerDownHandler, IPo
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        i_isDown.enabled = true;
-        i_isUp.enabled = false;
+        if(i_isDown != null) i_isDown.enabled = true;
+        if (i_isUp != null) i_isUp.enabled = false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        i_isDown.enabled = false;
-        i_isUp.enabled = true;
+        if (i_isDown != null) i_isDown.enabled = false;
+        if (i_isUp != null) i_isUp.enabled = true;
     }
 
     public void OnPointerClick(PointerEventData eventData)

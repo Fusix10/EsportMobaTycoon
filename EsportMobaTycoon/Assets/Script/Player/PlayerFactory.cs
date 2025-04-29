@@ -21,7 +21,7 @@ public class PlayerFactory : MonoBehaviour
         return Prefab.GetComponent<Player>();
     }
 
-    public Player CreateRandomPlayer()//
+    public Player CreateRandomPlayer()
     {
         GameObject playerObj = Instantiate(PlayerPrefabs);
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SponsorEvent : ActionOnDurationTime
 {
+    public string name = "Sponso Name";
     int requiredReputation = 50;
     public int moneyGainPerTurn = 100;
     Manager_Utilisateur manager;

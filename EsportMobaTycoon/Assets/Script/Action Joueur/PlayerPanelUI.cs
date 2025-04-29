@@ -1,21 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 using XCharts.Runtime;
 
-public class UI_Player : MonoBehaviour
+public class PlayerPanelUI : MonoBehaviour
 {
-    public SavePlayerSelectedUi savePlayerSelectedUi;
+    public Player i_player;
 
     [Header("Profil UI")]
-    public TMP_Text i_mecaLV;
-    public TMP_Text i_connaiLV;
-
+    public Sprite i_circle;
+    public Sprite i_circleFull;
     public List<Image> i_lvl;
     public List<Image> i_Potentiel;
+    public List<Image> i_mecanique;
+    public List<Image> i_know;
 
     public TMP_Text i_prenom;
     public TMP_Text i_surnom;
@@ -45,16 +44,9 @@ public class UI_Player : MonoBehaviour
     public Slider i_sliderCoh;
     public TMP_Text i_champFav;
 
-    void Start()
-    {
-        
-    }
+    
+    public void SetPlayer(Player player) => i_player = player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     int moyenMeca;
     int moyenKnow;
     int potentiel;
@@ -64,55 +56,58 @@ public class UI_Player : MonoBehaviour
         CleanUp(i_Potentiel);
 
         chart =  i_graphNiv.GetComponent<RadarChart>();
-        Player player = GameManager.Instance.i_manager.GetPlayer()[savePlayerSelectedUi.i_indexPlayer];
 
-        CalculPlayer(player);
+        CalculPlayer(i_player);
 
         //Meca2
-        /* i_graphNiv.data[0].data[0] = player.i_mechanic.s_stamina.s_lvl;
+        /* i_graphNiv.data[0].data[0] = i_player.i_mechanic.s_stamina.s_lvl;
          //Meca3
-         i_graphNiv.data[0].data[1] = player.i_mechanic.s_reflexe.s_lvl;
+         i_graphNiv.data[0].data[1] = i_player.i_mechanic.s_reflexe.s_lvl;
          //Know3
-         i_graphNiv.data[0].data[2] = player.i_knowledge.s_objective.s_lvl;
+         i_graphNiv.data[0].data[2] = i_player.i_knowledge.s_objective.s_lvl;
          //Know2
-         i_graphNiv.data[0].data[3] = player.i_knowledge.s_teamFight.s_lvl;
+         i_graphNiv.data[0].data[3] = i_player.i_knowledge.s_teamFight.s_lvl;
          //Know1
-         i_graphNiv.data[0].data[4] = player.i_knowledge.s_placement.s_lvl;*/
+         i_graphNiv.data[0].data[4] = i_player.i_knowledge.s_placement.s_lvl;*/
         //Meca1
-        //i_graphNiv.data[0].data[5] = player.i_mechanic.s_lvlCombo;
+        //i_graphNiv.data[0].data[5] = i_player.i_mechanic.s_lvlCombo;
 
-        chart.UpdateData(0, 0, new List<double> { 0, player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp });
-        chart.UpdateData(0, 1, new List<double> { 0, player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp });
-        chart.UpdateData(0, 2, new List<double> { 0, player.i_mechanic.s_reflexe.s_lvl * 100 + player.i_mechanic.s_reflexe.s_Xp });
-        chart.UpdateData(0, 5, new List<double> { 0, player.i_knowledge.s_objective.s_lvl * 100 + player.i_knowledge.s_objective.s_Xp });
-        chart.UpdateData(0, 4, new List<double> { 0, player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp });
-        chart.UpdateData(0, 3, new List<double> { 0, player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp });
-        Debug.Log("meca 1 = " + (player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_lvl * 100 + player.i_mechanic.s_lvlCombo[player.i_favoriteCharacterId.i_Id].s_Xp));
-        Debug.Log("meca 2 = " + (player.i_mechanic.s_stamina.s_lvl * 100 + player.i_mechanic.s_stamina.s_Xp));
-        Debug.Log("meca 3 = " + (player.i_mechanic.s_reflexe.s_lvl * 100 + player.i_mechanic.s_reflexe.s_Xp));
-        Debug.Log("connai 1 = " + (player.i_knowledge.s_objective.s_lvl * 100 + player.i_knowledge.s_objective.s_Xp));
-        Debug.Log("connai 2 = " + (player.i_knowledge.s_teamFight.s_lvl * 100 + player.i_knowledge.s_teamFight.s_Xp));
-        Debug.Log("connai 3 = " + (player.i_knowledge.s_placement.s_lvl * 100 + player.i_knowledge.s_placement.s_Xp));
-        i_mecaLV.text = "lvl" + moyenMeca.ToString();
-        i_connaiLV.text = "lvl" + moyenKnow.ToString();
+        chart.UpdateData(0, 0, new List<double> { 0, i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId.i_Id].s_lvl * 100 + i_player.i_mechanic.s_lvlCombo[i_player.i_favoriteCharacterId.i_Id].s_Xp });
+        chart.UpdateData(0, 1, new List<double> { 0, i_player.i_mechanic.s_stamina.s_lvl * 100 + i_player.i_mechanic.s_stamina.s_Xp });
+        chart.UpdateData(0, 2, new List<double> { 0, i_player.i_mechanic.s_reflexe.s_lvl * 100 + i_player.i_mechanic.s_reflexe.s_Xp });
+        chart.UpdateData(0, 5, new List<double> { 0, i_player.i_knowledge.s_objective.s_lvl * 100 + i_player.i_knowledge.s_objective.s_Xp });
+        chart.UpdateData(0, 4, new List<double> { 0, i_player.i_knowledge.s_teamFight.s_lvl * 100 + i_player.i_knowledge.s_teamFight.s_Xp });
+        chart.UpdateData(0, 3, new List<double> { 0, i_player.i_knowledge.s_placement.s_lvl * 100 + i_player.i_knowledge.s_placement.s_Xp });
+        
+       
 
-        for (int i = 0; i < player.i_lvl; i++)
+        for (int i = 0; i < 5; i++)
         {
-            i_lvl[i].color = Color.yellow;
+            i_lvl[i].sprite = i < i_player.i_lvl ? i_circleFull : i_circle;
         }
 
-        for (int i = 0; i < potentiel; i++)
+        for (int i = 0; i < 5; i++)
         {
-            i_Potentiel[i].color = Color.yellow;
+            i_Potentiel[i].sprite = i < potentiel ? i_circleFull : i_circle;
         }
 
-        i_prenom.text = player.i_name;
-        i_surnom.text = player.i_name;
-        i_role.text = player.i_currentRole.ToString();
+        for (int i = 0; i < 5; i++)
+        {
+            i_mecanique[i].sprite = i < moyenMeca ? i_circleFull : i_circle;
+        }
 
-        i_caractere.text = player.i_mood.i_moodName;
+        for (int i = 0; i < 5; i++)
+        {
+            i_know[i].sprite = i < moyenKnow ? i_circleFull : i_circle;
+        }
 
-        i_synergie.text = FindSynergie(player.i_teamSpirit.s_lvl);
+        i_prenom.text = i_player.i_name;
+        i_surnom.text = i_player.i_name;
+        i_role.text = i_player.i_currentRole.ToString();
+
+        i_caractere.text = i_player.i_mood.i_moodName;
+
+        i_synergie.text = FindSynergie(i_player.i_teamSpirit.s_lvl);
         i_synergie.color = i_synergieColor;
     }
     int i_exce;
@@ -122,8 +117,7 @@ public class UI_Player : MonoBehaviour
     {
         ClearChampion();
 
-        Player player = GameManager.Instance.i_manager.GetPlayer()[savePlayerSelectedUi.i_indexPlayer];
-        foreach (KeyValuePair<int, Lvl> pair in player.i_mechanic.s_lvlCombo)
+        foreach (KeyValuePair<int, Lvl> pair in i_player.i_mechanic.s_lvlCombo)
         {
             GameObject predab = Instantiate(i_prefabChamp);
             predab.GetComponentInChildren<TMP_Text>().text = GameManager.Instance.i_allCharacters[pair.Key].i_name;
@@ -207,11 +201,11 @@ public class UI_Player : MonoBehaviour
         }
     }
 
-    void CalculPlayer(Player player)
+    void CalculPlayer(Player i_player)
     {
-        moyenMeca = (player.i_mechanic.s_stamina.s_lvl + player.i_mechanic.s_reflexe.s_lvl) / 2;
-        moyenKnow = (player.i_knowledge.s_placement.s_lvl + player.i_knowledge.s_objective.s_lvl + player.i_knowledge.s_teamFight.s_lvl) / 3;
-        potentiel = player.i_potentiel;
+        moyenMeca = (i_player.i_mechanic.s_stamina.s_lvl + i_player.i_mechanic.s_reflexe.s_lvl) / 2;
+        moyenKnow = (i_player.i_knowledge.s_placement.s_lvl + i_player.i_knowledge.s_objective.s_lvl + i_player.i_knowledge.s_teamFight.s_lvl) / 3;
+        potentiel = i_player.i_potentiel;
     }
 
     public void ActualiseUiPlayerTrain()
@@ -219,13 +213,12 @@ public class UI_Player : MonoBehaviour
         CleanUp(i_lvlE);
         CleanUp(i_PotentielE);
 
-        Player player = GameManager.Instance.i_manager.GetPlayer()[savePlayerSelectedUi.i_indexPlayer];
+        
+        CalculPlayer(i_player);
 
-        CalculPlayer(player);
+        i_nomE.text = i_player.i_name;
 
-        i_nomE.text = player.i_name;
-
-        for (int i = 0; i < player.i_lvl; i++)
+        for (int i = 0; i < i_player.i_lvl; i++)
         {
             i_lvlE[i].color = Color.yellow;
         }

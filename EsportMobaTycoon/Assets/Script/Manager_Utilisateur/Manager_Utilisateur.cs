@@ -5,10 +5,10 @@ using TMPro;
 public class Manager_Utilisateur
 {
     //Stats dans manager
-    public float i_currentMoney = 1000;//
-    public float i_currentMoneyPrenium = 1000;//
-    public int i_reputation = 0;//
-    private List<Player> teamPlayers = new ();//
+    public float i_currentMoney;
+    public float i_currentMoneyPrenium;
+    public int i_reputation = 0;
+    private List<Player> teamPlayers = new ();
 
     public Budget budget;
 
@@ -19,6 +19,7 @@ public class Manager_Utilisateur
     public string i_name;
 
     public Skin i_skin;
+    public SponsorEvent i_sponsorEvent;
 
     public bool i_isGenderMale; //true female false male 
 
