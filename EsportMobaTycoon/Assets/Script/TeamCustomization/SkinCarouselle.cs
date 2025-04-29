@@ -102,9 +102,9 @@ public class SkinCarouselle : MonoBehaviour
 
     public Sprite GetSprite(bool isSitting = false) => isSitting ? i_sittingSprites[i_groupIndex].sprites[i_colorIndex] : i_standingSprites[i_groupIndex].sprites[i_colorIndex];
 
-    public Color GetColor() => i_sittingSprites[i_groupIndex].colors[i_colorIndex];
+    public Color GetColor() => i_standingSprites[i_groupIndex].colors[i_colorIndex];
 
-    public string GetGroupName() => i_sittingSprites[i_groupIndex].name;
+    public string GetGroupName() => i_standingSprites[i_groupIndex].name;
 
     public void GetIndices(out int outSprite)
     {

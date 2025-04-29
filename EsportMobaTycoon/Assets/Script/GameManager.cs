@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
     public List<PlayerData> i_allPlayerData;
     public List<TeamData> i_allTeam;
     public Circuit i_circuit;
+
+    public delegate void SponsorSet();
+    public event SponsorSet OnSponsorSet;
+
+
     public PlayerFactory i_playerFactory { get; private set; }
 
     public GameState i_GameState;
@@ -270,6 +275,8 @@ public class GameManager : MonoBehaviour
         NewAction.Init();
         Debug.Log("l'Action " + NewAction.i_id + " est creer");
         i_allActions.Add(NewAction);
+
+        if (NewAction is SponsorEvent) OnSponsorSet?.Invoke();
     }
 
     public void setGameState(GameState newState)

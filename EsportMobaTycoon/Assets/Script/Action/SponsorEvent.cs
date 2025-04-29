@@ -8,6 +8,7 @@ public class SponsorEvent : ActionOnDurationTime
     int requiredReputation = 50;
     public int moneyGainPerTurn = 100;
     Manager_Utilisateur manager;
+    public int i_sponsorId;
 
     //Indique si le sponsor est activé après achat?
     //private bool isActive = false;
