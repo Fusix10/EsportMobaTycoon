@@ -5711,6 +5711,7 @@ MonoBehaviour:
   i_allTeam: []
   i_buddy: {fileID: 0}
   i_GameState: 0
+  i_lastGameState: 0
   i_skins:
     hairStanding:
     - sprites:

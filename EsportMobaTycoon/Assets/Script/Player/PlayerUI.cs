@@ -14,7 +14,9 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
-        i_player = GameManager.Instance.i_playerFactory.CreateRandomPlayer();
+    #if DEBUG
+            i_player = GameManager.Instance.i_playerFactory.CreateRandomPlayer();
+    #endif
 
         ResetUI();
     }

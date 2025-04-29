@@ -12,7 +12,7 @@ public class CutSceneSkinManager : MonoBehaviour
     void Start()
     {
         i_manager.SetSkin(GameManager.Instance.i_manager.i_skin);
-        i_manager.SetSkin(GameManager.Instance.i_buddy.i_skin);
+        i_buddy.SetSkin(GameManager.Instance.i_buddy.i_skin);
 
         i_manager.SetStanding(i_isStanding);
         i_buddy.SetStanding(i_isStanding);

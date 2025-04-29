@@ -43,6 +43,11 @@ public class PanelManager : MonoBehaviour
     float[] i_moneyMonth;
     int[] i_fansMonth;
 
+
+    [Header("Chart")]
+    [SerializeField] PlayerUI[] i_characters;
+    [SerializeField] CharacterSkin i_managerUI;
+
     bool goNextTournament;
 
     #if DEBUG
@@ -118,6 +123,10 @@ public class PanelManager : MonoBehaviour
 
 
         GameManager.Instance.i_timeSystem.OnTurnPass += TimeSystem_OnTurnPass;
+
+        i_managerUI.SetSkin(GameManager.Instance.i_manager.i_skin);
+
+        
     }
 
     private void TimeSystem_OnTurnPass()

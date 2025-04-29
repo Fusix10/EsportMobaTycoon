@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     public PlayerFactory i_playerFactory { get; private set; }
 
     public GameState i_GameState;
+    public GameState i_lastGameState;
 
     private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
 
@@ -75,7 +76,6 @@ public class GameManager : MonoBehaviour
 
         i_playerFactory = GetComponent<PlayerFactory>();
 
-        i_GameState = GameState.Menu;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
         i_allPlayers = new List<Player>();
@@ -322,8 +322,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(int gameState)
     {
+        i_lastGameState = i_GameState;
         i_GameState = (GameState)gameState;
         LoadSceneForCurrentState();
+    }
+
+    public void GoLastState()
+    {
+        ChangeState((int)i_lastGameState);
     }
 
     public void LoadSceneForCurrentState()
