@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public List<TeamData> i_allTeam;
     public Circuit i_circuit;
 
+    public Player i_buddy;
+
     public delegate void SponsorSet();
     public event SponsorSet OnSponsorSet;
 
@@ -47,8 +49,7 @@ public class GameManager : MonoBehaviour
     [Header("Tous les sprites")]
     public SkinGroupData i_skins;
 
-    public class 
-        MatchUp
+    public class MatchUp
     {
         public enum stateMatchUp {COUNTER, ISCOUNTERED, NOTHING}
         public Character firstCharacter;
@@ -345,6 +346,18 @@ public class GameManager : MonoBehaviour
             Debug.Log("Aucune scène n'est associée à l'état " + i_GameState);
             Debug.Log(i_stateToScene[i_GameState]);
         }
+    }
+
+    public Tournament? GetTournament()
+    {
+        if(GameManager.Instance.i_circuit == null) return null;
+
+        foreach (var tournement in GameManager.Instance.i_circuit.i_tournaments)
+        {
+            if (tournement.i_time >= GameManager.Instance.i_timeSystem.GetTime()) return tournement;
+        }
+
+        return null;
     }
 }
 

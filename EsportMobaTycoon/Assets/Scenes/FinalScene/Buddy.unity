@@ -2946,6 +2946,7 @@ GameObject:
   - component: {fileID: 800967429}
   - component: {fileID: 800967428}
   - component: {fileID: 800967427}
+  - component: {fileID: 800967431}
   m_Layer: 5
   m_Name: ButtonValidate
   m_TagString: Untagged
@@ -3072,6 +3073,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 800967431}
+        m_TargetAssemblyTypeName: ValidateBuddyButton, Assembly-CSharp
+        m_MethodName: Submit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &800967429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,6 +3123,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800967425}
   m_CullTransparentMesh: 1
+--- !u!114 &800967431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800967425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0881fdfe14eecc64c9a2445777a2792c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recrutement: {fileID: 590200994}
 --- !u!1 &820325538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5683,6 +5709,7 @@ MonoBehaviour:
   i_allPlayers: []
   i_allPlayerData: []
   i_allTeam: []
+  i_buddy: {fileID: 0}
   i_GameState: 0
   i_skins:
     hairStanding:
@@ -7518,7 +7545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.148, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.999908, y: 0}
+  m_AnchoredPosition: {x: 13.999878, y: 0}
   m_SizeDelta: {x: -28.000183, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019196947

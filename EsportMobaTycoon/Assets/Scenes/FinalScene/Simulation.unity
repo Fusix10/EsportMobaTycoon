@@ -709,7 +709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Simulate
+  m_text: 'Simuler
 
 
 '
@@ -949,8 +949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f84b7cb4520924ba974afc79c898e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueTeam: {fileID: 0}
-  redTeam: {fileID: 0}
+  i_versus: {fileID: 0}
+  i_theTwoButton: {fileID: 0}
 --- !u!4 &559884292
 Transform:
   m_ObjectHideFlags: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Result
+  m_text: 'Resultats
 
 '
   m_isRightToLeft: 0
@@ -2857,7 +2857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Results
+  m_text: Resultats
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e1d2bc82f64f684fb14f67f18182501, type: 2}
   m_sharedMaterial: {fileID: -4247803495129324672, guid: 2e1d2bc82f64f684fb14f67f18182501,

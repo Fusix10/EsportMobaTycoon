@@ -17,7 +17,8 @@ public class DateHelper
         int year = baseYear + rest / yearvalue;
         rest %= yearvalue;
 
-        int month = rest % monthvalue;
+        int month = rest / 12;
+        rest %= monthvalue;
 
         int day = rest % dayvalue;
 

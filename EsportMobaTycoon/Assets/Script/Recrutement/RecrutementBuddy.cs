@@ -35,7 +35,7 @@ public class RecrutementBuddy : MonoBehaviour
         i_allPlayers = new List<Player>();
         for (int i = 0; i < i_BuddyCount; i++)
         {
-            Player localBud = GameManager.Instance.i_playerFactory.CreateRandomPlayerWithRole((GameManager.Role)Random.Range(0, 6), 0, null, false, true);
+            Player localBud = GameManager.Instance.i_playerFactory.CreateRandomPlayerWithRole((GameManager.Role)Random.Range(0, 5), 0, null, false, true);
             
             
             i_allPlayers.Add(localBud);
@@ -90,5 +90,10 @@ public class RecrutementBuddy : MonoBehaviour
     {
         //i_allPlayers[i_currentIndex].i_name = i_PseudoInput.text;
         i_nameText.text = i_PseudoInput.text;
+    }
+
+    public Player GetBuddy()
+    {
+        return i_allPlayers[i_currentIndex];
     }
 }

@@ -19,8 +19,6 @@ public class PlayerPanelUI : MonoBehaviour
     public TMP_Text i_prenom;
     public TMP_Text i_surnom;
     public TMP_Text i_caractere;
-    public TMP_Text i_synergie;
-    private Color i_synergieColor;
     public TMP_Text i_role;
     //public Image i_imgRole;
     //public TMP_Text i_carac;
@@ -106,9 +104,6 @@ public class PlayerPanelUI : MonoBehaviour
         i_role.text = i_player.i_currentRole.ToString();
 
         i_caractere.text = i_player.i_mood.i_moodName;
-
-        i_synergie.text = FindSynergie(i_player.i_teamSpirit.s_lvl);
-        i_synergie.color = i_synergieColor;
     }
     int i_exce;
     int i_bonne;
@@ -171,34 +166,6 @@ public class PlayerPanelUI : MonoBehaviour
             Destroy(i_panelCorrect.GetChild(i).gameObject);
         }
         
-    }
-
-    string FindSynergie(int synergie)
-    {
-        switch (synergie)
-        {
-            case 0:
-                i_synergieColor = new Color(0, 0, 0); 
-                return "D�sastreux";
-            case 1:
-                i_synergieColor = new Color(255, 0, 0);
-                return "Faible";
-            case 2:
-                i_synergieColor = new Color(255, 128, 0);
-                return "Correct";
-            case 3:
-                i_synergieColor = new Color(1, 0.92f, 0.016f);
-                return "Bon";
-            case 4:
-                i_synergieColor = new Color(200, 255, 0);
-                return "Incroyable";
-            case 5:
-                i_synergieColor = new Color(0, 255, 0);
-                return "Parfait";
-            default:
-                i_synergieColor = new Color(255, 255, 255); 
-                return "";
-        }
     }
 
     void CalculPlayer(Player i_player)
