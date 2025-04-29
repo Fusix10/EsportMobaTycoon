@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,7 @@ public class Simulation : MonoBehaviour
     int i_currentId;
     void Start()
     {
+        i_match = new List<Match>();
         i_currentId = 0;  
     }
 

@@ -237,6 +237,7 @@ public class GameManager : MonoBehaviour
         i_stateToScene.Add(GameState.Buddy, "Buddy");
         i_stateToScene.Add(GameState.Hiring, "Hiring");
         i_stateToScene.Add(GameState.Circuit, "Circuit");
+        i_stateToScene.Add(GameState.Hub, "Hub");
         i_stateToScene.Add(GameState.Hub3, "Hub3");
         i_stateToScene.Add(GameState.Match, "Match");
         i_stateToScene.Add(GameState.Tournaments, "Tournaments");
@@ -320,11 +321,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[LoadScene] État courant = {i_GameState}");
 
-        if (i_GameState == GameState.Hub)
+        /*if (i_GameState == GameState.Hub)
         {
             Debug.Log("[LoadScene] On est encore en Hub, on ne change pas de scène.");
             return;
-        }
+        }*/
 
         if (i_stateToScene.TryGetValue(i_GameState, out string sceneName))
         {

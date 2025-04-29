@@ -14,6 +14,8 @@ public class SlotScript : MonoBehaviour
     [Header("Panel")]
     public GameObject i_panelRole;
     public GameObject i_panelRoleActivate;
+
+    public GameManager.Role i_role;
     void Start()
     {
 
@@ -38,6 +40,14 @@ public class SlotScript : MonoBehaviour
         i_face.sprite = face;
         i_hair.sprite = hair;
         i_name.text = name;
+    }
+
+    public void ResetInfo()
+    {
+        SwitchPanel(false);
+        i_face.sprite = null;
+        i_hair.sprite = null;
+        i_name.text = null;
     }
 
     public void SwitchPanel(bool Panel)

@@ -49,16 +49,13 @@ public class RecrutementPlayer : MonoBehaviour
         {
             i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole((GameManager.Role)i));
             i_allPlayers.Add(playerFactory.CreateRandomPlayerDataWithRole((GameManager.Role)i));
+
+            i_playerSlotPrefabs[i].GetComponent<SlotScript>().i_role = (GameManager.Role)i;
         }
         i_currentIndex = 0;
         selected = i_allPlayers[i_currentIndex];
 
-        for (int i = 0; i < 5; i++) 
-        {
-
-        }
-
-        UpdateUiSelected();
+        UpdateUiPreview();
     }
 
     public void ScrollLeft()
@@ -107,42 +104,42 @@ public class RecrutementPlayer : MonoBehaviour
             i_selectedTeam.AddPlayer(selected);
             i_allPlayers.Remove(selected);
             i_currentIndex = 0;
+            selected = i_allPlayers[i_currentIndex];
             UpdateUiSelected();
-            if(i_selectedTeam.i_players.Count >= 5)
+            UpdateUiPreview();
+            if (i_selectedTeam.i_players.Count >= 5)
             {
                 i_ValideButton.GetComponent<SceneManagerUI>().i_lock = false;
             }
         }
     }
 
-    public void DeleteToTeam()
+    public void DeleteToTeam(SlotScript slot)
     {
         foreach (PlayerData player in i_selectedTeam.i_players)
         {
-            if (player.i_name == this.GetComponent<SlotScript>().i_name.text)
+            if (player.i_name == slot.i_name.text)
             {
                 i_allPlayers.Add(player);
                 i_selectedTeam.i_players.Remove(player);
                 i_currentIndex = 0;
                 selected = i_allPlayers[i_currentIndex];
+                slot.ResetInfo();
+                UpdateUiPreview();
                 UpdateUiSelected();
+                break;
             }
         }
     }
 
     public void UpdateUiSelected()
     {
-        Debug.Log("i_player : "+i_selectedTeam.i_players);
         for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
         {
-            Debug.Log("role mec = " + i_selectedTeam.i_players[i].i_role);
             for (int j = 0; j < i_playerSlotPrefabs.Count; j++)
             {
-                Debug.Log("role prefabs = " + (GameManager.Role)j);
-                if (i_selectedTeam.i_players[i].i_role == (GameManager.Role)j)
+                if (i_selectedTeam.i_players[i].i_currentRole == (GameManager.Role)j)
                 {
-                    Debug.Log("role prefabs selected = " + (GameManager.Role)j + "so j = " + j);
-                    Debug.Log("role mec = " + i_selectedTeam.i_players[i].i_role);
                     i_playerSlotPrefabs[j].GetComponent<SlotScript>().InitInfo(i_selectedTeam.i_players[i]);
                     UpdateUiPreview();
                     break;
@@ -184,9 +181,42 @@ public class RecrutementPlayer : MonoBehaviour
         }
     }
 
-    public void MoveRoleLeft(SlotScript slot)
+    public void MoveRole(MoveRoleParam moveRoleParam)
     {
-        
+        PlayerData Acutelplayer = null; 
+        PlayerData playerWithRole = null; 
+        for (int i = 0; i < i_selectedTeam.i_players.Count; i++)
+        {
+            Debug.Log("slot : " + moveRoleParam.slot);
+            Debug.Log("Name : " + moveRoleParam.slot.i_name);
+            Debug.Log("Player : " + i_selectedTeam.i_players[i]);
+            if (moveRoleParam.slot.i_name.text == i_selectedTeam.i_players[i].i_name)
+            {
+                Acutelplayer = i_selectedTeam.i_players[i];
+            }
+
+            if(moveRoleParam.role == i_selectedTeam.i_players[i].i_currentRole)
+            {
+                playerWithRole = i_selectedTeam.i_players[i];
+            }
+
+
+        }
+
+        if(playerWithRole == null)
+        {
+            Acutelplayer.i_currentRole = moveRoleParam.role;
+            moveRoleParam.slot.ResetInfo();
+            UpdateUiSelected();
+            UpdateUiPreview();
+        }
+        else
+        {
+            playerWithRole.i_currentRole = Acutelplayer.i_currentRole;
+            Acutelplayer.i_currentRole = moveRoleParam.role;
+            UpdateUiSelected();
+            UpdateUiPreview();
+        }
     }
 
 
