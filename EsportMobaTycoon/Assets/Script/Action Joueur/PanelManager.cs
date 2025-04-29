@@ -44,8 +44,9 @@ public class PanelManager : MonoBehaviour
     int[] i_fansMonth;
 
 
-    [Header("Chart")]
-    [SerializeField] PlayerUI[] i_characters;
+    [Header("Characters")]
+    [SerializeField] Player[] i_characters;
+    [SerializeField] PlayerUI[] i_charactersUI;
     [SerializeField] CharacterSkin i_managerUI;
 
     bool goNextTournament;
@@ -105,8 +106,7 @@ public class PanelManager : MonoBehaviour
     void Start()
     {
         #if DEBUG
-        Debug.Log("DELETE THIS LINE", gameObject);
-        Generate();
+        if(GameManager.Instance.i_circuit == null) Generate();
         #endif
 
         i_moneyMonth = new float[12];
@@ -126,7 +126,16 @@ public class PanelManager : MonoBehaviour
 
         i_managerUI.SetSkin(GameManager.Instance.i_manager.i_skin);
 
-        
+        for (int i = 0; i < i_characters.Length; i++)
+        {
+            if (i < GameManager.Instance.i_manager.i_teamData.i_players.Count)
+            {
+                i_characters[i].Init(GameManager.Instance.i_manager.i_teamData.i_players[i]);
+                i_charactersUI[i].SetSkin(GameManager.Instance.i_manager.i_teamData.i_players[i].i_skin);
+            }
+            else i_characters[i].gameObject.SetActive(false);
+            
+        }
     }
 
     private void TimeSystem_OnTurnPass()

@@ -40,7 +40,7 @@ public class DisplayCircuit : MonoBehaviour
 
 
     List<Circuit> i_circuit;
-    int i_currentId;
+    public int i_currentId { get; private set; }
 
     public void Init(List<Circuit> circuit)
     {
