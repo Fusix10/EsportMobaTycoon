@@ -33,10 +33,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7035924948772244163}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9493637, y: 0.2795574}
-  m_AnchorMax: {x: 1, y: 0.4635574}
-  m_AnchoredPosition: {x: 11, y: -2.5}
-  m_SizeDelta: {x: 26, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 803, y: 0.000015258789}
+  m_SizeDelta: {x: 66, y: 113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7803589114718338360
 CanvasRenderer:
@@ -154,8 +154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 44.810013, y: 65.87976}
-  m_SizeDelta: {x: -378.4046, y: -310.9498}
+  m_AnchoredPosition: {x: 35.663208, y: 0}
+  m_SizeDelta: {x: -360.1109, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8085590398426077849
 CanvasRenderer:
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.6208496, y: -2.654801, z: 0, w: 0}
+  m_margin: {x: 1.6208496, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 2465924762389305815}
   - component: {fileID: -8223013332693712003}
   m_Layer: 5
-  m_Name: Bulle
+  m_Name: Bulle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +295,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 825, y: 610}
+  m_SizeDelta: {x: 812, y: 314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9035099301736026668
 CanvasRenderer:
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e4cfc3a3e046fa468bffbf74c02d317, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b78504e9773f9447b10a9f6bd33c828, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -23,10 +23,8 @@ public class DialogueBubble : MonoBehaviour
     public SignalAsset i_buddy8;
     public SignalAsset i_manager9;
 
-    public Button i_buttonNextDia;
     public Button i_buttonNext;
 
-    public TMP_Text i_textButtonNextDia;
     public TMP_Text i_textButtonNext;
     public PlayableDirector i_playableDirector;
 
@@ -39,9 +37,7 @@ public class DialogueBubble : MonoBehaviour
 
     private void Start()
     {
-        i_textButtonNextDia.gameObject.SetActive(false);
         i_textButtonNext.gameObject.SetActive(false);
-        i_buttonNextDia.gameObject.SetActive(false);
         i_buttonNext.gameObject.SetActive(false);
     }
 
@@ -53,11 +49,16 @@ public class DialogueBubble : MonoBehaviour
         i_currentBubble = Instantiate(i_bubblePrefab, i_target.transform);
         i_currentBubble.SetActive(true);
 
+        Button buttonNextDia = i_currentBubble.transform.Find("ButtonNext").GetComponent<Button>();
+
+        if (buttonNextDia != null)
+        {
+            buttonNextDia.onClick.AddListener(() => OnNextButtonPressed());
+        }
+
         i_currentTypewriter = i_currentBubble.GetComponentInChildren<TypewriterEffect>(true);
         i_currentTypewriter.StartTypewriter(message);
 
-        i_buttonNextDia.gameObject.SetActive(true);
-        i_textButtonNextDia.gameObject.SetActive(true);
     }
 
     public void OnSignalReceived(SignalAsset signal)
@@ -139,8 +140,6 @@ public class DialogueBubble : MonoBehaviour
     private void EndDialogue()
     {
         i_isDialogueActive = false;
-        i_buttonNextDia.gameObject.SetActive(false);
-        i_textButtonNextDia.gameObject.SetActive(false);
 
         if (i_currentBubble != null)
             Destroy(i_currentBubble);
