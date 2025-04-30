@@ -3837,6 +3837,9 @@ MonoBehaviour:
   i_allTeam: []
   i_GameState: 0
   i_lastGameState: 0
+  shapeGroups: []
+  logoGroups: []
+  borderGroups: []
   i_skins:
     hairStanding:
     - sprites:
@@ -6654,7 +6657,7 @@ MonoBehaviour:
 
     Result 13'
   i_state: 6
-  i_lock: 0
+  i_lock: 1
 --- !u!1 &1309016438
 GameObject:
   m_ObjectHideFlags: 0
