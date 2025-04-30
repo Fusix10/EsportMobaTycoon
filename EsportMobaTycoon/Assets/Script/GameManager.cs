@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public List<TeamData> i_allTeam;
     public Circuit i_circuit;
 
-    public Player i_buddy;
+    public PlayerData i_buddy { get; set; }
 
     public delegate void SponsorSet();
     public event SponsorSet OnSponsorSet;

@@ -8,6 +8,9 @@ public class ValidateBuddyButton : MonoBehaviour
 
     public void Submit()
     {
-        GameManager.Instance.i_buddy = recrutement.GetBuddy();
+        PlayerData data = new();
+        data.SetFromPlayer(recrutement.GetBuddy());
+
+        GameManager.Instance.i_buddy = data;
     }
 }

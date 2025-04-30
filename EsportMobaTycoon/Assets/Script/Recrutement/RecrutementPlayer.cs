@@ -55,13 +55,9 @@ public class RecrutementPlayer : MonoBehaviour
         i_currentIndex = 0;
         selected = i_allPlayers[i_currentIndex];
 
-        PlayerData data = new();
-        data.SetFromPlayer(GameManager.Instance.i_buddy);
-        i_selectedTeam.AddPlayer(data);
+        i_selectedTeam.AddPlayer(GameManager.Instance.i_buddy);
 
-        UpdateUiPreview();
-
-        
+        UpdateUiSelected();
     }
 
     public void ScrollLeft()
