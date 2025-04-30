@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SimulationNew : MonoBehaviour
 {
+
+    [SerializeField]
+    SimulationDisplay i_simulationDisplay;
 
     TeamData i_managerTeam;
     TeamData i_enemyTeam;
@@ -35,6 +39,24 @@ public class SimulationNew : MonoBehaviour
 
         ChooseCharacter(i_managerTeam);
         PassToPlayerObject(i_managerTeam, i_managerPlayer);
+
+        i_enemyTeam = i_matchList[i_currentIdMatchList].i_team;
+
+        i_simulationDisplay.initLogo(i_managerTeam.i_LogoData, true);
+        i_simulationDisplay.initLogo(i_enemyTeam.i_LogoData, false);
+    }
+
+    public void ChangeLogoWithButton()
+    {
+        if (i_currentIdMatchList < i_matchList.Count)
+        {
+            i_enemyTeam = i_matchList[i_currentIdMatchList].i_team;
+            i_simulationDisplay.initLogo(i_enemyTeam.i_LogoData, false);
+        }
+        else
+        {
+            SceneManager.LoadScene("Hub");
+        }
     }
 
     public void init(List<Match> matchList)
@@ -53,6 +75,7 @@ public class SimulationNew : MonoBehaviour
             Simulation();
             i_currentIdMatchList++;
         }
+
     }
 
     private void ChooseCharacter(TeamData team)
@@ -93,7 +116,7 @@ public class SimulationNew : MonoBehaviour
     {
         float luckEnemy = 0;
         float luckManager = 0;
-        for (int i =0; i < i_enemyPlayer.Count; i++)
+        for (int i = 0; i < i_enemyPlayer.Count; i++)
         {
             luckEnemy += i_enemyPlayer[i].i_totalLuck;
             luckManager += i_managerPlayer[i].i_totalLuck;
@@ -107,10 +130,24 @@ public class SimulationNew : MonoBehaviour
         if(random >= 0 && random <= LE)
         {
             Debug.Log("team Enemy win");
+            i_simulationDisplay.ChangeScene(false);
+            i_simulationDisplay.initWin(false);
+            for (int i = 0; i < 5; i++)
+            {
+                i_simulationDisplay.DrawTeam(Random.Range(10,20).ToString(), Random.Range(4, 8).ToString(), Random.Range(10, 20).ToString(), i_enemyPlayer[i].i_name, i_enemyPlayer[i].i_skin.i_faceSitting, i_enemyPlayer[i].i_skin.i_hairSitting, i_enemyPlayer[i].i_role, false);
+                i_simulationDisplay.DrawTeam(Random.Range(4,8).ToString(), Random.Range(10, 20).ToString(), Random.Range(4, 8).ToString(), i_managerPlayer[i].i_name, i_managerPlayer[i].i_skin.i_faceSitting, i_managerPlayer[i].i_skin.i_hairSitting, i_managerPlayer[i].i_role, true);
+            }
         }
         else if(random > LE && random <= LM+LE)
         {
             Debug.Log("team manager win");
+            i_simulationDisplay.ChangeScene(false);
+            i_simulationDisplay.initWin(true);
+            for (int i = 0; i < 5; i++)
+            {
+                i_simulationDisplay.DrawTeam(Random.Range(4, 8).ToString(), Random.Range(10, 20).ToString(), Random.Range(4, 8).ToString(), i_enemyPlayer[i].i_name, i_enemyPlayer[i].i_skin.i_faceSitting, i_enemyPlayer[i].i_skin.i_hairSitting, i_enemyPlayer[i].i_role, false);
+                i_simulationDisplay.DrawTeam(Random.Range(10, 20).ToString(), Random.Range(4, 8).ToString(), Random.Range(10, 20).ToString(), i_managerPlayer[i].i_name, i_managerPlayer[i].i_skin.i_faceSitting, i_managerPlayer[i].i_skin.i_hairSitting, i_managerPlayer[i].i_role, true);
+            }
         }
         else
         {

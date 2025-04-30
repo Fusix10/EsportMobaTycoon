@@ -29,4 +29,6 @@ public class LogoUI : MonoBehaviour
         back.sprite = data.back;
         border.sprite = data.border;
     }
+
+
 }

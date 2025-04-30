@@ -15,6 +15,7 @@ public class TeamData : ScriptableObject
     public Sprite i_LogoBack;
     public Sprite i_LogoCrown;
     public Sprite i_Logo;
+    public LogoData i_LogoData;
 
     [Header("Couleurs des logos")]
     public Color i_LogoBackColor = Color.white;
@@ -140,10 +141,10 @@ public class TeamData : ScriptableObject
 
         i_name = i_allName[id];
         i_nickName = i_allNickName[id];
-/*
-        i_Logo = i_Logos[UnityEngine.Random.Range(0, i_Logos.Count)];
-        i_LogoCrown = i_LogoCrowns[UnityEngine.Random.Range(0, i_LogoCrowns.Count)];
-        i_LogoBack = i_LogoBacks[UnityEngine.Random.Range(0, i_LogoBacks.Count)];*/
+
+        i_LogoData = new LogoData();
+
+        i_LogoData.CreateFromNothing();
 
         i_players.Add(GameManager.Instance.i_playerFactory.CreateRandomPlayerDataWithRole(GameManager.Role.ADC, potentiel));
 

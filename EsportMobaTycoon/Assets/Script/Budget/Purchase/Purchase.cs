@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Purchase : MonoBehaviour
 {
-    //coût de l'objet à acheter
+    //coût de l'objet Eacheter
     public int cost = 100;
 
     public Budget budget;
@@ -14,7 +14,7 @@ public class Purchase : MonoBehaviour
     {
         if (alreadyPurchased)
         {
-            Debug.Log("Cet objet a déjà été acheté.");
+            Debug.Log("Cet objet a déjEétEachetE");
             return;
         }
 

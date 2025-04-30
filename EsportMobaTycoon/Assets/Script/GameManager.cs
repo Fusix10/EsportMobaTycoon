@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
 
+    [Header("Logo")]
+    [SerializeField] public List<SpriteVariants> shapeGroups;
+    [SerializeField] public List<SpriteVariants> logoGroups;
+    [SerializeField] public List<SpriteVariants> borderGroups;
 
     [Header("Tous les sprites")]
     public SkinGroupData i_skins;
