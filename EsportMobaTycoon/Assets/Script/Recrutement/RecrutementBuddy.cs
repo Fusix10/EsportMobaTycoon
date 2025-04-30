@@ -13,6 +13,7 @@ public class RecrutementBuddy : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] TMP_Text i_nameText;
     [SerializeField] TMP_Text i_roleText;
+    [SerializeField] TMP_Text i_characterPlayText;
     [SerializeField] CharacterSkin i_skinUI;
 
 
@@ -35,7 +36,7 @@ public class RecrutementBuddy : MonoBehaviour
         i_allPlayers = new List<Player>();
         for (int i = 0; i < i_BuddyCount; i++)
         {
-            Player localBud = GameManager.Instance.i_playerFactory.CreateRandomPlayerWithRole((GameManager.Role)Random.Range(0, 6), 0, null, false, true);
+            Player localBud = GameManager.Instance.i_playerFactory.CreateRandomPlayerWithRole((GameManager.Role)Random.Range(0, 5), 0, null, false, true);
             
             
             i_allPlayers.Add(localBud);
@@ -69,6 +70,7 @@ public class RecrutementBuddy : MonoBehaviour
         i_skinUI.SetSkin(i_currentPlayer.i_skin);
         i_nameText.text = i_currentPlayer.i_name;
         i_roleText.text = i_currentPlayer.i_currentRole.ToString();
+        i_characterPlayText.text = i_currentPlayer.i_favoriteCharacterId.i_name;
         InitStat(i_currentPlayer.i_lvl, i_currentPlayer.i_potentiel, i_currentPlayer.i_mechanic, i_currentPlayer.i_knowledge);
     }
 
@@ -90,5 +92,10 @@ public class RecrutementBuddy : MonoBehaviour
     {
         //i_allPlayers[i_currentIndex].i_name = i_PseudoInput.text;
         i_nameText.text = i_PseudoInput.text;
+    }
+
+    public Player GetBuddy()
+    {
+        return i_allPlayers[i_currentIndex];
     }
 }

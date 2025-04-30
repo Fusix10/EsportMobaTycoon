@@ -1009,8 +1009,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522553334}
-        m_TargetAssemblyTypeName: ValidateButton, Assembly-CSharp
+      - m_Target: {fileID: 522553338}
+        m_TargetAssemblyTypeName: ValidateAvatarButton, Assembly-CSharp
         m_MethodName: ToggleGender
         m_Mode: 1
         m_Arguments:
@@ -2151,8 +2151,8 @@ GameObject:
   - component: {fileID: 522553333}
   - component: {fileID: 522553336}
   - component: {fileID: 522553335}
-  - component: {fileID: 522553334}
   - component: {fileID: 522553337}
+  - component: {fileID: 522553338}
   m_Layer: 5
   m_Name: ValidateButton
   m_TagString: Untagged
@@ -2188,41 +2188,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522553330}
   m_CullTransparentMesh: 1
---- !u!114 &522553334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522553330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aeafa55b768b9246a83536fc68e2baf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamData: {fileID: 0}
-  inputFieldGrabberList:
-  - {fileID: 0}
-  - {fileID: 0}
-  CarouselleList:
-  - {fileID: 915017751}
-  - {fileID: 2007854025}
-  - {fileID: 80347334}
-  - {fileID: 554106628}
-  teamCustomList: []
-  nameField: {fileID: 461053958}
-  lastNameField: {fileID: 1212924605}
-  hair: {fileID: 915017751}
-  face: {fileID: 2007854025}
-  torso: {fileID: 80347334}
-  legs: {fileID: 554106628}
-  male: {fileID: 1341233254}
-  female: {fileID: 637814131}
-  maleSelect: {fileID: 21300000, guid: 4f3be52a1fe2cf94ba1850510ef8d66a, type: 3}
-  femaleSelect: {fileID: 21300000, guid: 94461427c1c24f14784a89c0e1026c8f, type: 3}
-  maleUnselect: {fileID: 21300000, guid: 34cdf68d1ec0381419c749a5b71d9662, type: 3}
-  femaleUnselect: {fileID: 21300000, guid: 12ee3547f04c93a488a7986ae9de5cc5, type: 3}
-  isGenderMale: 1
 --- !u!114 &522553335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2267,8 +2232,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522553334}
-        m_TargetAssemblyTypeName: ValidateButton, Assembly-CSharp
+      - m_Target: {fileID: 522553338}
+        m_TargetAssemblyTypeName: ValidateAvatarButton, Assembly-CSharp
         m_MethodName: Submit
         m_Mode: 1
         m_Arguments:
@@ -2364,6 +2329,33 @@ MonoBehaviour:
     Result 13'
   i_state: 3
   i_lock: 0
+--- !u!114 &522553338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522553330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804bd133d5f77514785cb370bec48083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameField: {fileID: 394459250}
+  lastNameField: {fileID: 2066254478}
+  hair: {fileID: 915017751}
+  face: {fileID: 2007854025}
+  body: {fileID: 1083718826}
+  torso: {fileID: 80347334}
+  legs: {fileID: 554106628}
+  shoes: {fileID: 1708025959}
+  male: {fileID: 1341233254}
+  female: {fileID: 637814131}
+  maleSelect: {fileID: 21300000, guid: 4f3be52a1fe2cf94ba1850510ef8d66a, type: 3}
+  femaleSelect: {fileID: 21300000, guid: 94461427c1c24f14784a89c0e1026c8f, type: 3}
+  maleUnselect: {fileID: 21300000, guid: 34cdf68d1ec0381419c749a5b71d9662, type: 3}
+  femaleUnselect: {fileID: 21300000, guid: 12ee3547f04c93a488a7986ae9de5cc5, type: 3}
+  isGenderMale: 0
 --- !u!1 &554106626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3679,7 +3671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.134, y: 0}
   m_AnchorMax: {x: 0.7652854, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7}
+  m_AnchoredPosition: {x: 0, y: -7.0000305}
   m_SizeDelta: {x: 0, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &777433628
@@ -6455,6 +6447,7 @@ MonoBehaviour:
   i_allPlayers: []
   i_allPlayerData: []
   i_allTeam: []
+  i_buddy: {fileID: 0}
   i_GameState: 0
   i_skins:
     hairStanding:

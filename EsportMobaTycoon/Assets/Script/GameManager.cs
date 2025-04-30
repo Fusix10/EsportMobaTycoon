@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public List<TeamData> i_allTeam;
     public Circuit i_circuit;
 
+    public PlayerData i_buddy { get; set; }
+
     public delegate void SponsorSet();
     public event SponsorSet OnSponsorSet;
 
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
     public PlayerFactory i_playerFactory { get; private set; }
 
     public GameState i_GameState;
+    public GameState i_lastGameState;
 
     private Dictionary<GameState, string> i_stateToScene = new Dictionary<GameState, string>();
 
@@ -51,8 +54,7 @@ public class GameManager : MonoBehaviour
     [Header("Tous les sprites")]
     public SkinGroupData i_skins;
 
-    public class 
-        MatchUp
+    public class MatchUp
     {
         public enum stateMatchUp {COUNTER, ISCOUNTERED, NOTHING}
         public Character firstCharacter;
@@ -78,7 +80,6 @@ public class GameManager : MonoBehaviour
 
         i_playerFactory = GetComponent<PlayerFactory>();
 
-        i_GameState = GameState.Menu;
         i_timeSystem = this.GetComponent<TimeSystem>();
         i_allActions = new List<ActionMother>();
         i_allPlayers = new List<Player>();
@@ -325,8 +326,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(int gameState)
     {
+        i_lastGameState = i_GameState;
         i_GameState = (GameState)gameState;
         LoadSceneForCurrentState();
+    }
+
+    public void GoLastState()
+    {
+        ChangeState((int)i_lastGameState);
     }
 
     public void LoadSceneForCurrentState()
@@ -349,6 +356,18 @@ public class GameManager : MonoBehaviour
             Debug.Log("Aucune scène n'est associée à l'état " + i_GameState);
             Debug.Log(i_stateToScene[i_GameState]);
         }
+    }
+
+    public Tournament? GetTournament()
+    {
+        if(GameManager.Instance.i_circuit == null) return null;
+
+        foreach (var tournement in GameManager.Instance.i_circuit.i_tournaments)
+        {
+            if (tournement.i_time >= GameManager.Instance.i_timeSystem.GetTime()) return tournement;
+        }
+
+        return null;
     }
 }
 

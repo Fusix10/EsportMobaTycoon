@@ -55,7 +55,9 @@ public class RecrutementPlayer : MonoBehaviour
         i_currentIndex = 0;
         selected = i_allPlayers[i_currentIndex];
 
-        UpdateUiPreview();
+        i_selectedTeam.AddPlayer(GameManager.Instance.i_buddy);
+
+        UpdateUiSelected();
     }
 
     public void ScrollLeft()

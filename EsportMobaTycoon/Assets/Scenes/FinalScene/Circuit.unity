@@ -1185,8 +1185,8 @@ GameObject:
   - component: {fileID: 384026626}
   - component: {fileID: 384026625}
   - component: {fileID: 384026624}
-  - component: {fileID: 384026623}
   - component: {fileID: 384026622}
+  - component: {fileID: 384026627}
   m_Layer: 5
   m_Name: ValidateButton
   m_TagString: Untagged
@@ -1257,41 +1257,6 @@ MonoBehaviour:
     Result 13'
   i_state: 7
   i_lock: 0
---- !u!114 &384026623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384026620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aeafa55b768b9246a83536fc68e2baf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamData: {fileID: 0}
-  inputFieldGrabberList:
-  - {fileID: 0}
-  - {fileID: 0}
-  CarouselleList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  teamCustomList: []
-  nameField: {fileID: 0}
-  lastNameField: {fileID: 0}
-  hair: {fileID: 0}
-  face: {fileID: 0}
-  torso: {fileID: 0}
-  legs: {fileID: 0}
-  male: {fileID: 0}
-  female: {fileID: 0}
-  maleSelect: {fileID: 21300000, guid: 4f3be52a1fe2cf94ba1850510ef8d66a, type: 3}
-  femaleSelect: {fileID: 21300000, guid: 94461427c1c24f14784a89c0e1026c8f, type: 3}
-  maleUnselect: {fileID: 21300000, guid: 34cdf68d1ec0381419c749a5b71d9662, type: 3}
-  femaleUnselect: {fileID: 21300000, guid: 12ee3547f04c93a488a7986ae9de5cc5, type: 3}
-  isGenderMale: 1
 --- !u!114 &384026624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1301,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 384026627}
+        m_TargetAssemblyTypeName: ValidateCircuitButon, Assembly-CSharp
+        m_MethodName: Submit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 384026622}
         m_TargetAssemblyTypeName: SceneManagerUI, Assembly-CSharp
         m_MethodName: ChangeStateButton
@@ -1398,6 +1375,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384026620}
   m_CullTransparentMesh: 1
+--- !u!114 &384026627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384026620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 141c72b563726c749a11fe572c6fc581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i_manager: {fileID: 862082552}
 --- !u!1 &395064132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3686,7 +3676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20265505, y: 0.6205566}
   m_AnchorMax: {x: 0.64862907, y: 0.9091243}
-  m_AnchoredPosition: {x: -61.844543, y: 1.1143494}
+  m_AnchoredPosition: {x: -61.844482, y: 1.1143494}
   m_SizeDelta: {x: 121.43323, y: -0.51190186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1211157572
@@ -4795,7 +4785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19823271, y: 0}
   m_AnchorMax: {x: 0.6444383, y: 0.9110001}
-  m_AnchoredPosition: {x: 87.41113, y: -17.499725}
+  m_AnchoredPosition: {x: 87.41113, y: -17.499756}
   m_SizeDelta: {x: 7.752075, y: -25.581902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440538860
@@ -4898,7 +4888,9 @@ MonoBehaviour:
   i_allPlayers: []
   i_allPlayerData: []
   i_allTeam: []
+  i_buddy: {fileID: 0}
   i_GameState: 0
+  i_lastGameState: 0
   i_skins:
     hairStanding:
     - sprites:
@@ -7032,7 +7024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.23662478}
-  m_AnchoredPosition: {x: -106.71747, y: -24.5}
+  m_AnchoredPosition: {x: -106.71747, y: -24.50003}
   m_SizeDelta: {x: 3.7979126, y: 49.3479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932471802
@@ -7260,7 +7252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.80600005, y: 1}
-  m_AnchoredPosition: {x: -236.5, y: 28.566467}
+  m_AnchoredPosition: {x: -236.5, y: 28.566406}
   m_SizeDelta: {x: 719.99, y: 391.4873}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998799791

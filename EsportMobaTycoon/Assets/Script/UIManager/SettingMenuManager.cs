@@ -7,6 +7,6 @@ public class SettingMenuManager : MonoBehaviour
 {
     public void Close()
     {
-        SceneManager.LoadScene("Hub");
+        GameManager.Instance.GoLastState();
     }
 }

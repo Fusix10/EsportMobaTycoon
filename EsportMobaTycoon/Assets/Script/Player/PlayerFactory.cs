@@ -132,6 +132,7 @@ public class PlayerFactory : MonoBehaviour
             }
         }
 
+        Debug.Log("bestlvid: " + bestlvlid);
         Character favoriteCharacterId = GameManager.Instance.i_allCharacters[bestlvlid];
 
         Debug.Log(name + " s_lvlCombo = " + mechanic.s_lvlCombo[favoriteCharacterId.i_Id].s_lvl);

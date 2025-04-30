@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
 
         i_isBuddy = isBuddy;
 
-        if (skin == null) 
+        if (skin == null)
         {
             i_skin = CharacterSkinRandom.RandomSkin();
         }
@@ -62,6 +62,30 @@ public class Player : MonoBehaviour
         {
             i_skin = skin;
         }
+
+
+        i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;
+        i_lvl = i_lvl / 6;
+
+        UpdateTick();
+    }
+
+    public void Init(PlayerData data)
+    {
+        i_name = data.i_name;
+        i_knickname = data.i_nickname;
+        i_role = data.i_role;
+        i_mechanic = data.i_mechanic;
+        i_knowledge = data.i_knowledge;
+        i_favoriteCharacterId = data.i_favoriteCharacterId;
+        i_teamSpirit = data.i_teamSpirit;
+        i_reputation = data.i_reputation;
+        i_potentiel = data.i_potentiel;
+        i_mood = data.i_mood;
+        i_characterId = data.i_characterId;
+        i_currentRole = data.i_currentRole;
+        i_morale = data.i_morale;
+        i_skin = data.i_skin;
 
 
         i_lvl = i_mechanic.s_lvlCombo[i_favoriteCharacterId.i_Id].s_lvl + i_mechanic.s_stamina.s_lvl + i_mechanic.s_reflexe.s_lvl + i_knowledge.s_placement.s_lvl + i_knowledge.s_teamFight.s_lvl + i_knowledge.s_objective.s_lvl;

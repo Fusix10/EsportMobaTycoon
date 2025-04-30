@@ -16,8 +16,8 @@ public class PanelManager : MonoBehaviour
     [SerializeField] TMP_Text i_NombreMoneyPrenium;
 
     [Header("Synergie")]
-    [SerializeField] Image i_colorSynergie;
-    [SerializeField] TMP_Text i_textSynergie;
+    [SerializeField] Image[] i_colorSynergie;
+    [SerializeField] TMP_Text[] i_textSynergie;
 
     [Header("Meta")]
     [SerializeField] Image i_iconCharacter;
@@ -42,6 +42,14 @@ public class PanelManager : MonoBehaviour
     [SerializeField] BarChart i_fansChart;
     float[] i_moneyMonth;
     int[] i_fansMonth;
+
+
+    [Header("Characters")]
+    [SerializeField] Player[] i_characters;
+    [SerializeField] PlayerUI[] i_charactersUI;
+    [SerializeField] CharacterSkin i_managerUI;
+
+    bool goNextTournament;
 
     #if DEBUG
     public void Generate()
@@ -98,8 +106,7 @@ public class PanelManager : MonoBehaviour
     void Start()
     {
         #if DEBUG
-        Debug.Log("DELETE THIS LINE", gameObject);
-        Generate();
+        if(GameManager.Instance.i_circuit == null) Generate();
         #endif
 
         i_moneyMonth = new float[12];
@@ -116,6 +123,19 @@ public class PanelManager : MonoBehaviour
 
 
         GameManager.Instance.i_timeSystem.OnTurnPass += TimeSystem_OnTurnPass;
+
+        i_managerUI.SetSkin(GameManager.Instance.i_manager.i_skin);
+
+        for (int i = 0; i < i_characters.Length; i++)
+        {
+            if (i < GameManager.Instance.i_manager.i_teamData.i_players.Count)
+            {
+                i_characters[i].Init(GameManager.Instance.i_manager.i_teamData.i_players[i]);
+                i_charactersUI[i].SetSkin(GameManager.Instance.i_manager.i_teamData.i_players[i].i_skin);
+            }
+            else i_characters[i].gameObject.SetActive(false);
+            
+        }
     }
 
     private void TimeSystem_OnTurnPass()
@@ -126,11 +146,33 @@ public class PanelManager : MonoBehaviour
         i_fansMonth[date.monthID] = GameManager.Instance.i_manager.i_reputation;
 
         UpdateNextTournement();
+
+        if(goNextTournament)
+        {
+            Tournament tournement = GameManager.Instance.GetTournament();
+            if (tournement == null || tournement.i_time - 1 <= GameManager.Instance.i_timeSystem.GetTime())
+            {
+                Debug.Log("tournement");
+                goNextTournament = false;
+                return;
+            }
+
+            PassTime();
+        }
     }
 
     public void PassTime()
     {
         GameManager.Instance.PassTimeButton();
+    }
+
+    public void GoNextTournament()
+    {
+        if (!goNextTournament && GameManager.Instance.GetTournament().i_time - 1 > GameManager.Instance.i_timeSystem.GetTime())
+        {
+            goNextTournament = true;
+            PassTime();
+        }
     }
 
     public void UpdateMoney()
@@ -155,26 +197,23 @@ public class PanelManager : MonoBehaviour
 
     public void UpdateNextTournement()
     {
-        foreach (var tournement in GameManager.Instance.i_circuit.i_tournaments)
+        Tournament tournement = GameManager.Instance.GetTournament();
+
+        if (tournement == null) return;
+
+        foreach (var name in i_tournamentName)
         {
-            if (tournement.i_time >= GameManager.Instance.i_timeSystem.GetTime())
-            {
-                foreach (var name in i_tournamentName)
-                {
-                    name.text = tournement.i_name;
-                }
-                foreach (var day in i_tournamentDayLeft)
-                {
-                    day.text = (tournement.i_time - GameManager.Instance.i_timeSystem.GetTime()).ToString();
-                }
+            name.text = tournement.i_name;
+        }
 
-                if(GameManager.Instance.i_timeSystem.GetTime() < 6)
-                {
+        foreach (var day in i_tournamentDayLeft)
+        {
+            day.text = (tournement.i_time - GameManager.Instance.i_timeSystem.GetTime()).ToString();
+        }
 
-                }
+        if(GameManager.Instance.i_timeSystem.GetTime() < 6)
+        {
 
-                break;
-            }
         }
     }
 
@@ -197,32 +236,35 @@ public class PanelManager : MonoBehaviour
         {
             teamSynergie = teamSynergie / i_manager.GetPlayer().Count;
         }
-        switch (teamSynergie) 
-        { 
-            case 0:
-                i_textSynergie.text = "Désastreux";
-                i_textSynergie.color = new Color(0, 0, 0);
-                i_colorSynergie.color = new Color(0, 0, 0, 0.47f); break;
-            case 1:
-                i_textSynergie.text = "Faible";
-                i_textSynergie.color = new Color(255, 0, 0);
-                i_colorSynergie.color = new Color(255,0,0, 0.47f); break;
-            case 2:
-                i_textSynergie.text = "Correct";
-                i_textSynergie.color = new Color(255, 128, 0);
-                i_colorSynergie.color = new Color(255,128,0, 0.47f); break;
-            case 3:
-                i_textSynergie.text = "Bon";
-                i_textSynergie.color = new Color(1, 0.92f, 0.016f);
-                i_colorSynergie.color = new Color(1,0.92f,0.016f, 0.47f) ; break;
-            case 4:
-                i_textSynergie.text = "Incroyable";
-                i_textSynergie.color = new Color(200, 255, 0);
-                i_colorSynergie.color = new Color(200, 255, 0, 0.47f); break;
-            case 5:
-                i_textSynergie.text = "Parfait";
-                i_textSynergie.color = new Color(0, 255, 0);
-                i_colorSynergie.color = new Color(0,255,0, 0.47f); break;
+        for (int i = 0; i < i_textSynergie.Length; i++)
+        {
+            switch (teamSynergie)
+            {
+                case 0:
+                    i_textSynergie[i].text = "Désastreux";
+                    i_textSynergie[i].color = new Color(0, 0, 0);
+                    i_colorSynergie[i].color = new Color(0, 0, 0, 0.47f); break;
+                case 1:
+                    i_textSynergie[i].text = "Faible";
+                    i_textSynergie[i].color = new Color(255, 0, 0);
+                    i_colorSynergie[i].color = new Color(255, 0, 0, 0.47f); break;
+                case 2:
+                    i_textSynergie[i].text = "Correct";
+                    i_textSynergie[i].color = new Color(255, 128, 0);
+                    i_colorSynergie[i].color = new Color(255, 128, 0, 0.47f); break;
+                case 3:
+                    i_textSynergie[i].text = "Bon";
+                    i_textSynergie[i].color = new Color(1, 0.92f, 0.016f);
+                    i_colorSynergie[i].color = new Color(1, 0.92f, 0.016f, 0.47f); break;
+                case 4:
+                    i_textSynergie[i].text = "Incroyable";
+                    i_textSynergie[i].color = new Color(200, 255, 0);
+                    i_colorSynergie[i].color = new Color(200, 255, 0, 0.47f); break;
+                case 5:
+                    i_textSynergie[i].text = "Parfait";
+                    i_textSynergie[i].color = new Color(0, 255, 0);
+                    i_colorSynergie[i].color = new Color(0, 255, 0, 0.47f); break;
+            }
         }
     }
 

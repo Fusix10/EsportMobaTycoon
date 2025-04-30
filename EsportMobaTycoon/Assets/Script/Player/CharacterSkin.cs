@@ -53,7 +53,7 @@ public class CharacterSkin : MonoBehaviour
     public void SwitchStanding() => SetStanding(!i_standing);
     public void SetStanding(bool isStanding)
     {
-        i_isStanding = !i_isStanding;
+        i_isStanding = isStanding;
         Draw();
     }
 

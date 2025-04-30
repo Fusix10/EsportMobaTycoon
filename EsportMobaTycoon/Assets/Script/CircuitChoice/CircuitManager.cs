@@ -34,7 +34,7 @@ public class CircuitManager : MonoBehaviour
     "SummonerÅfs Crown"
     };
 
-    List<Circuit> i_circuits;
+    public List<Circuit> i_circuits { get; private set; }
 
     private void Start()
     {
@@ -92,7 +92,7 @@ public class CircuitManager : MonoBehaviour
             tournaments.Add(new(Random.Range(offset + 30, offset + 50), matches, tournamentName[Random.Range(0, (tournamentName.Count-1))]));
         }
 
-        //GameManager.Instance.i_circuit = new(tournaments, circuitDifficulty);
+        
         i_circuits.Add(new Circuit(tournaments, circuitDifficulty));
     }
 }
